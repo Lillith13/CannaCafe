@@ -8,8 +8,8 @@
 
 ## Schema in Various SQL Formats
 
-[PostgresSQL](/CannaCafe/DBSchemaAssets/CannaCafeSchema-PostgresSQL.sql)
+[PostgresSQL](./CannaCafeSchema-PostgresSQL.sql)
 
-[MySQL](/CannaCafe/DBSchemaAssets/CannaCafeSchema-MySQL.sql)
+[MySQL](./CannaCafeSchema-MySQL.sql)
 
-[ServerSQL](/CannaCafe/DBSchemaAssets/CannaCafeSchema-ServerSQL.sql)
+[ServerSQL](./CannaCafeSchema-ServerSQL.sql)
