@@ -153,3 +153,6 @@ GO
 
 ALTER TABLE [products] ADD FOREIGN KEY ([category_id]) REFERENCES [categories] ([id])
 GO
+
+ALTER TABLE [products] ADD FOREIGN KEY ([added_by]) REFERENCES [users] ([id])
+GO
