@@ -2,7 +2,7 @@
 
 ## Schema Images
 
-![DarkModeSchemaImage]([/CannaCafe/DBSchemaAssets/CannaCafeSchema-Dark.png](https://github.com/Lillith13/CannaCafe/blob/main/DBSchemaAssets/CannaCafeSchema-Dark.png))
+![DarkModeSchemaImage](https://github.com/Lillith13/CannaCafe/blob/main/DBSchemaAssets/CannaCafeSchema-Dark.png)
 
 ![LightModeSchemaImage](/DBSchemaAssets/CannaCafeSchema-Light.png)
 
