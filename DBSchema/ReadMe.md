@@ -6,6 +6,8 @@
 
 ![LightModeSchemaImage](./assets/CannaCafeSchema-Light.png)
 
+* Missing link between products and users => products.added_by references users.id
+
 ## Schema in Various SQL Formats
 
 [PostgresSQL](./assets/CannaCafeSchema-PostgresSQL.sql)
