@@ -2,14 +2,14 @@
 
 ## Schema Images
 
-![DarkModeSchemaImage](DBSchemaAssets/CannaCafeSchema-Dark.png)
+![DarkModeSchemaImage](/CannaCafe/DBSchemaAssets/CannaCafeSchema-Dark.png)
 
-![LightModeSchemaImage](DBSchemaAssets/CannaCafeSchema-Light.png)
+![LightModeSchemaImage](/DBSchemaAssets/CannaCafeSchema-Light.png)
 
 ## Schema in Various SQL Formats
 
-[PostgresSQL](DBSchemaAssets/CannaCafeSchema-PostgresSQL.sql)
+[PostgresSQL](/DBSchemaAssets/CannaCafeSchema-PostgresSQL.sql)
 
-[MySQL](DBSchemaAssets/CannaCafeSchema-MySQL.sql)
+[MySQL](/DBSchemaAssets/CannaCafeSchema-MySQL.sql)
 
-[ServerSQL](DBSchemaAssets/CannaCafeSchema-ServerSQL.sql)
+[ServerSQL](/DBSchemaAssets/CannaCafeSchema-ServerSQL.sql)
