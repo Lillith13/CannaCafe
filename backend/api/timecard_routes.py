@@ -88,6 +88,8 @@ def empTimeCorrection(empId):
     if request.method == "DELETE":
         cardId = request.get_data()
         timecard = TimeCard.query.get(cardId)
+        if not timecard:
+            return {'errors': validation_errors_to_error_messages({"Not_Fount": "Timecard doesn't exist"})}, 404
         db.session.delete(timecard)
         db.session.commit()
         return {"message": "successful"}
