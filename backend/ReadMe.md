@@ -2,7 +2,7 @@
 
 ## Users
 
-#### GET api/users/
+### GET api/users/
 
 - Returns the information for all users
 - Example return ->
@@ -20,7 +20,7 @@
     }
   ```
 
-#### GET api/users/:userId
+### GET api/users/:userId
 
 - Returns the information for one user
 - Login Required
@@ -45,15 +45,18 @@
     }
   ```
 
-## Shopping Cart
+## Cart
 
-#### GET api/cart/
+- These routes do not have a model associated - cat will be handled by local storage, but there will be backend routes to handle dealing with the cart
+
+### GET api/cart/
 
 - Returns the user's cart
+- Gathers the user's cart from the localStorage NOT from db
 - Example return ->
 
   ```js
-    { "Cart": [
+    { "Orders": [
             {
                 "id": item.id,
                 "preview_image": item.previewImage,
@@ -65,9 +68,10 @@
     }
   ```
 
-#### POST api/cart/:itemId
+### POST api/cart/:itemId
 
 - Adds item to cart based on item id
+- Gathers the current cart stored in localStorage and replaces it with an updated copy, after checking availability
 - Successful example return ->
 
   ```js
@@ -85,9 +89,10 @@
   }
   ```
 
-#### PUT api/cart/:itemId
+### PUT api/cart/:itemId
 
 - Changes quantity of item in cart
+- Gathers the cart stored in localStorage and replaces it with an updated copy, after checking availability
 - Successful example return ->
 
   ```js
@@ -103,9 +108,10 @@
   }
   ```
 
-#### DELETE api/cart/:itemId
+### DELETE api/cart/:itemId
 
 - Removes item from cart
+- Gathers the cart stored in localStorage and replaces it with an updated copy
 - Successful example return ->
 
   ```js
@@ -114,7 +120,7 @@
 
 ## Products
 
-#### GET api/products/
+### GET api/products/
 
 - Different returns dependent on if user logged in or not
 - User not logged in returns only items that are not age-restricted
@@ -149,7 +155,7 @@
     }
   ```
 
-#### GET api/products/:productId
+### GET api/products/:productId
 
 - Different returns dependent on if user logged in or not
 - User not logged only has access to non-age-restricted items
@@ -203,7 +209,7 @@
   }
   ```
 
-#### POST api/products/
+### POST api/products/
 
 - Creates a new product
 - Manager role required
@@ -223,7 +229,7 @@
   }
   ```
 
-#### PUT api/products/:itemId
+### PUT api/products/:itemId
 
 - Updates/Edits a product based on the item id
 - Manager role required
@@ -243,7 +249,7 @@
   }
   ```
 
-#### DELETE api/products/:itemId
+### DELETE api/products/:itemId
 
 - Deletes a product based on the item id
 - Manager role required
@@ -265,7 +271,7 @@
 
 ## Wishlist
 
-#### GET api/wishlist/
+### GET api/wishlist/
 
 - Returns all items in user's wishlist
 - Login Required
@@ -284,7 +290,7 @@
     }
   ```
 
-#### POST api/wishlist/:itemId
+### POST api/wishlist/:itemId
 
 - Adds item to user's wishlist
 - Login Required
@@ -305,7 +311,7 @@
 
 ## Favorites
 
-#### GET api/favorites/
+### GET api/favorites/
 
 - Returns all items in user's favorites
 - Login Required
@@ -324,7 +330,7 @@
     }
   ```
 
-#### POST api/favorites/:itemId
+### POST api/favorites/:itemId
 
 - Adds item to user's favorites
 - Login Required
@@ -345,7 +351,7 @@
 
 ## Orders
 
-#### GET api/orders/
+### GET api/orders/
 
 - Get all past orders
 - Login required
@@ -369,7 +375,7 @@
     }
   ```
 
-#### POST api/orders/
+### POST api/orders/
 
 - Add items from cart to orders & clears cart
   Cart items stored in local memory not on database
@@ -393,7 +399,7 @@
   }
   ```
 
-#### DELETE api/orders/:itemId
+### DELETE api/orders/:itemId
 
 - Item returned -> Removes item from orders
 - Successful ->
@@ -415,7 +421,7 @@
 
 ## Categories
 
-#### GET api/categories/
+### GET api/categories/
 
 - Gets all categories
 - For displaying on product creation (role:manager use only)
@@ -428,7 +434,7 @@
   }
   ```
 
-#### GET api/category/:catName
+### GET api/category/:catName
 
 - Gets a category by it's id
 - For display on product details (query purposes)
@@ -436,7 +442,7 @@
 
 ## Reviews
 
-#### GET api/products/:itemId/reviews
+### GET api/products/:itemId/reviews
 
 - Get reviews by item id
 - Example return ->
@@ -457,7 +463,7 @@
     { "Product_Reviews": null }
   ```
 
-#### GET api/reviews/:userId
+### GET api/reviews/:userId
 
 - Get reviews by user id
 - Login required
@@ -480,7 +486,7 @@
     { "User_Reviews": null }
   ```
 
-#### POST api/item/reviews
+### POST api/item/reviews
 
 - Allows users to post reviews on products and menu items
 - Login required
@@ -504,7 +510,7 @@
 
 ## Comlaints
 
-#### GET api/complaints/
+### GET api/complaints/
 
 - Returns all complaints
 - Manager role required
@@ -527,7 +533,7 @@
     { "User_Complaints": null }
   ```
 
-#### POST api/complaints/
+### POST api/complaints/
 
 - Allows members to post a complaint
 - Login Required
@@ -546,7 +552,7 @@
   }
   ```
 
-#### PUT api/complaints/:compId
+### PUT api/complaints/:compId
 
 - Allows members to edit their complaint
 - Login required
@@ -567,7 +573,7 @@
   }
   ```
 
-#### DELETE api/complaints/:compId
+### DELETE api/complaints/:compId
 
 - Allows users to delete their complaint
 - Login required
@@ -589,7 +595,7 @@
 
 ## Timecard
 
-#### GET api/timecard/
+### GET api/timecard/
 
 - Gets the currently signed in employee's current timecard
 - Manager or Employee role required
@@ -600,7 +606,7 @@
   { "message": "success" }
   ```
 
-#### POST api/timecard/clockin
+### POST api/timecard/clockin
 
 - Allows employee to clockin
 - Creates new timecard
@@ -622,7 +628,7 @@
   }
   ```
 
-#### PUT api/timecard/clockout
+### PUT api/timecard/clockout
 
 - Allows employee to clockout
 - Sets current timecard.clock_out to time at moment of button click
@@ -644,7 +650,7 @@
   }
   ```
 
-#### POST api/timecard/new
+### POST api/timecard/new
 
 - Allows management to create a new timecard for past or current date
 - Requires all fields filled if timecard date in the past
@@ -666,7 +672,7 @@
   }
   ```
 
-#### PUT api/timecard/:empId/:cardId
+### PUT api/timecard/:empId/:cardId
 
 - Allows management to edit employee timecard
   Locates by employee and timecard ids
@@ -688,7 +694,7 @@
   }
   ```
 
-#### DELETE api/timecard
+### DELETE api/timecard
 
 - Allows management to delete a timecard in instance of mistaken clockin
 - Manager role required

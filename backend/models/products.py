@@ -16,7 +16,10 @@ class Product(db.Model):
 
   units_available = db.Column(db.INTEGER, nullable=False)
 
+  # ! Set a default
   preview_image = db.Column(db.String(2000))
+
+  preview_image_name = db.Column(db.String(2000))
 
   category_id = db.Column(db.INTEGER, nullable=False)
 

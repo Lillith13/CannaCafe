@@ -13,11 +13,13 @@ def users():
     allUsers = { 'users': [user.to_dict() for user in users ]}
     return allUsers
 
+
 @user_routes.route('/<int:id>')
 def user(id):
     user = User.query.get(id)
     userData = user.to_dict()
     return userData
+
 
 @user_routes.route('/', methods=["DELETE"])
 @login_required
@@ -27,6 +29,7 @@ def delAccount():
     db.session.delete(user)
     db.session.commit()
     return { "message": "successful" }
+
 
 @user_routes.route('/<int:id>', methods=["POST"])
 @login_required
