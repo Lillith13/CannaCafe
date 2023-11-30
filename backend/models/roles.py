@@ -19,6 +19,6 @@ class Role(db.Model):
 
     def to_dict(self):
         return {
-            "users": self.users,
+            "name": self.name,
             "payrate": self.payrate if self.payrate else None
         }

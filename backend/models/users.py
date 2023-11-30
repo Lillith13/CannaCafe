@@ -83,7 +83,7 @@ class User(db.Model, UserMixin):
             'lastName': self.lastName,
             'username': self.username,
             'email': self.email,
-            'role': self.role,
+            'role': self.role.to_dict(),
             'full_address': {
                 "address": self.address,
                 "city": self.city,

@@ -40,3 +40,12 @@ class FavoriteDetail(db.Model):
     favorite_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("favorites.id")))
 
     product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")))
+
+class CategoryProduct(db.Model):
+  __tablename__ = "category_products"
+
+  id = db.Column(db.Integer, primary_key=True)
+
+  category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("categories.id")))
+
+  product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")))

@@ -4,6 +4,7 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import { authenticate } from "./store/session";
 
 // Import routes here
+import SplashPage from "./components/SplashPage";
 
 // Import any needed thunks here
 
@@ -18,9 +19,14 @@ function App() {
 
   return (
     <>
-      <h1>Comming Soon</h1>
+      <h1>Coming Soon...</h1>
       {/* NavigationBar */}
-      {/* Routing */}
+      <Switch>
+        <Route exact to="/">
+          <SplashPage />
+        </Route>
+        <Route>"404: Page not Found"</Route>
+      </Switch>
     </>
   );
 }

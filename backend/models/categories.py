@@ -8,12 +8,15 @@ class Category(db.Model):
 
     id = db.Column(db.INTEGER, primary_key=True)
 
-    product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")), nullable=False)
+    name = db.Column(db.String(255), nullable=False)
 
     age_restricted = db.Column(db.Boolean, nullable=False, default=False)
 
+    # product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")))
+
     products = db.relationship(
         "Product",
+        secondary=add_prefix_for_prod("category_products"),
         back_populates="category"
     )
 

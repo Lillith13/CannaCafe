@@ -4,7 +4,7 @@ from .auth_helper import validation_errors_to_error_messages
 
 from ..models import db, Category
 
-category_routes = Blueprint('/categories', __name__, url_prefix="/categories")
+category_routes = Blueprint('categories', __name__, url_prefix="/categories")
 
 @category_routes.route('/')
 def getCategories():

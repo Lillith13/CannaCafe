@@ -20,16 +20,17 @@ class Product(db.Model):
 
   preview_image_name = db.Column(db.String(2000))
 
-  category_id = db.Column(db.INTEGER, nullable=False)
+  category_id = db.Column(db.INTEGER)
 
   added_by = db.Column(db.INTEGER, db.ForeignKey(add_prefix_for_prod("users.id")))
 
 
   category = db.relationship(
     "Category",
-    back_populates="products",
-    cascade='all, delete-orphan'
+    secondary=add_prefix_for_prod("category_products"),
+    back_populates="products"
   )
+
   reviews = db.relationship(
     "Review",
     back_populates="product"
@@ -46,6 +47,7 @@ class Product(db.Model):
     secondary=add_prefix_for_prod("wishlist_details"),
     back_populates="products"
   )
+
   favorite = db.relationship(
     "Favorite",
     secondary=add_prefix_for_prod("favorite_details"),

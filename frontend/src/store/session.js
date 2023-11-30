@@ -13,7 +13,7 @@ const removeUser = () => ({
 const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
-  const res = await fetch("/api/auth/", {
+  const res = await fetch("/api/auth", {
     headers: {
       "Content-Type": "application/json",
     },
@@ -119,7 +119,7 @@ export const deleteUser = () => async (dispatch) => {
   }
 };
 
-export const editUser = (formData) => async (dispatch) => {
+export const editUser = (formData, userId) => async (dispatch) => {
   const {
     firstName,
     lastName,

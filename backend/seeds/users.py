@@ -10,6 +10,7 @@ def seed_users():
 
     seedRoles = [roleMember, roleEmployee, roleManager, roleOwner]
     _ = [db.session.add(role) for role in seedRoles]
+    db.session.commit()
 
     ownerDemo = User(
         firstName="Owner",
@@ -22,20 +23,21 @@ def seed_users():
         username="ownerDemo",
         email="ownerDemo@test.io",
         password="password",
-        role_id=int(roleOwner.id)
+        role_id=int(roleOwner.id),
+        pay_rate=roleOwner.payrate
     )
 
 
-    managerDemo1 = User (firstName="Manager1", lastName="Demo", birthday=datetime(1991,10,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo1", email="managerDemo1@test.io", password="password", role_id=int(roleManager.id))
+    managerDemo1 = User (firstName="Manager1", lastName="Demo", birthday=datetime(1991,10,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo1", email="managerDemo1@test.io", password="password", role_id=int(roleManager.id), pay_rate=roleManager.payrate)
 
-    managerDemo2 = User (firstName="Manager2", lastName="Demo", birthday=datetime(1993,11,23), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo2", email="managerDemo2@test.io", password="password", role_id=int(roleManager.id))
+    managerDemo2 = User (firstName="Manager2", lastName="Demo", birthday=datetime(1993,11,23), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo2", email="managerDemo2@test.io", password="password", role_id=int(roleManager.id), pay_rate=roleManager.payrate)
 
 
-    employeeDemo1 = User (firstName="Employee1", lastName="Demo", birthday=datetime(1992,1,25), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo1", email="employeeDemo1@test.io", password="password", role_id=int(roleEmployee.id))
+    employeeDemo1 = User (firstName="Employee1", lastName="Demo", birthday=datetime(1992,1,25), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo1", email="employeeDemo1@test.io", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
 
-    employeeDemo2 = User (firstName="Employee2", lastName="Demo", birthday=datetime(1995,3,14), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo2", email="employeeDemo2@test.io", password="password", role_id=int(roleEmployee.id))
+    employeeDemo2 = User (firstName="Employee2", lastName="Demo", birthday=datetime(1995,3,14), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo2", email="employeeDemo2@test.io", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
 
-    employeeDemo3 = User (firstName="Employee3", lastName="Demo", birthday=datetime(1989,5,5), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo3", email="employeeDemo3@test.io", password="password", role_id=int(roleEmployee.id))
+    employeeDemo3 = User (firstName="Employee3", lastName="Demo", birthday=datetime(1989,5,5), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo3", email="employeeDemo3@test.io", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
 
 
     memberDemo1 = User (firstName="Member1", lastName="Demo", birthday=datetime(1985,6,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo1", email="memberDemo1@test.io", password="password", role_id=int(roleMember.id))
@@ -49,6 +51,8 @@ def seed_users():
     memberDemo5 = User (firstName="Member5", lastName="Demo", birthday=datetime(1975,6,8), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo5", email="memberDemo5@test.io", password="password", role_id=int(roleMember.id))
 
     seedUsers = [ownerDemo, managerDemo1, managerDemo2, employeeDemo1, employeeDemo2, employeeDemo3, memberDemo1, memberDemo2, memberDemo3, memberDemo4, memberDemo5]
+    _ = [db.session.add(user) for user in seedUsers]
+    db.session.commit()
 
     seedWishes = []
     seedFaves = []
@@ -59,8 +63,6 @@ def seed_users():
         seedFaves.append(new_favorites)
     _ = [db.session.add(wish) for wish in seedWishes]
     _ = [db.session.add(fave) for fave in seedFaves]
-    _ = [db.session.add(user) for user in seedUsers]
-
     db.session.commit()
 
 def undo_users():
