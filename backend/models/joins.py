@@ -20,7 +20,7 @@ class WishlistDetail(db.Model):
     __tablename__ = "wishlist_details"
 
     if environment == "production":
-     __table_args__ = {'schema': SCHEMA}
+      __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
 
@@ -33,7 +33,7 @@ class FavoriteDetail(db.Model):
     __tablename__ = "favorite_details"
 
     if environment == "production":
-     __table_args__ = {'schema': SCHEMA}
+      __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
 
@@ -43,6 +43,9 @@ class FavoriteDetail(db.Model):
 
 class CategoryProduct(db.Model):
   __tablename__ = "category_products"
+
+  if environment == "production":
+    __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, primary_key=True)
 
