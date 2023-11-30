@@ -3,7 +3,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, IntegerField
 from wtforms.validators import DataRequired, Length, ValidationError
 from datetime import datetime
-from app.models import User
+
+from ..models import User
 
 
 def email_correct_format(form, field):

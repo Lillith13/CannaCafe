@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_user, logout_user
-
 from .auth_helper import validation_errors_to_error_messages
-from ..models import db, User
+
+from ..models import db, User, Wishlist, Favorite, Role
 from ..forms import LoginForm, SignUpForm
 
 auth_routes = Blueprint("auth", __name__)
@@ -47,12 +47,22 @@ def sign_up():
             username = data['username'],
             email = data['email'],
             password = data['password'],
-            role = data['role'],
         )
+        if data['role']:
+            role = Role.query.filter(Role.id == int(data['roleId'])).first()
+            if current_user:
+                user = User.query.get(current_user.get_id())
+                if user.role.name == "Manager":
+                    new_user.role_id = role.id
+                    new_user.pay_rate = role.payrate
+                if user.role.name == "Owner":
+                    new_user.role_id == role.id
+                    new_user.pay_rate = role.payrate
+            else:
+                new_user.role_id == role.id
 
-        # ! create cart
-        # ! create wishlist
-        # ! create favorites
+        new_wishlist = Wishlist(user_id = new_user.id)
+        new_favorites = Favorite(user_id = new_user.id)
 
         db.session.add(new_user)
         db.session.commit()

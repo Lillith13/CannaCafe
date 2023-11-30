@@ -12,7 +12,7 @@ class Category(db.Model):
 
     age_restricted = db.Column(db.Boolean, nullable=False, default=False)
 
-    products = db.Relationship(
+    products = db.relationship(
         "Product",
         back_populates="category",
         cascade='all, delete-orphan'

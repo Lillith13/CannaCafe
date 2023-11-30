@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user, logout_user
 
-from ..models import db, User
+from ..models import db, User, Role
 from ..forms import EditAccountForm
 from .auth_helper import validation_errors_to_error_messages
 
@@ -48,9 +48,31 @@ def editAccount(id):
 
     if form.validate_on_submit():
         data = form.data
-        user.firstName = data["firstName"]
-        user.lastName = data["lastName"]
-        user.email = data["email"]
+        if user.firstName != data['firstName']:
+            user.firstName = data['firstName']
+        if user.lastName != data['lastName']:
+            user.lastName = data['lastName']
+        if user.address != data['address']:
+            pass
+        if user.city != data['city']:
+            pass
+        if user.state != data['state']:
+            pass
+        if user.zipcode != data['zipcode']:
+            pass
+        if user.email != data['email']:
+            pass
+        if current_user.get_id() == user.id:
+            if data['newpass'] and user.check_password(data['oldpass']):
+                user.password = data['newpass']
+        if current_user.get_id() != user.id:
+            thirdParty = User.query.get(current_user.get_id())
+            if thirdParty.role != "Manager" or thirdParty.role != "Owner":
+                return {'errors': validation_errors_to_error_messages({"Not_Allowed": "Forbidden"})}, 403
+            role = Role.query.filter(Role.id == int(data['roleId'])).first
+            user.role = role.id
+            if role.name == "Employee" or role.name == "Manager":
+                user.pay_rate = role.payrate
         db.session.commit()
         return user.to_dict()
 

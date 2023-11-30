@@ -35,12 +35,20 @@ class User(db.Model, UserMixin):
 
     role_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("roles.id")), nullable=False)
 
+    pay_rate = db.Column(db.Numeric(precision=10, scale=2))
+
     created_at = db.Column(db.Date, default=date.today(), nullable=False)
 
     role = db.relationship(
         "Role",
         back_populates='users',
     )
+    dailytimecards = db.relationship(
+        "TimeCard",
+        back_populates="user",
+        cascade='all, delete-orphan'
+    )
+    # ! Add paystub relationship when paystub table created
     # * Don't need cart because cart will be stored in local storage
     wishlist = db.relationship(
         "Wishlist",

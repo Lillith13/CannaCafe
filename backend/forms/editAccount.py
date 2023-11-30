@@ -4,7 +4,7 @@ from flask_login import current_user
 from wtforms import StringField, DateField, IntegerField
 from wtforms.validators import DataRequired, Length, ValidationError
 from datetime import datetime
-from app.models import User
+from ..models import User
 
 
 def email_correct_format(form, field):
