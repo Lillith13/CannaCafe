@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user, logout_user
 
 from ..models import db, User
-# from ..forms import EditAccountForm
+from ..forms import EditAccountForm
 from .auth_helper import validation_errors_to_error_messages
 
 user_routes = Blueprint('users', __name__, url_prefix="/users")
@@ -10,15 +10,21 @@ user_routes = Blueprint('users', __name__, url_prefix="/users")
 @user_routes.route('/')
 def users():
     users = User.query.all()
-    allUsers = { 'users': [user.to_dict() for user in users ]}
+    allUsers = { 'users': [{
+        "id":user['id'],
+        "firstName":user['firstName'],
+        "lastName":user['lastName'],
+        "username":user['username'],
+        "role":user['role'],
+        "member_since":user['member_since'
+        ]} for user in users
+    ]}
     return allUsers
-
 
 @user_routes.route('/<int:id>')
 def user(id):
     user = User.query.get(id)
-    userData = user.to_dict()
-    return userData
+    return { "user": user.to_dict() }
 
 
 @user_routes.route('/', methods=["DELETE"])
@@ -36,7 +42,7 @@ def delAccount():
 def editAccount(id):
     """ edit account details """
     user = User.query.get(id)
-    # form = EditAccountForm()
+    form = EditAccountForm()
     form = {}
     form['csrf_token'].data = request.cookies['csrf_token']
 

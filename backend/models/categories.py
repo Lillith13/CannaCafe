@@ -10,8 +10,17 @@ class Category(db.Model):
 
     product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")), nullable=False)
 
+    age_restricted = db.Column(db.Boolean, nullable=False, default=False)
+
     products = db.Relationship(
         "Product",
         back_populates="category",
         cascade='all, delete-orphan'
     )
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'products': [product.to_dict() for product in self.products],
+            'age_restricted': self.age_restricted
+        }

@@ -29,7 +29,7 @@ class Order(db.Model):
     def to_dict(self):
         return {
             "user_id": self.user_id,
-            "products": [{'id': product['id'], 'name': product['name'], 'quantity': product['quantity']} for product in self.products],
+            "products": [product.to_dict() for product in self.products],
             'placed': self.placed,
             'shipped': self.shipped,
             'fulfilled': self.fulfilled,

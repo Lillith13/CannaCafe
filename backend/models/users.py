@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
 
     lastName = db.Column(db.String(50), nullable=False)
 
-    birthday = db.Column()
+    birthday = db.Column(db.Date, nullable=False)
 
     address = db.Column(db.String(50), nullable=False)
 

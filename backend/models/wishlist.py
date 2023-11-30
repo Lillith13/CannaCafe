@@ -23,11 +23,9 @@ class Wishlist (db.Model):
       back_populates="wishlist"
    )
 
-    #secondary states what the join table is
-
     def to_dict(self):
        return {
           "id": self.id,
           "user_id": self.user_id,
-          "products": dict( [(product.id, { "id": product.id, "name": product.name, "price": product.price}) for product in self.products ])
+          "products": [product.to_dict() for product in self.products]
        }

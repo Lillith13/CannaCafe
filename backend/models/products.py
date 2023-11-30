@@ -16,7 +16,6 @@ class Product(db.Model):
 
   units_available = db.Column(db.INTEGER, nullable=False)
 
-  # ! Set a default
   preview_image = db.Column(db.String(2000))
 
   preview_image_name = db.Column(db.String(2000))
@@ -64,6 +63,7 @@ class Product(db.Model):
       'category': self.category,
       'price': self.price,
       'description': self.description,
-      'category': self.category,
-      'units_available': self.units_available
+      'units_available': self.units_available,
+      'previewImg': self.preview_image,
+      'otherImgs': self.images
     }

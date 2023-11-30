@@ -3,7 +3,7 @@ from flask_login import current_user, login_user, logout_user
 
 from .auth_helper import validation_errors_to_error_messages
 from ..models import db, User
-# from ..forms import LoginForm, SignUpForm
+from ..forms import LoginForm, SignUpForm
 
 auth_routes = Blueprint("auth", __name__)
 
