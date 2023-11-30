@@ -22,4 +22,4 @@ COPY . .
 COPY --from=build /react_app /var/www/frontend
 RUN flask db upgrade
 RUN flask seed all
-CMD gunicorn app:app
+CMD gunicorn backend:frontend
