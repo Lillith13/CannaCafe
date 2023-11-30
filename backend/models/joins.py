@@ -37,6 +37,6 @@ class FavoriteDetail(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    favorite_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("wishlists.id")))
+    favorite_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("favorites.id")))
 
     product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")))

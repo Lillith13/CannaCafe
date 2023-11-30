@@ -1,18 +1,17 @@
 from flask.cli import AppGroup
 from ..models.db import db, environment, SCHEMA
 
-# ! Import seed files
+from .users import seed_users, undo_users
 
 seed_commands = AppGroup('seed')
 
 @seed_commands.command('all')
 def seed():
     if environment == 'production':
-        # * Undo Seeds
+        undo_users()
         pass
-    # * seed
+    seed_users()
 
 @seed_commands.command('undo')
 def undo():
-    # * Undo seeds
-    pass
+    undo_users()

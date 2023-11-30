@@ -14,8 +14,7 @@ class Category(db.Model):
 
     products = db.relationship(
         "Product",
-        back_populates="category",
-        cascade='all, delete-orphan'
+        back_populates="category"
     )
 
     def to_dict(self):

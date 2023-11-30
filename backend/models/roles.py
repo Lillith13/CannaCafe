@@ -8,7 +8,7 @@ class Role(db.Model):
 
     id  = db.Column(db.Integer, primary_key=True)
 
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    name = db.Column(db.String(255), nullable=False)
 
     payrate = db.Column(db.Numeric(precision=10, scale=2))
 
@@ -20,5 +20,5 @@ class Role(db.Model):
     def to_dict(self):
         return {
             "users": self.users,
-            "payrate": self.payrate
+            "payrate": self.payrate if self.payrate else None
         }
