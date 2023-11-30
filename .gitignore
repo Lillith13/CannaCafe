@@ -1,0 +1,15 @@
+
+__pycache__/
+*.py[cod]
+.DS_Store
+.vscode/
+
+
+instance
+node_modules
+.venv
+.env
+*.db
+tasklist.txt
+dev.db
+instance/dev.db
