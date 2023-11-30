@@ -68,9 +68,11 @@ def editAccount(id):
         if current_user.get_id() != user.id:
             thirdParty = User.query.get(current_user.get_id())
             if thirdParty.role != "Manager" or thirdParty.role != "Owner":
-                return {'errors': validation_errors_to_error_messages({"Not_Allowed": "Forbidden"})}, 403
-            role = Role.query.filter(Role.id == int(data['roleId'])).first
-            user.role = role.id
+                return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
+            if thirdParty.role == "Manager" and user.role != "Owner":
+                return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
+            role = Role.query.filter(Role.name == int(data['role'])).first
+            user.role_id = role.id
             if role.name == "Employee" or role.name == "Manager":
                 user.pay_rate = role.payrate
         db.session.commit()

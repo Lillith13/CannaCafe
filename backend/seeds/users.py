@@ -1,4 +1,4 @@
-from ..models import db, User, Role, environment, SCHEMA
+from ..models import db, User, Role, Wishlist, Favorite, environment, SCHEMA
 from sqlalchemy.sql import text
 from datetime import datetime
 
@@ -10,7 +10,6 @@ def seed_users():
 
     seedRoles = [roleMember, roleEmployee, roleManager, roleOwner]
     _ = [db.session.add(role) for role in seedRoles]
-    db.session.commit()
 
     ownerDemo = User(
         firstName="Owner",
@@ -50,7 +49,18 @@ def seed_users():
     memberDemo5 = User (firstName="Member5", lastName="Demo", birthday=datetime(1975,6,8), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo5", email="memberDemo5@test.io", password="password", role_id=int(roleMember.id))
 
     seedUsers = [ownerDemo, managerDemo1, managerDemo2, employeeDemo1, employeeDemo2, employeeDemo3, memberDemo1, memberDemo2, memberDemo3, memberDemo4, memberDemo5]
+
+    seedWishes = []
+    seedFaves = []
+    for user in seedUsers:
+        new_wishlist = Wishlist(user_id = user.id)
+        new_favorites = Favorite(user_id = user.id)
+        seedWishes.append(new_wishlist)
+        seedFaves.append(new_favorites)
+    _ = [db.session.add(wish) for wish in seedWishes]
+    _ = [db.session.add(fave) for fave in seedFaves]
     _ = [db.session.add(user) for user in seedUsers]
+
     db.session.commit()
 
 def undo_users():

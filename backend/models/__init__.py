@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA
 
-from .users import User
 from .roles import Role
+from .users import User
 from .timecards import TimeCard
 from .products import Product
 from .categories import Category
