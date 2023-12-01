@@ -1,13 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
+import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+
 import cannaLogo from "../../assets/cannaleaf.png";
 import takeawayIcon from "../../assets/take_away_icon.png";
 import cartIcon from "../../assets/shopping_cart_logo.png";
-import profileIcon from "../../assets/profile_icon.png";
 
-export default function Navigation() {
+export default function Navigation({ isLoaded }) {
+  const user = useSelector((state) => state.session.user);
   return (
     <nav style={{ display: "flex", gap: "100px" }}>
       <div>
@@ -37,13 +40,7 @@ export default function Navigation() {
             style={{ width: "50px", height: "50px" }}
           />
         </NavLink>
-        <NavLink exact to="/profile">
-          <img
-            src={profileIcon}
-            alt="takeoutLogo"
-            style={{ width: "50px", height: "50px" }}
-          />
-        </NavLink>
+        {isLoaded && <ProfileButton user={user} />}
       </div>
     </nav>
   );
