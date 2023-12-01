@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -11,6 +11,9 @@ import cartIcon from "../../assets/shopping_cart_logo.png";
 
 export default function Navigation({ isLoaded }) {
   const user = useSelector((state) => state.session.user);
+
+  // useEffect(())
+
   return (
     <nav style={{ display: "flex", gap: "100px" }}>
       <div>

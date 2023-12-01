@@ -3,13 +3,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import date
 
-class User(db.Model, UserMixin):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     if environment == 'production':
         __table_args__ = {'schema': SCHEMA}
-
-    # ! Add Validators
 
     id = db.Column(db.Integer, primary_key=True)
 
