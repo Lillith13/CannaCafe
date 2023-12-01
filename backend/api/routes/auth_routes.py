@@ -2,10 +2,10 @@ from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_user, logout_user
 from .auth_helper import validation_errors_to_error_messages
 
-from ..models import db, User, Wishlist, Favorite, Role
-from ..forms import LoginForm, SignUpForm
+from ...models import db, User, Wishlist, Favorite, Role
+from ...forms import LoginForm, SignUpForm
 
-auth_routes = Blueprint("auth", __name__, url_prefix="/auth")
+auth_routes = Blueprint("auth", __name__)
 
 @auth_routes.route('/')
 def authenticate():

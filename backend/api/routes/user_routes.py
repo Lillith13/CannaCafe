@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user, logout_user
 
-from ..models import db, User, Role
-from ..forms import EditAccountForm
+from ...models import db, User, Role
+from ...forms import EditAccountForm
 from .auth_helper import validation_errors_to_error_messages
 
 user_routes = Blueprint('users', __name__, url_prefix="/users")

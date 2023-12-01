@@ -2,16 +2,32 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from .auth_helper import validation_errors_to_error_messages
 
-from ..models import db, Product, Category, User, ProductImage
-from ..forms import ProductForm
+from ...models import db, Product, Category, User, ProductImage
+from ...forms import ProductForm
 from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 product_routes = Blueprint('products', __name__, url_prefix="/products")
 
 @product_routes.route('/')
 def allProducts():
-    products = Product.query().all()
-    return { 'Products': [product.to_dict() for product in products]}
+    products = Product.query.all()
+    safe_products = []
+    for product in products:
+        prod = product.to_dict()
+        category = product.category
+        catDict = category[0].to_dict()
+        safe = {
+            "id": prod["id"],
+            "name": prod['name'],
+            "category": catDict,
+            "price": prod["price"],
+            "description": prod["description"],
+            "units_available": prod["units_available"],
+            "previewImg": prod["previewImg"],
+            "otherImgs": prod["otherImgs"]
+        }
+        safe_products.append(safe)
+    return { 'Products': safe_products }
 
 
 @product_routes.route('/<int:id>')

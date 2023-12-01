@@ -2,8 +2,8 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from .auth_helper import validation_errors_to_error_messages
 
-from ..models import db, Review, Product
-from ..forms import ReviewForm
+from ...models import db, Review, Product
+from ...forms import ReviewForm
 
 review_routes = Blueprint("/reviews", __name__, url_prefix="/reviews")
 

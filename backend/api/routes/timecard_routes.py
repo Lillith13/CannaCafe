@@ -3,8 +3,8 @@ from flask_login import login_required, current_user
 from datetime import datetime
 from .auth_helper import validation_errors_to_error_messages
 
-from ..models import db, TimeCard, User
-from ..forms import TimecardForm
+from ...models import db, TimeCard, User
+from ...forms import TimecardForm
 
 timecard_routes = Blueprint("timecard", __name__, url_prefix="/timecard")
 

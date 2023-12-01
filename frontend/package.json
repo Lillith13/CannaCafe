@@ -2,6 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://127.0.0.1:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -38,6 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://127.0.0.1:5000"
+  }
 }

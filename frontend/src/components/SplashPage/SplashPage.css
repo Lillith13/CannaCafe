@@ -1,0 +1,30 @@
+.splashGreeting {
+  padding-top: 50px;
+}
+
+.splashEnterContainer {
+  position: relative;
+  top: 500px;
+  background-color: rgba(34, 139, 34, 0.75);
+  color: white;
+  padding: 15px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splashLogoContainer {
+  background-color: darkgreen;
+  border-radius: 600px;
+  width: 800px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.splashLogoImage {
+  width: fit-content;
+  height: fit-content;
+}

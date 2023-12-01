@@ -23,6 +23,12 @@ class Category(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'age_restricted': self.age_restricted
+        }
+
+    def filter_dict(self):
+        return {
+            'id': self.id,
             'products': [product.to_dict() for product in self.products],
             'age_restricted': self.age_restricted
         }

@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask_login import current_user
 from .auth_helper import validation_errors_to_error_messages
 
-from ..models import db, Category
+from ...models import db, Category
 
 category_routes = Blueprint('categories', __name__, url_prefix="/categories")
 

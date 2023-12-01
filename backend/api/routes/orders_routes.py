@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from .auth_helper import validation_errors_to_error_messages
 
-from ..models import db, Order, Product
+from ...models import db, Order, Product
 
 order_routes = Blueprint('orders', __name__, url_prefix="/orders")
 

@@ -3,8 +3,8 @@ from flask_login import login_required, current_user
 from .auth_helper import validation_errors_to_error_messages
 from datetime import date
 
-from ..models import db, Complaint, User
-from ..forms import ComplaintForm
+from ...models import db, Complaint, User
+from ...forms import ComplaintForm
 
 complaint_routes = Blueprint('/complaints', __name__, url_prefix="/complaints")
 

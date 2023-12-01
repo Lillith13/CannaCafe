@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation, Router } from "react-router-dom";
 import { authenticate } from "./store/session";
 
 // Import routes here
+import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
+import HomePage from "./components/HomePage";
 
 // Import any needed thunks here
 
@@ -19,14 +21,18 @@ function App() {
 
   return (
     <>
-      <h1>Coming Soon...</h1>
-      {/* NavigationBar */}
-      <Switch>
-        <Route exact to="/">
-          <SplashPage />
-        </Route>
-        <Route>"404: Page not Found"</Route>
-      </Switch>
+      {location.pathname === "/" ? null : <Navigation isLoaded={isLoaded} />}
+      {isLoaded && (
+        <Switch>
+          <Route exact path="/">
+            <SplashPage />
+          </Route>
+          <Route exact path="/home">
+            <HomePage />
+          </Route>
+          <Route>"404: Page not Found"</Route>
+        </Switch>
+      )}
     </>
   );
 }
