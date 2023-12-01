@@ -26,6 +26,7 @@ def upgrade():
     sa.Column('id', sa.INTEGER(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('age_restricted', sa.Boolean(), nullable=False),
+    sa.Column('shippable', sa.Boolean(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":

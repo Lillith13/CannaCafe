@@ -63,7 +63,7 @@ class Product(db.Model):
     return {
       'id': self.id,
       'name': self.name,
-      'category': self.category,
+      'category': self.category[0].to_dict(),
       'price': self.price,
       'description': self.description,
       'units_available': self.units_available,

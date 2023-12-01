@@ -24,7 +24,7 @@ app.register_blueprint(product_routes, url_prefix='/api/products')
 app.register_blueprint(wishlist_routes, url_prefix='/api/wishlist')
 app.register_blueprint(favorite_routes, url_prefix='/api/favorites')
 app.register_blueprint(order_routes, url_prefix='/api/orders')
-app.register_blueprint(category_routes, url_prefix='/api/catergories')
+app.register_blueprint(category_routes, url_prefix='/api/categories')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(complaint_routes, url_prefix='/api/complaints')
 

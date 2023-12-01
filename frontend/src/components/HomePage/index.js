@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import { getProducts } from "../../store/products";
+import "./HomePage.css";
+import { getCategories } from "../../store/products";
 
 export default function HomePage() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+  const categories = useSelector((state) => state.products);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(getProducts()).then(() => setIsLoaded(true));
-  }, []);
+    dispatch(getCategories()).then(() => setIsLoaded(true));
+  }, [dispatch]);
 
   return isLoaded ? (
     <div>
@@ -20,12 +21,22 @@ export default function HomePage() {
           <h2>Checkout our Products</h2>
         </div>
         <div>Product Images will cycle here...</div>
+        {Object.values(categories).map((category) => (
+          <NavLink exact to={`/products/${category.name}`} key={category.id}>
+            {category.shippable && <h3>{category.name}</h3>}
+          </NavLink>
+        ))}
       </div>
       <div>
         <div>
           <h2>Checkout our Menu</h2>
         </div>
         <div>Menu Item Images will cycle here...</div>
+        {Object.values(categories).map((category) => (
+          <NavLink exact to={`/products/${category.name}`} key={category.id}>
+            {!category.shippable && <h3>{category.name}</h3>}
+          </NavLink>
+        ))}
       </div>
     </div>
   ) : (

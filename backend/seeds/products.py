@@ -2,13 +2,13 @@ from ..models import db, User, Category, Product, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_products():
-    food = Category(name="Food")
-    drink = Category(name="Drink")
-    infusedFood = Category(name="Infused-Food", age_restricted=True)
-    infusedDrink = Category(name="Infused-Drink", age_restricted=True)
-    smokeables = Category(name="Smoke", age_restricted=True)
-    merch = Category(name="Merch")
-    paraphernalia = Category(name="Paraphernalia", age_restricted=True)
+    food = Category(name="Food", age_restricted=False)
+    drink = Category(name="Drink", age_restricted=False)
+    infusedFood = Category(name="Infused-Food")
+    infusedDrink = Category(name="Infused-Drink")
+    smokeables = Category(name="Smoke", shippable=True)
+    merch = Category(name="Merch", age_restricted=False, shippable=True)
+    paraphernalia = Category(name="Paraphernalia", shippable=True)
 
     seedCats = [food, drink, infusedFood, infusedDrink, smokeables, merch, paraphernalia]
     _ = [db.session.add(cat) for cat in seedCats]
@@ -78,8 +78,8 @@ def seed_products():
     drink.products.extend([seedProducts[1]])
     infusedFood.products.extend([seedProducts[2]])
     infusedDrink.products.extend([seedProducts[3]])
-    smokeables.products.extend([seedProducts[4]])
-    merch.products.extend([seedProducts[5]])
+    merch.products.extend([seedProducts[4]])
+    smokeables.products.extend([seedProducts[5]])
     paraphernalia.products.extend([seedProducts[6]])
 
     db.session.commit()

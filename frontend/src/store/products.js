@@ -1,25 +1,29 @@
-const GET_PRODUCTS = "session/GET_PRODUCTS";
+const GET_CATEGORIES = "session/GET_CATEGORIES";
 
-const getAllProducts = (products) => ({
-  type: GET_PRODUCTS,
-  payload: products,
+const getAllCategories = (categories) => ({
+  type: GET_CATEGORIES,
+  payload: categories,
 });
 
-export const getProducts = (user) => async (dispatch) => {
-  const res = await fetch("/api/products");
+export const getCategories = () => async (dispatch) => {
+  const res = await fetch("/api/categories");
   const data = await res.json();
   if (data.errors) {
-    console.log(data.errors);
+    return;
   }
   if (res.ok) {
-    console.log(data);
+    dispatch(getAllCategories(data.Categories));
   }
 };
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
-    case GET_PRODUCTS:
-      return state;
+    case GET_CATEGORIES:
+      const new_state = {};
+      for (let category of action.payload) {
+        new_state[category.id] = category;
+      }
+      return new_state;
     default:
       return state;
   }

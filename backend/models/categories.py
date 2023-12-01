@@ -10,9 +10,9 @@ class Category(db.Model):
 
     name = db.Column(db.String(255), nullable=False)
 
-    age_restricted = db.Column(db.Boolean, nullable=False, default=False)
+    age_restricted = db.Column(db.Boolean, default=True, nullable=False)
 
-    # product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")))
+    shippable = db.Column(db.Boolean, default=False, nullable=False)
 
     products = db.relationship(
         "Product",
@@ -23,12 +23,16 @@ class Category(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'age_restricted': self.age_restricted
+            'name': self.name,
+            'age_restricted': self.age_restricted,
+            'shippable': self.shippable
         }
 
     def filter_dict(self):
         return {
             'id': self.id,
+            'name': self.name,
             'products': [product.to_dict() for product in self.products],
-            'age_restricted': self.age_restricted
+            'age_restricted': self.age_restricted,
+            'shippable': self.shippable
         }

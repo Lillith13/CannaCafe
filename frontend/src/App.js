@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch, useLocation, Router } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import { authenticate } from "./store/session";
 
 // Import routes here
