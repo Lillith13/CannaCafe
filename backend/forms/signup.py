@@ -33,8 +33,8 @@ def username_exists(form, field):
 def birthday_validator(form, field):
     now = datetime.now()
     birthday = field.data
-    dobFormatted = datetime.strptime(birthday, "%Y-%m-%d")
-    difference = now - birthday
+    dobFormatted = datetime.strptime(str(birthday), "%Y-%m-%d")
+    difference = now - dobFormatted
     age_in_years = difference.days // 365
     if age_in_years < 21:
         raise ValidationError("We sell age-restricted products so you must be 21 or older to sign up. You can still shop our non-age-restricted products as a guest though!")
@@ -42,23 +42,23 @@ def birthday_validator(form, field):
 class SignUpForm(FlaskForm):
     firstName = StringField("First Name", [DataRequired("First name is required."), Length(min=2, message="First name must be 2 characters or longer.")])
 
-    lastName = StringField("Last Name", validators=[Length(min=2, message="First name must be a minimum of 2 charactors long")])
+    lastName = StringField("Last Name", validators=[DataRequired("Last name is required."), Length(min=2, message="First name must be a minimum of 2 charactors long")])
 
-    birthday = DateField('birthday', validators=[DataRequired(), birthday_validator])
+    birthday = DateField('birthday', validators=[DataRequired("Birthday is required to verify age"), birthday_validator])
 
-    address = StringField('address', validators=[DataRequired()])
+    address = StringField('address', validators=[DataRequired("Address is required")])
 
-    city = StringField('city', validators=[DataRequired()])
+    city = StringField('city', validators=[DataRequired("City is required")])
 
-    state = StringField('state', validators=[DataRequired()])
+    state = StringField('state', validators=[DataRequired("State is required")])
 
-    zipcode = IntegerField('zipcode', validators=[DataRequired(), Length(min=5,max=5)])
+    zipcode = StringField('zipcode', validators=[DataRequired("Zipcode is required"), Length(min=5,max=5, message="Please enter a valid 5 digit zipcode")])
 
     username = StringField(
-        'username', validators=[DataRequired(), username_exists])
+        'username', validators=[DataRequired("Username is required"), username_exists])
 
-    role = IntegerField('role')
+    roleName = StringField('roleName')
 
-    email = StringField('email', validators=[DataRequired(), email_exists, email_correct_format])
+    email = StringField('email', validators=[DataRequired("Email is required"), email_exists, email_correct_format])
 
-    password = StringField('password', validators=[DataRequired()])
+    password = StringField('password', validators=[DataRequired("Password is required")])

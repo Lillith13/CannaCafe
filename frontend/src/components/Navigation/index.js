@@ -26,7 +26,7 @@ export default function Navigation({ isLoaded }) {
       {/* Create Search form for Search Bar */}
       <input type="text" placeholder="Search..." />
       <div>
-        <NavLink exct to="/takeout">
+        <NavLink exact to="/takeout">
           <img
             src={takeawayIcon}
             alt="takeoutLogo"

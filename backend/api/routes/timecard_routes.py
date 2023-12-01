@@ -20,8 +20,8 @@ def getPaystubs():
         if targetUser.role == "Manager" and user.role != "Owner":
             return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have the correct permissions to perform this action"})}, 403
         if targetUser.role == "Member":
-            return {'errors': validation_errors_to_error_messages({"Not_Allowed": "Target user must be at least an employee to have a timecard"})}
-        timecards = TimeCard.quear.filter(TimeCard.user_id == int(id))
+            return {'errors': validation_errors_to_error_messages({"Not_Allowed": "Target user must be at least an employee to have a timecard"})}, 403
+        timecards = TimeCard.query.filter(TimeCard.user_id == int(id))
     else:
         timecards = TimeCard.query.filter(TimeCard.user_id == current_user.get_id())
     return {"Timecards": [timecard.to_dict() for timecard in timecards]}

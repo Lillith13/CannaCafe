@@ -36,6 +36,24 @@ def sign_up():
 
     if form.validate_on_submit():
         data = form.data
+
+        role = Role.query.filter(Role.name == "Member").first()
+        roleId = role.id
+        payrate = role.payrate
+
+        if data['roleName']:
+            user = User.query.get(current_user.get_id())
+            if data['roleName'] == "Employee":
+                if user.role.name == "Manager" or user.role.name == "Owner":
+                    role = Role.query.filter(Role.name == "Employee").first()
+                    roleId = role.id
+                    payrate = role.payrate
+            elif data['roleName'] == "Manager":
+                if user.role.name == "Owner":
+                    role = Role.query.filter(Role.name == "Manager").first()
+                    roleId = role.id
+                    payrate = role.payrate
+
         new_user = User(
             firstName = data['firstName'],
             lastName = data['lastName'],
@@ -47,25 +65,19 @@ def sign_up():
             username = data['username'],
             email = data['email'],
             password = data['password'],
+            role_id = roleId,
+            pay_rate = payrate
         )
-        if data['role']:
-            role = Role.query.filter(Role.id == int(data['roleId'])).first()
-            if current_user:
-                user = User.query.get(current_user.get_id())
-                if user.role.name == "Manager":
-                    new_user.role_id = role.id
-                    new_user.pay_rate = role.payrate
-                if user.role.name == "Owner":
-                    new_user.role_id == role.id
-                    new_user.pay_rate = role.payrate
-            else:
-                new_user.role_id == role.id
-
-        new_wishlist = Wishlist(user_id = new_user.id)
-        new_favorites = Favorite(user_id = new_user.id)
 
         db.session.add(new_user)
         db.session.commit()
+
+        new_wishlist = Wishlist(user_id = new_user.id)
+        new_favorites = Favorite(user_id = new_user.id)
+        db.session.add(new_wishlist)
+        db.session.add(new_favorites)
+        db.session.commit()
+
         login_user(new_user)
         return new_user.to_dict()
     return { 'errors': validation_errors_to_error_messages(form.errors) }, 401
