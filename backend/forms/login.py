@@ -6,16 +6,16 @@ from ..models import User
 
 def user_exists(form, field):
     creds = field.data
-    user = User.query.filter(User.username == creds or User.email == creds).first()
+    user = User.query.filter(User.username == creds).first()
 
     if not user:
-        raise ValidationError('Username/Email provided not found.')
+        raise ValidationError('Username provided not found.')
 
 
 def password_matches(form, field):
     password = field.data
     creds = form.data['creds']
-    user = User.query.filter(User.username == form.data['creds'] or User.email == form.data['creds']).first()
+    user = User.query.filter(User.username == form.data['creds']).first()
 
     if not user:
         raise ValidationError('No such user exists.')

@@ -22,7 +22,6 @@ function Login() {
     const data = await dispatch(login(creds, password));
     if (data) {
       setErrors(data);
-      console.log(data);
     } else {
       closeModal();
       history.push("/home");
@@ -34,7 +33,7 @@ function Login() {
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Username/Email
+          Username
           <input
             className="loginInput"
             type="text"
@@ -42,7 +41,7 @@ function Login() {
             onChange={(e) => setCreds(e.target.value)}
             required
           />
-          {/* set errors to display here */}
+          {errors.creds && <p className="loginErrors">* {errors.creds}</p>}
         </label>
         <label>
           Password
@@ -53,7 +52,9 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          {/* set errors to display here */}
+          {errors.password && (
+            <p className="loginErrors">* {errors.password}</p>
+          )}
         </label>
 
         <button
