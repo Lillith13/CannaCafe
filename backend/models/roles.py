@@ -27,6 +27,3 @@ class Role(db.Model):
         return {
             'users': [user.to_dict() for user in self.users]
         }
-
-    def __getattr__(self, attr):
-       return self[attr]
