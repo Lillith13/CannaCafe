@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import "./HomePage.css";
-import { authenticate } from "../../store/session";
 import { getCategories } from "../../store/products";
 
 export default function HomePage() {
@@ -12,9 +11,7 @@ export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch()
-      .then((authenticate) => dispatch(getCategories()))
-      .then(() => setIsLoaded(true));
+    dispatch(getCategories()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return isLoaded ? (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import OpenModalButton from "../../OpenModalButton";
@@ -11,7 +11,7 @@ import "./Login.css";
 
 function Login() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   const [creds, setCreds] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -24,7 +24,7 @@ function Login() {
       setErrors(data);
     } else {
       closeModal();
-      history.push("/home");
+      // history.push("/home");
     }
   };
 
