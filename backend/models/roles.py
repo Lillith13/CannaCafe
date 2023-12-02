@@ -19,6 +19,14 @@ class Role(db.Model):
 
     def to_dict(self):
         return {
-            "name": self.name,
-            "payrate": self.payrate if self.payrate else None
+            'id': self.id,
+            "name": self.name
         }
+
+    def users_by_role(self):
+        return {
+            'users': [user.to_dict() for user in self.users]
+        }
+
+    def __getattr__(self, attr):
+       return self[attr]

@@ -24,7 +24,7 @@ function Login() {
       setErrors(data);
     } else {
       closeModal();
-      history.push("/home");
+      history.push("/profile");
     }
   };
 

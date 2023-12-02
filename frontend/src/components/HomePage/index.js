@@ -7,6 +7,7 @@ import { getCategories } from "../../store/products";
 
 export default function HomePage() {
   const dispatch = useDispatch();
+  // const user = useSelector((state) => state.products);
   const categories = useSelector((state) => state.products);
   const [isLoaded, setIsLoaded] = useState(false);
 
