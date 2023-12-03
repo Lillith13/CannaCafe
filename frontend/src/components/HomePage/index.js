@@ -18,12 +18,15 @@ export default function HomePage() {
   return isLoaded ? (
     <div>
       <div>
-        {user &&
-          (user.role.name === "Manager" || user.role.name === "Owner") && (
-            <NavLink exact to="/allProducts">
-              <h3>View All</h3>
-            </NavLink>
-          )}
+        {user ? (
+          <>
+            {(user.role.name === "Manager" || user.role.name === "Owner") && (
+              <NavLink exact to="/allProducts">
+                <h3>View All</h3>
+              </NavLink>
+            )}
+          </>
+        ) : null}
         <div>
           <h2>Checkout our Products</h2>
         </div>
