@@ -74,12 +74,13 @@ export default function Products() {
             <p>{product.price} --- maybe add purchase options later</p>
           </NavLink>
           <button>Add to {product.category.shippable ? "Cart" : "Bag"}</button>
-          {(user.role.name == "Owner" || user.role.name == "Manager") && (
-            <>
-              <button>Edit Product</button>
-              <button>Delete Product</button>
-            </>
-          )}
+          {user &&
+            (user.role.name == "Owner" || user.role.name == "Manager") && (
+              <>
+                <button>Edit Product</button>
+                <button>Delete Product</button>
+              </>
+            )}
         </div>
       ))}
     </>

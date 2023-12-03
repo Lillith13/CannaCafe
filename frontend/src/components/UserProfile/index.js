@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function UserProfile() {
   const user = useSelector((state) => state.session.user);
+
   return (
     <>
       <h1>User Profile - Coming soon...</h1>
