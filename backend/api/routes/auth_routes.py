@@ -21,6 +21,8 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter(User.username == form.data['creds']).first()
         login_user(user)
+        print("checking auth bullshit! => ", current_user.is_authenticated)
+        print("checking is current_user exists => ", current_user.to_dict())
         return user.to_dict()
     return { 'errors': validation_errors_to_error_messages(form.errors) }, 401
 

@@ -7,6 +7,12 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
+import UserProfile from "./components/UserProfile";
+import Takeout from "./components/Takeout";
+import Cart from "./components/Cart";
+import Products from "./components/Products";
+import ProductDetails from "./components/ProductDetails";
+import PayStubs from "./components/PayStubs";
 
 // Import any needed thunks here
 
@@ -29,6 +35,36 @@ function App() {
           </Route>
           <Route exact path="/home">
             <HomePage />
+          </Route>
+          <Route exact path="/category/:name">
+            <Products />
+          </Route>
+          <Route exact path="/allProducts">
+            <Products />
+          </Route>
+          <Route exact path="/product/:id">
+            <ProductDetails />
+          </Route>
+          <Route exact path="/products">
+            <Products />
+          </Route>
+          <Route exact path="/menu/:id">
+            <ProductDetails />
+          </Route>
+          <Route exact path="/menu">
+            <Products />
+          </Route>
+          <Route exact path="/profile">
+            <UserProfile />
+          </Route>
+          <Route exact path="/takeout">
+            <Takeout />
+          </Route>
+          <Route exact path="/cart">
+            <Cart />
+          </Route>
+          <Route exact path="/paystubs">
+            <PayStubs />
           </Route>
           <Route>"404: Page not Found"</Route>
         </Switch>

@@ -7,7 +7,7 @@ import { getCategories } from "../../store/products";
 
 export default function HomePage() {
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.products);
+  const user = useSelector((state) => state.session.user);
   const categories = useSelector((state) => state.products);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -18,12 +18,20 @@ export default function HomePage() {
   return isLoaded ? (
     <div>
       <div>
+        {(user.role.name === "Manager" || user.role.name === "Owner") && (
+          <NavLink exact to="/allProducts">
+            <h3>View All</h3>
+          </NavLink>
+        )}
         <div>
           <h2>Checkout our Products</h2>
         </div>
+        <NavLink exact to="/products">
+          <h3>View All</h3>
+        </NavLink>
         <div>Product Images will cycle here...</div>
         {Object.values(categories).map((category) => (
-          <NavLink exact to={`/products/${category.name}`} key={category.id}>
+          <NavLink exact to={`/category/${category.name}`} key={category.id}>
             {category.shippable && <h3>{category.name}</h3>}
           </NavLink>
         ))}
@@ -32,9 +40,12 @@ export default function HomePage() {
         <div>
           <h2>Checkout our Menu</h2>
         </div>
+        <NavLink exact to="/menu">
+          <h3>View All</h3>
+        </NavLink>
         <div>Menu Item Images will cycle here...</div>
         {Object.values(categories).map((category) => (
-          <NavLink exact to={`/products/${category.name}`} key={category.id}>
+          <NavLink exact to={`/category/${category.name}`} key={category.id}>
             {!category.shippable && <h3>{category.name}</h3>}
           </NavLink>
         ))}

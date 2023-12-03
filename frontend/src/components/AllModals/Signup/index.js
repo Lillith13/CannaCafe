@@ -9,7 +9,7 @@ import "./Signup.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthday, setBirthday] = useState("");
@@ -27,40 +27,44 @@ function SignupFormModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      password === confirmPassword &&
-      !isNaN(Number(zipcode)) &&
-      zipcode.length === 5
-    ) {
-      const address = address1 + address2;
-      const formData = {
-        firstName,
-        lastName,
-        birthday,
-        address,
-        city,
-        state,
-        zipcode,
-        username,
-        email,
-        password,
-      };
-      const data = await dispatch(signUp(formData));
-      if (data) {
-        setErrors(data);
+    if (!user) {
+      if (
+        password === confirmPassword &&
+        !isNaN(Number(zipcode)) &&
+        zipcode.length === 5
+      ) {
+        const address = address1 + address2;
+        const formData = {
+          firstName,
+          lastName,
+          birthday,
+          address,
+          city,
+          state,
+          zipcode,
+          username,
+          email,
+          password,
+        };
+        const data = await dispatch(signUp(formData));
+        if (data) {
+          setErrors(data);
+        } else {
+          closeModal();
+        }
       } else {
-        closeModal();
+        setErrors([
+          "Confirm Password field must be the same as the Password field",
+        ]);
       }
     } else {
-      setErrors([
-        "Confirm Password field must be the same as the Password field",
-      ]);
+      // ! add in else for when New Employee routes here
     }
   };
 
   return (
     <div className="signUpModal">
-      <h1 className="signUpTitle">Sign Up</h1>
+      <h1 className="signUpTitle">{user ? "New Employee" : "Signup"}</h1>
       <form onSubmit={handleSubmit}>
         <label>
           First Name

@@ -1,0 +1,9 @@
+import React from "react";
+
+export default function Takeout() {
+  return (
+    <>
+      <h1>Coming soon...</h1>
+    </>
+  );
+}

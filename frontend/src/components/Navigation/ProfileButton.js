@@ -59,13 +59,43 @@ function ProfileButton({ user }) {
       <ul className={`${ulClassName} profile-dropdown`} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
+            <li>Welcome back, {user.username}</li>
             <li>{user.email}</li>
             <li>
-              <NavLink to={`/profile/${user.id}`}>
+              <NavLink to="/profile">
                 <button className="dropdown-btn">View Profile</button>
               </NavLink>
             </li>
+            {(user.role.name === "Employee" ||
+              user.role.name === "Manager" ||
+              user.role.name === "Owner") && (
+              <>
+                <li>
+                  <button>Clock In</button>
+                </li>
+                <li>
+                  <button>Clock Out</button>
+                </li>
+                <li>
+                  <NavLink exact to="/paystubs">
+                    <button>View Paystubs</button>
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {(user.role.name === "Manager" || user.role.name === "Owner") && (
+              <>
+                <li>
+                  <button>Add to Products</button>
+                </li>
+                <li>
+                  <button>Add to Menu</button>
+                </li>
+                <li>
+                  <button>New Employee</button>
+                </li>
+              </>
+            )}
             <li>
               <button onClick={handleLogout} className="dropdown-btn">
                 Log Out

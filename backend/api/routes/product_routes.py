@@ -9,24 +9,84 @@ from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from
 product_routes = Blueprint('products', __name__, url_prefix="/products")
 
 @product_routes.route('/')
+@login_required
 def allProducts():
     products = Product.query.all()
     safe_products = []
-    for product in products:
-        prod = product.to_dict()
-        category = product.category
-        catDict = category[0].to_dict()
-        safe = {
-            "id": prod["id"],
-            "name": prod['name'],
-            "category": catDict,
-            "price": prod["price"],
-            "description": prod["description"],
-            "units_available": prod["units_available"],
-            "previewImg": prod["previewImg"],
-            "otherImgs": prod["otherImgs"]
-        }
-        safe_products.append(safe)
+    user = User.query.get(current_user.get_id())
+    if not user:
+        for product in products:
+            prod = product.to_dict()
+            category = product.category
+            catDict = category[0].to_dict()
+            if not catDict["age_restricted"]:
+                safe = {
+                    "id": prod["id"],
+                    "name": prod['name'],
+                    "category": catDict["name"],
+                    "price": prod["price"],
+                    "description": prod["description"],
+                    "units_available": prod["units_available"],
+                    "previewImg": prod["previewImg"],
+                    "otherImgs": prod["otherImgs"]
+                }
+                safe_products.append(safe)
+    else:
+        for product in products:
+            prod = product.to_dict()
+            category = product.category
+            catDict = category[0].to_dict()
+            safe = {
+                "id": prod["id"],
+                "name": prod['name'],
+                "category": catDict["name"],
+                "price": prod["price"],
+                "description": prod["description"],
+                "units_available": prod["units_available"],
+                "previewImg": prod["previewImg"],
+                "otherImgs": prod["otherImgs"]
+            }
+            safe_products.append(safe)
+    return { 'Products': safe_products }
+
+@product_routes.route('/<string:path>')
+def allProducts_byPath(path):
+    products = Product.query.all()
+    safe_products = []
+    if path == "menu":
+        for product in products:
+            prod = product.to_dict()
+            category = product.category
+            catDict = category[0].to_dict()
+            if not catDict["shippable"]:
+                safe = {
+                    "id": prod["id"],
+                    "name": prod['name'],
+                    "category": catDict["name"],
+                    "price": prod["price"],
+                    "description": prod["description"],
+                    "units_available": prod["units_available"],
+                    "previewImg": prod["previewImg"],
+                    "otherImgs": prod["otherImgs"]
+                }
+                safe_products.append(safe)
+    else:
+        for product in products:
+            prod = product.to_dict()
+            category = product.category
+            catDict = category[0].to_dict()
+            if catDict["shippable"]:
+                safe = {
+                    "id": prod["id"],
+                    "name": prod['name'],
+                    "category": catDict["name"],
+                    "price": prod["price"],
+                    "description": prod["description"],
+                    "units_available": prod["units_available"],
+                    "previewImg": prod["previewImg"],
+                    "otherImgs": prod["otherImgs"]
+                }
+                safe_products.append(safe)
     return { 'Products': safe_products }
 
 
@@ -38,7 +98,7 @@ def specificProduct(id):
     return product.to_dict()
 
 
-@product_routes.route('/products', methods=["POST", "PUT", "DELETE"])
+@product_routes.route('/', methods=["POST", "PUT", "DELETE"])
 @login_required
 def productSubmits():
     form = ProductForm()

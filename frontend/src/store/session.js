@@ -13,13 +13,15 @@ const removeUser = () => ({
 const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
-  const res = await fetch("/api/auth", {
+  // ! If login & current_user persistance breaks in live take the tail / out and redeploy
+  const res = await fetch("/api/auth/", {
     headers: {
       "Content-Type": "application/json",
     },
   });
   if (res.ok) {
     const data = await res.json();
+    console.log(data);
     if (data.errors) {
       return;
     }
