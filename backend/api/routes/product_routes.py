@@ -47,7 +47,6 @@ def allProducts():
                 "otherImgs": prod["otherImgs"]
             }
             safe_products.append(safe)
-    print("from get all Products/Menu Items backend route => ", { 'Products': safe_products })
     return { 'Products': safe_products }
 
 @product_routes.route('/<string:path>')
@@ -88,7 +87,6 @@ def allProducts_byPath(path):
                     "otherImgs": prod["otherImgs"]
                 }
                 safe_products.append(safe)
-    print("from products by category in backend route => ", { 'Products': safe_products })
     return { 'Products': safe_products }
 
 

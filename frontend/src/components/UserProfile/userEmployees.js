@@ -21,7 +21,6 @@ export default function UserEmployees() {
   return isLoaded ? (
     <div>
       <div>
-        {console.log(employees)}
         <h3>Employees</h3>
         {employees.Employees &&
           employees.Employees.map((employee) => (
