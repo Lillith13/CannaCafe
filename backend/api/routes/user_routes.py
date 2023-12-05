@@ -32,7 +32,7 @@ def get_employees():
             "Managers": [manager.to_dict() for manager in managers],
             "Owners": [owner.to_dict() for owner in owners]
         }
-
+    print("allEmployees from route => ", allEmployees)
     return allEmployees
 
 @user_routes.route('/<int:id>')
