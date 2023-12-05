@@ -21,11 +21,11 @@ export default function UserEmployees() {
   return isLoaded ? (
     <div>
       <div>
+        {console.log(employees)}
         <h3>Employees</h3>
         {employees.Employees &&
           employees.Employees.map((employee) => (
             <div key={employee.id}>
-              {console.log(employees)}
               <div>
                 <h4>
                   Name: {employee.firstName} {employee.lastName}

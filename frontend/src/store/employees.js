@@ -12,6 +12,7 @@ export const getAllEmployees = () => async (dispatch) => {
     if (data.errors) {
       return data.errors;
     }
+    console.log("employee data sent from thunk => ", data);
     dispatch(getAllEmps(data));
   }
   if (data.errors) {
