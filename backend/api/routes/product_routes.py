@@ -23,7 +23,7 @@ def allProducts():
                 safe = {
                     "id": prod["id"],
                     "name": prod['name'],
-                    "category": catDict["name"],
+                    "category": catDict,
                     "price": prod["price"],
                     "description": prod["description"],
                     "units_available": prod["units_available"],
@@ -39,7 +39,7 @@ def allProducts():
             safe = {
                 "id": prod["id"],
                 "name": prod['name'],
-                "category": catDict["name"],
+                "category": catDict,
                 "price": prod["price"],
                 "description": prod["description"],
                 "units_available": prod["units_available"],
@@ -62,7 +62,7 @@ def allProducts_byPath(path):
                 safe = {
                     "id": prod["id"],
                     "name": prod['name'],
-                    "category": catDict["name"],
+                    "category": catDict,
                     "price": prod["price"],
                     "description": prod["description"],
                     "units_available": prod["units_available"],
@@ -79,7 +79,7 @@ def allProducts_byPath(path):
                 safe = {
                     "id": prod["id"],
                     "name": prod['name'],
-                    "category": catDict["name"],
+                    "category": catDict,
                     "price": prod["price"],
                     "description": prod["description"],
                     "units_available": prod["units_available"],

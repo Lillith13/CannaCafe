@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logout } from "../../store/session";
+
 import OpenModalButton from "../OpenModalButton";
 import Login from "../AllModals/Login";
 import Signup from "../AllModals/Signup";
+import { logout } from "../../store/session";
+import { userClockin, userClockout } from "../../store/timecard";
 
 import "./Navigation.css";
 import profileIcon from "../../assets/profile_icon.png";
@@ -43,6 +45,31 @@ function ProfileButton({ user }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
+  const handleClockIn = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(userClockin());
+    if (data) {
+      const msg = "Cannot clock in with an already open timecard";
+      alert(msg);
+    }
+    if (!data) {
+      const msg = "You've sucessfully clocked in!";
+      alert(msg);
+    }
+  };
+  const handleClockOut = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(userClockout());
+    if (data) {
+      const msg = "You haven't clocked in yet";
+      alert(msg);
+    }
+    if (!data) {
+      const msg = "You've sucessfully clocked out!";
+      alert(msg);
+    }
+  };
+
   return (
     <>
       <div
@@ -71,10 +98,10 @@ function ProfileButton({ user }) {
               user.role.name === "Owner") && (
               <>
                 <li>
-                  <button>Clock In</button>
+                  <button onClick={(e) => handleClockIn(e)}>Clock In</button>
                 </li>
                 <li>
-                  <button>Clock Out</button>
+                  <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
                 </li>
                 <li>
                   <NavLink exact to="/paystubs">
@@ -92,7 +119,11 @@ function ProfileButton({ user }) {
                   <button>Add to Menu</button>
                 </li>
                 <li>
-                  <button>New Employee</button>
+                  <OpenModalButton
+                    buttonText="New Employee"
+                    onItemClick={closeMenu}
+                    modalComponent={<Signup />}
+                  />
                 </li>
               </>
             )}

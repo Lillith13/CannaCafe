@@ -13,7 +13,7 @@ const removeUser = () => ({
 const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
-  // ! If login & current_user persistance breaks in live take the tail / out and redeploy
+  // * If login & current_user persistance breaks in live take the tail / out and redeploy
   const res = await fetch("/api/auth/", {
     headers: {
       "Content-Type": "application/json",
@@ -105,42 +105,30 @@ export const deleteUser = () => async (dispatch) => {
   }
 };
 
-export const editUser = (formData, userId) => async (dispatch) => {
-  const {
-    firstName,
-    lastName,
-    address,
-    city,
-    state,
-    zipcode,
-    username,
-    email,
-    oldPassword,
-    newPassword,
-  } = formData;
-  const res = await fetch(`/api/users/${userId}`, {
+export const editUser = (inputData) => async (dispatch) => {
+  const { formData, targetUserId, userId } = inputData;
+  const res = await fetch(`/api/users/${targetUserId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      firstName,
-      lastName,
-      address,
-      city,
-      state,
-      zipcode,
-      username,
-      email,
-      oldPassword,
-      newPassword,
-    }),
+    body: JSON.stringify(formData),
   });
   const data = await res.json();
-  if (data.errors) {
-    return data.errors;
+  if (res.ok) {
+    if (data.errors) {
+      console.log(data.errors);
+      return data.errors;
+    }
+    if (targetUserId == userId) {
+      console.log(data);
+      dispatch(setUser(data));
+      return null;
+    }
+  } else {
+    console.log(data);
+    return data;
   }
-  dispatch(setUser(data));
 };
 
 export default function reducer(state = initialState, action) {

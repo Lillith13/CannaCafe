@@ -7,7 +7,7 @@ import OpenModalButton from "../../OpenModalButton";
 import Login from "../Login";
 import "./Signup.css";
 
-function SignupFormModal() {
+export default function SignupFormModal() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [firstName, setFirstName] = useState("");
@@ -19,8 +19,10 @@ function SignupFormModal() {
   const [state, setState] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
@@ -33,7 +35,7 @@ function SignupFormModal() {
         !isNaN(Number(zipcode)) &&
         zipcode.length === 5
       ) {
-        const address = address1 + address2;
+        const address = address1 + "#" + address2;
         const formData = {
           firstName,
           lastName,
@@ -46,6 +48,12 @@ function SignupFormModal() {
           email,
           password,
         };
+        if (phone) {
+          formData["phone"] = phone;
+        }
+        if (role && role != "undefined") {
+          formData["role"] = role;
+        }
         const data = await dispatch(signUp(formData));
         if (data) {
           setErrors(data);
@@ -53,12 +61,11 @@ function SignupFormModal() {
           closeModal();
         }
       } else {
+        // ! change this array to an object
         setErrors([
           "Confirm Password field must be the same as the Password field",
         ]);
       }
-    } else {
-      // ! add in else for when New Employee routes here
     }
   };
 
@@ -75,9 +82,7 @@ function SignupFormModal() {
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
-          {errors.firstName && (
-            <p className="signUpErrors">* {errors.firstName}</p>
-          )}
+          {errors.firstName && <p className="errors">* {errors.firstName}</p>}
         </label>
         <label>
           Last Name
@@ -88,9 +93,7 @@ function SignupFormModal() {
             onChange={(e) => setLastName(e.target.value)}
             required
           />
-          {errors.lastName && (
-            <p className="signUpErrors">* {errors.lastName}</p>
-          )}
+          {errors.lastName && <p className="errors">* {errors.lastName}</p>}
         </label>
         <label>
           Birthday
@@ -101,9 +104,7 @@ function SignupFormModal() {
             onChange={(e) => setBirthday(e.target.value)}
             required
           />
-          {errors.birthday && (
-            <p className="signUpErrors">* {errors.birthday}</p>
-          )}
+          {errors.birthday && <p className="errors">* {errors.birthday}</p>}
         </label>
         <label>
           Address
@@ -114,7 +115,7 @@ function SignupFormModal() {
             onChange={(e) => setAddress1(e.target.value)}
             required
           />
-          {errors.address && <p className="signUpErrors">* {errors.address}</p>}
+          {errors.address && <p className="errors">* {errors.address}</p>}
         </label>
         <label>
           Address
@@ -134,7 +135,7 @@ function SignupFormModal() {
             onChange={(e) => setCity(e.target.value)}
             required
           />
-          {errors.city && <p className="signUpErrors">* {errors.city}</p>}
+          {errors.city && <p className="errors">* {errors.city}</p>}
         </label>
         <label>
           State
@@ -145,7 +146,7 @@ function SignupFormModal() {
             onChange={(e) => setState(e.target.value)}
             required
           />
-          {errors.state && <p className="signUpErrors">* {errors.state}</p>}
+          {errors.state && <p className="errors">* {errors.state}</p>}
         </label>
         <label>
           Zipcode
@@ -156,7 +157,7 @@ function SignupFormModal() {
             onChange={(e) => setZipcode(e.target.value)}
             required
           />
-          {errors.zipcode && <p className="signUpErrors">* {errors.zipcode}</p>}
+          {errors.zipcode && <p className="errors">* {errors.zipcode}</p>}
         </label>
         <label>
           Email
@@ -167,8 +168,20 @@ function SignupFormModal() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          {errors.email && <p className="signUpErrors">* {errors.email}</p>}
+          {errors.email && <p className="errors">* {errors.email}</p>}
         </label>
+        {user && (
+          <label>
+            Phone Number
+            <input
+              type="tel"
+              value={phone}
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
+          </label>
+        )}
         <label>
           Username
           <input
@@ -178,9 +191,7 @@ function SignupFormModal() {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-          {errors.username && (
-            <p className="signUpErrors">* {errors.username}</p>
-          )}
+          {errors.username && <p className="errors">* {errors.username}</p>}
         </label>
         <label>
           Password
@@ -202,6 +213,29 @@ function SignupFormModal() {
             required
           />
         </label>
+        {user && (
+          <label>
+            Employee Role
+            <select
+              value={role}
+              onChange={(e) => {
+                console.log(e.target.value);
+                setRole(e.target.value);
+              }}
+            >
+              <option selected default hidden>
+                Select Role...
+              </option>
+              <option value="Employee">Employee</option>
+              {user.role.name === "Owner" && (
+                <>
+                  <option value="Manager">Manager</option>
+                  <option value="Owner">Owner</option>
+                </>
+              )}
+            </select>
+          </label>
+        )}
         <button
           className="signUpButton"
           type="submit"
@@ -222,5 +256,3 @@ function SignupFormModal() {
     </div>
   );
 }
-
-export default SignupFormModal;

@@ -54,6 +54,9 @@ function App() {
           <Route exact path="/menu">
             <Products />
           </Route>
+          {/* <Route exact path="/profile/:id">
+            <EmployeeProfile />
+          </Route> */}
           <Route exact path="/profile">
             <UserProfile />
           </Route>

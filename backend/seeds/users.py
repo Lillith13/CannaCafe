@@ -22,33 +22,34 @@ def seed_users():
         zipcode=13420,
         username="ownerDemo",
         email="ownerDemo@test.io",
+        phone = "555-555-5555",
         password="password",
         role_id=int(roleOwner.id),
         pay_rate=roleOwner.payrate
     )
 
 
-    managerDemo1 = User (firstName="Manager1", lastName="Demo", birthday=datetime(1991,10,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo1", email="managerDemo1@test.io", password="password", role_id=int(roleManager.id), pay_rate=roleManager.payrate)
+    managerDemo1 = User (firstName="Manager1", lastName="Demo", birthday=datetime(1991,10,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo1", email="managerDemo1@test.io", phone = "555-555-5555", password="password", role_id=int(roleManager.id), pay_rate=roleManager.payrate)
 
-    managerDemo2 = User (firstName="Manager2", lastName="Demo", birthday=datetime(1993,11,23), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo2", email="managerDemo2@test.io", password="password", role_id=int(roleManager.id), pay_rate=roleManager.payrate)
-
-
-    employeeDemo1 = User (firstName="Employee1", lastName="Demo", birthday=datetime(1992,1,25), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo1", email="employeeDemo1@test.io", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
-
-    employeeDemo2 = User (firstName="Employee2", lastName="Demo", birthday=datetime(1995,3,14), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo2", email="employeeDemo2@test.io", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
-
-    employeeDemo3 = User (firstName="Employee3", lastName="Demo", birthday=datetime(1989,5,5), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo3", email="employeeDemo3@test.io", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
+    managerDemo2 = User (firstName="Manager2", lastName="Demo", birthday=datetime(1993,11,23), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo2", email="managerDemo2@test.io", phone = "555-555-5555", password="password", role_id=int(roleManager.id), pay_rate=roleManager.payrate)
 
 
-    memberDemo1 = User (firstName="Member1", lastName="Demo", birthday=datetime(1985,6,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo1", email="memberDemo1@test.io", password="password", role_id=int(roleMember.id))
+    employeeDemo1 = User (firstName="Employee1", lastName="Demo", birthday=datetime(1992,1,25), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo1", email="employeeDemo1@test.io", phone = "555-555-5555", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
 
-    memberDemo2 = User (firstName="Member2", lastName="Demo", birthday=datetime(1980,4,16), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo2", email="memberDemo2@test.io", password="password", role_id=int(roleMember.id))
+    employeeDemo2 = User (firstName="Employee2", lastName="Demo", birthday=datetime(1995,3,14), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo2", email="employeeDemo2@test.io", phone = "555-555-5555", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
 
-    memberDemo3 = User (firstName="Member3", lastName="Demo", birthday=datetime(1991,12,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo3", email="memberDemo3@test.io", password="password", role_id=int(roleMember.id))
+    employeeDemo3 = User (firstName="Employee3", lastName="Demo", birthday=datetime(1989,5,5), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo3", email="employeeDemo3@test.io", phone = "555-555-5555", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
 
-    memberDemo4 = User (firstName="Member4", lastName="Demo", birthday=datetime(1994,8,29), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo4", email="memberDemo4@test.io", password="password", role_id=int(roleMember.id))
 
-    memberDemo5 = User (firstName="Member5", lastName="Demo", birthday=datetime(1975,6,8), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo5", email="memberDemo5@test.io", password="password", role_id=int(roleMember.id))
+    memberDemo1 = User (firstName="Member1", lastName="Demo", birthday=datetime(1985,6,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo1", email="memberDemo1@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
+
+    memberDemo2 = User (firstName="Member2", lastName="Demo", birthday=datetime(1980,4,16), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo2", email="memberDemo2@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
+
+    memberDemo3 = User (firstName="Member3", lastName="Demo", birthday=datetime(1991,12,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo3", email="memberDemo3@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
+
+    memberDemo4 = User (firstName="Member4", lastName="Demo", birthday=datetime(1994,8,29), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo4", email="memberDemo4@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
+
+    memberDemo5 = User (firstName="Member5", lastName="Demo", birthday=datetime(1975,6,8), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo5", email="memberDemo5@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
 
     seedUsers = [ownerDemo, managerDemo1, managerDemo2, employeeDemo1, employeeDemo2, employeeDemo3, memberDemo1, memberDemo2, memberDemo3, memberDemo4, memberDemo5]
     _ = [db.session.add(user) for user in seedUsers]

@@ -8,23 +8,37 @@ from .auth_helper import validation_errors_to_error_messages
 user_routes = Blueprint('users', __name__, url_prefix="/users")
 
 @user_routes.route('/')
-def users():
-    users = User.query.all()
-    allUsers = { 'users': [{
-        "id":user['id'],
-        "firstName":user['firstName'],
-        "lastName":user['lastName'],
-        "username":user['username'],
-        "role":user['role'],
-        "member_since":user['member_since'
-        ]} for user in users
-    ]}
-    return allUsers
+def get_employees():
+    empRole = Role.query.filter(Role.name == "Employee").first()
+    employees = User.query.filter(User.role_id == empRole.id).all()
+
+    managerRole = Role.query.filter(Role.name == "Manager").first()
+    managers = User.query.filter(User.role_id == managerRole.id).all()
+
+    ownerRole = Role.query.filter(Role.name == "Owner").first()
+    owners = User.query.filter(User.role_id == ownerRole.id).all()
+
+    currUser = User.query.get(current_user.get_id())
+
+    if currUser.role.name == "Manager":
+        allEmployees = {
+            "Employees": [employee.to_dict() for employee in employees],
+            "Managers": [manager.to_dict() for manager in managers]
+        }
+
+    if currUser.role.name == "Owner":
+        allEmployees = {
+            "Employees": [employee.to_dict() for employee in employees],
+            "Managers": [manager.to_dict() for manager in managers],
+            "Owners": [owner.to_dict() for owner in owners]
+        }
+
+    return allEmployees
 
 @user_routes.route('/<int:id>')
 def user(id):
     user = User.query.get(id)
-    return { "user": user.to_dict() }
+    return { "User": user.to_dict() }
 
 
 @user_routes.route('/', methods=["DELETE"])
@@ -50,21 +64,32 @@ def editAccount(id):
         data = form.data
         if user.firstName != data['firstName']:
             user.firstName = data['firstName']
+
         if user.lastName != data['lastName']:
             user.lastName = data['lastName']
+
         if user.address != data['address']:
-            pass
+            user.address = data['address']
+
         if user.city != data['city']:
-            pass
+            user.city = data['city']
+
         if user.state != data['state']:
-            pass
+            user.state = data['state']
+
         if user.zipcode != data['zipcode']:
-            pass
+            user.zipcode = data['zipcode']
+
         if user.email != data['email']:
-            pass
+            user.email = data['email']
+
+        if user.phone != data['phone']:
+            user.phone = data['phone']
+
         if current_user.get_id() == user.id:
             if data['newpass'] and user.check_password(data['oldpass']):
                 user.password = data['newpass']
+
         if current_user.get_id() != user.id:
             thirdParty = User.query.get(current_user.get_id())
             if thirdParty.role != "Manager" or thirdParty.role != "Owner":
@@ -79,6 +104,3 @@ def editAccount(id):
         return user.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
-
-# ! Add profile view route

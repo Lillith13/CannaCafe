@@ -1,1 +1,9 @@
-// ! Timecard modal will be for editting an employee's timecard
+import React from "react";
+
+export default function TimeCardModal() {
+  return (
+    <>
+      <h1>Coming Soon...</h1>
+    </>
+  );
+}

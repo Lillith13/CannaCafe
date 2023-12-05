@@ -52,6 +52,7 @@ def upgrade():
     sa.Column('zipcode', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('phone', sa.String(length=12)),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('role_id', sa.Integer(), nullable=False),
     sa.Column('pay_rate', sa.Numeric(precision=10, scale=2), nullable=True),
@@ -104,8 +105,8 @@ def upgrade():
     op.create_table('timecards',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('clocked_in', sa.Date(), nullable=False),
-    sa.Column('clocked_out', sa.Date(), nullable=True),
+    sa.Column('clocked_in', sa.DateTime(), nullable=False),
+    sa.Column('clocked_out', sa.DateTime(), nullable=True),
     sa.Column('day_pay', sa.Numeric(precision=10, scale=2), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

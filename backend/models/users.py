@@ -31,6 +31,8 @@ class User(db.Model, UserMixin):
 
     email = db.Column(db.String(255), nullable=False, unique=True)
 
+    phone = db.Column(db.String(12))
+
     hashed_password = db.Column(db.String(255), nullable=False)
 
     role_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("roles.id")), nullable=False)
@@ -83,6 +85,7 @@ class User(db.Model, UserMixin):
             'lastName': self.lastName,
             'username': self.username,
             'email': self.email,
+            "phone": self.phone,
             'role': self.role.to_dict(),
             'full_address': {
                 "address": self.address,

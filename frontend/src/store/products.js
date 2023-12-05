@@ -27,7 +27,7 @@ export const getCategories = () => async (dispatch) => {
   const res = await fetch("/api/categories/");
   const data = await res.json();
   if (data.errors) {
-    return;
+    return data.errors;
   }
   if (res.ok) {
     dispatch(getAllCategories(data.Categories));
@@ -41,7 +41,7 @@ export const getProdsByCat = (catName) => async (dispatch) => {
     if (data.errors) {
       return data.errors;
     }
-    dispatch(getByCategory(data.Category_Products));
+    dispatch(getByCategory(data));
     return;
   } else {
     return data.errors;
@@ -111,7 +111,8 @@ export default function reducer(state = {}, action) {
       return new_state;
     case GET_CAT_PRODUCTS:
       new_state = {};
-      for (let product of action.payload) {
+      console.log(action.payload);
+      for (let product of action.payload.Category_Products) {
         new_state[product.id] = product;
       }
       return new_state;

@@ -44,6 +44,7 @@ def sign_up():
         payrate = role.payrate
 
         if data['roleName']:
+            """if a roleName was selected and sent - overwrite default Member role"""
             user = User.query.get(current_user.get_id())
             if data['roleName'] == "Employee":
                 if user.role.name == "Manager" or user.role.name == "Owner":
@@ -56,6 +57,20 @@ def sign_up():
                     roleId = role.id
                     payrate = role.payrate
 
+        if current_user.is_authenticated:
+            """check if new employee has a member account by first and last name"""
+            user = User.query.filter(User.firstName == data['firstName'] and User.lastName == data['lastName']).first()
+            if not user:
+                """last resort check if new employee has a member account by first and last name"""
+                user = User.query.filter(User.email == data['email']).first()
+            if user:
+                """if the new emp has member account edit that account, changing role and adding payrate"""
+                user.role_id = roleId
+                user.pay_rate = payrate
+                db.session.commit()
+                return user.to_dict()
+
+        """no member account found for emp -> create one"""
         new_user = User(
             firstName = data['firstName'],
             lastName = data['lastName'],
@@ -66,6 +81,7 @@ def sign_up():
             zipcode = data['zipcode'],
             username = data['username'],
             email = data['email'],
+            phone = data['phone'],
             password = data['password'],
             role_id = roleId,
             pay_rate = payrate
@@ -80,7 +96,9 @@ def sign_up():
         db.session.add(new_favorites)
         db.session.commit()
 
-        login_user(new_user)
+        if not current_user.is_authenticated:
+            """login new user - IF the user was created by the user and not as a new employee by management/owner"""
+            login_user(new_user)
         return new_user.to_dict()
     return { 'errors': validation_errors_to_error_messages(form.errors) }, 401
 

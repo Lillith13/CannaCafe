@@ -51,6 +51,8 @@ class EditAccountForm(FlaskForm):
 
     email = StringField('email', validators=[DataRequired(), email_exists, email_correct_format])
 
+    phone = StringField('phone')
+
     role = IntegerField('role')
 
     oldpassword = StringField('oldpass')

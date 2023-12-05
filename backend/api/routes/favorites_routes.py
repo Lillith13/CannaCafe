@@ -9,7 +9,7 @@ favorite_routes = Blueprint('favorite', __name__, url_prefix='/favorites')
 @favorite_routes.route("/")
 @login_required
 def getFavorites():
-    favorites = Favorite.query.filter(Favorite.user_id == current_user.get_id())
+    favorites = Favorite.query.filter(Favorite.user_id == current_user.get_id()).first()
     favDict = favorites.to_dict()
     return { "Favorites": favDict['products'] }
 
@@ -17,7 +17,7 @@ def getFavorites():
 @login_required
 def addToFavorites(id):
     product = Product.query.get(id)
-    favorites = Favorite.query.filter(Favorite.user_id == current_user.get_it()).first()
+    favorites = Favorite.query.filter(Favorite.user_id == current_user.get_id()).first()
 
     if not product:
         return {'errors': validation_errors_to_error_messages({"Product": "Product doesn't exist"})}, 404

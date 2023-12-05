@@ -1,48 +1,67 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from datetime import datetime
+import math
 from .auth_helper import validation_errors_to_error_messages
 
-from ...models import db, TimeCard, User
+from ...models import db, TimeCard, User, Role
 from ...forms import TimecardForm
 
 timecard_routes = Blueprint("timecard", __name__, url_prefix="/timecard")
 
-@timecard_routes.route("/")
+@timecard_routes.route("/<int:userId>")
 @login_required
-def getPaystubs():
-    if request.get_data():
+def getPaystubs(userId):
+    if not current_user.get_id() == userId:
+
         user = User.query.get(current_user.get_id())
-        if user.role != "Manager" or user.role != "Owner":
+        userRole = Role.query.get(Role.id == user.role_id)
+
+        if userRole.name != "Manager" or userRole.name != "Owner":
             return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have the correct permissions to perform this action"})}, 403
-        id = request.get_data()
-        targetUser = User.query.get(int(id))
-        if targetUser.role == "Manager" and user.role != "Owner":
+
+        targetUser = User.query.get(userId)
+        targetUserRole = Role.query.get(Role.id == targetUser.role_id)
+
+        if targetUserRole.name == "Manager" and userRole.name != "Owner":
             return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have the correct permissions to perform this action"})}, 403
-        if targetUser.role == "Member":
+
+        if targetUserRole.name == "Member":
             return {'errors': validation_errors_to_error_messages({"Not_Allowed": "Target user must be at least an employee to have a timecard"})}, 403
-        timecards = TimeCard.query.filter(TimeCard.user_id == int(id))
+
+        timecards = TimeCard.query.filter(TimeCard.user_id == userId)
     else:
         timecards = TimeCard.query.filter(TimeCard.user_id == current_user.get_id())
+
     return {"Timecards": [timecard.to_dict() for timecard in timecards]}
 
 @timecard_routes.route("/clockin", methods=["POST"])
 @login_required
 def empClockin():
+    cardCheck = TimeCard.query.filter(TimeCard.clocked_out == None).first()
+    if cardCheck:
+        return {'errors': validation_errors_to_error_messages({"clockerror": "Cannot clock in with an already open timecard"})}, 403
     new_timecard = TimeCard(
         user_id = current_user.get_id(),
-        clock_in = datetime.now()
+        clocked_in = datetime.now()
     )
     db.session.add(new_timecard)
     db.session.commit()
     return {"message": "successful"}
 
-@timecard_routes.route("/clockout", methods=["PUT"])
+@timecard_routes.route("/clockout", methods=["POST"])
 @login_required
 def empClockout():
-    id = request.get_data()
-    timecard = TimeCard.query.filter(TimeCard.id == id and TimeCard.user_id == current_user.get_id())
-    timecard.clock_out = datetime.now()
+    cardCheck = TimeCard.query.filter(TimeCard.clocked_out == None).first()
+    if not cardCheck:
+        return {'errors': validation_errors_to_error_messages({"clockerror": "You haven't clocked in yet"})}, 403
+
+    user = User.query.get(current_user.get_id())
+    timecard = TimeCard.query.filter(TimeCard.user_id == current_user.get_id()).order_by(TimeCard.id.desc()).first()
+    timecard.clocked_out = datetime.now()
+    clockDiff = timecard.clocked_out - timecard.clocked_in
+    hoursDiff = clockDiff.total_seconds() / 3600
+    timecard.day_pay = round(float(hoursDiff) * float(user.pay_rate), 2)
     db.session.commit()
     return {"message": "successful"}
 

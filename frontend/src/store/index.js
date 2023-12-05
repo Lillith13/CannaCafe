@@ -4,10 +4,22 @@ import thunk from "redux-thunk";
 // Import all needed stores
 import session from "./session";
 import products from "./products";
+import targetUser from "./targetUser";
+import timecard from "./timecard";
+import orders from "./orders";
+import wishlist from "./wishlist";
+import favorites from "./favorites";
+import employees from "./employees";
 
 const rootReducer = combineReducers({
   session,
   products,
+  targetUser,
+  timecard,
+  orders,
+  wishlist,
+  favorites,
+  employees,
 });
 
 let enhancer;

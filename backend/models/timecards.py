@@ -11,9 +11,9 @@ class TimeCard(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
-    clocked_in = db.Column(db.Date, nullable=False, default=datetime.now())
+    clocked_in = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
-    clocked_out = db.Column(db.Date)
+    clocked_out = db.Column(db.DateTime)
 
     day_pay = db.Column(db.Numeric(precision=10, scale=2))
 
