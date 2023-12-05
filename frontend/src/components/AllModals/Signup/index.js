@@ -7,7 +7,7 @@ import OpenModalButton from "../../OpenModalButton";
 import Login from "../Login";
 import "./Signup.css";
 
-export default function SignupFormModal() {
+export default function Signup() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [firstName, setFirstName] = useState("");

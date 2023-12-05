@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import imgPlaceholder from "../../assets/noImgAvailable.jpg";
 import { loadProduct } from "../../store/products";
@@ -15,6 +15,10 @@ import {
   addToWishlist,
   delFromWishlist,
 } from "../../store/wishlist";
+
+import OpenModalButton from "../OpenModalButton";
+import Login from "../AllModals/Login";
+import Signup from "../AllModals/Signup";
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
@@ -81,81 +85,93 @@ export default function ProductDetails() {
 
   return isLoaded ? (
     <>
-      <div>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            history.goBack();
-          }}
-        >
-          Go Back
-        </button>
-        <h1>{product.name}</h1>
-        {product.previewImg ? (
-          <img src={`${product.previewImg}`} />
-        ) : (
-          <img src={imgPlaceholder} />
-        )}
-        {/* <div>
-          Will load in other images later
-          {product.otherImages && (
-                <>
-                    {product.otherImages.map(image => (
-                        <img src={`${image}`} />
-                    ))}
-                </>
+      {!product.category.age_restricted ||
+      (product.category.age_restricted && user) ? (
+        <>
+          <div>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                history.goBack();
+              }}
+            >
+              Go Back
+            </button>
+          </div>
+          <div>
+            <h1>{product.name}</h1>
+            {product.previewImg ? (
+              <img src={`${product.previewImg}`} />
+            ) : (
+              <img src={imgPlaceholder} />
             )}
-        </div> */}
-      </div>
-      <div>
-        <p>{product.description}</p>
-        <p>{product.units_available} Available</p>
-        <p>${product.price}</p>
-        <button>Add to {product.category.shippable ? "cart" : "bag"}</button>
-        {user &&
-          (user.role.name === "Manager" || user.role.name === "Owner") && (
-            <>
-              <button>Edit Product</button>
-              <button>Delete Product</button>
-            </>
-          )}
-        {userFaves && userWishes && (
-          <>
-            {!Object.keys(userWishes).includes(product.id?.toString()) &&
-              product.category.shippable && (
-                <button value={product.id} onClick={(e) => handleAdd(e, true)}>
-                  Add to Wishlist
-                </button>
+          </div>
+          <div>
+            <p>{product.description}</p>
+            <p>{product.units_available} Available</p>
+            <p>${product.price}</p>
+            <button>
+              Add to {product.category.shippable ? "cart" : "bag"}
+            </button>
+            {user &&
+              (user.role.name === "Manager" || user.role.name === "Owner") && (
+                <>
+                  <button>Edit Product</button>
+                  <button>Delete Product</button>
+                </>
               )}
-            {!Object.keys(userFaves).includes(product.id?.toString()) &&
-              !product.category.shippable && (
-                <button value={product.id} onClick={(e) => handleAdd(e, false)}>
-                  Add to Favorites
-                </button>
-              )}
-            {Object.keys(userWishes).includes(product.id?.toString()) &&
-              product.category.shippable && (
-                <button
-                  value={product.id}
-                  onClick={(e) => handleRemove(e, true)}
-                >
-                  Remove From Wishlist
-                </button>
-              )}
-            {Object.keys(userFaves).includes(product.id?.toString()) &&
-              !product.category.shippable && (
-                <button
-                  value={product.id}
-                  onClick={(e) => handleRemove(e, false)}
-                >
-                  Remove From Favorites
-                </button>
-              )}
-          </>
-        )}
-      </div>
-      <h3>Reviews</h3>
-      <p>Product reviews will load here...</p>
+            {userFaves && userWishes && (
+              <>
+                {!Object.keys(userWishes).includes(product.id?.toString()) &&
+                  product.category.shippable && (
+                    <button
+                      value={product.id}
+                      onClick={(e) => handleAdd(e, true)}
+                    >
+                      Add to Wishlist
+                    </button>
+                  )}
+                {!Object.keys(userFaves).includes(product.id?.toString()) &&
+                  !product.category.shippable && (
+                    <button
+                      value={product.id}
+                      onClick={(e) => handleAdd(e, false)}
+                    >
+                      Add to Favorites
+                    </button>
+                  )}
+                {Object.keys(userWishes).includes(product.id?.toString()) &&
+                  product.category.shippable && (
+                    <button
+                      value={product.id}
+                      onClick={(e) => handleRemove(e, true)}
+                    >
+                      Remove From Wishlist
+                    </button>
+                  )}
+                {Object.keys(userFaves).includes(product.id?.toString()) &&
+                  !product.category.shippable && (
+                    <button
+                      value={product.id}
+                      onClick={(e) => handleRemove(e, false)}
+                    >
+                      Remove From Favorites
+                    </button>
+                  )}
+              </>
+            )}
+          </div>
+          <h3>Reviews</h3>
+          <p>Product reviews will load here...</p>
+        </>
+      ) : (
+        <>
+          <h1>This product is Age Restricted</h1>
+          <h2>Please Login or Signup to view</h2>
+          <OpenModalButton buttonText="Login" modalComponent={<Login />} />
+          <OpenModalButton buttonText="Signup" modalComponent={<Signup />} />
+        </>
+      )}
     </>
   ) : (
     <h1>Loading...</h1>
