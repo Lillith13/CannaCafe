@@ -25,6 +25,7 @@ export default function UserEmployees() {
         {employees.Employees &&
           employees.Employees.map((employee) => (
             <div key={employee.id}>
+              {console.log(employees)}
               <div>
                 <h4>
                   Name: {employee.firstName} {employee.lastName}
