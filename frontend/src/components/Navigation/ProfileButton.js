@@ -10,6 +10,7 @@ import { userClockin, userClockout } from "../../store/timecard";
 
 import "./Navigation.css";
 import profileIcon from "../../assets/profile_icon.png";
+import CreateProduct from "../AllModals/CreateProduct";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -113,10 +114,16 @@ function ProfileButton({ user }) {
             {(user.role.name === "Manager" || user.role.name === "Owner") && (
               <>
                 <li>
-                  <button>Add to Products</button>
+                  <OpenModalButton
+                    buttonText="Add to Products"
+                    modalComponent={<CreateProduct type="product" />}
+                  />
                 </li>
                 <li>
-                  <button>Add to Menu</button>
+                  <OpenModalButton
+                    buttonText="Add to Menu"
+                    modalComponent={<CreateProduct type="menu" />}
+                  />
                 </li>
                 <li>
                   <OpenModalButton

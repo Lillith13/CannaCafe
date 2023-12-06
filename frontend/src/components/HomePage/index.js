@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import "./HomePage.css";
-import { getCategories } from "../../store/products";
+import { getCategories } from "../../store/categories";
 
 export default function HomePage() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const categories = useSelector((state) => state.products);
+  const categories = useSelector((state) => state.categories);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {

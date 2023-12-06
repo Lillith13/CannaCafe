@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 // Import all needed stores
 import session from "./session";
 import products from "./products";
+import categories from "./categories";
 import targetUser from "./targetUser";
 import timecard from "./timecard";
 import orders from "./orders";
@@ -14,6 +15,7 @@ import employees from "./employees";
 const rootReducer = combineReducers({
   session,
   products,
+  categories,
   targetUser,
   timecard,
   orders,

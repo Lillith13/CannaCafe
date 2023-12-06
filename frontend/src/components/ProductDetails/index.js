@@ -19,6 +19,8 @@ import {
 import OpenModalButton from "../OpenModalButton";
 import Login from "../AllModals/Login";
 import Signup from "../AllModals/Signup";
+import EditProduct from "../AllModals/EditProduct";
+import ConfirmDeleteItem from "../AllModals/ConfirmDelete/confirmDeleteItem";
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
@@ -83,6 +85,50 @@ export default function ProductDetails() {
     }
   };
 
+  const handleClick = (e, product) => {
+    e.preventDefault();
+    if (product.category.shippable) {
+      const currCart = localStorage.getItem(`${user.id}cart`);
+      let updateCart = {};
+      if (currCart) {
+        const cart = JSON.parse(currCart);
+
+        if (cart[product.id]) {
+          cart[product.id].quantity++;
+          updateCart = { ...cart };
+        } else {
+          product.quantity = 1;
+          updateCart = { ...cart };
+          updateCart[product.id] = product;
+        }
+      } else {
+        product.quantity = 1;
+        updateCart[product.id] = product;
+      }
+
+      localStorage.setItem(`${user.id}cart`, JSON.stringify(updateCart));
+    } else {
+      const currTakeaway = localStorage.getItem(`${user.id}takeaway`);
+      let updateBag = {};
+      if (currTakeaway) {
+        const bag = JSON.parse(currTakeaway);
+
+        if (bag[product.id]) {
+          bag[product.id].quantity++;
+          updateBag = { ...bag };
+        } else {
+          product.quantity = 1;
+          updateBag = { ...bag };
+          updateBag[product.id] = product;
+        }
+      } else {
+        product.quantity = 1;
+        updateBag[product.id] = product;
+      }
+      localStorage.setItem(`${user.id}takeaway`, JSON.stringify(updateBag));
+    }
+  };
+
   return isLoaded ? (
     <>
       {!product.category.age_restricted ||
@@ -110,14 +156,25 @@ export default function ProductDetails() {
             <p>{product.description}</p>
             <p>{product.units_available} Available</p>
             <p>${product.price}</p>
-            <button>
-              Add to {product.category.shippable ? "cart" : "bag"}
+            <button onClick={(e) => handleClick(e, product)}>
+              Add to {product.category.shippable ? "Cart" : "Bag"}
             </button>
             {user &&
               (user.role.name === "Manager" || user.role.name === "Owner") && (
                 <>
-                  <button>Edit Product</button>
-                  <button>Delete Product</button>
+                  <OpenModalButton
+                    buttonText="Edit Product"
+                    modalComponent={
+                      <EditProduct
+                        type={[product.category.shippable ? "product" : "menu"]}
+                        product={product}
+                      />
+                    }
+                  />
+                  <OpenModalButton
+                    buttonText="Delete Product"
+                    modalComponent={<ConfirmDeleteItem product={product} />}
+                  />
                 </>
               )}
             {userFaves && userWishes && (

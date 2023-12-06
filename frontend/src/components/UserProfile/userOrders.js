@@ -7,7 +7,7 @@ export default function UserOrders() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(async () => {
-    const data = await dispatch();
+    // const data = await dispatch();
   }, [dispatch]);
 
   return isLoaded ? (

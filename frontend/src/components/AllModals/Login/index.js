@@ -56,6 +56,30 @@ function Login() {
             <p className="loginErrors">* {errors.password}</p>
           )}
         </label>
+        <label>
+          Or choose a demo user...
+          <select
+            onChange={(e) => {
+              setCreds(e.target.value);
+              setPassword("password");
+            }}
+          >
+            <option selected default hidden>
+              Select one...
+            </option>
+            <option value="ownerDemo">ownerDemo</option>
+            <option value="managerDemo1">managerDemo1</option>
+            <option value="managerDemo2">managerDemo2</option>
+            <option value="employeeDemo1">employeeDemo1</option>
+            <option value="employeeDemo2">employeeDemo2</option>
+            <option value="employeeDemo3">employeeDemo3</option>
+            <option value="memberDemo1">memberDemo1</option>
+            <option value="memberDemo2">memberDemo2</option>
+            <option value="memberDemo3">memberDemo3</option>
+            <option value="memberDemo4">memberDemo4</option>
+            <option value="memberDemo5">memberDemo5</option>
+          </select>
+        </label>
 
         <button
           className="loginButton"

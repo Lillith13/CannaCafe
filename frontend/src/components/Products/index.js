@@ -19,6 +19,9 @@ import {
   delFromWishlist,
   getWishlist,
 } from "../../store/wishlist";
+import OpenModalButton from "../OpenModalButton";
+import EditProduct from "../AllModals/EditProduct";
+import ConfirmDeleteItem from "../AllModals/ConfirmDelete/confirmDeleteItem";
 
 export default function Products() {
   const params = useParams();
@@ -96,6 +99,50 @@ export default function Products() {
     }
   };
 
+  const handleClick = (e, product) => {
+    e.preventDefault();
+    if (product.category.shippable) {
+      const currCart = localStorage.getItem(`${user.id}cart`);
+      let updateCart = {};
+      if (currCart) {
+        const cart = JSON.parse(currCart);
+
+        if (cart[product.id]) {
+          cart[product.id].quantity++;
+          updateCart = { ...cart };
+        } else {
+          product.quantity = 1;
+          updateCart = { ...cart };
+          updateCart[product.id] = product;
+        }
+      } else {
+        product.quantity = 1;
+        updateCart[product.id] = product;
+      }
+
+      localStorage.setItem(`${user.id}cart`, JSON.stringify(updateCart));
+    } else {
+      const currTakeaway = localStorage.getItem(`${user.id}takeaway`);
+      let updateBag = {};
+      if (currTakeaway) {
+        const bag = JSON.parse(currTakeaway);
+
+        if (bag[product.id]) {
+          bag[product.id].quantity++;
+          updateBag = { ...bag };
+        } else {
+          product.quantity = 1;
+          updateBag = { ...bag };
+          updateBag[product.id] = product;
+        }
+      } else {
+        product.quantity = 1;
+        updateBag[product.id] = product;
+      }
+      localStorage.setItem(`${user.id}takeaway`, JSON.stringify(updateBag));
+    }
+  };
+
   return isLoaded ? (
     <div>
       <button
@@ -120,6 +167,7 @@ export default function Products() {
         <>
           {Object.values(products).map((product) => (
             <div key={product.id}>
+              {console.log(product)}
               <NavLink
                 exact
                 to={
@@ -136,14 +184,27 @@ export default function Products() {
                 <h3>{product.name}</h3>
                 <p>${product.price} --- maybe add purchase options later</p>
               </NavLink>
-              <button>
+              <button onClick={(e) => handleClick(e, product)}>
                 Add to {product.category.shippable ? "Cart" : "Bag"}
               </button>
               {user &&
                 (user.role.name == "Owner" || user.role.name == "Manager") && (
                   <>
-                    <button>Edit Product</button>
-                    <button>Delete Product</button>
+                    <OpenModalButton
+                      buttonText="Edit Product"
+                      modalComponent={
+                        <EditProduct
+                          type={[
+                            product.category.shippable ? "product" : "menu",
+                          ]}
+                          product={product}
+                        />
+                      }
+                    />
+                    <OpenModalButton
+                      buttonText="Delete Product"
+                      modalComponent={<ConfirmDeleteItem product={product} />}
+                    />
                   </>
                 )}
               {userFaves && userWishes && (

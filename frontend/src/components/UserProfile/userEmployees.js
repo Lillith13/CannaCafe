@@ -65,7 +65,6 @@ export default function UserEmployees() {
                 </h4>
                 <p>Username: {manager.username}</p>
               </div>
-              {/* Need to add phone number to model for contact info */}
               <div>
                 <label>
                   Contact Info:
@@ -99,7 +98,6 @@ export default function UserEmployees() {
                 </h4>
                 <p>Username: {owner.username}</p>
               </div>
-              {/* Need to add phone number to model for contact info */}
               <div>
                 <label>
                   Contact Info:
@@ -126,45 +124,3 @@ export default function UserEmployees() {
     <h2>Loading...</h2>
   );
 }
-
-/*
-
-email
-:
-"ownerDemo@test.io"
-firstName
-:
-"Owner"
-full_address
-:
-address
-:
-"1479 Demo Test Run"
-city
-:
-"Danksville"
-state
-:
-"Cannibinoidia"
-zip
-:
-13420
-[[Prototype]]
-:
-Object
-id
-:
-1
-lastName
-:
-"Demo"
-member_since
-:
-"Mon, 04 Dec 2023 00:00:00 GMT"
-role
-:
-{id: 4, name: 'Owner'}
-username
-:
-"ownerDemo"
-*/

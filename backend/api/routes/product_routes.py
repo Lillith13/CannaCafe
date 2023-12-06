@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from .auth_helper import validation_errors_to_error_messages
 
@@ -20,33 +20,15 @@ def allProducts():
             category = product.category
             catDict = category[0].to_dict()
             if not catDict["age_restricted"]:
-                safe = {
-                    "id": prod["id"],
-                    "name": prod['name'],
-                    "category": catDict,
-                    "price": prod["price"],
-                    "description": prod["description"],
-                    "units_available": prod["units_available"],
-                    "previewImg": prod["previewImg"],
-                    "otherImgs": prod["otherImgs"]
-                }
-                safe_products.append(safe)
+                prod['category'] = catDict
+                safe_products.append(prod)
     else:
         for product in products:
             prod = product.to_dict()
             category = product.category
             catDict = category[0].to_dict()
-            safe = {
-                "id": prod["id"],
-                "name": prod['name'],
-                "category": catDict,
-                "price": prod["price"],
-                "description": prod["description"],
-                "units_available": prod["units_available"],
-                "previewImg": prod["previewImg"],
-                "otherImgs": prod["otherImgs"]
-            }
-            safe_products.append(safe)
+            prod['category'] = catDict
+            safe_products.append(prod)
     return { 'Products': safe_products }
 
 @product_routes.route('/<string:path>')
@@ -56,37 +38,20 @@ def allProducts_byPath(path):
     if path == "menu":
         for product in products:
             prod = product.to_dict()
-            category = product.category
-            catDict = category[0].to_dict()
-            if not catDict["shippable"]:
-                safe = {
-                    "id": prod["id"],
-                    "name": prod['name'],
-                    "category": catDict,
-                    "price": prod["price"],
-                    "description": prod["description"],
-                    "units_available": prod["units_available"],
-                    "previewImg": prod["previewImg"],
-                    "otherImgs": prod["otherImgs"]
-                }
-                safe_products.append(safe)
+            category = product.category[0].to_dict()
+            print(category)
+            if not category["shippable"]:
+                prod['category'] = category
+                safe_products.append(prod)
     else:
         for product in products:
             prod = product.to_dict()
-            category = product.category
-            catDict = category[0].to_dict()
-            if catDict["shippable"]:
-                safe = {
-                    "id": prod["id"],
-                    "name": prod['name'],
-                    "category": catDict,
-                    "price": prod["price"],
-                    "description": prod["description"],
-                    "units_available": prod["units_available"],
-                    "previewImg": prod["previewImg"],
-                    "otherImgs": prod["otherImgs"]
-                }
-                safe_products.append(safe)
+            category = product.category[0].to_dict()
+            print(category)
+            if category["shippable"]:
+                prod['category'] = category
+                safe_products.append(prod)
+    print(safe_products)
     return { 'Products': safe_products }
 
 
@@ -95,7 +60,9 @@ def specificProduct(id):
     product = Product.query.get(id)
     if not product:
         return { 'errors': validation_errors_to_error_messages({"Product": "Product doesn't exist"})}, 404
-    return product.to_dict()
+    prodDict = product.to_dict()
+    prodDict['category'] = prodDict['category'][0]
+    return prodDict
 
 
 @product_routes.route('/', methods=["POST", "PUT", "DELETE"])
@@ -104,78 +71,86 @@ def productSubmits():
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    user = User.query.get(current_user.get_id())
-    if user['role'] != "Manager":
-        return {'errors': validation_errors_to_error_messages({"Not_Authorized": "You do not have the correct role permissions to perform this action"})}, 401
-
     if form.validate_on_submit():
-        data = form.data
+            data = form.data
 
-        if request.method == "POST":
-            prev_img = data['preview']
-            filename = prev_img.filename
-            prev_img.filename = get_unique_filename(prev_img.filename)
-            upload = upload_file_to_s3(prev_img)
-            cat = Category.query.filter(Category.name == data['category']).first()
-            new_product = Product(
-                name = data['name'],
-                description = data['description'],
-                price = data['price'],
-                units_availble = data['units_available'],
-                preview_image = upload['url'],
-                preview_image_name = filename,
-                category_id = cat['id'],
-                added_by = current_user.get_id()
-            )
-            db.session.add(new_product)
-            db.session.commit()
-            return { "message": "success" }
-
-        if request.method == "PUT":
-            id = request.get_data()
-            product = Product.query.get(id)
-            if data['name'] != product.name:
-                product.name = data['name']
-
-            if data['description'] != product.description:
-                product.description = data['description']
-
-            if data['price'] != product.price:
-                product.price = data['price']
-
-            if data['units_available'] != product.units_available:
-                product.units_available = data['units_available']
-
-            if data['preview'] != product.preview_image:
+            if request.method == "POST":
                 prev_img = data['preview']
                 filename = prev_img.filename
-                prev_img.filename = get_unique_filename(prev_img.filename)
+                prev_img.filename = get_unique_filename(filename)
                 upload = upload_file_to_s3(prev_img)
-                product.preview_image = upload['url']
-                product.preview_image_name = filename
-
-            if data['category'] != product.category:
                 cat = Category.query.filter(Category.name == data['category']).first()
-                product.category_id = cat.id
+                if 'url' not in upload:
+                    return upload
+                new_product = Product(
+                    name = data['name'],
+                    description = data['description'],
+                    price = data['price'],
+                    units_available = data['units_available'],
+                    preview_image = upload['url'],
+                    preview_image_name = filename,
+                    category_id = cat.id,
+                    added_by = current_user.get_id()
+                )
+                cat.products.extend([new_product])
+                db.session.add(new_product)
+                db.session.commit()
 
-            product.added_by = current_user.get_id()
-            db.session.commit()
-            return { "message": "success" }
+                return { "message": "success" }
+
+            if request.method == "PUT":
+                print("edit form data => ", data)
+                id = data['productId']
+                product = Product.query.get(id)
+                if data['name'] != product.name:
+                    product.name = data['name']
+
+                if data['description'] != product.description:
+                    product.description = data['description']
+
+                if data['price'] != product.price:
+                    product.price = data['price']
+
+                if data['units_available'] != product.units_available:
+                    product.units_available = data['units_available']
+
+                if data['preview'] and data['preview'] != product.preview_image:
+                    prev_img = data['preview']
+                    filename = prev_img.filename
+                    prev_img.filename = get_unique_filename(prev_img.filename)
+                    upload = upload_file_to_s3(prev_img)
+                    if 'url' not in upload:
+                        return upload
+                    product.preview_image = upload['url']
+                    product.preview_image_name = filename
+
+                print("product category in edit product backend route => ", product.category)
+                if data['category'] != product.category[0].name:
+                    cat = Category.query.filter(Category.name == data['category']).first()
+                    product.category_id = cat.id
+
+                product.added_by = current_user.get_id()
+                db.session.commit()
+                return { "message": "success" }
 
     if request.method == "DELETE":
-        id = request.get_data()
-        product = Product.query.get(id)
-        if not product:
-            return {"errors": validation_errors_to_error_messages({"Not_Found" : "No product with that id found"})}, 404
-        _=[remove_file_from_s3(image.url) for image in product.images]
-        db.session.delete(product)
-        db.session.commit()
+            data = request.get_data().decode( "utf-8" )
+            print("parsed data from request => ", int(data))
+            product = Product.query.get(int(data))
+            if not product:
+                return {"errors": validation_errors_to_error_messages({"Not_Found" : "No product with that id found"})}, 404
+            remove_file_from_s3(product.preview_image)
+            db.session.delete(product)
+            db.session.commit()
+            return {'message': 'successful'}
 
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
     return {'errors': validation_errors_to_error_messages({"Bad_Request": "Bad Request"})}, 400
 
+
+# ! the following not yet implemented - currently each product has only one image
 @product_routes.route("/images", methods=["POST", "DELETE"])
 @login_required
 def productImageSubmits():
