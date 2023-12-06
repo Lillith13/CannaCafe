@@ -106,21 +106,24 @@ export const deleteUser = () => async (dispatch) => {
 };
 
 export const editUser = (inputData) => async (dispatch) => {
-  const { formData, targetUserId, userId } = inputData;
-  const res = await fetch(`/api/users/${targetUserId}`, {
+  const { formData, employeeId, userId } = inputData;
+  console.log(inputData);
+  const res = await fetch(`/api/users/${employeeId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(formData),
   });
+  console.log(res);
   const data = await res.json();
+  console.log(data);
   if (res.ok) {
     if (data.errors) {
       console.log(data.errors);
       return data.errors;
     }
-    if (targetUserId == userId) {
+    if (employeeId == userId) {
       console.log(data);
       dispatch(setUser(data));
       return null;

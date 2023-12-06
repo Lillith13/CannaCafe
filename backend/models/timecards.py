@@ -31,6 +31,7 @@ class TimeCard(db.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'clocked_in': self.clocked_in,
             'clocked_out': self.clocked_out,
             'day_pay': self.day_pay

@@ -1,9 +1,29 @@
-const CLOCK_IN = "timecard/CLOCK_IN";
-const CLOCK_OUT = "timecard/CLOCK_OUT";
 const LOAD_ALL = "timecard/LOAD_ALL";
 const LOAD_ONE = "timecard/LOAD_ONE";
 
-// ! load all timecards for user <- will be used for all CRUD actions
+const loadAllTimecards = (timecards) => ({
+  type: LOAD_ALL,
+  payload: timecards,
+});
+
+export const allUserTimecards = (userId) => async (dispatch) => {
+  // * load all timecards for user
+  const res = await fetch(`/api/timecard/${userId}`);
+  const data = await res.json();
+  console.log(res);
+  console.log(data);
+  if (res.ok) {
+    if (data.errors) {
+      return data.errors;
+    }
+    dispatch(loadAllTimecards(data.Timecards));
+    return null;
+  }
+  if (data.errors) {
+    return data.errors;
+  }
+  //
+};
 
 // ! load specific timecard for user
 
@@ -70,11 +90,10 @@ export const deleteTimecard = (timecardId) => async (dispatch) => {
 export default function reducer(state = {}, action) {
   let new_state = {};
   switch (action.type) {
-    case CLOCK_IN:
-      return new_state;
-    case CLOCK_OUT:
-      return new_state;
     case LOAD_ALL:
+      for (let card of action.payload) {
+        new_state[card.id] = card;
+      }
       return new_state;
     case LOAD_ONE:
       return new_state;

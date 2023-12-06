@@ -20,21 +20,15 @@ def get_employees():
 
     currUser = User.query.get(current_user.get_id())
 
-    if currUser.role.name == "Manager":
-        allEmployees = {
-            "Employees": [employee.to_dict() for employee in employees],
-            "Managers": [manager.to_dict() for manager in managers]
-        }
-
-    if currUser.role.name == "Owner":
-        allEmployees = {
-            "Employees": [employee.to_dict() for employee in employees],
-            "Managers": [manager.to_dict() for manager in managers],
-            "Owners": [owner.to_dict() for owner in owners]
-        }
+    allEmployees = {
+        "Employees": [employee.to_dict() for employee in employees],
+        "Managers": [manager.to_dict() for manager in managers],
+        "Owners": [owner.to_dict() for owner in owners]
+    }
     return allEmployees
 
 @user_routes.route('/<int:id>')
+@login_required
 def user(id):
     user = User.query.get(id)
     return { "User": user.to_dict() }
@@ -56,11 +50,12 @@ def editAccount(id):
     """ edit account details """
     user = User.query.get(id)
     form = EditAccountForm()
-    form = {}
     form['csrf_token'].data = request.cookies['csrf_token']
+    print("edit route before validator => ", form.data)
 
     if form.validate_on_submit():
         data = form.data
+        print("edit route validated form data => ", data)
         if user.firstName != data['firstName']:
             user.firstName = data['firstName']
 
@@ -79,8 +74,8 @@ def editAccount(id):
         if user.zipcode != data['zipcode']:
             user.zipcode = data['zipcode']
 
-        if user.email != data['email']:
-            user.email = data['email']
+        # if user.email != data['email']:
+        #     user.email = data['email']
 
         if user.phone != data['phone']:
             user.phone = data['phone']
@@ -91,14 +86,19 @@ def editAccount(id):
 
         if current_user.get_id() != user.id:
             thirdParty = User.query.get(current_user.get_id())
-            if thirdParty.role != "Manager" or thirdParty.role != "Owner":
+
+            if thirdParty.role.name != "Manager" and thirdParty.role.name != "Owner":
                 return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
-            if thirdParty.role == "Manager" and user.role != "Owner":
+
+            if thirdParty.role.name == "Manager" and user.role.name != "Owner":
                 return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
-            role = Role.query.filter(Role.name == int(data['role'])).first
+
+            role = Role.query.filter(Role.name == data['role']).first()
             user.role_id = role.id
-            if role.name == "Employee" or role.name == "Manager":
+            if not role.name == "Member":
                 user.pay_rate = role.payrate
+            if role.name == "Member":
+                user.pay_rate = None
         db.session.commit()
         return user.to_dict()
 

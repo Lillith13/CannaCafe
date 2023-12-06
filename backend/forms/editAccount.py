@@ -14,23 +14,25 @@ def email_correct_format(form, field):
         raise ValidationError('Email must be a valid email address')
 
 
-def email_exists(form, field):
-    """Checking if user exists"""
-    email = field.data
-    user = User.query.filter(User.email == email and User.id != current_user.get_id()).first()
-    if user:
-        raise ValidationError('Email address is already in use.')
+# def email_exists(form, field):
+#     """Checking if user exists"""
+#     email = field.data
+#     user = User.query.filter(User.email == email).first()
+#     if user.id == current_user.get_id():
+#         return
+#     if user and not user.id == current_user.get_id():
+#         raise ValidationError('Email address is already in use.')
 
 
-def username_exists(form, field):
-    """Checking if username is already in use"""
-    username = field.data
-    user = User.query.filter(User.username == username and User.id != current_user.get_id()).first()
-    if user:
-        raise ValidationError('Username is already in use.')
+# def username_exists(form, field):
+#     """Checking if username is already in use"""
+#     username = field.data
+#     user = User.query.filter(User.username == username).first()
+#     if user and not user.id == current_user.get_id():
+#         raise ValidationError('Username is already in use.')
 
 def check_if_required(form, field):
-    oldpass = form.data['oldpass']
+    oldpass = form.data['oldpassword']
     newpass = field.data
     if newpass and not oldpass:
         raise ValidationError('You current password to change your password.')
@@ -47,13 +49,13 @@ class EditAccountForm(FlaskForm):
 
     state = StringField('state', validators=[DataRequired()])
 
-    zipcode = IntegerField('zipcode', validators=[DataRequired(), Length(min=5,max=5)])
+    zipcode = StringField('zipcode', validators=[DataRequired(), Length(min=5,max=5)])
 
-    email = StringField('email', validators=[DataRequired(), email_exists, email_correct_format])
+    # email = StringField('email', validators=[DataRequired(), email_exists, email_correct_format])
 
     phone = StringField('phone')
 
-    role = IntegerField('role')
+    role = StringField('role')
 
     oldpassword = StringField('oldpass')
 

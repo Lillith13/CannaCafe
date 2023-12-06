@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import { getAllEmployees } from "../../store/employees";
 
@@ -24,33 +25,13 @@ export default function UserEmployees() {
         <h3>Employees</h3>
         {employees.Employees &&
           employees.Employees.map((employee) => (
-            <div key={employee.id}>
+            <NavLink exact to={`/profile/${employee.id}`} key={employee.id}>
               <div>
                 <h4>
-                  Name: {employee.firstName} {employee.lastName}
+                  {employee.firstName} {employee.lastName}
                 </h4>
-                <p>Username: {employee.username}</p>
               </div>
-              <div>
-                <label>
-                  Contact Info:
-                  <p>Where phone number will go...coming soon...</p>
-                  <p>Phone: {employee.phone}</p>
-                  <p>Email: {employee.email}</p>
-                  <label>
-                    Address:
-                    <div>
-                      <p>{employee.full_address.address}</p>
-                      <p>
-                        {employee.full_address.city},{" "}
-                        {employee.full_address.state},{" "}
-                        {employee.full_address.zip}
-                      </p>
-                    </div>
-                  </label>
-                </label>
-              </div>
-            </div>
+            </NavLink>
           ))}
       </div>
 
@@ -58,32 +39,13 @@ export default function UserEmployees() {
         <h3>Managers</h3>
         {employees.Managers &&
           employees.Managers.map((manager) => (
-            <div key={manager.id}>
+            <NavLink exact to={`/profile/${manager.id}`} key={manager.id}>
               <div>
                 <h4>
-                  Name: {manager.firstName} {manager.lastName}
+                  {manager.firstName} {manager.lastName}
                 </h4>
-                <p>Username: {manager.username}</p>
               </div>
-              <div>
-                <label>
-                  Contact Info:
-                  <p>Where phone number will go...coming soon...</p>
-                  <p>Phone: {manager.phone}</p>
-                  <p>Email: {manager.email}</p>
-                  <label>
-                    Address:
-                    <div>
-                      <p>{manager.full_address.address}</p>
-                      <p>
-                        {manager.full_address.city},{" "}
-                        {manager.full_address.state}, {manager.full_address.zip}
-                      </p>
-                    </div>
-                  </label>
-                </label>
-              </div>
-            </div>
+            </NavLink>
           ))}
       </div>
 
@@ -91,32 +53,13 @@ export default function UserEmployees() {
         <h3>Owners</h3>
         {employees.Owners &&
           employees.Owners.map((owner) => (
-            <div key={owner.id}>
+            <NavLink exact to={`/profile/${owner.id}`} key={owner.id}>
               <div>
                 <h4>
-                  Name: {owner.firstName} {owner.lastName}
+                  {owner.firstName} {owner.lastName}
                 </h4>
-                <p>Username: {owner.username}</p>
               </div>
-              <div>
-                <label>
-                  Contact Info:
-                  <p>Where phone number will go...coming soon...</p>
-                  <p>Phone: {owner.phone}</p>
-                  <p>Email: {owner.email}</p>
-                  <label>
-                    Address:
-                    <div>
-                      <p>{owner.full_address.address}</p>
-                      <p>
-                        {owner.full_address.city}, {owner.full_address.state},{" "}
-                        {owner.full_address.zip}
-                      </p>
-                    </div>
-                  </label>
-                </label>
-              </div>
-            </div>
+            </NavLink>
           ))}
       </div>
     </div>

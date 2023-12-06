@@ -12,16 +12,18 @@ timecard_routes = Blueprint("timecard", __name__, url_prefix="/timecard")
 @timecard_routes.route("/<int:userId>")
 @login_required
 def getPaystubs(userId):
-    if not current_user.get_id() == userId:
+    if int(current_user.get_id()) == int(userId):
+        timecards = TimeCard.query.filter(TimeCard.user_id == current_user.get_id()).all()
+        return {"Timecards": [timecard.to_dict() for timecard in timecards]}
+    else:
+        user = User.query.get(int(current_user.get_id()))
+        userRole = Role.query.filter(Role.id == int(user.role.id)).first()
 
-        user = User.query.get(current_user.get_id())
-        userRole = Role.query.get(Role.id == user.role_id)
-
-        if userRole.name != "Manager" or userRole.name != "Owner":
+        if userRole.name != "Manager" and userRole.name != "Owner":
             return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have the correct permissions to perform this action"})}, 403
 
-        targetUser = User.query.get(userId)
-        targetUserRole = Role.query.get(Role.id == targetUser.role_id)
+        targetUser = User.query.get(int(userId))
+        targetUserRole = Role.query.filter(Role.id == int(targetUser.role.id)).first()
 
         if targetUserRole.name == "Manager" and userRole.name != "Owner":
             return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have the correct permissions to perform this action"})}, 403
@@ -29,11 +31,8 @@ def getPaystubs(userId):
         if targetUserRole.name == "Member":
             return {'errors': validation_errors_to_error_messages({"Not_Allowed": "Target user must be at least an employee to have a timecard"})}, 403
 
-        timecards = TimeCard.query.filter(TimeCard.user_id == userId)
-    else:
-        timecards = TimeCard.query.filter(TimeCard.user_id == current_user.get_id())
-
-    return {"Timecards": [timecard.to_dict() for timecard in timecards]}
+        timecards = TimeCard.query.filter(TimeCard.user_id == userId).all()
+        return {"Timecards": [timecard.to_dict() for timecard in timecards]}
 
 @timecard_routes.route("/clockin", methods=["POST"])
 @login_required

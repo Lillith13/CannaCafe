@@ -79,8 +79,7 @@ export default function UserProfile() {
             <>
               <button onClick={(e) => handleClockIn(e)}>Clock In</button>
               <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
-              <NavLink exact to="/paystubs">
-                {/* Might turn this into a bottom tab instead of a NavLink/button */}
+              <NavLink exact to={`/paystubs/${user.id}`}>
                 <button>View Paystubs</button>
               </NavLink>
             </>
@@ -195,23 +194,21 @@ export default function UserProfile() {
           >
             Your Favorites
           </h3>
-          {user &&
-            (user.role.name === "Manager" || user.role.name === "Owner") && (
-              <h3
-                onClick={() => {
-                  setOrdersLoaded(false);
-                  setWishlistLoaded(false);
-                  setFavoritesLoaded(false);
-                  setEmployeesLoaded(true);
-                  setReviewsLoaded(false);
-                  setComplaintsLoaded(false);
-                }}
-              >
-                Your Employees
-              </h3>
-            )}
+          {user && user.role.name !== "Member" && (
+            <h3
+              onClick={() => {
+                setOrdersLoaded(false);
+                setWishlistLoaded(false);
+                setFavoritesLoaded(false);
+                setEmployeesLoaded(true);
+                setReviewsLoaded(false);
+                setComplaintsLoaded(false);
+              }}
+            >
+              Staff List
+            </h3>
+          )}
         </div>
-        <div>based on what's clicked above is what will display here...</div>
         <div>
           {ordersLoaded && (
             <div>

@@ -4,13 +4,13 @@ import { useParams } from "react-router-dom";
 
 import { useModal } from "../../../context/Modal";
 import { editUser } from "../../../store/session";
-import { getTargetUser } from "../../../store/targetUser";
+import { getAnEmployee } from "../../../store/employees";
 
-export default function EditAccount() {
+export default function EditAccount({ empId }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const params = useParams();
-  const targetUser = useSelector((state) => state.targetUser);
+  // const params = useParams();
+  const emp = useSelector((state) => state.employees);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address1, setAddress1] = useState("");
@@ -18,7 +18,7 @@ export default function EditAccount() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipcode, setZipcode] = useState("");
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -42,17 +42,18 @@ export default function EditAccount() {
     setCity(userInfo.full_address.city);
     setState(userInfo.full_address.state);
     setZipcode(userInfo.full_address.zip);
-    setEmail(userInfo.email);
-    console.log(userInfo.phone);
+    // setEmail(userInfo.email);
     setPhone(userInfo.phone);
+    if (userInfo.role.name) {
+      setRole(userInfo.role.name);
+    }
   };
 
   useEffect(async () => {
-    if (params.length > 0) {
-      const targetUserId = params.id;
-      console.log(targetUserId);
-      const data = dispatch(getTargetUser(targetUserId)).then(() => {
-        presetFields(targetUser);
+    console.log(empId);
+    if (empId && empId != "undefined") {
+      const data = dispatch(getAnEmployee(empId)).then(() => {
+        presetFields(emp);
         setIsLoaded(true);
       });
       if (data) {
@@ -66,52 +67,53 @@ export default function EditAccount() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      newPassword === confirmNewPassword &&
-      !isNaN(Number(zipcode)) &&
-      zipcode.length === 5
-    ) {
-      const address = address1 + address2;
-      const formData = {
-        firstName,
-        lastName,
-        address,
-        city,
-        state,
-        zipcode,
-        email,
-        phone,
-        oldPassword,
-        newPassword,
-      };
-      if (phone) {
-        formData["phone"] = phone;
-      }
-      if (role && role != "undefined") {
-        formData["role"] = role;
-      }
-      const inputData = {
-        formData,
-      };
-      if (targetUser) {
-        inputData["targetserId"] = targetUser.id;
-        inputData["userId"] = user.id;
-      } else {
-        inputData["targetserId"] = user.id;
-        inputData["userId"] = user.id;
-      }
-      const data = await dispatch(editUser(inputData));
-      if (data) {
-        setErrors(data);
-      } else {
-        closeModal();
-      }
-    } else {
-      // ! change this array to an object
-      setErrors([
-        "Confirm New Password field must be the same as the New Password field",
-      ]);
+    // if (!isNaN(Number(zipcode)) && zipcode.length === 5) {
+    if (newPassword && newPassword != confirmNewPassword) {
+      setErrors({
+        errors: {
+          password:
+            "If you're chaning your password, new password and confirm must match",
+        },
+      });
     }
+    const address = address1 + address2;
+    const formData = {
+      firstName,
+      lastName,
+      address,
+      city,
+      state,
+      zipcode: String(zipcode),
+      // email,
+      phone,
+      oldPassword,
+      newPassword,
+    };
+    if (phone) {
+      formData["phone"] = phone;
+    }
+    if (role && role != "undefined") {
+      formData["role"] = role;
+    }
+    const inputData = {
+      formData,
+    };
+    if (empId && empId != "undefined") {
+      console.log(emp);
+      inputData["employeeId"] = empId;
+      inputData["userId"] = user.id;
+    } else {
+      inputData["employeeId"] = user.id;
+      inputData["userId"] = user.id;
+    }
+    console.log(inputData);
+    const data = await dispatch(editUser(inputData));
+    if (data) {
+      setErrors(data);
+    } else {
+      closeModal();
+    }
+    // }
   };
 
   return isLoaded ? (
@@ -193,7 +195,7 @@ export default function EditAccount() {
           />
           {errors.zipcode && <p className="errors">* {errors.zipcode}</p>}
         </label>
-        <label>
+        {/* <label>
           Email
           <input
             className="editAcctInput"
@@ -203,7 +205,7 @@ export default function EditAccount() {
             required
           />
           {errors.email && <p className="errors">* {errors.email}</p>}
-        </label>
+        </label> */}
         <label>
           Phone Number
           <input
@@ -246,13 +248,14 @@ export default function EditAccount() {
           />
         </label>
         {user &&
-          targetUser.id &&
+          emp.id &&
           (user.role.name === "Manager" || user.role.name === "Owner") &&
-          user.id != targetUser.id && (
+          user.id != emp.id && (
             <label>
               Employee Role
               <select
                 value={role}
+                defaultValue={role ? role : null}
                 onChange={(e) => {
                   setRole(e.target.value);
                 }}
@@ -260,6 +263,7 @@ export default function EditAccount() {
                 <option selected default hidden>
                   Select Role...
                 </option>
+                <option value="Member">Member</option>
                 <option value="Employee">Employee</option>
                 {user.role.name === "Owner" && (
                   <>

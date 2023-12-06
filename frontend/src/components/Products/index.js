@@ -167,7 +167,6 @@ export default function Products() {
         <>
           {Object.values(products).map((product) => (
             <div key={product.id}>
-              {console.log(product)}
               <NavLink
                 exact
                 to={

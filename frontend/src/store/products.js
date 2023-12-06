@@ -127,7 +127,6 @@ export default function reducer(state = {}, action) {
   switch (action.type) {
     case GET_CAT_PRODUCTS:
       new_state = {};
-      console.log(action.payload);
       for (let product of action.payload.Category_Products) {
         new_state[product.id] = product;
       }

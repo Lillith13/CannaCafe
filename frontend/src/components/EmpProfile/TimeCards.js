@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { allUserTimecards } from "../../store/timecard";
 
-export default function PayStubs() {
+export default function Timecards({ emp }) {
   const { empId } = useParams();
   const dispatch = useDispatch();
   const timecards = useSelector((state) => state.timecard);
@@ -22,7 +22,9 @@ export default function PayStubs() {
 
   return isLoaded ? (
     <div>
-      <h1>Your Paystubs</h1>
+      <h3>
+        {emp.firstName} {emp.lastName}'s' Paystubs
+      </h3>
       <p>word in progress...</p>
       {Object.values(timecards).length > 0 ? (
         <>
@@ -39,7 +41,10 @@ export default function PayStubs() {
           ))}
         </>
       ) : (
-        <h3>You do not yet have any timecards to display...</h3>
+        <h3>
+          {emp.firstName} {emp.lastName} does not yet have any timecards to
+          display...
+        </h3>
       )}
     </div>
   ) : (
