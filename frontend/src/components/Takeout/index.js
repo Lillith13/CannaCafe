@@ -28,7 +28,11 @@ export default function Takeout() {
     }
     if (type === "dec") {
       currBag[itemId].quantity--;
-      updatedBag = { ...currBag };
+      if (currBag[itemId].quantity) {
+        delete currBag[itemId];
+      } else {
+        updatedBag = { ...currBag };
+      }
     }
     if (type === "remove") {
       delete currBag[itemId];

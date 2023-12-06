@@ -27,7 +27,11 @@ export default function Cart() {
     }
     if (type === "dec") {
       currCart[itemId].quantity--;
-      updatedCart = { ...currCart };
+      if (currCart[itemId].quantity == 0) {
+        delete currCart[itemId];
+      } else {
+        updatedCart = { ...currCart };
+      }
     }
     if (type === "remove") {
       delete currCart[itemId];
