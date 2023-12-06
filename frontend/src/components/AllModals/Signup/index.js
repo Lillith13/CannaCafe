@@ -7,7 +7,8 @@ import OpenModalButton from "../../OpenModalButton";
 import Login from "../Login";
 import "./Signup.css";
 
-export default function Signup() {
+export default function Signup({ currUser }) {
+  console.log(currUser);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [firstName, setFirstName] = useState("");
@@ -29,43 +30,50 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user) {
-      if (
-        password === confirmPassword &&
-        !isNaN(Number(zipcode)) &&
-        zipcode.length === 5
-      ) {
-        const address = address1 + "#" + address2;
-        const formData = {
-          firstName,
-          lastName,
-          birthday,
-          address,
-          city,
-          state,
-          zipcode,
-          username,
-          email,
-          password,
-        };
-        if (phone) {
-          formData["phone"] = phone;
-        }
-        if (role && role != "undefined") {
-          formData["role"] = role;
-        }
-        const data = await dispatch(signUp(formData));
-        if (data) {
-          setErrors(data);
-        } else {
-          closeModal();
-        }
-      } else {
-        // ! change this array to an object
-        setErrors([
-          "Confirm Password field must be the same as the Password field",
-        ]);
+    if (
+      password === confirmPassword &&
+      !isNaN(Number(zipcode)) &&
+      zipcode.length === 5
+    ) {
+      const address = address1 + "#" + address2;
+      const formData = {
+        firstName,
+        lastName,
+        birthday,
+        address,
+        city,
+        state,
+        zipcode,
+        username,
+        email,
+        password,
+      };
+      if (phone) {
+        formData["phone"] = phone;
       }
+      if (role && role != "undefined") {
+        formData["role"] = role;
+      }
+      let data;
+      if (currUser) {
+        data = {
+          formData,
+          currUser,
+        };
+      } else {
+        data = { formData };
+      }
+      const returnData = await dispatch(signUp(data));
+      if (returnData) {
+        setErrors(returnData);
+      } else {
+        closeModal();
+      }
+    } else {
+      // ! change this array to an object
+      setErrors([
+        "Confirm Password field must be the same as the Password field",
+      ]);
     }
   };
 
@@ -176,7 +184,7 @@ export default function Signup() {
             <input
               type="tel"
               value={phone}
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               onChange={(e) => setPhone(e.target.value)}
               required
             />

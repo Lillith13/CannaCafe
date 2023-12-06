@@ -34,10 +34,10 @@ def user(id):
     return { "User": user.to_dict() }
 
 
-@user_routes.route('/', methods=["DELETE"])
+@user_routes.route('/<int:userId>', methods=["DELETE"])
 @login_required
-def delAccount():
-    user = User.query.filter(User.id == current_user.get_id()).first()
+def delAccount(userId):
+    user = User.query.get(userId)
     logout_user()
     db.session.delete(user)
     db.session.commit()

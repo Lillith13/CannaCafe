@@ -64,8 +64,8 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const signUp = (formData) => async (dispatch) => {
-  console.log(formData);
+export const signUp = (data) => async (dispatch) => {
+  const { formData, currUser } = data;
 
   const res = await fetch("/api/auth/signup", {
     method: "POST",
@@ -75,25 +75,24 @@ export const signUp = (formData) => async (dispatch) => {
     body: JSON.stringify({ ...formData }),
   });
 
-  console.log(res);
-
-  const data = await res.json();
+  const userData = await res.json();
   if (res.ok) {
-    console.log(data);
-    dispatch(setUser(data));
+    if (!currUser || currUser == "undefined") {
+      dispatch(setUser(userData));
+    }
     return null;
   } else if (res.status < 500) {
-    if (data.errors) {
-      console.log(data.errors);
-      return data.errors;
+    if (userData.errors) {
+      console.log(userData.errors);
+      return userData.errors;
     }
   } else {
     return ["An error occurred. Please try again"];
   }
 };
 
-export const deleteUser = () => async (dispatch) => {
-  const res = await fetch("/api/users/", {
+export const deleteUser = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}`, {
     method: "DELETE",
   });
   const data = await res.json();

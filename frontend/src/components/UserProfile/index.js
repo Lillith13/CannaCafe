@@ -69,7 +69,7 @@ export default function UserProfile() {
         {user && user.role.name === "Member" && (
           <OpenModalButton
             buttonText="Delete Account"
-            modalComponent={<ConfirmDeleteAcct />}
+            modalComponent={<ConfirmDeleteAcct userId={user.id} />}
           />
         )}
         {user &&
@@ -97,7 +97,7 @@ export default function UserProfile() {
               />
               <OpenModalButton
                 buttonText="New Employee"
-                modalComponent={<Signup />}
+                modalComponent={<Signup currUser={user.id} />}
               />
             </>
           )}

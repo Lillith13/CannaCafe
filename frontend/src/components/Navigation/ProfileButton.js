@@ -105,7 +105,7 @@ function ProfileButton({ user }) {
                   <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
                 </li>
                 <li>
-                  <NavLink exact to="/paystubs">
+                  <NavLink exact to={`/paystubs/${user.id}`}>
                     <button>View Paystubs</button>
                   </NavLink>
                 </li>

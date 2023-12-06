@@ -31,9 +31,14 @@ export default function PayStubs() {
               {console.log(timecard)}
               <p>Clocked In: {timecard.clocked_in}</p>
               {console.log(timecard.clocked_in)}
-              <p>Clocked Out: {timecard.clocked_out}</p>
+              <p>
+                Clocked Out: {timecard.clocked_out || "Still clocked in..."}
+              </p>
               {console.log(timecard.clocked_out)}
-              <p>Pay for Day: ${timecard.day_pay}</p>
+              <p>
+                Pay for Day: $
+                {timecard.day_pay || "Will calculate when clocked out..."}
+              </p>
               {console.log(timecard.day_pay)}
             </div>
           ))}
