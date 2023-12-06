@@ -27,7 +27,7 @@ export default function EditProduct({ type, product }) {
     setDescription(product.description);
     setPrice(product.price);
     setUnitsAvailable(product.units_available);
-    setPreviewImage(product.previewImg);
+    // setPreviewImage(product.previewImg);
   };
 
   useEffect(async () => {
