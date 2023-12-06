@@ -48,11 +48,6 @@ export default function Takeout() {
 
   return isLoaded ? (
     <>
-      <h1>Coming soon...</h1>
-      <p>
-        to be implemented later: Increase & Decrease Quantity and Full Removal
-        of item
-      </p>
       {bag.length > 0 ? (
         <>
           {bag.map((item) => (
@@ -78,7 +73,7 @@ export default function Takeout() {
               </label>
             </div>
           ))}
-          <button onClick={handleCheckout}>Checkout</button>
+          <button onClick={handleCheckout}>Checkout - Coming soon...</button>
           <NavLink exact to="/menu">
             <button>Add More</button>
           </NavLink>

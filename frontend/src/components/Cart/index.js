@@ -43,11 +43,6 @@ export default function Cart() {
 
   return isLoaded ? (
     <>
-      <h1>Coming soon...</h1>
-      <p>
-        to be implemented later: Increase & Decrease Quantity and Full Removal
-        of item
-      </p>
       {cart.length > 0 ? (
         <>
           {cart.map((item) => (
@@ -73,7 +68,7 @@ export default function Cart() {
               </label>
             </div>
           ))}
-          <button>Checkout</button>
+          <button>Checkout - coming soon...</button>
           <NavLink exact to="/products">
             <button>Continue Shopping</button>
           </NavLink>
