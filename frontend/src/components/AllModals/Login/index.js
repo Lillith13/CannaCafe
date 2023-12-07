@@ -39,7 +39,7 @@ function Login() {
             type="text"
             value={creds}
             onChange={(e) => setCreds(e.target.value)}
-            required
+            // required
           />
           {errors.creds && <p className="loginErrors">* {errors.creds}</p>}
         </label>
@@ -50,7 +50,7 @@ function Login() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            // required
           />
           {errors.password && (
             <p className="loginErrors">* {errors.password}</p>
@@ -84,7 +84,7 @@ function Login() {
         <button
           className="loginButton"
           type="submit"
-          disabled={creds.length === 0 || password.length === 0}
+          // disabled={creds.length === 0 || password.length === 0}
         >
           Log In
         </button>

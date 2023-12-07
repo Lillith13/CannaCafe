@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+
 import OpenModalButton from "../OpenModalButton";
+import CheckoutBag from "../AllModals/CheckoutBag";
 
 export default function Takeout() {
   const user = useSelector((state) => state.session.user);
@@ -28,8 +30,9 @@ export default function Takeout() {
     }
     if (type === "dec") {
       currBag[itemId].quantity--;
-      if (currBag[itemId].quantity) {
+      if (!currBag[itemId].quantity) {
         delete currBag[itemId];
+        updatedBag = { ...currBag };
       } else {
         updatedBag = { ...currBag };
       }
@@ -40,10 +43,6 @@ export default function Takeout() {
     }
     localStorage.setItem(`${user.id}takeaway`, JSON.stringify(updatedBag));
     setBag([...Object.values(updatedBag)]);
-  };
-
-  const handleCheckout = () => {
-    // ! for adding cart items to orders table
   };
 
   return isLoaded ? (
@@ -73,9 +72,12 @@ export default function Takeout() {
               </label>
             </div>
           ))}
-          <button onClick={handleCheckout}>Checkout - Coming soon...</button>
+          <OpenModalButton
+            buttonText="Checkout"
+            modalComponent={<CheckoutBag userId={user.id} />}
+          />
           <NavLink exact to="/menu">
-            <button>Add More</button>
+            <button>Add More to Bag</button>
           </NavLink>
         </>
       ) : (

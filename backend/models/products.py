@@ -63,9 +63,29 @@ class Product(db.Model):
     return {
       'id': self.id,
       'name': self.name,
-      'category': [cat.to_dict() for cat in self.category],
+      'category': [cat.to_dict() for cat in self.category][0],
       'price': self.price,
       'description': self.description,
       'units_available': self.units_available,
       'previewImg': self.preview_image,
+    }
+
+  def rev_dict(self):
+    return {
+      'id': self.id,
+      'name': self.name,
+      'category': [cat.to_dict() for cat in self.category][0]
+    }
+
+  def product_reviews(self):
+    return {
+      'id': self.id,
+      'reviews': [review.prod_dict() for review in self.reviews]
+    }
+
+  def comp_dict(self):
+    """lazy loaded - no relationship connection"""
+    return {
+      'id': self.id,
+      'name': self.name
     }

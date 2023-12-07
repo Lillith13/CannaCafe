@@ -23,8 +23,8 @@ export default function Navigation({ isLoaded }) {
           CannaCafe
         </NavLink>
       </div>
-      {/* Create Search form for Search Bar */}
-      <input type="text" placeholder="Search..." />
+      {/* Implement Search Bar later */}
+      {/* <input type="text" placeholder="Search..." onChange={}/> */}
       <div>
         <NavLink exact to="/takeout">
           <img

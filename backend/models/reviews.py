@@ -33,14 +33,21 @@ class Review(db.Model):
     )
 
 
-    def to_dict(self):
-        dictionary = {
+    def user_dict(self):
+        return {
             "id": self.id,
-            "product": self.product,
+            "product": [product.rev_dict() for product in self.product][0],
             "review": self.review,
             "rating": self.rating,
             "created_at": self.created_at,
             "updated_at": self.updated_at
         }
-
-        return dictionary
+    def prod_dict(self):
+        return {
+            'id': self.id,
+            'user': [user.rev_dict() for user in self.user][0],
+            "review": self.review,
+            "rating": self.rating,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }

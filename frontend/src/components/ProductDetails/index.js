@@ -5,35 +5,32 @@ import { useHistory } from "react-router-dom";
 
 import imgPlaceholder from "../../assets/noImgAvailable.jpg";
 import { loadProduct } from "../../store/products";
-import {
-  addToFaves,
-  delFromFaves,
-  getAllFavorites,
-} from "../../store/favorites";
-import {
-  getWishlist,
-  addToWishlist,
-  delFromWishlist,
-} from "../../store/wishlist";
+import { getAllFavorites } from "../../store/favorites";
+import { getWishlist } from "../../store/wishlist";
+import //
+"../../store/reviews";
 
 import OpenModalButton from "../OpenModalButton";
 import Login from "../AllModals/Login";
 import Signup from "../AllModals/Signup";
 import EditProduct from "../AllModals/EditProduct";
 import ConfirmDeleteItem from "../AllModals/ConfirmDelete/confirmDeleteItem";
+import ConfirmAdd from "../AllModals/ConfirmAddTo";
+import ConfirmRemove from "../AllModals/ConfirmRemove";
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const product = useSelector((state) => state.products);
+  const reviews = useSelector((state) => state.reviews);
   const userFaves = useSelector((state) => state.favorites);
   const userWishes = useSelector((state) => state.wishlist);
-  const params = useParams();
+  const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(async () => {
-    const data = await dispatch(loadProduct(params.id))
+    const data = await dispatch(loadProduct(id))
       .then(() => dispatch(getAllFavorites()))
       .then(() => dispatch(getWishlist()))
       .then(() => setIsLoaded(true));
@@ -41,93 +38,6 @@ export default function ProductDetails() {
       console.log("data.errors => ", data.errors);
     }
   }, [dispatch]);
-
-  const handleAdd = async (e, shippable) => {
-    e.preventDefault();
-    let data = null;
-    if (shippable) {
-      data = await dispatch(addToWishlist(e.target.value));
-    } else {
-      data = await dispatch(addToFaves(e.target.value));
-      if (data) {
-        console.log(data);
-      }
-    }
-    if (!data) {
-      let msg;
-      if (shippable) {
-        msg = "Successfully added to wishlist";
-      } else {
-        msg = "Successfully added to favorites";
-      }
-      alert(msg);
-    }
-  };
-  const handleRemove = async (e, shippable) => {
-    e.preventDefault();
-    let data = null;
-    if (shippable) {
-      data = await dispatch(delFromWishlist(e.target.value));
-    } else {
-      data = await dispatch(delFromFaves(e.target.value));
-    }
-    if (data) {
-      console.log(data);
-    }
-    if (!data) {
-      let msg;
-      if (shippable) {
-        msg = "Successfully removed from wishlist";
-      } else {
-        msg = "Successfully removed from favorites";
-      }
-      alert(msg);
-    }
-  };
-
-  const handleClick = (e, product) => {
-    e.preventDefault();
-    if (product.category.shippable) {
-      const currCart = localStorage.getItem(`${user.id}cart`);
-      let updateCart = {};
-      if (currCart) {
-        const cart = JSON.parse(currCart);
-
-        if (cart[product.id]) {
-          cart[product.id].quantity++;
-          updateCart = { ...cart };
-        } else {
-          product.quantity = 1;
-          updateCart = { ...cart };
-          updateCart[product.id] = product;
-        }
-      } else {
-        product.quantity = 1;
-        updateCart[product.id] = product;
-      }
-
-      localStorage.setItem(`${user.id}cart`, JSON.stringify(updateCart));
-    } else {
-      const currTakeaway = localStorage.getItem(`${user.id}takeaway`);
-      let updateBag = {};
-      if (currTakeaway) {
-        const bag = JSON.parse(currTakeaway);
-
-        if (bag[product.id]) {
-          bag[product.id].quantity++;
-          updateBag = { ...bag };
-        } else {
-          product.quantity = 1;
-          updateBag = { ...bag };
-          updateBag[product.id] = product;
-        }
-      } else {
-        product.quantity = 1;
-        updateBag[product.id] = product;
-      }
-      localStorage.setItem(`${user.id}takeaway`, JSON.stringify(updateBag));
-    }
-  };
 
   return isLoaded ? (
     <>
@@ -156,9 +66,22 @@ export default function ProductDetails() {
             <p>{product.description}</p>
             <p>{product.units_available} Available</p>
             <p>${product.price}</p>
-            <button onClick={(e) => handleClick(e, product)}>
-              Add to {product.category.shippable ? "Cart" : "Bag"}
-            </button>
+            <OpenModalButton
+              buttonText={`Add to ${
+                product.category.shippable ? "Shopping Cart" : "Takeaway Bag"
+              }`}
+              modalComponent={
+                <ConfirmAdd
+                  where={
+                    product.category.shippable
+                      ? "Shopping Cart"
+                      : "Takeaway Bag"
+                  }
+                  product={product}
+                  user={user}
+                />
+              }
+            />
             {user &&
               (user.role.name === "Manager" || user.role.name === "Owner") && (
                 <>
@@ -181,39 +104,39 @@ export default function ProductDetails() {
               <>
                 {!Object.keys(userWishes).includes(product.id?.toString()) &&
                   product.category.shippable && (
-                    <button
-                      value={product.id}
-                      onClick={(e) => handleAdd(e, true)}
-                    >
-                      Add to Wishlist
-                    </button>
+                    <OpenModalButton
+                      buttonText="Add to Wishlist"
+                      modalComponent={
+                        <ConfirmAdd where="Wishlist" product={product} />
+                      }
+                    />
                   )}
                 {!Object.keys(userFaves).includes(product.id?.toString()) &&
                   !product.category.shippable && (
-                    <button
-                      value={product.id}
-                      onClick={(e) => handleAdd(e, false)}
-                    >
-                      Add to Favorites
-                    </button>
+                    <OpenModalButton
+                      buttonText="Add to Favorites"
+                      modalComponent={
+                        <ConfirmAdd where="Favorites" product={product} />
+                      }
+                    />
                   )}
                 {Object.keys(userWishes).includes(product.id?.toString()) &&
                   product.category.shippable && (
-                    <button
-                      value={product.id}
-                      onClick={(e) => handleRemove(e, true)}
-                    >
-                      Remove From Wishlist
-                    </button>
+                    <OpenModalButton
+                      buttonText="Remove From Wishlist"
+                      modalComponent={
+                        <ConfirmRemove where="Wishlist" product={product} />
+                      }
+                    />
                   )}
                 {Object.keys(userFaves).includes(product.id?.toString()) &&
                   !product.category.shippable && (
-                    <button
-                      value={product.id}
-                      onClick={(e) => handleRemove(e, false)}
-                    >
-                      Remove From Favorites
-                    </button>
+                    <OpenModalButton
+                      buttonText="Remove From Favorites"
+                      modalComponent={
+                        <ConfirmRemove where="Favorites" product={product} />
+                      }
+                    />
                   )}
               </>
             )}

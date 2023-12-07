@@ -11,6 +11,8 @@ class User(db.Model, UserMixin):
 
     # ! Add Validators
 
+    # ! add profile picture
+
     id = db.Column(db.Integer, primary_key=True)
 
     firstName = db.Column(db.String(50), nullable=False)
@@ -50,8 +52,7 @@ class User(db.Model, UserMixin):
         back_populates="user",
         cascade='all, delete-orphan'
     )
-    # ! Add paystub relationship when paystub table created
-    # * Don't need cart because cart will be stored in local storage
+
     wishlist = db.relationship(
         "Wishlist",
         back_populates="wish",
@@ -94,4 +95,26 @@ class User(db.Model, UserMixin):
                 "zip": self.zipcode
             },
             "member_since": self.created_at
+        }
+
+    def rev_dict(self):
+        return {
+            'id': self.id,
+            'name': self.firstName + " " + self.lastName,
+            'username': self.username
+        }
+
+    def user_reviews(self):
+        return {
+            'id': self.id,
+            'reviews': [review.user_dict() for review in self.reviews]
+        }
+
+    def comp_dict(self):
+        """lazy loaded - no relationship connection"""
+        return {
+            'id': self.id,
+            'name': self.firstName + " " + self.lastName,
+            'username': self.username,
+            'email': self.email
         }

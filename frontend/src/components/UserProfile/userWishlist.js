@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import { delFromWishlist, getWishlist } from "../../store/wishlist";
+import { getWishlist } from "../../store/wishlist";
+import OpenModalButton from "../OpenModalButton";
+import ConfirmRemove from "../AllModals/ConfirmRemove";
 
 export default function UserWishlist() {
   const dispatch = useDispatch();
@@ -17,18 +19,6 @@ export default function UserWishlist() {
     }
   }, [dispatch]);
 
-  const handleRemove = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(delFromWishlist(e.target.value));
-    if (data) {
-      console.log(data);
-    }
-    if (!data) {
-      const msg = "Successfully removed from favorites";
-      alert(msg);
-    }
-  };
-
   return isLoaded ? (
     <div>
       {Object.values(wishlist).length > 0 ? (
@@ -38,9 +28,12 @@ export default function UserWishlist() {
               <NavLink exact to={`/product/${wish.id}`}>
                 <p>{wish.name}</p>
               </NavLink>
-              <button value={wish.id} onClick={(e) => handleRemove(e)}>
-                Remove from Wishlist
-              </button>
+              <OpenModalButton
+                buttonText="Remove From Wishlist"
+                modalComponent={
+                  <ConfirmRemove where="Wishlist" product={wish} />
+                }
+              />
             </div>
           ))}
         </>

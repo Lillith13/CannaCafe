@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import { deleteUser } from "../../../store/session";
 
-export default function ConfirmDeleteAcct({userId}) {
+export default function ConfirmDeleteAcct({ userId }) {
   const { closeModal } = useModal();
   const history = useHistory();
   const dispatch = useDispatch();

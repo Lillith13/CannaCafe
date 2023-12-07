@@ -100,6 +100,7 @@ def sign_up():
             """login new user - IF the user was created by the user and not as a new employee by management/owner"""
             login_user(new_user)
         return new_user.to_dict()
+    print(form.errors)
     return { 'errors': validation_errors_to_error_messages(form.errors) }, 401
 
 @auth_routes.route('/unauthorized')

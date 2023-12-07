@@ -16,6 +16,7 @@ export default function ConfirmDeleteItem({ product }) {
       console.log(data);
     } else {
       history.push("/home");
+      closeModal();
     }
   };
 

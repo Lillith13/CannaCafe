@@ -6,22 +6,26 @@ import session from "./session";
 import products from "./products";
 import categories from "./categories";
 import targetUser from "./targetUser";
+import employees from "./employees";
 import timecard from "./timecard";
 import orders from "./orders";
 import wishlist from "./wishlist";
 import favorites from "./favorites";
-import employees from "./employees";
+import reviews from "./reviews";
+import complaints from "./complaints";
 
 const rootReducer = combineReducers({
   session,
   products,
   categories,
   targetUser,
+  employees,
   timecard,
   orders,
   wishlist,
   favorites,
-  employees,
+  reviews,
+  complaints,
 });
 
 let enhancer;

@@ -19,4 +19,4 @@ def filterCategory(name):
     category = Category.query.filter(Category.name == name).first()
     if not current_user.is_authenticated and category.age_restricted:
         return { 'errors': validation_errors_to_error_messages({"Age_Restricted": "Product is age restricted, please log in or create an account to view"})}, 404
-    return { "Category_Products": [product.to_dict() for product in category.products], "shippable": category.shippable }
+    return { "Category_Products": [product.to_dict() for product in category.products] }

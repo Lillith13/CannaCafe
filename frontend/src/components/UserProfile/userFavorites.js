@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import { getAllFavorites, delFromFaves } from "../../store/favorites";
+import { getAllFavorites } from "../../store/favorites";
+import OpenModalButton from "../OpenModalButton";
+import ConfirmRemove from "../AllModals/ConfirmRemove";
 
 export default function UserFavorites() {
   const dispatch = useDispatch();
@@ -19,18 +21,6 @@ export default function UserFavorites() {
     }
   }, [dispatch]);
 
-  const handleRemove = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(delFromFaves(e.target.value));
-    if (data) {
-      console.log(data);
-    }
-    if (!data) {
-      const msg = "Successfully removed from favorites";
-      alert(msg);
-    }
-  };
-
   return isLoaded ? (
     <div>
       {Object.values(faves).length > 0 ? (
@@ -40,9 +30,12 @@ export default function UserFavorites() {
               <NavLink exact to={`/menu/${fave.id}`}>
                 <p>{fave.name}</p>
               </NavLink>
-              <button value={fave.id} onClick={(e) => handleRemove(e)}>
-                Remove from Favorites
-              </button>
+              <OpenModalButton
+                buttonText="Remove From Favorites"
+                modalComponent={
+                  <ConfirmRemove where="Favorites" product={fave} />
+                }
+              />
             </div>
           ))}
         </>

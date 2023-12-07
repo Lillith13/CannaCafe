@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
+import OpenModalButton from "../OpenModalButton";
+import CheckoutCart from "../AllModals/CheckoutCart";
+
 export default function Cart() {
   const user = useSelector((state) => state.session.user);
   const [cart, setCart] = useState([]);
@@ -27,8 +30,9 @@ export default function Cart() {
     }
     if (type === "dec") {
       currCart[itemId].quantity--;
-      if (currCart[itemId].quantity == 0) {
+      if (!currCart[itemId].quantity) {
         delete currCart[itemId];
+        updatedCart = { ...currCart };
       } else {
         updatedCart = { ...currCart };
       }
@@ -68,7 +72,10 @@ export default function Cart() {
               </label>
             </div>
           ))}
-          <button>Checkout - coming soon...</button>
+          <OpenModalButton
+            buttonText="Checkout"
+            modalComponent={<CheckoutCart userId={user.id} />}
+          />
           <NavLink exact to="/products">
             <button>Continue Shopping</button>
           </NavLink>

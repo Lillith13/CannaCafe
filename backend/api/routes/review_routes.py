@@ -13,7 +13,7 @@ def usersReviews():
     reviews = Review.query.filter(Review.user_id == current_user.get_it()).all()
     if not len(reviews):
         return { "Reviews": None }
-    return { "Reviews": [review.to_dict() for review in reviews] }
+    return { "Reviews": [review.user_dict() for review in reviews] }
 
 @review_routes.route("/<int:itemId>", methods=["POST", "PUT", "DELETE"])
 @login_required
@@ -39,7 +39,7 @@ def postReview(itemId):
             return { "message": "successful" }
 
         if request.method == "PUT":
-            review = Review.query.filter(Review.product_id == itemId).first()
+            review = Review.query.filter(Review.product_id == itemId and Review.user_id == current_user.get_id()).first()
             if not review:
                 return {'errors': validation_errors_to_error_messages({"Bad_Requents": "Review doesn't exist"})}, 400
             if review.rating != data['rating']:

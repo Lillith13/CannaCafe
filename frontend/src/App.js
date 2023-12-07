@@ -11,9 +11,12 @@ import UserProfile from "./components/UserProfile";
 import EmployeeProfile from "./components/EmpProfile";
 import Takeout from "./components/Takeout";
 import Cart from "./components/Cart";
+import CheckoutCart from "./components/AllModals/CheckoutCart";
+import CheckoutBag from "./components/AllModals/CheckoutBag";
 import Products from "./components/Products";
 import ProductDetails from "./components/ProductDetails";
 import PayStubs from "./components/PayStubs";
+import Footer from "./components/Footer";
 
 // Import any needed thunks here
 
@@ -65,6 +68,12 @@ function App() {
           <Route exact path="/cart">
             <Cart />
           </Route>
+          <Route exact path="/checkout/bag">
+            <CheckoutBag />
+          </Route>
+          <Route exact path="/checkout/cart">
+            <CheckoutCart />
+          </Route>
           {user && (
             <>
               <Route exact path="/profile/:empId">
@@ -81,6 +90,7 @@ function App() {
           <Route>"404: Page not Found"</Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

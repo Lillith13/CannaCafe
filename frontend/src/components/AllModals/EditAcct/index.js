@@ -13,7 +13,7 @@ export default function EditAccount({ empId }) {
   const emp = useSelector((state) => state.employees);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [address1, setAddress1] = useState("");
+  const [address, setAddress] = useState("");
   const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -31,14 +31,14 @@ export default function EditAccount({ empId }) {
   const presetFields = (userInfo) => {
     setFirstName(userInfo.firstName);
     setLastName(userInfo.lastName);
-    if (userInfo.full_address.address.includes("#")) {
-      const add1 = userInfo.full_address.address.split("#")[0];
-      const add2 = userInfo.full_address.address.split("#")[1];
-      setAddress1(add1);
-      setAddress2(add2);
-    } else {
-      setAddress1(userInfo.full_address.address);
-    }
+    // if (userInfo.full_address.address.includes("#")) {
+    //   const add1 = userInfo.full_address.address.split("#")[0];
+    //   const add2 = userInfo.full_address.address.split("#")[1];
+    //   setAddress1(add1);
+    //   setAddress2(add2);
+    // } else {
+    setAddress(userInfo.full_address.address);
+    // }
     setCity(userInfo.full_address.city);
     setState(userInfo.full_address.state);
     setZipcode(userInfo.full_address.zip);
@@ -50,13 +50,13 @@ export default function EditAccount({ empId }) {
   };
 
   useEffect(async () => {
-    console.log(empId);
     if (empId && empId != "undefined") {
       const data = dispatch(getAnEmployee(empId)).then(() => {
         presetFields(emp);
         setIsLoaded(true);
       });
       if (data) {
+        console.log(data);
         setErrors(data);
       }
     } else {
@@ -65,18 +65,7 @@ export default function EditAccount({ empId }) {
     }
   }, [dispatch]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // if (!isNaN(Number(zipcode)) && zipcode.length === 5) {
-    if (newPassword && newPassword != confirmNewPassword) {
-      setErrors({
-        errors: {
-          password:
-            "If you're chaning your password, new password and confirm must match",
-        },
-      });
-    }
-    const address = address1 + address2;
+  const submitValidSignup = async () => {
     const formData = {
       firstName,
       lastName,
@@ -95,9 +84,11 @@ export default function EditAccount({ empId }) {
     if (role && role != "undefined") {
       formData["role"] = role;
     }
+
     const inputData = {
       formData,
     };
+
     if (empId && empId != "undefined") {
       console.log(emp);
       inputData["employeeId"] = empId;
@@ -106,14 +97,71 @@ export default function EditAccount({ empId }) {
       inputData["employeeId"] = user.id;
       inputData["userId"] = user.id;
     }
-    console.log(inputData);
+
     const data = await dispatch(editUser(inputData));
     if (data) {
-      setErrors(data);
+      console.log(data);
+      setErrors(data.errors);
     } else {
+      if (empId) {
+        dispatch(getAnEmployee(empId));
+      }
       closeModal();
     }
-    // }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let errors = {};
+    if (newPassword) {
+      if (!oldPassword) {
+        errors["oldPassword"] =
+          "Changing your password requires you to input your old password";
+      }
+      if (newPassword.length < 8) {
+        errors["newPassword"] = "New password must be 8 or more characters";
+      }
+      if (newPassword != confirmNewPassword) {
+        errors["confirmPassword"] =
+          "If you're changing your password, new password and confirm must match";
+      }
+    }
+    if (!firstName) {
+      errors["firstName"] = "First name is required";
+    }
+    if (firstName.length < 2) {
+      errors["firstName"] = "First name must be more than 2 characters";
+    }
+    if (!lastName) {
+      errors["lastName"] = "Last name is required";
+    }
+    if (lastName.length < 2) {
+      errors["lastName"] = "Last name must be more than 2 characters";
+    }
+    if (!address) {
+      errors["address"] = "Address is required";
+    }
+    if (!city) {
+      errors["city"] = "City is required";
+    }
+    if (!state) {
+      errors["state"] = "State is required";
+    }
+    if (!zipcode) {
+      errors["zipcode"] = "Zipcode is required";
+    }
+    if (empId) {
+      if (!phone) {
+        errors["phone"] = "Phone number is required";
+      }
+      if (!role) {
+        errors["role"] = "Role is required";
+      }
+    }
+    setErrors(errors);
+    if (Object.values(errors).length === 0) {
+      submitValidSignup();
+    }
   };
 
   return isLoaded ? (
@@ -147,13 +195,13 @@ export default function EditAccount({ empId }) {
           <input
             className="editAcctInput"
             type="text"
-            value={address1}
-            onChange={(e) => setAddress1(e.target.value)}
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
             required
           />
           {errors.address && <p className="errors">* {errors.address}</p>}
         </label>
-        <label>
+        {/* <label>
           Address
           <input
             className="editAcctInput"
@@ -161,7 +209,7 @@ export default function EditAccount({ empId }) {
             value={address2}
             onChange={(e) => setAddress2(e.target.value)}
           />
-        </label>
+        </label> */}
         <label>
           City
           <input
@@ -206,16 +254,19 @@ export default function EditAccount({ empId }) {
           />
           {errors.email && <p className="errors">* {errors.email}</p>}
         </label> */}
-        <label>
-          Phone Number
-          <input
-            type="tel"
-            value={phone}
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
-        </label>
+        {empId && (
+          <label>
+            Phone Number
+            <input
+              type="tel"
+              value={phone}
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
+            {errors.phone && <p className="errors">* {errors.phone}</p>}
+          </label>
+        )}
         <label>
           Current Password
           <input
@@ -223,8 +274,11 @@ export default function EditAccount({ empId }) {
             type="password"
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
-            required={newPassword}
+            // required={newPassword}
           />
+          {errors.oldPassword && (
+            <p className="errors">* {errors.oldPassword}</p>
+          )}
         </label>
         <label>
           New Password
@@ -233,8 +287,11 @@ export default function EditAccount({ empId }) {
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            disabled={!oldPassword}
+            // disabled={!oldPassword}
           />
+          {errors.newPassword && (
+            <p className="errors">* {errors.newPassword}</p>
+          )}
         </label>
         <label>
           Confirm New Password
@@ -243,12 +300,14 @@ export default function EditAccount({ empId }) {
             type="password"
             value={confirmNewPassword}
             onChange={(e) => setConfirmNewPassword(e.target.value)}
-            disabled={!newPassword}
-            required={newPassword}
+            // disabled={!newPassword}
+            // required={newPassword}
           />
+          {errors.confirmPassword && (
+            <p className="errors">* {errors.confirmPassword}</p>
+          )}
         </label>
-        {user &&
-          emp.id &&
+        {emp.id &&
           (user.role.name === "Manager" || user.role.name === "Owner") &&
           user.id != emp.id && (
             <label>
@@ -272,12 +331,13 @@ export default function EditAccount({ empId }) {
                   </>
                 )}
               </select>
+              {errors.role && <p className="errors">* {errors.role}</p>}
             </label>
           )}
         <button
           className="editAccountButton"
           type="submit"
-          disabled={newPassword && !oldPassword && !confirmNewPassword}
+          // disabled={newPassword && !oldPassword && !confirmNewPassword}
         >
           Submit
         </button>

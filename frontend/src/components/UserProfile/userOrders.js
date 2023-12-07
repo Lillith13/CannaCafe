@@ -10,6 +10,8 @@ export default function UserOrders() {
     // const data = await dispatch();
   }, [dispatch]);
 
+  // ! Orders to be seperated by bag or cart orders - only cart orders can be returned
+
   return isLoaded ? (
     <>
       <h1>User Orders Coming soon...</h1>
