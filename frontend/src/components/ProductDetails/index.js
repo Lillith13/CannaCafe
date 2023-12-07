@@ -64,7 +64,9 @@ export default function ProductDetails() {
           </div>
           <div>
             <p>{product.description}</p>
-            <p>{product.units_available} Available</p>
+            {product.category.shippable && (
+              <p>{product.units_available} Available</p>
+            )}
             <p>${product.price}</p>
             <OpenModalButton
               buttonText={`Add to ${

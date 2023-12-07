@@ -33,8 +33,12 @@ export default function CreateProduct({ type }) {
     formData.append("price", price);
     formData.append("category", category);
     formData.append("description", description);
-    formData.append("units_available", unitsAvailable);
     formData.append("preview", previewImage);
+    if (type === "menu") {
+      formData.append("units_available", 1);
+    } else {
+      formData.append("units_available", unitsAvailable);
+    }
 
     const data = await dispatch(createProduct(formData));
     if (data) {
@@ -105,15 +109,17 @@ export default function CreateProduct({ type }) {
             required
           />
         </label>
-        <label>
-          Units Available:
-          <input
-            type="number"
-            value={unitsAvailable}
-            onChange={(e) => setUnitsAvailable(e.target.value)}
-            required
-          />
-        </label>
+        {type === "product" && (
+          <label>
+            Units Available:
+            <input
+              type="number"
+              value={unitsAvailable}
+              onChange={(e) => setUnitsAvailable(e.target.value)}
+              required
+            />
+          </label>
+        )}
         <label>
           Preview Image:
           <input

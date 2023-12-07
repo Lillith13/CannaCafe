@@ -61,7 +61,8 @@ def specificProduct(id):
     if not product:
         return { 'errors': validation_errors_to_error_messages({"Product": "Product doesn't exist"})}, 404
     prodDict = product.to_dict()
-    prodDict['category'] = prodDict['category'][0]
+    if isinstance(prodDict['category'], list):
+        prodDict['category'] = prodDict['category'][0]
     return prodDict
 
 
