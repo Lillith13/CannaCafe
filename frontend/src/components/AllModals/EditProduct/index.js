@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import "./EditProduct.css";
+
 import { useModal } from "../../../context/Modal";
 import { editProduct } from "../../../store/products";
 import { getCategories } from "../../../store/categories";
@@ -57,6 +59,7 @@ export default function EditProduct({ type, product }) {
     const data = await dispatch(editProduct(formData));
     if (data) {
       console.log(data);
+      setErrors(data.errors);
     } else {
       if (type == "product") {
         history.push("/products");
@@ -109,8 +112,7 @@ export default function EditProduct({ type, product }) {
         </label>
         <label>
           Description:
-          <input
-            type="textarea"
+          <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required

@@ -1,0 +1,99 @@
+.topOfPageItems {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.viewOptionsButtonsDiv {
+  display: flex;
+  gap: 10px;
+}
+.goBackButton,
+.viewOptionsButton {
+  padding: 5px 15px;
+  background-color: #a9b388;
+  color: #fefae0;
+  font-size: 20px;
+}
+
+.productsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.productsPageTitle {
+  font-size: 50px;
+}
+.productDisplayAreaTile {
+  display: flex;
+  justify-content: center;
+}
+.prodsDivTileView {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  gap: 15px;
+}
+.prodsDivTileView#prodsDivAlt {
+  justify-content: center;
+  width: 50%;
+}
+.idvProdContainerTile {
+  width: 30%;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.idvProdContainerTile#idvProdContainerAlt {
+  width: 100%;
+}
+.productImageTile {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.idvProdNameNPriceContainerTile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.idvProdButtonContainerTile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.universalProdButtonsTile,
+.roleProtectedButtonsTile {
+  display: flex;
+  justify-content: space-evenly;
+}
+.universalProdButtonsTile > button,
+.roleProtectedButtonsTile > button {
+  width: 45%;
+  padding: 10px 15px;
+}
+
+/* .navLinkArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+@media screen and (max-width: 850px) {
+  /* force to list view */
+}
+@media screen and (max-width: 1259px) {
+  .productDisplayAreaTile {
+    display: flex;
+    justify-content: center;
+    margin-left: 75px;
+  }
+  .idvProdContainerTile {
+    width: 25%;
+  }
+}

@@ -13,9 +13,9 @@ export default function UserOrders() {
   // ! Orders to be seperated by bag or cart orders - only cart orders can be returned
 
   return isLoaded ? (
-    <>
+    <div>
       <h1>User Orders Coming soon...</h1>
-    </>
+    </div>
   ) : (
     <h2>Loading...</h2>
   );

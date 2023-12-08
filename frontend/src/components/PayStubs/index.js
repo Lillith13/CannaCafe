@@ -21,7 +21,7 @@ export default function PayStubs() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div>
+    <div className="payStubsContainer">
       <h1>Your Paystubs</h1>
       <p>word in progress...</p>
       {Object.values(timecards).length > 0 ? (

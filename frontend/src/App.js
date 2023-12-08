@@ -17,6 +17,8 @@ import Products from "./components/Products";
 import ProductDetails from "./components/ProductDetails";
 import PayStubs from "./components/PayStubs";
 import Footer from "./components/Footer";
+import OopsyMessage from "./components/OopseyDaiseys";
+import ErrorFourOHFour from "./components/Error404Page";
 
 // Import any needed thunks here
 
@@ -74,7 +76,7 @@ function App() {
           <Route exact path="/checkout/cart">
             <CheckoutCart />
           </Route>
-          {user && (
+          {user ? (
             <>
               <Route exact path="/profile/:empId">
                 <EmployeeProfile />
@@ -86,11 +88,23 @@ function App() {
                 <PayStubs />
               </Route>
             </>
+          ) : (
+            <>
+              <Route exact path="/profile/:empId">
+                <OopsyMessage />
+              </Route>
+              <Route exact path="/profile">
+                <OopsyMessage />
+              </Route>
+              <Route exact path="/paystubs/:empId">
+                <OopsyMessage />
+              </Route>
+            </>
           )}
-          <Route>"404: Page not Found"</Route>
+          <Route path="*" element={<ErrorFourOHFour />} />
         </Switch>
       )}
-      <Footer />
+      {location.pathname === "/" ? null : <Footer />}
     </>
   );
 }

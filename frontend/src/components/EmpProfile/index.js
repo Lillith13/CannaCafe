@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
+import "./EmpProfile.css";
+
 import { getAnEmployee } from "../../store/employees";
 import OpenModalButton from "../OpenModalButton";
 import EditAccount from "../AllModals/EditAcct";
@@ -35,8 +37,9 @@ export default function EmployeeProfile() {
   }, [isLoaded]);
 
   return isLoaded ? (
-    <div>
+    <div className="employeeProfileContainer">
       <button
+        className="goBackButtonFromStaffProfile"
         onClick={(e) => {
           e.preventDefault(e);
           history.goBack();
@@ -44,9 +47,9 @@ export default function EmployeeProfile() {
       >
         Go Back
       </button>
-      <h3>
+      <h2>
         {employee.firstName} {employee.lastName}
-      </h3>
+      </h2>
       <p>Username: {employee.username}</p>
       <div>
         <label>
@@ -68,13 +71,18 @@ export default function EmployeeProfile() {
       {(user.role.name == "Owner" && employee.role.name == "Manager") ||
       (user.role.name == "Owner" && employee.role.name == "Employee") ||
       (user.role.name == "Manager" && employee.role.name == "Employee") ? (
-        <>
+        <div className="staffProfileOptions">
           <OpenModalButton
             buttonText="Edit Account"
             modalComponent={<EditAccount empId={empId} />}
           />
-          <h3 onClick={() => setLoadTimeCards(!loadTimeCards)}>Timecards</h3>
-        </>
+          <h2
+            className="staffProfilePayStubTab"
+            onClick={() => setLoadTimeCards(!loadTimeCards)}
+          >
+            Timecards
+          </h2>
+        </div>
       ) : null}
       {loadTimeCards && <TimeCards emp={employee} />}
     </div>

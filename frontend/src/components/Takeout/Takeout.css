@@ -1,0 +1,88 @@
+.takeoutContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.takeoutContainer {
+  display: flex;
+  justify-items: center;
+}
+.takeoutContainerDiv {
+  display: flex;
+  flex-direction: column;
+  margin-left: 45px;
+  gap: 25px;
+}
+.takeoutItemContainer {
+  display: flex;
+  justify-content: space-evenly;
+  border: 3px dotted #abc4aa;
+  border-radius: 15px;
+  width: fit-content;
+  padding: 25px 0px;
+  width: 95%;
+}
+
+.itemImageContainer {
+  width: 30%;
+}
+.itemImageContainer > img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.takeoutItemInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.takeoutItemInfoContainer > a {
+  color: #4e6c50;
+}
+.takeoutButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.quantChangeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+.quantChangeButtonsContainer {
+  display: flex;
+  gap: 7px;
+}
+.incButton,
+.decButton {
+  display: flex;
+  padding: 7px 15px;
+  font-weight: bold;
+  font-size: 15px;
+  justify-content: center;
+  text-align: center;
+}
+.removeButton {
+  width: 75%;
+  padding: 10px 5px;
+}
+.decButton#removeButton:hover,
+.removeButton:hover {
+  background-color: #b67162;
+  font-weight: bold;
+}
+
+.checkoutNcontinueShoppingButtonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+.checkoutNcontinueShoppingButtonsContainer > button,
+.checkoutNcontinueShoppingButtonsContainer > a > button,
+.emptyBagButton {
+  padding: 15px;
+}

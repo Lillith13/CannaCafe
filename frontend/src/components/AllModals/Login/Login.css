@@ -1,0 +1,46 @@
+.logInModal {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px 0px;
+}
+.loginTitle {
+  margin: 0px;
+  padding: 0px;
+}
+.logInModal > form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-weight: bold;
+}
+.loginSelectLabel,
+.loginLabel {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.loginSelectLabel {
+  flex-direction: column;
+}
+
+.logInModal > form > button {
+  background-color: #a9b388;
+  color: #f0ebce;
+  font-size: 17px;
+}
+.logInModal > form > button:hover {
+  background-color: #d3b5a0;
+  color: #675d50;
+}
+
+.logInModal > form > label > select,
+.loginInput {
+  background-color: #807464;
+  color: #f0ebce;
+  font-weight: bold;
+}
+.loginInput::placeholder {
+  color: #d3b5a0;
+}

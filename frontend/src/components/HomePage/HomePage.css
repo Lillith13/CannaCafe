@@ -1,0 +1,48 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.viewAllItemsButton {
+  width: 15%;
+}
+.viewAllProductsButton,
+.viewAllMenuButton {
+  width: 35%;
+}
+.viewAllItemsButton,
+.viewAllProductsButton,
+.viewAllMenuButton {
+  font-size: 25px;
+  padding: 10px 0px;
+}
+
+.productsContainerDiv,
+.menuItemsContainerDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 25px 50px;
+}
+
+.productLinksContainer,
+.menuItemsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 15px;
+}
+
+.idvProduct,
+.idvMenuItem {
+  border: 3px solid #4e6c50;
+  border-radius: 15px;
+  background-color: #b99470;
+  width: 35%;
+  padding: 50px 0px;
+  flex-wrap: wrap;
+  color: #fefae0;
+}
+.idvProduct:hover,
+.idvMenuItem:hover {
+  background-color: #4e6c50;
+}

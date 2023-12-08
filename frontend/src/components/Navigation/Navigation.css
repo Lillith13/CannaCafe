@@ -1,3 +1,56 @@
-.hidden {
-  display: none;
+.logoIconContainer {
+  display: flex;
+  gap: 15px;
+}
+.navlinkContainer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  right: 50px;
+}
+
+.logoNavLink {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.navlinkIcon,
+.logoIcon,
+.profileLogo {
+  width: 50px;
+  height: 50px;
+}
+
+.siteName {
+  color: #f0ebce;
+}
+
+.nav-btn {
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: fixed;
+  top: 75px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  padding: 25px;
+  border: 1px solid #395144;
+  border-radius: 15px;
+  background-color: #aa8b56;
+  color: #395144;
+  font-size: 20px;
+  font-weight: bold;
+  list-style: none;
+}
+
+.profile-dropdown > li > button,
+.profile-dropdown > li > a > button {
+  padding: 10px 10px;
+  width: 80%;
 }

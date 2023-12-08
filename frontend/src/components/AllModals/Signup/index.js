@@ -5,6 +5,7 @@ import { signUp } from "../../../store/session";
 import { useModal } from "../../../context/Modal";
 import OpenModalButton from "../../OpenModalButton";
 import Login from "../Login";
+
 import "./Signup.css";
 
 export default function Signup({ currUser }) {
@@ -78,16 +79,16 @@ export default function Signup({ currUser }) {
       errors["firstName"] = "First name is required";
     }
     if (firstName.length < 2) {
-      errors["firstName"] = "First name must be more than 2 characters";
+      errors["firstName"] = "First name too short";
     }
     if (!lastName) {
       errors["lastName"] = "Last name is required";
     }
     if (lastName.length < 2) {
-      errors["lastName"] = "Last name must be more than 2 characters";
+      errors["lastName"] = "Last name too short";
     }
     if (!birthday) {
-      errors["birthday"] = "Birthday is required - Accounts are age restricted";
+      errors["birthday"] = "Birthday is required";
     }
     if (!address) {
       errors["address"] = "Address is required";
@@ -119,13 +120,13 @@ export default function Signup({ currUser }) {
       errors["password"] = "Password is required";
     }
     if (!confirmPassword) {
-      errors["confirmPassword"] = "Confirm Password is required";
+      errors["confirmPassword"] = "Must confirm password";
     }
     if (password !== confirmPassword) {
-      errors["confirmPassword"] = "Password and Confirm Password must match";
+      errors["confirmPassword"] = "Passwords must match";
     }
     if (isNaN(Number(zipcode)) || zipcode.length !== 5) {
-      errors["zipcode"] = "Zipcode must be all numbers and 5 digits long";
+      errors["zipcode"] = "Invalid zipcode";
     }
     setErrors(errors);
 
@@ -138,175 +139,185 @@ export default function Signup({ currUser }) {
     <div className="signUpModal">
       <h1 className="signUpTitle">{user ? "New Employee" : "Signup"}</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          First Name
-          <input
-            className="signUpInput"
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          {errors.firstName && <p className="errors">* {errors.firstName}</p>}
-        </label>
-        <label>
-          Last Name
-          <input
-            className="signUpInput"
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-          {errors.lastName && <p className="errors">* {errors.lastName}</p>}
-        </label>
-        <label>
-          Birthday
-          <input
-            className="signUpInput"
-            type="date"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-          />
-          {errors.birthday && <p className="errors">* {errors.birthday}</p>}
-        </label>
-        <label>
+        <div className="signUpNameDiv">
+          <label className="signUpLabel">
+            First Name
+            <input
+              className="signUpInput"
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              placeholder={errors.firstName ? "* " + errors.firstName : " "}
+            />
+          </label>
+          <label className="signUpLabel">
+            Last Name
+            <input
+              className="signUpInput"
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              placeholder={errors.lastName ? "* " + errors.lastName : " "}
+            />
+          </label>
+        </div>
+
+        <label className="signUpLabel" id="address">
           Address
           <input
             className="signUpInput"
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            placeholder={errors.address ? "* " + errors.address : " "}
           />
-          {errors.address && <p className="errors">* {errors.address}</p>}
         </label>
-        {/* <label>
-          Address
-          <input
-            className="signUpInput"
-            type="text"
-            value={address2}
-            onChange={(e) => setAddress2(e.target.value)}
-          />
-        </label> */}
-        <label>
-          City
-          <input
-            className="signUpInput"
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-          {errors.city && <p className="errors">* {errors.city}</p>}
-        </label>
-        <label>
-          State
-          <input
-            className="signUpInput"
-            type="text"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-          />
-          {errors.state && <p className="errors">* {errors.state}</p>}
-        </label>
-        <label>
-          Zipcode
-          <input
-            className="signUpInput"
-            type="text"
-            value={zipcode}
-            onChange={(e) => setZipcode(e.target.value)}
-          />
-          {errors.zipcode && <p className="errors">* {errors.zipcode}</p>}
-        </label>
-        <label>
-          Email
-          <input
-            className="signUpInput"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && <p className="errors">* {errors.email}</p>}
-        </label>
-        {user && (
-          <label>
-            Phone Number
+
+        <div className="cityNstateDiv">
+          <label className="signUpLabel">
+            City
             <input
-              type="tel"
-              value={phone}
-              // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              onChange={(e) => setPhone(e.target.value)}
+              className="signUpInput"
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder={errors.city ? "* " + errors.city : " "}
             />
-            {errors.phone && <p className="errors">* {errors.phone}</p>}
           </label>
-        )}
-        <label>
-          Username
-          <input
-            className="signUpInput"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          {errors.username && <p className="errors">* {errors.username}</p>}
-        </label>
-        <label>
-          Password
-          <input
-            className="signUpInput"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {errors.password && <p className="errors">* {errors.password}</p>}
-        </label>
-        <label>
-          Confirm Password
-          <input
-            className="signUpInput"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          {errors.confirmPassword && (
-            <p className="errors">* {errors.confirmPassword}</p>
-          )}
-        </label>
+          <label className="signUpLabel">
+            State
+            <input
+              className="signUpInput"
+              type="text"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              placeholder={errors.state ? "* " + errors.state : " "}
+            />
+          </label>
+        </div>
+
+        <div className="zipNbirthdayDiv">
+          <label className="signUpLabel">
+            Zipcode
+            <input
+              className="signUpInput"
+              type="text"
+              value={zipcode}
+              onChange={(e) => setZipcode(e.target.value)}
+              placeholder={errors.zipcode ? "* " + errors.zipcode : " "}
+            />
+          </label>
+          <div className="birthdayDiv">
+            <label className="signUpLabel">
+              Birthday
+              <input
+                className="signUpInput"
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                placeholder={errors.birthday ? "* " + errors.birthday : " "}
+              />
+            </label>
+          </div>
+        </div>
+
+        <div className="emailNusernameDiv">
+          <label className="signUpLabel">
+            Email
+            <input
+              className="signUpInput"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={errors.email ? "* " + errors.email : " "}
+            />
+          </label>
+          <label className="signUpLabel">
+            Username
+            <input
+              className="signUpInput"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder={errors.username ? "* " + errors.username : " "}
+            />
+          </label>
+        </div>
+
+        <div className="passwordDiv">
+          <label className="signUpLabel">
+            Password
+            <input
+              className="signUpInput"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={errors.password ? "* " + errors.password : " "}
+            />
+          </label>
+          <label className="signUpLabel">
+            Confirm Password
+            <input
+              className="signUpInput"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder={
+                errors.confirmPassword ? "* " + errors.confirmPassword : " "
+              }
+            />
+          </label>
+        </div>
+
         {user && (
-          <label>
-            Employee Role
-            <select
-              value={role}
-              onChange={(e) => {
-                setRole(e.target.value);
-              }}
-            >
-              <option selected default hidden>
-                Select Role...
-              </option>
-              <option value="Employee">Employee</option>
-              {user.role.name === "Owner" && (
-                <>
-                  <option value="Manager">Manager</option>
-                  <option value="Owner">Owner</option>
-                </>
-              )}
-            </select>
-            {errors.role && <p className="errors">* {errors.role}</p>}
-          </label>
+          <div className="phoneNroleDiv">
+            <label className="signUpLabel">
+              Phone Number
+              <input
+                className="signUpInput"
+                type="tel"
+                value={phone}
+                // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder={errors.phone ? "* " + errors.phone : " "}
+              />
+            </label>
+            <div className="roleSelectDiv">
+              <label className="signUpSelectLabel">
+                Employee Role
+                <select
+                  value={role}
+                  onChange={(e) => {
+                    setRole(e.target.value);
+                  }}
+                >
+                  <option selected default hidden>
+                    Select Role...
+                  </option>
+                  <option value="Employee">Employee</option>
+                  {user.role.name === "Owner" && (
+                    <>
+                      <option value="Manager">Manager</option>
+                      <option value="Owner">Owner</option>
+                    </>
+                  )}
+                </select>
+                {errors.role && <p className="signupErrors">* {errors.role}</p>}
+              </label>
+            </div>
+          </div>
         )}
         <button className="signUpButton" type="submit">
-          Sign Up
+          {user ? "Create Employee Account" : "Sign Up"}
         </button>
+        {!user && (
+          <OpenModalButton
+            modalClasses={["signUpRedirect"]}
+            modalComponent={<Login />}
+            buttonText="Have an account? Log In Here"
+          />
+        )}
       </form>
-
-      <span>
-        Have an account?{" "}
-        <OpenModalButton
-          modalClasses={["signUpRedirect"]}
-          modalComponent={<Login />}
-          buttonText="Log In Here"
-        />
-      </span>
     </div>
   );
 }

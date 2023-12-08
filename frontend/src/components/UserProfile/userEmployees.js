@@ -20,47 +20,70 @@ export default function UserEmployees() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div>
-      <div>
-        <h3>Employees</h3>
-        {employees.Employees &&
-          employees.Employees.map((employee) => (
-            <NavLink exact to={`/profile/${employee.id}`} key={employee.id}>
-              <div>
-                <h4>
-                  {employee.firstName} {employee.lastName}
-                </h4>
-              </div>
-            </NavLink>
-          ))}
+    <div className="staffListContainer">
+      <div className="empListContainer">
+        {/* <label> */}
+        <h2>Employees</h2>
+        <div className="empListDiv">
+          {employees.Employees &&
+            employees.Employees.map((employee) => (
+              <NavLink
+                exact
+                to={`/profile/${employee.id}`}
+                key={employee.id}
+                className="staffName"
+              >
+                <div>
+                  <h4>
+                    {employee.firstName} {employee.lastName}
+                  </h4>
+                </div>
+              </NavLink>
+            ))}
+        </div>
+        {/* </label> */}
       </div>
 
-      <div>
+      <div className="managerListContainer">
         <h3>Managers</h3>
-        {employees.Managers &&
-          employees.Managers.map((manager) => (
-            <NavLink exact to={`/profile/${manager.id}`} key={manager.id}>
-              <div>
-                <h4>
-                  {manager.firstName} {manager.lastName}
-                </h4>
-              </div>
-            </NavLink>
-          ))}
+        <div className="managerListDiv">
+          {employees.Managers &&
+            employees.Managers.map((manager) => (
+              <NavLink
+                exact
+                to={`/profile/${manager.id}`}
+                key={manager.id}
+                className="staffName"
+              >
+                <div>
+                  <h4>
+                    {manager.firstName} {manager.lastName}
+                  </h4>
+                </div>
+              </NavLink>
+            ))}
+        </div>
       </div>
 
-      <div>
+      <div className="ownerListContainer">
         <h3>Owners</h3>
-        {employees.Owners &&
-          employees.Owners.map((owner) => (
-            <NavLink exact to={`/profile/${owner.id}`} key={owner.id}>
-              <div>
-                <h4>
-                  {owner.firstName} {owner.lastName}
-                </h4>
-              </div>
-            </NavLink>
-          ))}
+        <div className="ownerListDiv">
+          {employees.Owners &&
+            employees.Owners.map((owner) => (
+              <NavLink
+                exact
+                to={`/profile/${owner.id}`}
+                key={owner.id}
+                className="staffName"
+              >
+                <div>
+                  <h4>
+                    {owner.firstName} {owner.lastName}
+                  </h4>
+                </div>
+              </NavLink>
+            ))}
+        </div>
       </div>
     </div>
   ) : (

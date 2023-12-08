@@ -22,13 +22,13 @@ export default function UserFavorites() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div>
+    <div className="userFavesTabContainer">
       {Object.values(faves).length > 0 ? (
         <>
           {Object.values(faves).map((fave) => (
-            <div key={fave.id}>
+            <div key={fave.id} className="userFavesContainer">
               <NavLink exact to={`/menu/${fave.id}`}>
-                <p>{fave.name}</p>
+                <h1>{fave.name}</h1>
               </NavLink>
               <OpenModalButton
                 buttonText="Remove From Favorites"
@@ -40,12 +40,12 @@ export default function UserFavorites() {
           ))}
         </>
       ) : (
-        <>
-          <h3>No favorites yet...</h3>
+        <div className="emptyFavesTab">
+          <h1>No favorites yet...</h1>
           <NavLink exact to="/menu">
-            <button>Find Faves to Add!</button>
+            <button className="emptyFavesTabButton">Find Faves to Add!</button>
           </NavLink>
-        </>
+        </div>
       )}
     </div>
   ) : (

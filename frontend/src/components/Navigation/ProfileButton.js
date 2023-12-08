@@ -73,16 +73,8 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <div
-        onClick={openMenu}
-        style={{ fontSize: 35, cursor: "pointer" }}
-        className="nav-btn"
-      >
-        <img
-          src={profileIcon}
-          alt="takeoutLogo"
-          style={{ width: "50px", height: "50px" }}
-        />
+      <div onClick={openMenu} className="nav-btn">
+        <img className="profileLogo" src={profileIcon} alt="profileLogo" />
       </div>
       <ul className={`${ulClassName} profile-dropdown`} ref={ulRef}>
         {user ? (

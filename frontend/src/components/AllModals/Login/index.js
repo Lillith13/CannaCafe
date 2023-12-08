@@ -30,33 +30,33 @@ function Login() {
 
   return (
     <div className="logInModal">
-      <h1>Log In</h1>
+      <h1 className="loginTitle">Log In</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username
-          <input
-            className="loginInput"
-            type="text"
-            value={creds}
-            onChange={(e) => setCreds(e.target.value)}
-            // required
-          />
-          {errors.creds && <p className="loginErrors">* {errors.creds}</p>}
-        </label>
-        <label>
-          Password
-          <input
-            className="loginInput"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            // required
-          />
-          {errors.password && (
-            <p className="loginErrors">* {errors.password}</p>
-          )}
-        </label>
-        <label>
+        <div>
+          <label className="loginLabel">
+            Username
+            <input
+              className="loginInput"
+              type="text"
+              value={creds}
+              onChange={(e) => setCreds(e.target.value)}
+              placeholder={errors.creds ? "* " + errors.creds : " "}
+            />
+          </label>
+        </div>
+        <div>
+          <label className="loginLabel">
+            Password
+            <input
+              className="loginInput"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={errors.password ? "* " + errors.password : " "}
+            />
+          </label>
+        </div>
+        <label className="loginSelectLabel">
           Or choose a demo user...
           <select
             onChange={(e) => {
@@ -81,20 +81,15 @@ function Login() {
           </select>
         </label>
 
-        <button
-          className="loginButton"
-          type="submit"
-          // disabled={creds.length === 0 || password.length === 0}
-        >
+        <button className="loginButton" type="submit">
           Log In
         </button>
+        <OpenModalButton
+          modalClasses={["logInRedirect"]}
+          modalComponent={<Signup />}
+          buttonText="... or Sign Up Here"
+        />
       </form>
-
-      <OpenModalButton
-        modalClasses={["logInRedirect"]}
-        modalComponent={<Signup />}
-        buttonText="... or Sign Up Here"
-      />
     </div>
   );
 }

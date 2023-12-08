@@ -40,7 +40,7 @@ export default function ProductDetails() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <>
+    <div className="productDetailsContainer">
       {!product.category.age_restricted ||
       (product.category.age_restricted && user) ? (
         <>
@@ -102,44 +102,44 @@ export default function ProductDetails() {
                   />
                 </>
               )}
-            {userFaves && userWishes && (
+            {userFaves && (
               <>
-                {!Object.keys(userWishes).includes(product.id?.toString()) &&
-                  product.category.shippable && (
-                    <OpenModalButton
-                      buttonText="Add to Wishlist"
-                      modalComponent={
-                        <ConfirmAdd where="Wishlist" product={product} />
-                      }
-                    />
-                  )}
-                {!Object.keys(userFaves).includes(product.id?.toString()) &&
-                  !product.category.shippable && (
-                    <OpenModalButton
-                      buttonText="Add to Favorites"
-                      modalComponent={
-                        <ConfirmAdd where="Favorites" product={product} />
-                      }
-                    />
-                  )}
-                {Object.keys(userWishes).includes(product.id?.toString()) &&
-                  product.category.shippable && (
-                    <OpenModalButton
-                      buttonText="Remove From Wishlist"
-                      modalComponent={
-                        <ConfirmRemove where="Wishlist" product={product} />
-                      }
-                    />
-                  )}
                 {Object.keys(userFaves).includes(product.id?.toString()) &&
-                  !product.category.shippable && (
-                    <OpenModalButton
-                      buttonText="Remove From Favorites"
-                      modalComponent={
-                        <ConfirmRemove where="Favorites" product={product} />
-                      }
-                    />
-                  )}
+                !product.category.shippable ? (
+                  <OpenModalButton
+                    buttonText="Remove From Favorites"
+                    modalComponent={
+                      <ConfirmRemove where="Favorites" product={product} />
+                    }
+                  />
+                ) : (
+                  <OpenModalButton
+                    buttonText="Add to Favorites"
+                    modalComponent={
+                      <ConfirmAdd where="Favorites" product={product} />
+                    }
+                  />
+                )}
+              </>
+            )}
+            {userWishes && (
+              <>
+                {Object.keys(userWishes).includes(product.id?.toString()) &&
+                product.category.shippable ? (
+                  <OpenModalButton
+                    buttonText="Remove From Wishlist"
+                    modalComponent={
+                      <ConfirmRemove where="Wishlist" product={product} />
+                    }
+                  />
+                ) : (
+                  <OpenModalButton
+                    buttonText="Add to Wishlist"
+                    modalComponent={
+                      <ConfirmAdd where="Wishlist" product={product} />
+                    }
+                  />
+                )}
               </>
             )}
           </div>
@@ -154,7 +154,7 @@ export default function ProductDetails() {
           <OpenModalButton buttonText="Signup" modalComponent={<Signup />} />
         </>
       )}
-    </>
+    </div>
   ) : (
     <h1>Loading...</h1>
   );

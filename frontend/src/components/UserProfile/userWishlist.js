@@ -20,13 +20,13 @@ export default function UserWishlist() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div>
+    <div className="userWishTabContainer">
       {Object.values(wishlist).length > 0 ? (
         <>
           {Object.values(wishlist).map((wish) => (
-            <div key={wish.id}>
+            <div key={wish.id} className="userWishContainer">
               <NavLink exact to={`/product/${wish.id}`}>
-                <p>{wish.name}</p>
+                <h1>{wish.name}</h1>
               </NavLink>
               <OpenModalButton
                 buttonText="Remove From Wishlist"
@@ -38,10 +38,10 @@ export default function UserWishlist() {
           ))}
         </>
       ) : (
-        <div>
-          <h3>No wishlist items yet...</h3>
+        <div className="emptyWishTab">
+          <h1>No wishlist items yet...</h1>
           <NavLink exact to="/products">
-            <button>Find Wishes to Add!</button>
+            <button className="emptyWishTabButton">Find Wishes to Add!</button>
           </NavLink>
         </div>
       )}

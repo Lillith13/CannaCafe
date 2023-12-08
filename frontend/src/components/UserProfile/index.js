@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
+import "./UserProfile.css";
+
 import OpenModalButton from "../OpenModalButton";
 import Signup from "../AllModals/Signup";
 import EditAccount from "../AllModals/EditAcct";
 import ConfirmDeleteAcct from "../AllModals/ConfirmDelete/confirmDeleteAcct";
+
 import { userClockin, userClockout } from "../../store/timecard";
+
 import UserOrders from "./userOrders";
+import UserComplaints from "./userComplaints";
+import UserReviews from "./userReviews";
 import UserWishlist from "./userWishlist";
 import UserFavorites from "./userFavorites";
 import UserEmployees from "./userEmployees";
@@ -26,8 +32,17 @@ export default function UserProfile() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (!user) {
-      history.push("/login");
+    if (!user || user == "undefined") {
+      history.push("/");
+    }
+    if (
+      user.role.name == "Owner" ||
+      user.role.name == "Manager" ||
+      user.role.name == "Employee"
+    ) {
+      setEmployeesLoaded(true);
+    } else {
+      setFavoritesLoaded(true);
     }
   }, []);
 
@@ -57,51 +72,60 @@ export default function UserProfile() {
   };
 
   return (
-    <>
+    <div className="userProfileContainer">
       <h1>
         Hello, {user.firstName} {user.lastName}
       </h1>
       <div>
-        <OpenModalButton
-          buttonText="Edit Account"
-          modalComponent={<EditAccount />}
-        />
-        {user && user.role.name === "Member" && (
-          <OpenModalButton
-            buttonText="Delete Account"
-            modalComponent={<ConfirmDeleteAcct userId={user.id} />}
-          />
-        )}
-        {user &&
-          (user.role.name === "Employee" ||
-            user.role.name === "Manager" ||
-            user.role.name === "Owner") && (
-            <>
-              <button onClick={(e) => handleClockIn(e)}>Clock In</button>
-              <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
-              <NavLink exact to={`/paystubs/${user.id}`}>
-                <button>View Paystubs</button>
-              </NavLink>
-            </>
-          )}
-        {user &&
-          (user.role.name === "Manager" || user.role.name === "Owner") && (
-            <>
+        <div className="profileButtonsContainer">
+          <div className="universalProfileButtonsDiv">
+            <OpenModalButton
+              buttonText="Edit Account"
+              modalComponent={<EditAccount />}
+            />
+            {user && user.role.name === "Member" && (
               <OpenModalButton
-                buttonText="Add to Products"
-                modalComponent={<CreateProduct type="product" />}
+                buttonText="Delete Account"
+                modalComponent={<ConfirmDeleteAcct userId={user.id} />}
               />
-              <OpenModalButton
-                buttonText="Add to Menu"
-                modalComponent={<CreateProduct type="menu" />}
-              />
-              <OpenModalButton
-                buttonText="New Employee"
-                modalComponent={<Signup currUser={user.id} />}
-              />
-            </>
-          )}
-        <div>
+            )}
+          </div>
+          <div className="barrierProtectedProfileButtonsDiv">
+            <div className="employeeAccessibleProfileButtonsDiv">
+              {(user.role.name === "Employee" ||
+                user.role.name === "Manager" ||
+                user.role.name === "Owner") && (
+                <>
+                  <button onClick={(e) => handleClockIn(e)}>Clock In</button>
+                  <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
+                  <NavLink exact to={`/paystubs/${user.id}`}>
+                    <button>View Paystubs</button>
+                  </NavLink>
+                </>
+              )}
+            </div>
+            <div className="managementOnlyButtosDiv">
+              {(user.role.name === "Manager" || user.role.name === "Owner") && (
+                <>
+                  <OpenModalButton
+                    buttonText="Add to Products"
+                    modalComponent={<CreateProduct type="product" />}
+                  />
+                  <OpenModalButton
+                    buttonText="Add to Menu"
+                    modalComponent={<CreateProduct type="menu" />}
+                  />
+                  <OpenModalButton
+                    buttonText="New Employee"
+                    modalComponent={<Signup currUser={user.id} />}
+                  />
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="profileTabsContainer">
           <h3
             onClick={() => {
               setOrdersLoaded(true);
@@ -117,7 +141,7 @@ export default function UserProfile() {
           {user.role.name == "Member" && (
             <h3
               onClick={() => {
-                setOrdersLoaded(true);
+                setOrdersLoaded(false);
                 setWishlistLoaded(false);
                 setFavoritesLoaded(false);
                 setEmployeesLoaded(false);
@@ -131,7 +155,7 @@ export default function UserProfile() {
           {(user.role.name == "Manager" || user.role.name == "Owner") && (
             <h3
               onClick={() => {
-                setOrdersLoaded(true);
+                setOrdersLoaded(false);
                 setWishlistLoaded(false);
                 setFavoritesLoaded(false);
                 setEmployeesLoaded(false);
@@ -145,7 +169,7 @@ export default function UserProfile() {
           {user.role.name == "Member" && (
             <h3
               onClick={() => {
-                setOrdersLoaded(true);
+                setOrdersLoaded(false);
                 setWishlistLoaded(false);
                 setFavoritesLoaded(false);
                 setEmployeesLoaded(false);
@@ -159,7 +183,7 @@ export default function UserProfile() {
           {(user.role.name == "Manager" || user.role.name == "Owner") && (
             <h3
               onClick={() => {
-                setOrdersLoaded(true);
+                setOrdersLoaded(false);
                 setWishlistLoaded(false);
                 setFavoritesLoaded(false);
                 setEmployeesLoaded(false);
@@ -209,7 +233,7 @@ export default function UserProfile() {
             </h3>
           )}
         </div>
-        <div>
+        <div className="profileTabsDisplaysContainer">
           {ordersLoaded && (
             <div>
               <UserOrders />
@@ -217,12 +241,12 @@ export default function UserProfile() {
           )}
           {reviewsLoaded && (
             <div>
-              <h4>placeholder for now...</h4>
+              <UserReviews />
             </div>
           )}
           {complaintsLoaded && (
             <div>
-              <h4>placeholder for now...</h4>
+              <UserComplaints />
             </div>
           )}
           {wishlistLoaded && (
@@ -242,6 +266,6 @@ export default function UserProfile() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -16,43 +16,69 @@ export default function HomePage() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div>
-      <div>
-        {user ? (
-          <>
-            {(user.role.name === "Manager" || user.role.name === "Owner") && (
-              <NavLink exact to="/allProducts">
-                <h3>View All</h3>
-              </NavLink>
-            )}
-          </>
-        ) : null}
-        <div>
-          <h2>Checkout our Products</h2>
-        </div>
-        <NavLink exact to="/products">
-          <h3>View All</h3>
-        </NavLink>
-        <div>Product Images will cycle here...</div>
-        {Object.values(categories).map((category) => (
-          <NavLink exact to={`/category/${category.name}`} key={category.id}>
-            {category.shippable && <h3>{category.name}</h3>}
+    <div className="homeContainer">
+      {user ? (
+        <>
+          {(user.role.name === "Manager" || user.role.name === "Owner") && (
+            <NavLink exact to="/allProducts">
+              <button className="viewAllItemsButton">View All</button>
+            </NavLink>
+          )}
+        </>
+      ) : null}
+
+      <div className="productsContainerDiv">
+        <div className="productsTitleContainer">
+          <h1>Checkout our Products</h1>
+
+          <NavLink exact to="/products">
+            <button className="viewAllProductsButton">View All Products</button>
           </NavLink>
-        ))}
+        </div>
+
+        <div className="productLinksContainer">
+          {Object.values(categories).map((category) => (
+            <>
+              {category.shippable && (
+                <NavLink
+                  exact
+                  to={`/category/${category.name}`}
+                  key={category.id}
+                  className="idvProduct"
+                >
+                  <h2>{category.name}</h2>
+                </NavLink>
+              )}
+            </>
+          ))}
+        </div>
       </div>
-      <div>
-        <div>
-          <h2>Checkout our Menu</h2>
-        </div>
-        <NavLink exact to="/menu">
-          <h3>View All</h3>
-        </NavLink>
-        <div>Menu Item Images will cycle here...</div>
-        {Object.values(categories).map((category) => (
-          <NavLink exact to={`/category/${category.name}`} key={category.id}>
-            {!category.shippable && <h3>{category.name}</h3>}
+
+      <div className="menuItemsContainerDiv">
+        <div className="menuItemsTitleContainer">
+          <h1>Checkout our Menu</h1>
+
+          <NavLink exact to="/menu">
+            <button className="viewAllMenuButton">View Full Menu</button>
           </NavLink>
-        ))}
+        </div>
+
+        <div className="menuItemsContainer">
+          {Object.values(categories).map((category) => (
+            <>
+              {!category.shippable && (
+                <NavLink
+                  exact
+                  to={`/category/${category.name}`}
+                  key={category.id}
+                  className="idvMenuItem"
+                >
+                  <h2>{category.name}</h2>
+                </NavLink>
+              )}
+            </>
+          ))}
+        </div>
       </div>
     </div>
   ) : (

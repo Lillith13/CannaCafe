@@ -9,7 +9,12 @@ export default function CheckoutCart({ userId }) {
   const [total, setTotal] = useState();
 
   useEffect(() => {
-    const storedCart = localStorage.getItem(`${userId}cart`);
+    let storedCart = null;
+    if (userId && userId != "undefined") {
+      storedCart = localStorage.getItem(`${userId}cart`);
+    } else {
+      storedCart = localStorage.getItem("guestCart");
+    }
     const parsedCart = JSON.parse(storedCart);
     let cartTotal = 0;
     Object.values(parsedCart).map((item) => {
@@ -22,7 +27,11 @@ export default function CheckoutCart({ userId }) {
 
   const placeOrder = () => {
     let updateCart = {};
-    localStorage.setItem(`${userId}cart`, JSON.stringify(updateCart));
+    if (userId && userId != "undefined") {
+      localStorage.setItem(`${userId}cart`, JSON.stringify(updateCart));
+    } else {
+      localStorage.setItem("guestCart", JSON.stringify(updateCart));
+    }
     history.push("/home");
     closeModal();
   };

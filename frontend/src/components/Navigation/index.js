@@ -12,33 +12,21 @@ import cartIcon from "../../assets/shopping_cart_logo.png";
 export default function Navigation({ isLoaded }) {
   const user = useSelector((state) => state.session.user);
   return (
-    <nav style={{ display: "flex", gap: "100px" }}>
-      <div>
-        <NavLink exact to="/home">
-          <img
-            src={cannaLogo}
-            alt="CannaLogo"
-            style={{ width: "50px", height: "50px" }}
-          />
-          CannaCafe
+    <nav>
+      <div className="logoIconContainer">
+        <NavLink exact to="/home" className="logoNavLink">
+          <img className="logoIcon" src={cannaLogo} alt="CannaLogo" />
+          <h1 className="siteName">CannaCafe</h1>
         </NavLink>
       </div>
       {/* Implement Search Bar later */}
       {/* <input type="text" placeholder="Search..." onChange={}/> */}
-      <div>
+      <div className="navlinkContainer">
         <NavLink exact to="/takeout">
-          <img
-            src={takeawayIcon}
-            alt="takeoutLogo"
-            style={{ width: "50px", height: "50px" }}
-          />
+          <img className="navlinkIcon" src={takeawayIcon} alt="takeoutLogo" />
         </NavLink>
         <NavLink exact to="/cart">
-          <img
-            src={cartIcon}
-            alt="takeoutLogo"
-            style={{ width: "50px", height: "50px" }}
-          />
+          <img className="navlinkIcon" src={cartIcon} alt="takeoutLogo" />
         </NavLink>
         {isLoaded && <ProfileButton user={user} />}
       </div>

@@ -10,7 +10,12 @@ export default function CheckoutBag({ userId }) {
   const [total, setTotal] = useState();
 
   useEffect(() => {
-    const storedBag = localStorage.getItem(`${userId}takeaway`);
+    let storedBag = null;
+    if (userId && userId != "undefined") {
+      storedBag = localStorage.getItem(`${userId}takeaway`);
+    } else {
+      storedBag = localStorage.getItem("guestTakeaway");
+    }
     const parsedBag = JSON.parse(storedBag);
     let bagTotal = 0;
     Object.values(parsedBag).map((item) => {
@@ -23,7 +28,11 @@ export default function CheckoutBag({ userId }) {
 
   const placeOrder = () => {
     let updateBag = {};
-    localStorage.setItem(`${userId}takeaway`, JSON.stringify(updateBag));
+    if (userId && userId != "undefined") {
+      localStorage.setItem(`${userId}takeaway`, JSON.stringify(updateBag));
+    } else {
+      localStorage.setItem("guestTakeaway", JSON.stringify(updateBag));
+    }
     history.push("/home");
     closeModal();
   };
