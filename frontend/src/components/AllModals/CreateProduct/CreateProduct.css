@@ -1,0 +1,58 @@
+.createItemModalContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.createItemForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.nameNcategoryDiv,
+.priceNunitsAvailDiv,
+.priceNimageDiv {
+  display: flex;
+  gap: 10px;
+}
+.nameNcategoryDiv {
+  justify-content: space-evenly;
+}
+.createItemLabel,
+.prevImageLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.createItemInput {
+  background-color: #807464;
+  color: #f0ebce;
+  font-weight: bold;
+}
+
+.createItemInput::placeholder {
+  color: #d3b5a0;
+  font-weight: bold;
+}
+
+.createItemSelect {
+  background-color: #807464;
+  color: #f0ebce;
+  font-weight: bold;
+}
+.createItemSelect#catError {
+  border: 3px solid #d3b5a0;
+}
+
+.createItemForm > button {
+  background-color: #a9b388;
+  color: #f0ebce;
+  font-size: 17px;
+}
+.createItemForm > button:hover {
+  background-color: #d3b5a0;
+  color: #675d50;
+}

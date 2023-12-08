@@ -5,6 +5,8 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import { deleteProduct } from "../../../store/products";
 
+import "./ConfirmDelete.css";
+
 export default function ConfirmDeleteItem({ product }) {
   const { closeModal } = useModal();
   const history = useHistory();
@@ -21,11 +23,14 @@ export default function ConfirmDeleteItem({ product }) {
   };
 
   return (
-    <div>
+    <div className="confirmDeleteItemContainer">
       <h2>Confirm Delete</h2>
       <p>Are you sure you want to delete {product.name}?</p>
-      <div>
-        <button onClick={() => handleDelete(product.id)}>
+      <div className="confirmDeleteItemButtonsContainer">
+        <button
+          className="confirmDeleteItemButton"
+          onClick={() => handleDelete(product.id)}
+        >
           Yes (delete product)
         </button>
         <button onClick={closeModal}>No (keep product)</button>

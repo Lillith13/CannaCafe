@@ -1,0 +1,7 @@
+.confirmRemoveMessageContainer {
+  padding: 15px;
+}
+.confirmRemoveMessageContainer > button {
+  width: 50%;
+  font-size: 25px;
+}

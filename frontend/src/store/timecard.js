@@ -10,8 +10,8 @@ export const allUserTimecards = (userId) => async (dispatch) => {
   // * load all timecards for user
   const res = await fetch(`/api/timecard/${userId}`);
   const data = await res.json();
-  console.log(res);
-  console.log(data);
+  // console.log(res);
+  // console.log(data);
   if (res.ok) {
     if (data.errors) {
       return data.errors;
@@ -36,15 +36,19 @@ export const userClockin = () => async (dispatch) => {
     },
   });
   const data = await res.json();
+  // console.log(data);
   if (res.ok) {
     if (data.errors) {
+      // console.log(data);
       return data.errors;
     }
     return null;
   } else {
     if (data.errors) {
+      // console.log(data);
       return data.errors;
     } else {
+      // console.log(data);
       return data;
     }
   }
@@ -59,17 +63,19 @@ export const userClockout = () => async (dispatch) => {
     },
   });
   const data = await res.json();
+  // console.log(data);
   if (res.ok) {
     if (data.errors) {
-      console.log(data.errors);
+      // console.log(data);
       return data.errors;
     }
     return null;
   } else {
     if (data.errors) {
-      console.log(data.errors);
+      // console.log(data);
       return data.errors;
     } else {
+      // console.log(data);
       return data;
     }
   }

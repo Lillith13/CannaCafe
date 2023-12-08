@@ -1,0 +1,18 @@
+.cartCheckoutContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0px;
+  gap: 15px;
+}
+
+.cartCheckoutButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.cartCheckoutButtonsContainer > button {
+  padding: 5px;
+  font-weight: bold;
+  background-color: #acb992;
+  color: #362706;
+}

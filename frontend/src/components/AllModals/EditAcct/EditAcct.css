@@ -1,0 +1,80 @@
+.editAcctModal {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px 0px;
+}
+.editAcctTitle {
+  margin: 0px;
+  padding: 0px;
+}
+.editAcctModal > form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-weight: bold;
+}
+
+.editAcctNameDiv,
+.addressNcityDiv,
+.stateNzipDiv,
+.phoneNconfirmPassDiv {
+  display: flex;
+  gap: 5px;
+}
+
+.editAcctSelectLabel,
+.editAcctLabel {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.editAcctLabel#address > .signUpInput {
+  width: 96%;
+}
+
+.editAcctModal > form > button {
+  background-color: #a9b388;
+  color: #f0ebce;
+  font-size: 17px;
+}
+.editAcctModal > form > button:hover {
+  background-color: #d3b5a0;
+  color: #675d50;
+}
+
+.editAcctSelectLabel > select,
+.editAcctInput {
+  background-color: #807464;
+  color: #f0ebce;
+  font-weight: bold;
+}
+.editAcctInput::placeholder {
+  color: #d3b5a0;
+}
+.editAcctErrors {
+  color: #b67162;
+  font-weight: bold;
+}
+
+.editAcctInput#password {
+  width: 98%;
+}
+
+.editAcctRoleSelect {
+  background-color: #807464;
+  color: #f0ebce;
+  font-weight: bold;
+}
+.editAcctRoleSelect#roleError {
+  border: 3px solid #d3b5a0;
+}
+
+/* .createItemSelect {
+
+  }
+  .createItemSelect#catError {
+
+  } */

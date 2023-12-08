@@ -5,6 +5,8 @@ import { useModal } from "../../../context/Modal";
 import { addToWishlist } from "../../../store/wishlist";
 import { addToFaves } from "../../../store/favorites";
 
+import "./ConfirmAdd.css";
+
 export default function ConfirmAdd({ where, product, user }) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
@@ -79,8 +81,8 @@ export default function ConfirmAdd({ where, product, user }) {
   }, []);
 
   return (
-    <div>
-      <h1>Successfully added to {where}</h1>
+    <div className="confirmAddToMessageContainer">
+      <h1>Successfully added to {where}!</h1>
       <button onClick={closeModal}>OK! 😊 </button>
     </div>
   );

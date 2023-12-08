@@ -5,6 +5,8 @@ import { useModal } from "../../../context/Modal";
 import { delFromWishlist } from "../../../store/wishlist";
 import { delFromFaves } from "../../../store/favorites";
 
+import "./ConfirmRemove.css";
+
 export default function ConfirmRemove({ where, product }) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
@@ -19,8 +21,8 @@ export default function ConfirmRemove({ where, product }) {
   }, []);
 
   return (
-    <div>
-      <h1>Successfully removed from {where}</h1>
+    <div className="confirmRemoveMessageContainer">
+      <h1>Successfully removed from {where}!</h1>
       <button onClick={closeModal}>OK! 😊 </button>
     </div>
   );

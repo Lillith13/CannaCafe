@@ -40,6 +40,9 @@
 .takeoutItemInfoContainer > a {
   color: #4e6c50;
 }
+.takeoutItemInfoContainer > a:hover {
+  color: #abc4aa;
+}
 .takeoutButtonsContainer {
   display: flex;
   flex-direction: column;

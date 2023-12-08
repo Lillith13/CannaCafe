@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { useModal } from "../../../context/Modal";
+import "./CheckoutBag.css";
 
 export default function CheckoutBag({ userId }) {
   const { closeModal } = useModal();
@@ -38,7 +39,7 @@ export default function CheckoutBag({ userId }) {
   };
 
   return (
-    <div>
+    <div className="bagCheckoutContainer">
       <h1>Confirm Order</h1>
       <h3>
         {option ? option : "Order"} Total: ${total}
@@ -50,10 +51,12 @@ export default function CheckoutBag({ userId }) {
         <option value="Delivery">Delivery</option>
         <option value="PickUp">Pick-Up</option>
       </select>
-      <button disabled={!option} onClick={placeOrder}>
-        Confirm
-      </button>
-      <button onClick={closeModal}>Cancel</button>
+      <div className="bagCheckoutButtonsContainer">
+        <button disabled={!option} onClick={placeOrder}>
+          Confirm
+        </button>
+        <button onClick={closeModal}>Cancel</button>
+      </div>
     </div>
   );
 }

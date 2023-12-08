@@ -1,0 +1,7 @@
+.confirmAddToMessageContainer {
+  padding: 15px;
+}
+.confirmAddToMessageContainer > button {
+  width: 50%;
+  font-size: 25px;
+}

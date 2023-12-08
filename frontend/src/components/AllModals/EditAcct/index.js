@@ -6,6 +6,8 @@ import { useModal } from "../../../context/Modal";
 import { editUser } from "../../../store/session";
 import { getAnEmployee } from "../../../store/employees";
 
+import "./EditAcct.css";
+
 export default function EditAccount({ empId }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -115,15 +117,13 @@ export default function EditAccount({ empId }) {
     let errors = {};
     if (newPassword) {
       if (!oldPassword) {
-        errors["oldPassword"] =
-          "Changing your password requires you to input your old password";
+        errors["oldPassword"] = "Required";
       }
       if (newPassword.length < 8) {
-        errors["newPassword"] = "New password must be 8 or more characters";
+        errors["newPassword"] = "Must be 8 or more characters";
       }
       if (newPassword != confirmNewPassword) {
-        errors["confirmPassword"] =
-          "If you're changing your password, new password and confirm must match";
+        errors["confirmPassword"] = "Required";
       }
     }
     if (!firstName) {
@@ -168,172 +168,187 @@ export default function EditAccount({ empId }) {
     <div className="editAcctModal">
       <h1>Edit Account</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          First Name
-          <input
-            className="editAcctInput"
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
-          {errors.firstName && <p className="errors">* {errors.firstName}</p>}
-        </label>
-        <label>
-          Last Name
-          <input
-            className="editAcctInput"
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-          />
-          {errors.lastName && <p className="errors">* {errors.lastName}</p>}
-        </label>
-        <label>
-          Address
-          <input
-            className="editAcctInput"
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-          {errors.address && <p className="errors">* {errors.address}</p>}
-        </label>
-        {/* <label>
-          Address
-          <input
-            className="editAcctInput"
-            type="text"
-            value={address2}
-            onChange={(e) => setAddress2(e.target.value)}
-          />
-        </label> */}
-        <label>
-          City
-          <input
-            className="editAcctInput"
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-          {errors.city && <p className="errors">* {errors.city}</p>}
-        </label>
-        <label>
-          State
-          <input
-            className="editAcctInput"
-            type="text"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            required
-          />
-          {errors.state && <p className="errors">* {errors.state}</p>}
-        </label>
-        <label>
-          Zipcode
-          <input
-            className="editAcctInput"
-            type="text"
-            value={zipcode}
-            onChange={(e) => setZipcode(e.target.value)}
-            required
-          />
-          {errors.zipcode && <p className="errors">* {errors.zipcode}</p>}
-        </label>
-        {/* <label>
-          Email
-          <input
-            className="editAcctInput"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          {errors.email && <p className="errors">* {errors.email}</p>}
-        </label> */}
-        {empId && (
-          <label>
-            Phone Number
+        <div className="editAcctNameDiv">
+          <label className="editAcctLabel">
+            First Name
             <input
-              type="tel"
-              value={phone}
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              onChange={(e) => setPhone(e.target.value)}
-              required
+              className="editAcctInput"
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              placeholder={errors.firstName ? "* " + errors.firstName : " "}
             />
-            {errors.phone && <p className="errors">* {errors.phone}</p>}
           </label>
+          <label className="editAcctLabel">
+            Last Name
+            <input
+              className="editAcctInput"
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              placeholder={errors.lastName ? "* " + errors.lastName : " "}
+            />
+          </label>
+        </div>
+
+        <div className="addressNcityDiv">
+          <label className="editAcctLabel">
+            Address
+            <input
+              className="editAcctInput"
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder={errors.address ? "* " + errors.address : " "}
+            />
+          </label>
+          <label className="editAcctLabel">
+            City
+            <input
+              className="editAcctInput"
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder={errors.city ? "* " + errors.city : " "}
+            />
+          </label>
+        </div>
+
+        <div className="stateNzipDiv">
+          <label className="editAcctLabel">
+            State
+            <input
+              className="editAcctInput"
+              type="text"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              placeholder={errors.state ? "* " + errors.state : " "}
+            />
+          </label>
+          <label className="editAcctLabel">
+            Zipcode
+            <input
+              className="editAcctInput"
+              type="text"
+              value={zipcode}
+              onChange={(e) => setZipcode(e.target.value)}
+              placeholder={errors.zipcode ? "* " + errors.zipcode : " "}
+            />
+          </label>
+        </div>
+
+        {empId &&
+        (user.role.name === "Manager" || user.role.name === "Owner") &&
+        user.id != emp.id ? (
+          <div className="phoneNroleDiv">
+            <label className="editAcctLabel">
+              Phone Number
+              <input
+                className="editAcctInput"
+                type="tel"
+                value={phone}
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder={errors.phone ? "* " + errors.phone : " "}
+              />
+            </label>
+            {empId &&
+              (user.role.name === "Manager" || user.role.name === "Owner") &&
+              user.id != emp.id && (
+                <div className="roleSelectDiv">
+                  <label className="editAcctLabel">
+                    Employee Role
+                    <select
+                      className="editAcctRoleSelect"
+                      id={errors.role && "roleError"}
+                      value={role}
+                      defaultValue={role ? role : null}
+                      onChange={(e) => {
+                        setRole(e.target.value);
+                      }}
+                    >
+                      <option selected default hidden>
+                        Select Role...
+                      </option>
+                      <option value="Member">Member</option>
+                      <option value="Employee">Employee</option>
+                      {user.role.name === "Owner" && (
+                        <>
+                          <option value="Manager">Manager</option>
+                          <option value="Owner">Owner</option>
+                        </>
+                      )}
+                    </select>
+                  </label>
+                </div>
+              )}
+          </div>
+        ) : (
+          <div className="phoneNconfirmPassDiv">
+            <label className="editAcctLabel">
+              Phone Number
+              <input
+                className="editAcctInput"
+                type="tel"
+                value={phone}
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder={errors.phone ? "* " + errors.phone : " "}
+              />
+            </label>
+            <label className="editAcctLabel">
+              Current Password
+              <input
+                className="editAcctInput"
+                type="password"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+                placeholder={errors.oldPassword && "* " + errors.oldPassword}
+              />
+            </label>
+          </div>
         )}
-        <label>
-          Current Password
-          <input
-            className="editAcctInput"
-            type="password"
-            value={oldPassword}
-            onChange={(e) => setOldPassword(e.target.value)}
-            // required={newPassword}
-          />
-          {errors.oldPassword && (
-            <p className="errors">* {errors.oldPassword}</p>
+        {empId &&
+          (user.role.name === "Manager" || user.role.name === "Owner") &&
+          user.id != emp.id && (
+            <label className="editAcctLabel">
+              Current Password
+              <input
+                className="editAcctInput"
+                id="password"
+                type="password"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+                placeholder={errors.oldPassword && "* " + errors.oldPassword}
+              />
+            </label>
           )}
-        </label>
-        <label>
+
+        <label className="editAcctLabel">
           New Password
           <input
             className="editAcctInput"
+            id="password"
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            // disabled={!oldPassword}
+            placeholder={errors.newPassword && "* " + errors.newPassword}
           />
-          {errors.newPassword && (
-            <p className="errors">* {errors.newPassword}</p>
-          )}
         </label>
-        <label>
+        <label className="editAcctLabel">
           Confirm New Password
           <input
             className="editAcctInput"
+            id="password"
             type="password"
             value={confirmNewPassword}
             onChange={(e) => setConfirmNewPassword(e.target.value)}
-            // disabled={!newPassword}
-            // required={newPassword}
+            placeholder={
+              errors.confirmPassword && "* " + errors.confirmPassword
+            }
           />
-          {errors.confirmPassword && (
-            <p className="errors">* {errors.confirmPassword}</p>
-          )}
         </label>
-        {emp.id &&
-          (user.role.name === "Manager" || user.role.name === "Owner") &&
-          user.id != emp.id && (
-            <label>
-              Employee Role
-              <select
-                value={role}
-                defaultValue={role ? role : null}
-                onChange={(e) => {
-                  setRole(e.target.value);
-                }}
-              >
-                <option selected default hidden>
-                  Select Role...
-                </option>
-                <option value="Member">Member</option>
-                <option value="Employee">Employee</option>
-                {user.role.name === "Owner" && (
-                  <>
-                    <option value="Manager">Manager</option>
-                    <option value="Owner">Owner</option>
-                  </>
-                )}
-              </select>
-              {errors.role && <p className="errors">* {errors.role}</p>}
-            </label>
-          )}
+
         <button
           className="editAccountButton"
           type="submit"

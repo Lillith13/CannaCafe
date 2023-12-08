@@ -1,0 +1,24 @@
+.timeCardsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  gap: 15px;
+}
+
+.idvTimeCardDiv {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #1a120b;
+  background-color: #3c2a21;
+  color: #e5e5cb;
+  border-radius: 15px;
+}
+.goBackButtonDiv {
+  display: flex;
+}
+.goBackButton {
+  padding: 5px 15px;
+  background-color: #a9b388;
+  color: #fefae0;
+  font-size: 20px;
+}

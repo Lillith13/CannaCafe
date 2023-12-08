@@ -1,0 +1,26 @@
+.bagCheckoutContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0px;
+  gap: 15px;
+}
+
+.bagCheckoutButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.bagCheckoutButtonsContainer > button {
+  padding: 5px;
+  font-weight: bold;
+  background-color: #acb992;
+  color: #362706;
+}
+.bagCheckoutButtonsContainer > button:disabled {
+  background-color: #9e9d89;
+  color: #e4d3cf;
+}
+.bagCheckoutButtonsContainer > button:disabled:hover {
+  background-color: #e2bcb7;
+  color: #1a120b;
+}

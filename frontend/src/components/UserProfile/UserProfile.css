@@ -139,6 +139,13 @@
 .userWishContainer > a {
   color: #a9b388;
 }
+.userFavesContainer > a:hover,
+.userWishContainer > a:hover,
+.empListDiv > a:hover,
+.managerListDiv > a:hover,
+.ownerListDiv > a:hover {
+  color: #e5e5cb;
+}
 .userFavesContainer > button:hover,
 .userWishContainer > button:hover {
   background-color: #b67162;

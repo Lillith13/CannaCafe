@@ -37,6 +37,9 @@
 .cartItemInfoContainer > a {
   color: #4e6c50;
 }
+.cartItemInfoContainer > a:hover {
+  color: #abc4aa;
+}
 .cartButtonsContainer {
   display: flex;
   flex-direction: column;

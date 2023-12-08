@@ -1,0 +1,25 @@
+.confirmDeleteItemContainer,
+.confirmDeleteAcctContainer {
+  padding: 25px;
+}
+.confirmDeleteItemButtonsContainer,
+.confirmDeleteAcctButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+.confirmDeleteItemButtonsContainer > button,
+.confirmDeleteAcctButtonsContainer > button {
+  padding: 15px;
+}
+.confirmDeleteItemButton,
+.confirmDeleteAcctButton {
+  background-color: #e2bcb7;
+  color: #1a120b;
+}
+.confirmDeleteItemButton:hover,
+.confirmDeleteAcctButton:hover {
+  background-color: #8a5049;
+  color: #fefae0;
+}

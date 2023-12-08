@@ -39,7 +39,7 @@ def getPaystubs(userId):
 def empClockin():
     cardCheck = TimeCard.query.filter(TimeCard.clocked_out == None).first()
     if cardCheck:
-        return {'errors': validation_errors_to_error_messages({"clockerror": "Cannot clock in with an already open timecard"})}, 403
+        return {'errors': "Cannot clock in with an already open timecard"}, 403
     new_timecard = TimeCard(
         user_id = current_user.get_id(),
         clocked_in = datetime.now()
@@ -53,7 +53,7 @@ def empClockin():
 def empClockout():
     cardCheck = TimeCard.query.filter(TimeCard.clocked_out == None).first()
     if not cardCheck:
-        return {'errors': validation_errors_to_error_messages({"clockerror": "You haven't clocked in yet"})}, 403
+        return {'errors': {"clockerror": "You haven't clocked in yet"}}, 403
 
     user = User.query.get(current_user.get_id())
     timecard = TimeCard.query.filter(TimeCard.user_id == current_user.get_id()).order_by(TimeCard.id.desc()).first()
@@ -73,12 +73,12 @@ def empTimeCorrection(empId):
     user = User.queary.get(current_user.get_id())
 
     if user.role != "Manager" or user.role != "Owner":
-        return {"errors": validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
+        return {"errors": {"Not_Allowed": "You do not have permission to perform this action"}}, 403
 
     if form.validate_on_submit:
         targetUser = User.query.get(empId)
         if targetUser.role == "Manager" and user.role != "Owner":
-            return {"errors": validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
+            return {"errors": {"Not_Allowed": "You do not have permission to perform this action"}}, 403
         data = form.data
         if request.method == "PUT":
             timecard = TimeCard.query.get(data['cardId']).first()
@@ -107,7 +107,7 @@ def empTimeCorrection(empId):
         cardId = request.get_data()
         timecard = TimeCard.query.get(cardId)
         if not timecard:
-            return {'errors': validation_errors_to_error_messages({"Not_Fount": "Timecard doesn't exist"})}, 404
+            return {'errors': {"Not_Found": "Timecard doesn't exist"}}, 404
         db.session.delete(timecard)
         db.session.commit()
         return {"message": "successful"}
