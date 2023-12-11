@@ -73,10 +73,45 @@
   display: flex;
   justify-content: space-evenly;
 }
+
 .universalProdButtonsTile > button,
-.roleProtectedButtonsTile > button {
+.removeFromButton > button,
+.roleProtectedButtonsTile > button,
+.productsUnivButton {
   width: 45%;
+}
+
+.universalProdButtonsTile > button,
+.removeFromButton > button,
+.roleProtectedButtonsTile > button,
+.productsUnivButton > button {
   padding: 10px 15px;
+}
+
+.universalProdButtonsTile > div > button,
+.productsUnivButton > button {
+  width: 100%;
+}
+
+.productsUnivButton > button,
+.editProductButton > button,
+.removeFromButton > button {
+  height: 100%;
+}
+
+.removeFromButton > button:hover,
+.editProductButton > button:hover,
+.deleteProductButton > button:hover {
+  color: #362706;
+}
+
+.removeFromButton > button:hover,
+.deleteProductButton > button:hover {
+  background-color: #e4d3cf;
+}
+
+.editProductButton > button:hover {
+  background-color: #f1d3b3;
 }
 
 /* .navLinkArea {

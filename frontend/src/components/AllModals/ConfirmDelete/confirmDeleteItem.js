@@ -12,14 +12,11 @@ export default function ConfirmDeleteItem({ product }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const handleDelete = async (productId) => {
-    const data = await dispatch(deleteProduct(productId));
-    if (data) {
-      console.log(data);
-    } else {
+  const handleDelete = (productId) => {
+    dispatch(deleteProduct(productId)).then(() => {
       history.push("/home");
       closeModal();
-    }
+    });
   };
 
   return (

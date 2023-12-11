@@ -1,0 +1,112 @@
+.productContainerDiv {
+  border-bottom: 3px dotted black;
+  padding-bottom: 25px;
+}
+
+.goBackButton {
+  padding: 5px 15px;
+  background-color: #a9b388;
+  color: #fefae0;
+  font-size: 20px;
+}
+.productContainer {
+  display: flex;
+}
+
+.prodInfoNButtonsDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+.productInfoDiv {
+  display: flex;
+  align-items: start;
+  text-wrap: wrap;
+  line-break: anywhere;
+  hyphens: auto;
+  width: 85%;
+}
+
+.productImageDiv {
+  width: 50%;
+  padding: 15px;
+}
+.productImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.nameNavailNpriceDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.numAvailNprice {
+  display: flex;
+  justify-content: space-between;
+  width: 93%;
+}
+
+.productButtonsDiv {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+}
+
+.universallyAccessibleButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.protectedButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.universallyAccessibleButtons > button {
+  padding: 5px;
+}
+
+.universallyAccessibleButtons > button,
+.removeFromButton,
+.editProductButton,
+.deleteProductButton {
+  width: 45%;
+}
+
+.removeFromButton > button,
+.editProductButton > button,
+.deleteProductButton > button {
+  padding: 10px;
+  width: 100%;
+}
+
+.removeFromButton#productDetailsRemoveFrom > button:hover,
+.deleteProductButton#productDeatilsDeleteProduct > button:hover,
+.editProductButton#productDetailsEditProduct > button:hover {
+  color: #362706;
+}
+
+.removeFromButton#productDetailsRemoveFrom > button:hover,
+.deleteProductButton#productDeatilsDeleteProduct > button:hover {
+  background-color: #e4d3cf;
+}
+
+.editProductButton#productDetailsEditProduct > button:hover {
+  background-color: #f1d3b3;
+}
+
+/*
+productDetailsContainerDiv
+productButtonsDiv
+
+removeFromButton
+
+editProductButton
+deleteProductButton
+*/

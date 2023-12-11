@@ -43,7 +43,7 @@ export default function EditProduct({ type, product }) {
     }
   }, [dispatch]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("productId", product.id);
@@ -56,18 +56,18 @@ export default function EditProduct({ type, product }) {
       formData.append("preview", previewImage);
     }
 
-    const data = await dispatch(editProduct(formData));
-    if (data) {
-      console.log(data);
-      setErrors(data.errors);
-    } else {
-      if (type == "product") {
-        history.push("/products");
+    dispatch(editProduct(formData)).then((data) => {
+      if (data && data != "undefined" && data.errors) {
+        setErrors(data.errors);
       } else {
-        history.push("/menu");
+        if (type == "product") {
+          history.push("/products");
+        } else {
+          history.push("/menu");
+        }
+        closeModal();
       }
-      closeModal();
-    }
+    });
   };
 
   return isLoaded ? (

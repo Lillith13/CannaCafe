@@ -5,21 +5,18 @@ import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import { deleteUser } from "../../../store/session";
 
-import "./ConfirmDelete.css"
+import "./ConfirmDelete.css";
 
 export default function ConfirmDeleteAcct({ userId }) {
   const { closeModal } = useModal();
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const handleDelete = async () => {
-    const data = await dispatch(deleteUser(userId));
-    if (data) {
-      console.log(data);
-    } else {
+  const handleDelete = () => {
+    dispatch(deleteUser(userId)).then(() => {
       history.push("/");
       closeModal();
-    }
+    });
   };
 
   return (

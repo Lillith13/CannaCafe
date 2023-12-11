@@ -18,6 +18,8 @@ import ConfirmDeleteItem from "../AllModals/ConfirmDelete/confirmDeleteItem";
 import ConfirmAdd from "../AllModals/ConfirmAddTo";
 import ConfirmRemove from "../AllModals/ConfirmRemove";
 
+import "./ProductDetails.css";
+
 export default function ProductDetails() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -44,8 +46,9 @@ export default function ProductDetails() {
       {!product.category.age_restricted ||
       (product.category.age_restricted && user) ? (
         <>
-          <div>
+          <div className="goBackButtonDiv">
             <button
+              className="goBackButton"
               onClick={(e) => {
                 e.preventDefault();
                 history.goBack();
@@ -54,97 +57,171 @@ export default function ProductDetails() {
               Go Back
             </button>
           </div>
-          <div>
-            <h1>{product.name}</h1>
-            {product.previewImg ? (
-              <img src={`${product.previewImg}`} />
-            ) : (
-              <img src={imgPlaceholder} />
-            )}
-          </div>
-          <div>
-            <p>{product.description}</p>
-            {product.category.shippable && (
-              <p>{product.units_available} Available</p>
-            )}
-            <p>${product.price}</p>
-            <OpenModalButton
-              buttonText={`Add to ${
-                product.category.shippable ? "Shopping Cart" : "Takeaway Bag"
-              }`}
-              modalComponent={
-                <ConfirmAdd
-                  where={
-                    product.category.shippable
-                      ? "Shopping Cart"
-                      : "Takeaway Bag"
-                  }
-                  product={product}
-                  user={user}
-                />
-              }
-            />
-            {user &&
-              (user.role.name === "Manager" || user.role.name === "Owner") && (
-                <>
-                  <OpenModalButton
-                    buttonText="Edit Product"
-                    modalComponent={
-                      <EditProduct
-                        type={[product.category.shippable ? "product" : "menu"]}
-                        product={product}
+
+          <div className="productContainerDiv">
+            <div className="productDetailsContainerDiv">
+              <div className="nameNavailNpriceDiv">
+                <h1>{product.name}</h1>
+                <div className="numAvailNprice">
+                  {product.category.shippable && (
+                    <h3>{product.units_available} Available</h3>
+                  )}
+                  <h3>${product.price}</h3>
+                </div>
+              </div>
+
+              <div className="productContainer">
+                <div className="productImageDiv">
+                  {product.previewImg ? (
+                    <img
+                      className="productImage"
+                      src={`${product.previewImg}`}
+                    />
+                  ) : (
+                    <img className="productImage" src={imgPlaceholder} />
+                  )}
+                </div>
+                <div className="prodInfoNButtonsDiv">
+                  <div className="productInfoDiv">
+                    <p>{product.description}</p>
+                  </div>
+
+                  <div className="productButtonsDiv">
+                    <div className="universallyAccessibleButtons">
+                      <OpenModalButton
+                        buttonText={`Add to ${
+                          product.category.shippable
+                            ? "Shopping Cart"
+                            : "Takeaway Bag"
+                        }`}
+                        modalComponent={
+                          <ConfirmAdd
+                            where={
+                              product.category.shippable
+                                ? "Shopping Cart"
+                                : "Takeaway Bag"
+                            }
+                            product={product}
+                            user={user}
+                          />
+                        }
                       />
-                    }
-                  />
-                  <OpenModalButton
-                    buttonText="Delete Product"
-                    modalComponent={<ConfirmDeleteItem product={product} />}
-                  />
-                </>
-              )}
-            {userFaves && (
-              <>
-                {Object.keys(userFaves).includes(product.id?.toString()) &&
-                !product.category.shippable ? (
-                  <OpenModalButton
-                    buttonText="Remove From Favorites"
-                    modalComponent={
-                      <ConfirmRemove where="Favorites" product={product} />
-                    }
-                  />
-                ) : (
-                  <OpenModalButton
-                    buttonText="Add to Favorites"
-                    modalComponent={
-                      <ConfirmAdd where="Favorites" product={product} />
-                    }
-                  />
-                )}
-              </>
-            )}
-            {userWishes && (
-              <>
-                {Object.keys(userWishes).includes(product.id?.toString()) &&
-                product.category.shippable ? (
-                  <OpenModalButton
-                    buttonText="Remove From Wishlist"
-                    modalComponent={
-                      <ConfirmRemove where="Wishlist" product={product} />
-                    }
-                  />
-                ) : (
-                  <OpenModalButton
-                    buttonText="Add to Wishlist"
-                    modalComponent={
-                      <ConfirmAdd where="Wishlist" product={product} />
-                    }
-                  />
-                )}
-              </>
-            )}
+
+                      {userFaves && !product.category.shippable && (
+                        <>
+                          {Object.keys(userFaves).includes(
+                            product.id?.toString()
+                          ) && !product.category.shippable ? (
+                            <div
+                              className="removeFromButton"
+                              id="productDetailsRemoveFrom"
+                            >
+                              <OpenModalButton
+                                buttonText="Remove From Favorites"
+                                modalComponent={
+                                  <ConfirmRemove
+                                    where="Favorites"
+                                    product={product}
+                                  />
+                                }
+                              />
+                            </div>
+                          ) : (
+                            <div className="productsUnivButton">
+                              <OpenModalButton
+                                buttonText="Add to Favorites"
+                                modalComponent={
+                                  <ConfirmAdd
+                                    where="Favorites"
+                                    product={product}
+                                  />
+                                }
+                              />
+                            </div>
+                          )}
+                        </>
+                      )}
+                      {userWishes && product.category.shippable && (
+                        <>
+                          {Object.keys(userWishes).includes(
+                            product.id?.toString()
+                          ) && product.category.shippable ? (
+                            <div
+                              className="removeFromButton"
+                              id="productDetailsRemoveFrom"
+                            >
+                              <OpenModalButton
+                                buttonText="Remove From Wishlist"
+                                modalComponent={
+                                  <ConfirmRemove
+                                    where="Wishlist"
+                                    product={product}
+                                  />
+                                }
+                              />
+                            </div>
+                          ) : (
+                            <div>
+                              <OpenModalButton
+                                buttonText="Add to Wishlist"
+                                modalComponent={
+                                  <ConfirmAdd
+                                    where="Wishlist"
+                                    product={product}
+                                  />
+                                }
+                              />
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+
+                    {user &&
+                      (user.role.name === "Manager" ||
+                        user.role.name === "Owner") && (
+                        <div className="protectedButtons">
+                          <div
+                            className="editProductButton"
+                            id="productDetailsEditProduct"
+                          >
+                            <OpenModalButton
+                              buttonText="Edit Product"
+                              modalComponent={
+                                <EditProduct
+                                  type={[
+                                    product.category.shippable
+                                      ? "product"
+                                      : "menu",
+                                  ]}
+                                  product={product}
+                                />
+                              }
+                            />
+                          </div>
+                          <div
+                            className="deleteProductButton"
+                            id="productDeatilsDeleteProduct"
+                          >
+                            <OpenModalButton
+                              buttonText="Delete Product"
+                              modalComponent={
+                                <ConfirmDeleteItem product={product} />
+                              }
+                            />
+                          </div>
+                        </div>
+                      )}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3>Reviews</h3>
-          <p>Product reviews will load here...</p>
+
+          <div className="productReviewsContainer">
+            <h3>Reviews</h3>
+            <p>Product reviews will load here...</p>
+          </div>
         </>
       ) : (
         <>
