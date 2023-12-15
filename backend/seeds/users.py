@@ -46,7 +46,7 @@ def seed_users():
     _ = [db.session.add(user) for user in seedUsers]
     db.session.commit()
 
-    seededMembers = seed_members(roleMember)
+    # seededMembers = seed_members(roleMember)
 
     seedWishes = []
     seedFaves = []
@@ -55,11 +55,11 @@ def seed_users():
         new_favorites = Favorite(user_id = user.id)
         seedWishes.append(new_wishlist)
         seedFaves.append(new_favorites)
-    for user in seededMembers:
-        new_wishlist = Wishlist(user_id = user.id)
-        new_favorites = Favorite(user_id = user.id)
-        seedWishes.append(new_wishlist)
-        seedFaves.append(new_favorites)
+    # for user in seededMembers:
+    #     new_wishlist = Wishlist(user_id = user.id)
+    #     new_favorites = Favorite(user_id = user.id)
+    #     seedWishes.append(new_wishlist)
+    #     seedFaves.append(new_favorites)
     _ = [db.session.add(wish) for wish in seedWishes]
     _ = [db.session.add(fave) for fave in seedFaves]
     db.session.commit()
