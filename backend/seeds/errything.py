@@ -331,30 +331,30 @@ def seed_errything():
     seedUsers = [ownerDemo, managerDemo1, managerDemo2, employeeDemo1, employeeDemo2, employeeDemo3]
     _ = [db.session.add(user) for user in seedUsers]
 
-    new_members = []
-    for count in range(5):
-        fakeName = fake.name()
-        fakeFirstName = fakeName.split(" ")[0]
-        fakeLastName = fakeName.split(" ")[1]
-        
-        new_member = User(
-            firstName=fakeFirstName,
-            lastName=fakeLastName,
-            birthday=fake.date_of_birth(minimum_age=21),
-            address=fake.street_address(),
-            city=fake.city(),
-            state=fake.state(),
-            zipcode=int(fake.postcode()),
-            username=f'memberDemo{count}',
-            email=fake.email(),
-            phone = fake.phone_number().split("x")[0],
-            password="password",
-            role_id=int(roleMember.id),
-            pay_rate=roleMember.payrate
-        )
-        new_members.append(new_member)
-    _ = [db.session.add(member) for member in new_members]
+    # new_members = []
+    # for count in range(5):
+    fakeName = fake.name()
+    fakeFirstName = fakeName.split(" ")[0]
+    fakeLastName = fakeName.split(" ")[1]
 
+    new_member = User(
+        firstName=fakeFirstName,
+        lastName=fakeLastName,
+        birthday=fake.date_of_birth(minimum_age=21),
+        address=fake.street_address(),
+        city=fake.city(),
+        state=fake.state(),
+        zipcode=int(fake.postcode()),
+        username=f'memberDemo',
+        email=fake.email(),
+        phone = fake.phone_number().split("x")[0],
+        password="password",
+        role_id=int(roleMember.id),
+        pay_rate=roleMember.payrate
+    )
+        # new_members.append(new_member)
+    # _ = [db.session.add(member) for member in new_members]
+    db.session.add(new_member)
     db.session.commit()
 
     seedWishes = []
