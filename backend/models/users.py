@@ -27,7 +27,7 @@ class User(db.Model, UserMixin):
 
     state = db.Column(db.String(50), nullable=False)
 
-    zipcode = db.Column(db.Integer, nullable=False)
+    zipcode = db.Column(db.String(5), nullable=False)
 
     username = db.Column(db.String(40), nullable=False, unique=True)
 

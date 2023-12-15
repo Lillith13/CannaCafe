@@ -344,10 +344,10 @@ def seed_errything():
         address=fake.street_address(),
         city=fake.city(),
         state=fake.state(),
-        zipcode=int(fake.postcode()),
+        zipcode=fake.postcode(),
         username=f'memberDemo',
         email=fake.email(),
-        phone = fake.phone_number().split("x")[0],
+        phone = '555-555-5555',
         password="password",
         role_id=int(roleMember.id),
         pay_rate=roleMember.payrate
@@ -437,7 +437,7 @@ def seed_errything():
         if demoFoodImages[f'{foodName}']["imageName"] == 'snacks':
             demoProduct = Product(
                 name=foodName,
-                description=fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+                description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
                 price=round(float(random.uniform(0.99, 2.99)), 2),
                 units_available=random.randint(1, 1000),
                 preview_image=demoFoodImages[f'{foodName}']["imageUrl"],
@@ -448,7 +448,7 @@ def seed_errything():
         else:
             demoProduct = Product(
                 name=foodName,
-                description=fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+                description="In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
                 price=round(float(random.uniform(4.99, 7.99)), 2),
                 units_available=random.randint(1, 1000),
                 preview_image=demoFoodImages[f'{foodName}']["imageUrl"],
@@ -477,7 +477,7 @@ def seed_errything():
         formattedDrinkName = "-".join(drinkName.split(" "))
         demoProduct = Product(
                 name=drinkName,
-                description=fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+                description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
                 price=round(float(random.uniform(2.49, 5.49)), 2),
                 units_available=random.randint(1, 1000),
                 preview_image=demoDrinkImages[f'{drinkName}'],
@@ -540,7 +540,7 @@ def seed_errything():
         if demoInfFoodImages[f'{foodName}']['imageName'] == 'snacks':
             demoProduct = Product(
                 name="Infused " + foodName,
-                description=fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+                description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
                 price=round(float(random.uniform(2.49, 5.49)), 2),
                 units_available=random.randint(1, 1000),
                 preview_image=demoInfFoodImages[f'{foodName}']['imageUrl'],
@@ -551,7 +551,7 @@ def seed_errything():
         else:
             demoProduct = Product(
                 name="Infused " + foodName,
-                description=fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+                description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
                 price=round(float(random.uniform(7.99, 14.99)), 2),
                 units_available=random.randint(1, 1000),
                 preview_image=demoInfFoodImages[f'{foodName}']['imageUrl'],
@@ -580,7 +580,7 @@ def seed_errything():
         formattedDrinkName = "-".join(drinkName.split(" "))
         demoProduct = Product(
                 name=drinkName,
-                description=fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+                description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
                 price=round(float(random.uniform(3.49, 6.49)), 2),
                 units_available=random.randint(1, 1000),
                 preview_image=demoDrinkImages[f'{drinkName}'],
@@ -600,7 +600,7 @@ def seed_errything():
         formattedStrainName = "-".join(merchName.split(" "))
         demoProduct = Product(
                 name=merchName,
-                description=fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+                description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
                 price=round(float(random.uniform(15.49, 30.49)), 2),
                 units_available=random.randint(1, 1000),
                 preview_image=demoMerchImages[f'{merchName}'],
@@ -632,7 +632,7 @@ def seed_errything():
         formattedStrainName = "-".join(strainName.split(" "))
         demoProduct = Product(
                 name=strainName,
-                description=fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+                description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
                 price=round(float(random.uniform(3.49, 6.49)), 2),
                 units_available=random.randint(1, 1000),
                 preview_image=demoGreenImages[f'{strainName}'],
@@ -653,7 +653,7 @@ def seed_errything():
         formattedStrainName = "-".join(paraName.split(" "))
         demoProduct = Product(
                 name=paraName,
-                description=fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+                description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
                 price=round(float(random.uniform(9.99, 99.99)), 2),
                 units_available=random.randint(1, 1000),
                 preview_image=demoParaImages[f'{paraName}'],
