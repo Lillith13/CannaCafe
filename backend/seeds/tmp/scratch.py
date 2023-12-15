@@ -113,3 +113,5 @@ fake = Faker()
 
 randNum = round(float(random.uniform(0.99, 99.99)), 2)
 print(randNum)
+
+

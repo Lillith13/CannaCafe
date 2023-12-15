@@ -364,11 +364,11 @@ def seed_errything():
         new_favorites = Favorite(user_id = user.id)
         seedWishes.append(new_wishlist)
         seedFaves.append(new_favorites)
-    for user in new_members:
-        new_wishlist = Wishlist(user_id = user.id)
-        new_favorites = Favorite(user_id = user.id)
-        seedWishes.append(new_wishlist)
-        seedFaves.append(new_favorites)
+    # for user in new_members:
+    new_wishlist = Wishlist(user_id = new_member.id)
+    new_favorites = Favorite(user_id = new_member.id)
+    seedWishes.append(new_wishlist)
+    seedFaves.append(new_favorites)
     _ = [db.session.add(wish) for wish in seedWishes]
     _ = [db.session.add(fave) for fave in seedFaves]
 
