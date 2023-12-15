@@ -1,4 +1,4 @@
-from ..models import db, Category, Product, environment, SCHEMA
+from ...models import db, Category, Product, environment, SCHEMA
 from sqlalchemy.sql import text
 
 from .products import seed_products

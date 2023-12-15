@@ -1,4 +1,4 @@
-from ..models import db, Role, environment, SCHEMA
+from ...models import db, Role, environment, SCHEMA
 from sqlalchemy import text
 
 

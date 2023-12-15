@@ -332,10 +332,11 @@ def seed_errything():
     _ = [db.session.add(user) for user in seedUsers]
 
     new_members = []
-    for count in range(10):
+    for count in range(5):
         fakeName = fake.name()
         fakeFirstName = fakeName.split(" ")[0]
         fakeLastName = fakeName.split(" ")[1]
+        
         new_member = User(
             firstName=fakeFirstName,
             lastName=fakeLastName,

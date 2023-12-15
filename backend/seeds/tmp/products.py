@@ -1,4 +1,4 @@
-from ..models import db, Product, environment, SCHEMA
+from ...models import db, Product, environment, SCHEMA
 from sqlalchemy.sql import text
 from faker import Faker
 import random

@@ -1,4 +1,4 @@
-from ..models import  db, User, Wishlist, Favorite, environment, SCHEMA
+from ...models import  db, User, Wishlist, Favorite, environment, SCHEMA
 from sqlalchemy import text
 from faker import Faker
 
