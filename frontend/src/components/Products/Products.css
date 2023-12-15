@@ -107,7 +107,7 @@
 
 .removeFromButton > button:hover,
 .deleteProductButton > button:hover {
-  background-color: #e4d3cf;
+  background-color: #dbc1bb;
 }
 
 .editProductButton > button:hover {

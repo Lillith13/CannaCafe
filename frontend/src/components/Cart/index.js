@@ -15,7 +15,7 @@ export default function Cart() {
   useEffect(() => {
     let localCart = null;
     if (user) {
-      localCart = localStorage.getItem(`${user.id}cart`);
+      localCart = localStorage.getItem(`${user.id}Cart`);
     } else {
       localCart = localStorage.getItem("guestCart");
     }
@@ -30,7 +30,7 @@ export default function Cart() {
     e.preventDefault();
     let storedCart = null;
     if (user) {
-      storedCart = localStorage.getItem(`${user.id}cart`);
+      storedCart = localStorage.getItem(`${user.id}Cart`);
     } else {
       storedCart = localStorage.getItem("guestCart");
     }
@@ -54,7 +54,7 @@ export default function Cart() {
       updatedCart = { ...currCart };
     }
     if (user) {
-      localStorage.setItem(`${user.id}cart`, JSON.stringify(updatedCart));
+      localStorage.setItem(`${user.id}Cart`, JSON.stringify(updatedCart));
     } else {
       localStorage.setItem("guestCart", JSON.stringify(updatedCart));
     }

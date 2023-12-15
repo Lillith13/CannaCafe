@@ -186,40 +186,25 @@ export default function CreateProduct({ type }) {
                 placeholder={errors.price ? "* " + errors.price : " "}
               />
             </label>
-            <label className="createItemLabel">
-              Preview Image:
-              <input
-                className="createItemInput"
-                // id="previewImage"
-                type="file"
-                accept="image/png, image/jpg, image/jpeg"
-                onChange={(e) => {
-                  setPreviewImage(e.target.files[0]);
-                }}
-              />
-              <span className="errors">
-                {errors.previewImage ? "* " + errors.previewImage : " "}
-              </span>
-            </label>
           </div>
         )}
-        {type === "product" && (
-          <label className="createItemLabel">
-            Preview Image:
-            <input
-              className="createItemInput"
-              // id="previewImage"
-              type="file"
-              accept="image/png, image/jpg, image/jpeg"
-              onChange={(e) => {
-                setPreviewImage(e.target.files[0]);
-              }}
-            />
-            <span className="errors">
-              {errors.previewImage ? "* " + errors.previewImage : " "}
-            </span>
-          </label>
-        )}
+        {/* {type === "product" && ( */}
+        <label className="createItemLabel">
+          Preview Image:
+          <input
+            className="createItemInput"
+            // id="previewImage"
+            type="file"
+            accept="image/png, image/jpg, image/jpeg"
+            onChange={(e) => {
+              setPreviewImage(e.target.files[0]);
+            }}
+          />
+          <span className="errors">
+            {errors.previewImage ? "* " + errors.previewImage : " "}
+          </span>
+        </label>
+        {/* )} */}
 
         <button type="submit" className="createItemButton">
           Submit

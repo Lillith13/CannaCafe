@@ -6,3 +6,4 @@ from .product_images import ProductImageForm
 from .review import ReviewForm
 from .complaint import ComplaintForm
 from .timecard import TimecardForm
+from .placeOrder import PlaceOrder

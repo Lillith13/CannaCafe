@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import OpenModalButton from "../OpenModalButton";
 import Login from "../AllModals/Login";
@@ -74,7 +74,13 @@ function ProfileButton({ user }) {
   return (
     <>
       <div onClick={openMenu} className="nav-btn">
-        <img className="profileLogo" src={profileIcon} alt="profileLogo" />
+        <img
+          className={
+            user && user.profile_pic ? "userProfilePic" : "profileLogo"
+          }
+          src={user && user.profile_pic ? user.profile_pic : profileIcon}
+          alt="profileLogo"
+        />
       </div>
       <ul className={`${ulClassName} profile-dropdown`} ref={ulRef}>
         {user ? (

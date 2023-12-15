@@ -1,8 +1,9 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user, logout_user
 
-from ...models import db, User, Role
+from ...models import db, User, Role, Review
 from ...forms import EditAccountForm
+from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 from .auth_helper import validation_errors_to_error_messages
 
 user_routes = Blueprint('users', __name__, url_prefix="/users")
@@ -55,7 +56,19 @@ def editAccount(id):
 
     if form.validate_on_submit():
         data = form.data
-        print("edit route validated form data => ", data)
+        # print("edit route validated form data => ", data)
+        if data['profile_pic']:
+            img = data['profile_pic']
+            if(user.profile_image and user.profile_image != 'undefined'):
+                remove_file_from_s3(user.profile_image)
+
+            filename = img.filename
+            img.filename = get_unique_filename(filename)
+            upload = upload_file_to_s3(img)
+            if 'url' not in upload:
+                return upload
+            user.profile_image = upload['url']
+
         if user.firstName != data['firstName']:
             user.firstName = data['firstName']
 
@@ -80,17 +93,19 @@ def editAccount(id):
         if user.phone != data['phone']:
             user.phone = data['phone']
 
-        if current_user.get_id() == user.id:
-            if data['newpass'] and user.check_password(data['oldpass']):
-                user.password = data['newpass']
+        if int(current_user.get_id()) == int(user.id):
+            if data['newpassword'] and user.check_password(data['oldpassword']):
+                user.password = data['newpassword']
 
-        if current_user.get_id() != user.id:
+        if int(current_user.get_id()) != int(user.id):
             thirdParty = User.query.get(current_user.get_id())
 
             if thirdParty.role.name != "Manager" and thirdParty.role.name != "Owner":
+                print("is this where the error is hitting? 1")
                 return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
 
             if thirdParty.role.name == "Manager" and user.role.name != "Owner":
+                print("is this where the error is hitting? 2")
                 return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
 
             role = Role.query.filter(Role.name == data['role']).first()
@@ -101,5 +116,13 @@ def editAccount(id):
                 user.pay_rate = None
         db.session.commit()
         return user.to_dict()
-
+    print(form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@user_routes.route('/reviews')
+def userReviews():
+    reviews = Review.query.filter(Review.user_id == current_user.get_id()).all()
+    if not len(reviews):
+        return {"Reviews": None}
+    return { "Reviews": [review.user_dict() for review in reviews]}

@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 
 import { getAllEmployees } from "../../store/employees";
 
+import profileIcon from "../../assets/profile_icon.png";
+
 export default function UserEmployees() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -34,6 +36,15 @@ export default function UserEmployees() {
                 className="staffName"
               >
                 <div>
+                  <img
+                    className={
+                      employee.profile_pic ? "userProfilePic" : "profileLogo"
+                    }
+                    src={
+                      employee.profile_pic ? employee.profile_pic : profileIcon
+                    }
+                    alt="profileLogo"
+                  />
                   <h4>
                     {employee.firstName} {employee.lastName}
                   </h4>
@@ -56,6 +67,15 @@ export default function UserEmployees() {
                 className="staffName"
               >
                 <div>
+                  <img
+                    className={
+                      manager.profile_pic ? "userProfilePic" : "profileLogo"
+                    }
+                    src={
+                      manager.profile_pic ? manager.profile_pic : profileIcon
+                    }
+                    alt="profileLogo"
+                  />
                   <h4>
                     {manager.firstName} {manager.lastName}
                   </h4>
@@ -77,6 +97,13 @@ export default function UserEmployees() {
                 className="staffName"
               >
                 <div>
+                  <img
+                    className={
+                      owner.profile_pic ? "userProfilePic" : "profileLogo"
+                    }
+                    src={owner.profile_pic ? owner.profile_pic : profileIcon}
+                    alt="profileLogo"
+                  />
                   <h4>
                     {owner.firstName} {owner.lastName}
                   </h4>

@@ -13,6 +13,8 @@ class Order(db.Model):
 
     user_id = db.Column(db.INTEGER, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
 
+    total = db.Column(db.Numeric(precision=10, scale=2), default=0)
+
     placed = db.Column(db.Date, default=date.today(), nullable=False)
 
     shipped = db.Column(db.Date)
@@ -28,8 +30,10 @@ class Order(db.Model):
 
     def to_dict(self):
         return {
+            "id": self.id,
             "user_id": self.user_id,
             "products": [product.to_dict() for product in self.products],
+            'total': self.total,
             'placed': self.placed,
             'shipped': self.shipped,
             'fulfilled': self.fulfilled,

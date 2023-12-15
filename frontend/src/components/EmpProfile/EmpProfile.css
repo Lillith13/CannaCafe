@@ -7,3 +7,10 @@
 .staffProfilePayStubTab {
   cursor: pointer;
 }
+
+.employeeProfileContainer > div > img.userProfilePic,
+.employeeProfileContainer > div > img.profileLogo {
+  width: 25%;
+  height: 25%;
+  margin: 15px;
+}

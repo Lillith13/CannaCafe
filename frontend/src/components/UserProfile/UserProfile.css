@@ -65,25 +65,6 @@
   border-radius: 30px;
 }
 
-::-webkit-scrollbar {
-  width: 15px;
-  height: 100%;
-  background-color: #395144;
-}
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-track-piece {
-  background-color: #395144;
-}
-::-webkit-scrollbar-thumb,
-::-webkit-scrollbar-thumb:vertical {
-  width: 10px;
-  background-color: #a9b388;
-  border-radius: 30px;
-}
-::-webkit-scrollbar-thumb:horizontal {
-  display: none;
-}
-
 .staffListContainer {
   display: flex;
   flex-direction: column;
@@ -115,6 +96,13 @@
   font-size: 20px;
   gap: 25px;
 }
+.empListDiv > a,
+.managerListDiv > a,
+.ownerListDiv > a {
+  padding: 25px;
+  border-radius: 15px;
+  /* max-width: 50%; */
+}
 .staffName {
   color: #a9b388;
 }
@@ -143,8 +131,11 @@
 .userWishContainer > a:hover,
 .empListDiv > a:hover,
 .managerListDiv > a:hover,
+.ownerListDiv > a:hover,
+.managerListDiv > a:hover,
 .ownerListDiv > a:hover {
   color: #e5e5cb;
+  background-color: #395144;
 }
 .userFavesContainer > button:hover,
 .userWishContainer > button:hover {
@@ -154,4 +145,143 @@
 .emptyFavesTabButton,
 .emptyWishTabButton {
   padding: 15px;
+}
+
+.empListDiv > a > div > .profileLogo,
+.managerListDiv > a > div > .profileLogo,
+.ownerListDiv > a > div > .profileLogo,
+.empListDiv > a > div > .userProfilePic,
+.managerListDiv > a > div > .userProfilePic,
+.ownerListDiv > a > div > .userProfilePic {
+  width: 100px;
+  height: 100px;
+}
+.empListDiv > a > div > .userProfilePic,
+.managerListDiv > a > div > .userProfilePic,
+.ownerListDiv > a > div > .userProfilePic {
+  border-radius: 15px;
+}
+
+.profileReviewsTabContainer#doASiSAYdammit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0px 25px 25px;
+  width: 95%;
+}
+.profileTabReviewDiv#doASiSAYdammit {
+  display: flex;
+  gap: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 3px dotted #a9b388;
+  border-radius: 15px;
+  padding: 15px;
+  width: 95%;
+}
+
+.userPicNInfo > h3,
+.userPicNInfo > h4 {
+  margin: 0px;
+  padding: 0px;
+}
+.userPicNInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  padding: 15px 25px 15px 5px;
+  border-right: 1px solid #acb992;
+  width: 15%;
+}
+.reviewedProductImageDiv {
+  padding: 15px 25px 15px 5px;
+  border-right: 1px solid #acb992;
+  width: fit-content;
+}
+.userProfilePicture {
+  width: 25px;
+}
+.reviewedProductImage {
+  width: 75px;
+  border-radius: 15px;
+}
+
+.reviewBodyContainer {
+  padding: 15px 25px 15px 5px;
+  border-right: 1px solid #acb992;
+  width: 30%;
+}
+
+.reviewBodyContainer#dontOwn {
+  border: none;
+}
+
+.usersReviewBody {
+  text-align: start;
+  overflow-y: scroll hidden;
+  word-wrap: anywhere;
+  height: 75px;
+  padding: 5px;
+  background-color: #a9b388;
+  color: #3e372f;
+  font-weight: bold;
+}
+
+.usersReviewBody::-webkit-scrollbar {
+  width: 5px;
+  height: 100%;
+  background-color: #395144;
+}
+.usersReviewBody::-webkit-scrollbar-track,
+.usersReviewBody::-webkit-scrollbar-track-piece {
+  background-color: #395144;
+}
+.usersReviewBody::-webkit-scrollbar-thumb,
+.usersReviewBody::-webkit-scrollbar-thumb:vertical {
+  width: 5px;
+  background-color: #a9b388;
+  border-radius: 30px;
+}
+.usersReviewBody::-webkit-scrollbar-thumb:horizontal {
+  display: none;
+}
+
+.reviewedProductName {
+  color: #e5e5cb;
+}
+.reviewedProductName:hover {
+  color: #a9b388;
+}
+
+.reviewStarsDiv {
+  display: flex;
+  gap: 5px;
+}
+.starsInProfile {
+  width: 25px;
+  filter: invert(0.25) blur(1px);
+}
+.selectedRating {
+  width: 25px;
+}
+
+.reviewButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 10%;
+}
+.reviewButtonsContainer > button {
+  padding: 5px 0px;
+  /* width: 50%; */
+}
+.reviewButtonsContainer > button:first-child:hover {
+  color: #362706;
+  background-color: #f1d3b3;
+}
+.reviewButtonsContainer > button:last-child:hover {
+  color: #362706;
+  background-color: #dbc1bb;
 }

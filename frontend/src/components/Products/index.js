@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 
 import "./Products.css";
-
 import imgPlaceholder from "../../assets/noImgAvailable.jpg";
+
 import {
   getProdsByCat,
   loadAllAll,
@@ -29,11 +29,20 @@ export default function Products() {
   const products = useSelector((state) => state.products);
   const userFaves = useSelector((state) => state.favorites);
   const userWishes = useSelector((state) => state.wishlist);
+  const [type, setType] = useState();
   const [view, setView] = useState("tile");
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(async () => {
     let data;
+
+    setType(
+      location.pathname.slice(1)[location.pathname.slice(1).length - 1] ==
+        "s" && location.pathname.slice(1) != "allProducts"
+        ? `${location.pathname.slice(1, location.pathname.length - 1)}`
+        : `${location.pathname.slice(1, location.pathname.length)}`
+    );
+
     if (params.name) {
       data = await dispatch(getProdsByCat(params.name))
         .then(() => dispatch(getAllFavorites()))
@@ -319,23 +328,7 @@ export default function Products() {
                   (user.role.name == "Owner" ||
                     user.role.name == "Manager") && (
                     <>
-                      {params && params != "undefined" ? (
-                        <>
-                          {params.name === "products" ? (
-                            <OpenModalButton
-                              buttonText="Add to Products"
-                              modalComponent={<CreateProduct type="product" />}
-                            />
-                          ) : (
-                            <>
-                              <OpenModalButton
-                                buttonText="Add to Menu"
-                                modalComponent={<CreateProduct type="menu" />}
-                              />
-                            </>
-                          )}
-                        </>
-                      ) : (
+                      {type == "allProducts" ? (
                         <>
                           <OpenModalButton
                             buttonText="Add to Products"
@@ -344,6 +337,16 @@ export default function Products() {
                           <OpenModalButton
                             buttonText="Add to Menu"
                             modalComponent={<CreateProduct type="menu" />}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <OpenModalButton
+                            buttonText={`Add to ${
+                              location.pathname[1].toUpperCase() +
+                              location.pathname.slice(2)
+                            }`}
+                            modalComponent={<CreateProduct type={type} />}
                           />
                         </>
                       )}

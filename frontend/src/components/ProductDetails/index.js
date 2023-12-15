@@ -17,6 +17,7 @@ import EditProduct from "../AllModals/EditProduct";
 import ConfirmDeleteItem from "../AllModals/ConfirmDelete/confirmDeleteItem";
 import ConfirmAdd from "../AllModals/ConfirmAddTo";
 import ConfirmRemove from "../AllModals/ConfirmRemove";
+import ProductReviews from "./ProductReviews";
 
 import "./ProductDetails.css";
 
@@ -62,7 +63,11 @@ export default function ProductDetails() {
             <div className="productDetailsContainerDiv">
               <div className="nameNavailNpriceDiv">
                 <h1>{product.name}</h1>
-                <div className="numAvailNprice">
+                <div
+                  className={
+                    !product.category.shippable ? "priceOnly" : "numAvailNprice"
+                  }
+                >
                   {product.category.shippable && (
                     <h3>{product.units_available} Available</h3>
                   )}
@@ -161,7 +166,7 @@ export default function ProductDetails() {
                               />
                             </div>
                           ) : (
-                            <div>
+                            <div className="productsUnivButton">
                               <OpenModalButton
                                 buttonText="Add to Wishlist"
                                 modalComponent={
@@ -218,10 +223,10 @@ export default function ProductDetails() {
             </div>
           </div>
 
-          <div className="productReviewsContainer">
-            <h3>Reviews</h3>
-            <p>Product reviews will load here...</p>
-          </div>
+          <ProductReviews
+            productId={product.id}
+            userId={user ? user.id : null}
+          />
         </>
       ) : (
         <>

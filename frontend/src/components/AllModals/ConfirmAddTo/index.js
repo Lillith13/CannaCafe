@@ -21,7 +21,7 @@ export default function ConfirmAdd({ where, product, user }) {
     if (where === "Shopping Cart") {
       let currCart = null;
       if (user && user != "undefined") {
-        currCart = localStorage.getItem(`${user.id}cart`);
+        currCart = localStorage.getItem(`${user.id}Cart`);
       } else {
         currCart = localStorage.getItem("guestCart");
       }
@@ -43,7 +43,7 @@ export default function ConfirmAdd({ where, product, user }) {
       }
 
       if (user && user != "undefined") {
-        localStorage.setItem(`${user.id}cart`, JSON.stringify(updateCart));
+        localStorage.setItem(`${user.id}Cart`, JSON.stringify(updateCart));
       } else {
         localStorage.setItem("guestCart", JSON.stringify(updateCart));
       }
@@ -51,7 +51,7 @@ export default function ConfirmAdd({ where, product, user }) {
     if (where === "Takeaway Bag") {
       let currTakeaway = null;
       if (user && user != "undefined") {
-        currTakeaway = localStorage.getItem(`${user.id}takeaway`);
+        currTakeaway = localStorage.getItem(`${user.id}Takeaway`);
       } else {
         currTakeaway = localStorage.getItem("guestTakeaway");
       }
@@ -73,7 +73,7 @@ export default function ConfirmAdd({ where, product, user }) {
       }
 
       if (user && user != "undefined") {
-        localStorage.setItem(`${user.id}takeaway`, JSON.stringify(updateBag));
+        localStorage.setItem(`${user.id}Takeaway`, JSON.stringify(updateBag));
       } else {
         localStorage.setItem("guestTakeaway", JSON.stringify(updateBag));
       }

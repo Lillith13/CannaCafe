@@ -1,39 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // import whiteCannaLeaf from "../../../assets/whiteCannaLeaf.png";
-import cannaLeaf from "../../../assets/blackCannaLeaf.png";
-import "./Review.css";
+import blackCannaLeaf from "../../../assets/blackCannaLeaf.png";
+import "./EditReview.css";
 
 import { useModal } from "../../../context/Modal";
 import {
-  addReview,
+  editReview,
   getALLreviews,
   getProductReviews,
   getUserReviews,
 } from "../../../store/reviews";
 
-export default function CreateReview({ itemId, locationInfo }) {
+export default function EditReview({ targetReview, locationInfo }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const { closeModal } = useModal();
   const [activeStars, setActiveStars] = useState([]);
-  const [rating, setRating] = useState(0);
-  const [review, setReview] = useState("");
+  const [newRating, setNewRating] = useState(0);
+  const [rev, setReview] = useState("");
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const { review, rating } = targetReview;
+    setReview(review);
+    setNewRating(rating);
+  }, []);
   //
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     let errs = {};
-    if (review.length < 10) {
+    if (rev.length < 10) {
       errs["review"] = "Review must be 10 characters or longer";
     }
-    if (review.length > 2000) {
+    if (rev.length > 2000) {
       errs["review"] = "Review must be 2000 characters or less";
     }
-    if (!rating) {
+    if (!newRating) {
       errs["rating"] = "Rating is required";
     }
 
@@ -41,44 +47,29 @@ export default function CreateReview({ itemId, locationInfo }) {
       setErrors(errs);
     } else {
       const formData = {
-        rev: review,
-        rating,
+        rev,
+        rating: newRating,
       };
-      console.log(itemId);
-      const inputData = { itemId, formData };
-      dispatch(addReview(inputData)).then((data) => {
+      // console.log(targetReview.id);
+      const inputData = { reviewId: targetReview.id, formData };
+      dispatch(editReview(inputData)).then((data) => {
         if (!data || data == "undefined") {
-          if (user.role.name == "Owner" || user.role.name == "Manager") {
-            dispatch(getALLreviews()).then((subData) => {
-              if (!subData || subData != "undefined") {
-                closeModal();
+          switch (locationInfo.from) {
+            case "productDetails":
+              dispatch(getProductReviews(locationInfo.productId)).then(() =>
+                closeModal()
+              );
+              return;
+            case "userProfile":
+              if (user.role.name == "Owner" || user.role.name == "Manager") {
+                dispatch(getALLreviews()).then(() => closeModal());
               } else {
-                console.log(subData);
+                dispatch(getUserReviews()).then(() => closeModal());
               }
-            });
-          } else {
-            switch (locationInfo.from) {
-              case "productDetails":
-                dispatch(getProductReviews(itemId)).then((subData) => {
-                  if (!subData || subData != "undefined") {
-                    closeModal();
-                  } else {
-                    console.log(subData);
-                  }
-                });
-                return;
-              case "userProfile":
-                dispatch(getUserReviews()).then((subData) => {
-                  if (!subData || subData != "undefined") {
-                    closeModal();
-                  } else {
-                    console.log(subData);
-                  }
-                });
-                return;
-            }
+              return;
+            default:
+              return;
           }
-          closeModal();
         }
       });
     }
@@ -91,7 +82,7 @@ export default function CreateReview({ itemId, locationInfo }) {
         <textarea
           className="reviewBody"
           id={errors.review ? "outOfRange" : ""}
-          value={review}
+          value={rev}
           onChange={(e) => setReview(e.target.value)}
           placeholder={errors.review ? "* " + errors.review : ""}
         />
@@ -100,12 +91,10 @@ export default function CreateReview({ itemId, locationInfo }) {
           <div className="charCountSubDiv">
             <p
               className={
-                review.length < 10 || review.length > 2000
-                  ? "outOfRange"
-                  : "good"
+                rev.length < 10 || rev.length > 2000 ? "outOfRange" : "good"
               }
             >
-              {review.length}
+              {rev.length}
             </p>
             <p>/2000 characters</p>
           </div>
@@ -113,7 +102,7 @@ export default function CreateReview({ itemId, locationInfo }) {
         <div
           className="starsContainer"
           onMouseLeave={() => {
-            switch (rating) {
+            switch (newRating) {
               case 1:
                 setActiveStars(["star1"]);
                 return;
@@ -138,57 +127,67 @@ export default function CreateReview({ itemId, locationInfo }) {
           <img
             className="stars"
             id={
-              activeStars.includes("star1") || rating >= 1 ? "activeStar" : ""
+              activeStars.includes("star1") || newRating >= 1
+                ? "activeStar"
+                : ""
             }
             onMouseEnter={() => {
               setActiveStars(["star1"]);
             }}
-            onClick={() => setRating(1)}
-            src={cannaLeaf}
+            onClick={() => setNewRating(1)}
+            src={blackCannaLeaf}
           />
           <img
             className="stars"
             id={
-              activeStars.includes("star2") || rating >= 2 ? "activeStar" : ""
+              activeStars.includes("star2") || newRating >= 2
+                ? "activeStar"
+                : ""
             }
             onMouseEnter={() => {
               setActiveStars(["star1", "star2"]);
             }}
-            onClick={() => setRating(2)}
-            src={cannaLeaf}
+            onClick={() => setNewRating(2)}
+            src={blackCannaLeaf}
           />
           <img
             className="stars"
             id={
-              activeStars.includes("star3") || rating >= 3 ? "activeStar" : ""
+              activeStars.includes("star3") || newRating >= 3
+                ? "activeStar"
+                : ""
             }
             onMouseEnter={() => {
               setActiveStars(["star1", "star2", "star3"]);
             }}
-            onClick={() => setRating(3)}
-            src={cannaLeaf}
+            onClick={() => setNewRating(3)}
+            src={blackCannaLeaf}
           />
           <img
             className="stars"
             id={
-              activeStars.includes("star4") || rating >= 4 ? "activeStar" : ""
+              activeStars.includes("star4") || newRating >= 4
+                ? "activeStar"
+                : ""
             }
             onMouseEnter={() => {
               setActiveStars(["star1", "star2", "star3", "star4"]);
             }}
-            onClick={() => setRating(4)}
-            src={cannaLeaf}
+            onClick={() => setNewRating(4)}
+            src={blackCannaLeaf}
           />
           <img
             className="stars"
             id={
-              activeStars.includes("star5") || rating == 5 ? "activeStar" : ""
+              activeStars.includes("star5") || newRating == 5
+                ? "activeStar"
+                : ""
             }
             onMouseEnter={() => {
               setActiveStars(["star1", "star2", "star3", "star4", "star5"]);
             }}
-            onClick={() => setRating(5)}
-            src={cannaLeaf}
+            onClick={() => setNewRating(5)}
+            src={blackCannaLeaf}
           />
         </div>
         <div className="reviewError">

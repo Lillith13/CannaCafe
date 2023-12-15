@@ -2,7 +2,9 @@ import re
 from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms import StringField, DateField, IntegerField
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms.validators import DataRequired, Length, ValidationError
+from ..api.routes.aws_helper import ALLOWED_EXTENSIONS
 from datetime import datetime
 from ..models import User
 
@@ -39,6 +41,8 @@ def check_if_required(form, field):
 
 
 class EditAccountForm(FlaskForm):
+    profile_pic = FileField("Profile Picture", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
+
     firstName = StringField("First Name", [DataRequired("First name is required."), Length(min=2, message="First name must be 2 characters or longer.")])
 
     lastName = StringField("Last Name", validators=[Length(min=2, message="First name must be a minimum of 2 charactors long")])

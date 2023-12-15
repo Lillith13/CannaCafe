@@ -43,6 +43,7 @@ def upgrade():
 
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('profile_image', sa.String(length=2000), nullable=True),
     sa.Column('firstName', sa.String(length=50), nullable=False),
     sa.Column('lastName', sa.String(length=50), nullable=False),
     sa.Column('birthday', sa.Date(), nullable=False),
@@ -77,6 +78,7 @@ def upgrade():
     op.create_table('orders',
     sa.Column('id', sa.INTEGER(), nullable=False),
     sa.Column('user_id', sa.INTEGER(), nullable=False),
+    sa.Column('total', sa.Numeric(precision=10, scale=2), default=0),
     sa.Column('placed', sa.Date(), nullable=False),
     sa.Column('shipped', sa.Date(), nullable=True),
     sa.Column('fulfilled', sa.Date(), nullable=True),

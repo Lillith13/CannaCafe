@@ -64,35 +64,34 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const signUp = (data) => async (dispatch) => {
-  const { formData, currUser } = data;
-  console.log(formData);
+export const signUp =
+  ({ formData, currUser }) =>
+  async (dispatch) => {
+    // const { formData, currUser } = data;
+    // console.log(formData);
 
-  const res = await fetch("/api/auth/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ ...formData }),
-  });
-  // console.log(res);
-  const userData = await res.json();
-  // console.log(userData);
-  if (res.ok) {
-    if (!currUser || currUser == "undefined") {
-      dispatch(setUser(userData));
-    }
-    return null;
-  } else if (res.status < 500) {
-    if (userData) {
+    const res = await fetch("/api/auth/signup", {
+      method: "POST",
+      body: formData,
+    });
+    // console.log(res);
+    const userData = await res.json();
+    // console.log(userData);
+    if (res.ok) {
+      if (!currUser || currUser == "undefined") {
+        dispatch(setUser(userData));
+      }
+      return null;
+    } else if (res.status < 500) {
+      if (userData) {
+        return userData.errors;
+      }
+    } else if (userData.errors) {
       return userData.errors;
+    } else {
+      return ["An error occurred. Please try again"];
     }
-  } else if (userData.errors) {
-    return userData.errors;
-  } else {
-    return ["An error occurred. Please try again"];
-  }
-};
+  };
 
 export const deleteUser = (userId) => async (dispatch) => {
   const res = await fetch(`/api/users/${userId}`, {
@@ -112,10 +111,7 @@ export const editUser = (inputData) => async (dispatch) => {
   // console.log(inputData);
   const res = await fetch(`/api/users/${employeeId}`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
+    body: formData,
   });
   // console.log(res);
   const data = await res.json();

@@ -18,7 +18,8 @@
 .editAcctNameDiv,
 .addressNcityDiv,
 .stateNzipDiv,
-.phoneNconfirmPassDiv {
+.phoneNconfirmPassDiv,
+.newNconfirmPassDiv {
   display: flex;
   gap: 5px;
 }
@@ -57,10 +58,6 @@
 .editAcctErrors {
   color: #b67162;
   font-weight: bold;
-}
-
-.editAcctInput#password {
-  width: 98%;
 }
 
 .editAcctRoleSelect {

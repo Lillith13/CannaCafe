@@ -91,3 +91,22 @@ select {
   color: #b67162;
   font-weight: bold;
 }
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 100%;
+  background-color: #395144;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+  background-color: #395144;
+}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:vertical {
+  width: 10px;
+  background-color: #a9b388;
+  border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  display: none;
+}

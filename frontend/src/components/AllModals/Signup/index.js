@@ -11,6 +11,7 @@ import "./Signup.css";
 export default function Signup({ currUser }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const [profilePic, setProfilePic] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthday, setBirthday] = useState("");
@@ -30,23 +31,26 @@ export default function Signup({ currUser }) {
 
   const submitValidSignup = async () => {
     // const address = address1 + "#" + address2;
-    const formData = {
-      firstName,
-      lastName,
-      birthday,
-      address,
-      city,
-      state,
-      zipcode,
-      username,
-      email,
-      password,
-    };
+    const formData = new FormData();
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+    formData.append("birthday", birthday);
+    formData.append("address", address);
+    formData.append("city", city);
+    formData.append("state", state);
+    formData.append("zipcode", String(zipcode));
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+
+    if (profilePic) {
+      formData.append("profile_pic", profilePic);
+    }
     if (phone) {
-      formData["phone"] = phone;
+      formData.append("phone", phone);
     }
     if (role && role != "undefined") {
-      formData["role"] = role;
+      formData.append("role", role);
     }
 
     let data = { formData };

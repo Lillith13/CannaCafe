@@ -32,11 +32,21 @@ class Review(db.Model):
         back_populates="reviews"
     )
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            'user': self.user.rev_dict(),
+            "product": self.product.rev_dict(),
+            "review": self.review,
+            "rating": self.rating,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }
 
     def user_dict(self):
         return {
             "id": self.id,
-            "product": [product.rev_dict() for product in self.product][0],
+            "product": self.product.rev_dict(),
             "review": self.review,
             "rating": self.rating,
             "created_at": self.created_at,
@@ -45,7 +55,8 @@ class Review(db.Model):
     def prod_dict(self):
         return {
             'id': self.id,
-            'user': [user.rev_dict() for user in self.user][0],
+            'user': self.user.rev_dict(),
+            "product": self.product.rev_dict(),
             "review": self.review,
             "rating": self.rating,
             "created_at": self.created_at,

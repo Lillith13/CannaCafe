@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import "./EditProduct.css";
 
 import { useModal } from "../../../context/Modal";
-import { editProduct } from "../../../store/products";
+import { editProduct, loadProduct } from "../../../store/products";
 import { getCategories } from "../../../store/categories";
 
 export default function EditProduct({ type, product }) {
@@ -13,6 +13,7 @@ export default function EditProduct({ type, product }) {
   const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const categories = useSelector((state) => state.categories);
+  const products = useSelector((state) => state.products);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -60,87 +61,136 @@ export default function EditProduct({ type, product }) {
       if (data && data != "undefined" && data.errors) {
         setErrors(data.errors);
       } else {
-        if (type == "product") {
-          history.push("/products");
-        } else {
-          history.push("/menu");
-        }
+        Object.keys(products).map((key) => {
+          const test = isNaN(key);
+          if (!test) {
+            if (type == "product") {
+              history.push(`/product/${product.id}`);
+            } else {
+              history.push(`/menu/${product.id}`);
+            }
+          }
+        });
+        dispatch(loadProduct(product.id));
         closeModal();
       }
     });
   };
 
   return isLoaded ? (
-    <div>
-      <h1>Create New {type == "product" ? "Product" : "Menu Item"}</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Category:
-          <select
-            value={category}
-            defaultValue={product.category.name}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            {Object.values(categories).map((cat) => (
-              <>
-                {type == "product" && (
+    <div className="editItemModalContainer">
+      <h1 className="editItemTitle">
+        Edit {type == "product" ? "Product" : "Menu Item"}
+      </h1>
+      <form onSubmit={(e) => handleSubmit(e)} className="editItemForm">
+        <div className="nameNcategoryDiv">
+          <label className="editItemLabel">
+            Name:
+            <input
+              className="editItemInput"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={errors.name ? "* " + errors.name : " "}
+            />
+          </label>
+          <div className="categorySelectorContainer">
+            <label className="editItemLabel">
+              Category:
+              <select
+                className="editItemSelect"
+                id={errors.category && "catError"}
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option selected default hidden>
+                  Select Category...
+                </option>
+                {Object.values(categories).map((cat) => (
                   <>
-                    {cat.shippable && (
-                      <option value={cat.name}>{cat.name}</option>
+                    {type == "product" && (
+                      <>
+                        {cat.shippable && (
+                          <option value={cat.name}>{cat.name}</option>
+                        )}
+                      </>
+                    )}
+                    {type == "menu" && (
+                      <>
+                        {!cat.shippable && (
+                          <option value={cat.name}>{cat.name}</option>
+                        )}
+                      </>
                     )}
                   </>
-                )}
-                {type == "menu" && (
-                  <>
-                    {!cat.shippable && (
-                      <option value={cat.name}>{cat.name}</option>
-                    )}
-                  </>
-                )}
-              </>
-            ))}
-          </select>
-        </label>
-        <label>
+                ))}
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <label className="editItemLabel">
           Description:
           <textarea
+            className="editItemInput"
+            type="textarea"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            required
+            placeholder={errors.description ? "* " + errors.description : " "}
           />
         </label>
-        <label>
-          Price:
-          <input
-            type="number"
-            step="0.01"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Units Available:
-          <input
-            type="number"
-            value={unitsAvailable}
-            onChange={(e) => setUnitsAvailable(e.target.value)}
-            required
-          />
-        </label>
-        <label>
+
+        {type === "product" ? (
+          <div className="priceNunitsAvailDiv">
+            <label className="editItemLabel">
+              Price:
+              <input
+                className="editItemInput"
+                type="number"
+                step="0.01"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                placeholder={errors.price ? "* " + errors.price : " "}
+              />
+            </label>
+            <label className="editItemLabel">
+              Units Available:
+              <input
+                className="editItemInput"
+                type="number"
+                value={unitsAvailable}
+                onChange={(e) => setUnitsAvailable(e.target.value)}
+                placeholder={
+                  errors.unitsAvailable ? "* " + errors.unitsAvailable : " "
+                }
+              />
+            </label>
+          </div>
+        ) : (
+          <div className="priceNimageDiv">
+            <label className="editItemLabel">
+              Price:
+              <input
+                className="editItemInput"
+                type="number"
+                step="0.01"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                placeholder={errors.price ? "* " + errors.price : " "}
+              />
+            </label>
+          </div>
+        )}
+
+        <label className="editItemLabel">
           Preview Image - leaving blank will keep the current image:
-          <img src={product.previewImg} alt="productPreviewImg" />
+          <img
+            className="previewImage"
+            src={product.previewImg}
+            alt="productPreviewImg"
+          />
           <input
+            className="editItemInput"
             type="file"
             accept="image/png, image/jpg, image/jpeg"
             onChange={(e) => {

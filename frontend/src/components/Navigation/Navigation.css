@@ -17,9 +17,13 @@
 }
 .navlinkIcon,
 .logoIcon,
-.profileLogo {
+.profileLogo,
+.userProfilePic {
   width: 50px;
   height: 50px;
+}
+.userProfilePic {
+  border-radius: 25px;
 }
 
 .siteName {

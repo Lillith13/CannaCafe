@@ -1,16 +1,18 @@
-from ..models import db, User, Role, Wishlist, Favorite, environment, SCHEMA
+from ..models import db, User, Wishlist, Favorite, environment, SCHEMA
 from sqlalchemy.sql import text
 from datetime import datetime
 
-def seed_users():
-    roleOwner = Role(name="Owner", payrate=30)
-    roleManager = Role(name="Manager", payrate=25)
-    roleEmployee = Role(name="Employee", payrate=20)
-    roleMember = Role(name="Member")
+from .roles import seed_roles
+from .members import seed_members
 
-    seedRoles = [roleMember, roleEmployee, roleManager, roleOwner]
-    _ = [db.session.add(role) for role in seedRoles]
-    db.session.commit()
+# seededMemberRole = roleMember
+
+def seed_users():
+
+    seededRoles = seed_roles()
+    [roleMember, roleEmployee, roleManager, roleOwner] = seededRoles
+
+    print([roleMember, roleEmployee, roleManager, roleOwner])
 
     ownerDemo = User(
         firstName="Owner",
@@ -40,24 +42,20 @@ def seed_users():
 
     employeeDemo3 = User (firstName="Employee3", lastName="Demo", birthday=datetime(1989,5,5), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo3", email="employeeDemo3@test.io", phone = "555-555-5555", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
 
-
-    memberDemo1 = User (firstName="Member1", lastName="Demo", birthday=datetime(1985,6,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo1", email="memberDemo1@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
-
-    memberDemo2 = User (firstName="Member2", lastName="Demo", birthday=datetime(1980,4,16), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo2", email="memberDemo2@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
-
-    memberDemo3 = User (firstName="Member3", lastName="Demo", birthday=datetime(1991,12,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo3", email="memberDemo3@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
-
-    memberDemo4 = User (firstName="Member4", lastName="Demo", birthday=datetime(1994,8,29), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo4", email="memberDemo4@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
-
-    memberDemo5 = User (firstName="Member5", lastName="Demo", birthday=datetime(1975,6,8), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="memberDemo5", email="memberDemo5@test.io", phone = "555-555-5555", password="password", role_id=int(roleMember.id))
-
-    seedUsers = [ownerDemo, managerDemo1, managerDemo2, employeeDemo1, employeeDemo2, employeeDemo3, memberDemo1, memberDemo2, memberDemo3, memberDemo4, memberDemo5]
+    seedUsers = [ownerDemo, managerDemo1, managerDemo2, employeeDemo1, employeeDemo2, employeeDemo3]
     _ = [db.session.add(user) for user in seedUsers]
     db.session.commit()
+
+    seededMembers = seed_members(roleMember)
 
     seedWishes = []
     seedFaves = []
     for user in seedUsers:
+        new_wishlist = Wishlist(user_id = user.id)
+        new_favorites = Favorite(user_id = user.id)
+        seedWishes.append(new_wishlist)
+        seedFaves.append(new_favorites)
+    for user in seededMembers:
         new_wishlist = Wishlist(user_id = user.id)
         new_favorites = Favorite(user_id = user.id)
         seedWishes.append(new_wishlist)
@@ -69,6 +67,10 @@ def seed_users():
 def undo_users():
     if environment == 'production':
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.wishlists RESTART IDENTITY CASCADE")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.favorites RESTART IDENTITY CASCADE")
     else:
         db.session.execute(text("DELETE FROM users"))
+        db.session.execute(text("DELETE FROM wishlists"))
+        db.session.execute(text("DELETE FROM favorites"))
     db.session.commit()

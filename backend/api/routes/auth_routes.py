@@ -4,6 +4,7 @@ from .auth_helper import validation_errors_to_error_messages
 
 from ...models import db, User, Wishlist, Favorite, Role
 from ...forms import LoginForm, SignUpForm
+from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 auth_routes = Blueprint("auth", __name__)
 
@@ -21,8 +22,6 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter(User.username == form.data['creds']).first()
         login_user(user)
-        print("checking auth bullshit! => ", current_user.is_authenticated)
-        print("checking is current_user exists => ", current_user.to_dict())
         return user.to_dict()
     return { 'errors': validation_errors_to_error_messages(form.errors) }, 401
 
@@ -71,7 +70,14 @@ def sign_up():
                 return user.to_dict()
 
         """no member account found for emp -> create one"""
+        prev_img = data['profile_pic']
+        filename = prev_img.filename
+        prev_img.filename = get_unique_filename(filename)
+        upload = upload_file_to_s3(prev_img)
+        if 'url' not in upload:
+            return upload
         new_user = User(
+            profile_image = upload['url'],
             firstName = data['firstName'],
             lastName = data['lastName'],
             birthday = data['birthday'],

@@ -74,6 +74,7 @@ class Product(db.Model):
     return {
       'id': self.id,
       'name': self.name,
+      'preview': self.preview_image,
       'category': [cat.to_dict() for cat in self.category][0]
     }
 
@@ -88,4 +89,10 @@ class Product(db.Model):
     return {
       'id': self.id,
       'name': self.name
+    }
+
+  def order_dict(self):
+    return {
+      'units_available': self.units_available,
+      'price': self.price
     }

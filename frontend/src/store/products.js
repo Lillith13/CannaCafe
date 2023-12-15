@@ -95,14 +95,11 @@ export const createProduct = (formData) => async (dispatch) => {
 };
 
 export const editProduct = (formData) => async (dispatch) => {
-  // ! write edit product fetch
   const res = await fetch("/api/products/", {
     method: "PUT",
     body: formData,
   });
-  console.log(res);
   const data = await res.json();
-  console.log(data);
 };
 
 export const deleteProduct = (productId) => async (dispatch) => {

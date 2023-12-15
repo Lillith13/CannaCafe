@@ -1,7 +1,9 @@
 import re
 from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, IntegerField
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms.validators import DataRequired, Length, ValidationError
+from ..api.routes.aws_helper import ALLOWED_EXTENSIONS
 from datetime import datetime
 
 from ..models import User
@@ -40,6 +42,8 @@ def birthday_validator(form, field):
         raise ValidationError("Must be 21 or older")
 
 class SignUpForm(FlaskForm):
+    profile_pic = FileField("Profile Picture", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
+
     firstName = StringField("First Name", [DataRequired("First name is required."), Length(min=2, message="First name too short.")])
 
     lastName = StringField("Last Name", validators=[DataRequired("Last name is required."), Length(min=2, message="Last name too short.")])

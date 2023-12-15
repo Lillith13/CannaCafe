@@ -20,12 +20,3 @@ class ProductForm(FlaskForm):
 
   preview = FileField("Image file", validators=[ FileAllowed(list(ALLOWED_EXTENSIONS))])
   """ FileRequired(), """
-  # img1 = FileField("Image file", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
-
-  # img2 = FileField("Image file", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
-
-  # img3 = FileField("Image file", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
-
-  # img4 = FileField("Image file", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
-
-  # img5 = FileField("Image file", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])

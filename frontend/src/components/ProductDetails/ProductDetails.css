@@ -21,12 +21,15 @@
   width: 50%;
 }
 .productInfoDiv {
+  width: 85%;
+  font-size: 15px;
+}
+.productInfoDiv > p {
   display: flex;
-  align-items: start;
+  text-align: start;
   text-wrap: wrap;
   line-break: anywhere;
   hyphens: auto;
-  width: 85%;
 }
 
 .productImageDiv {
@@ -49,6 +52,13 @@
   display: flex;
   justify-content: space-between;
   width: 93%;
+  font-size: 20px;
+}
+.priceOnly {
+  display: flex;
+  justify-content: flex-end;
+  width: 93%;
+  font-size: 20px;
 }
 
 .productButtonsDiv {
@@ -73,6 +83,7 @@
 }
 
 .universallyAccessibleButtons > button,
+.productsUnivButton,
 .removeFromButton,
 .editProductButton,
 .deleteProductButton {
@@ -101,12 +112,88 @@
   background-color: #f1d3b3;
 }
 
-/*
-productDetailsContainerDiv
-productButtonsDiv
+.prodReviewsContainer {
+  display: flex;
+  flex-direction: column;
+}
+.productReviewsTabContainer {
+  display: flex;
+}
+.productTabReviewDiv {
+  display: flex;
+  gap: 25px;
+  padding: 25px;
+  margin: 25px;
+  align-items: center;
+  border: 3px dotted #a9b388;
+  border-radius: 15px;
+  width: 88%;
+}
+.userPicNInfo > h3,
+.userPicNInfo > h4 {
+  margin: 0px;
+  padding: 0px;
+}
+.userPicNInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  padding: 15px 25px 15px 5px;
+  border-right: 1px solid #acb992;
+}
+.reviewBodyContainer#usersReview,
+.userPicNInfo#usersReview {
+  border: none;
+}
+.userProfilePicture {
+  width: 50px;
+}
 
-removeFromButton
+.reviewBodyContainer {
+  padding: 15px 25px 15px 5px;
+  width: 50%;
+  border-right: 1px solid #acb992;
+}
+.usersReviewBody {
+  text-align: start;
+  overflow-y: scroll;
+  word-wrap: anywhere;
+  height: 75px;
+}
 
-editProductButton
-deleteProductButton
-*/
+.reviewStarsDiv {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+.starsInProfile {
+  width: 25px;
+  filter: invert(0.25) blur(1px);
+}
+.selectedRating {
+  width: 25px;
+}
+
+.reviewButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 35%;
+}
+.reviewButtonsContainer > button {
+  padding: 15px 0px;
+}
+.reviewButtonsContainer > button:first-child:hover {
+  color: #362706;
+  background-color: #f1d3b3;
+}
+.reviewButtonsContainer > button:last-child:hover {
+  color: #362706;
+  background-color: #dbc1bb;
+}
+
+.postReviewModalButton > button {
+  width: 20%;
+  padding: 10px 0px;
+}

@@ -13,6 +13,7 @@ export default function EditAccount({ empId }) {
   const user = useSelector((state) => state.session.user);
   // const params = useParams();
   const emp = useSelector((state) => state.employees);
+  const [profilePic, setProfilePic] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -68,28 +69,30 @@ export default function EditAccount({ empId }) {
   }, [dispatch]);
 
   const submitValidSignup = async () => {
-    const formData = {
-      firstName,
-      lastName,
-      address,
-      city,
-      state,
-      zipcode: String(zipcode),
-      // email,
-      phone,
-      oldPassword,
-      newPassword,
-    };
+    const formData = new FormData();
+    formData.append("profile_pic", profilePic);
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+    formData.append("address", address);
+    formData.append("city", city);
+    formData.append("state", state);
+    formData.append("zipcode", String(zipcode));
+    formData.append("phone", phone);
+    formData.append("oldPassword", oldPassword);
+    formData.append("newPassword", newPassword);
+
     if (phone) {
-      formData["phone"] = phone;
+      formData.append("phone", phone);
     }
     if (role && role != "undefined") {
-      formData["role"] = role;
+      formData.append("role", role);
     }
 
     const inputData = {
       formData,
     };
+
+    console.log(formData);
 
     if (empId && empId != "undefined") {
       console.log(emp);
@@ -324,29 +327,45 @@ export default function EditAccount({ empId }) {
             </label>
           )}
 
-        <label className="editAcctLabel">
-          New Password
+        <div className="newNconfirmPassDiv">
+          <label className="editAcctLabel">
+            New Password
+            <input
+              className="editAcctInput"
+              id="password"
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder={errors.newPassword && "* " + errors.newPassword}
+            />
+          </label>
+          <label className="editAcctLabel">
+            Confirm New Password
+            <input
+              className="editAcctInput"
+              id="password"
+              type="password"
+              value={confirmNewPassword}
+              onChange={(e) => setConfirmNewPassword(e.target.value)}
+              placeholder={
+                errors.confirmPassword && "* " + errors.confirmPassword
+              }
+            />
+          </label>
+        </div>
+
+        <label>
+          Profile Picture
           <input
-            className="editAcctInput"
-            id="password"
-            type="password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            placeholder={errors.newPassword && "* " + errors.newPassword}
+            type="file"
+            accept="image/png, image/jpg, image/jpeg"
+            onChange={(e) => setProfilePic(e.target.files[0])}
           />
-        </label>
-        <label className="editAcctLabel">
-          Confirm New Password
-          <input
-            className="editAcctInput"
-            id="password"
-            type="password"
-            value={confirmNewPassword}
-            onChange={(e) => setConfirmNewPassword(e.target.value)}
-            placeholder={
-              errors.confirmPassword && "* " + errors.confirmPassword
-            }
-          />
+          {user.profile_image && (
+            <label>
+              Your current profile picture: <img src={user.profile_image} />
+            </label>
+          )}
         </label>
 
         <button

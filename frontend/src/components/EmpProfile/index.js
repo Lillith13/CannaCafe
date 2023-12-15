@@ -9,6 +9,8 @@ import OpenModalButton from "../OpenModalButton";
 import EditAccount from "../AllModals/EditAcct";
 import TimeCards from "./TimeCards";
 
+import profileIcon from "../../assets/profile_icon.png";
+
 export default function EmployeeProfile() {
   const { empId } = useParams();
   const dispatch = useDispatch();
@@ -47,6 +49,14 @@ export default function EmployeeProfile() {
       >
         Go Back
       </button>
+      <div>
+        <img
+          className={employee.profile_pic ? "userProfilePic" : "profileLogo"}
+          src={employee.profile_pic ? employee.profile_pic : profileIcon}
+          alt="profileLogo"
+        />
+      </div>
+
       <h2>
         {employee.firstName} {employee.lastName}
       </h2>

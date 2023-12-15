@@ -1,0 +1,63 @@
+.previewImage {
+  width: 100px;
+  height: 100px;
+}
+
+.editItemModalContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.editItemForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.nameNcategoryDiv,
+.priceNunitsAvailDiv,
+.priceNimageDiv {
+  display: flex;
+  gap: 10px;
+}
+.nameNcategoryDiv {
+  justify-content: space-evenly;
+}
+.editItemLabel,
+.prevImageLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.editItemInput {
+  background-color: #807464;
+  color: #f0ebce;
+  font-weight: bold;
+}
+
+.editItemInput::placeholder {
+  color: #d3b5a0;
+  font-weight: bold;
+}
+
+.editItemSelect {
+  background-color: #807464;
+  color: #f0ebce;
+  font-weight: bold;
+}
+.editItemSelect#catError {
+  border: 3px solid #d3b5a0;
+}
+
+.editItemForm > button {
+  background-color: #a9b388;
+  color: #f0ebce;
+  font-size: 17px;
+}
+.editItemForm > button:hover {
+  background-color: #d3b5a0;
+  color: #675d50;
+}

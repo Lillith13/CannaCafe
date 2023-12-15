@@ -11,9 +11,9 @@ class User(db.Model, UserMixin):
 
     # ! Add Validators
 
-    # ! add profile picture
-
     id = db.Column(db.Integer, primary_key=True)
+
+    profile_image = db.Column(db.String(2000))
 
     firstName = db.Column(db.String(50), nullable=False)
 
@@ -82,6 +82,7 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'profile_pic': self.profile_image,
             'firstName': self.firstName,
             'lastName': self.lastName,
             'username': self.username,
@@ -101,7 +102,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'name': self.firstName + " " + self.lastName,
-            'username': self.username
+            'username': self.username,
+            'profile_image': self.profile_image
         }
 
     def user_reviews(self):
