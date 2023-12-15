@@ -73,11 +73,9 @@ function Login() {
             <option value="employeeDemo1">employeeDemo1</option>
             <option value="employeeDemo2">employeeDemo2</option>
             <option value="employeeDemo3">employeeDemo3</option>
-            <option value="memberDemo1">memberDemo1</option>
-            <option value="memberDemo2">memberDemo2</option>
-            <option value="memberDemo3">memberDemo3</option>
-            <option value="memberDemo4">memberDemo4</option>
-            <option value="memberDemo5">memberDemo5</option>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((count) => (
+              <option value={`memberDemo${count}`}>memberDemo{count}</option>
+            ))}
           </select>
         </label>
 
