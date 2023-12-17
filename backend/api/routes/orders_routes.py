@@ -30,9 +30,6 @@ def orders():
             orderList.append(o)
         return {"Past_Orders": orderList}
 
-    return None
-
-
     if request.method == "POST":
         order = Order(
             user_id = current_user.get_id()

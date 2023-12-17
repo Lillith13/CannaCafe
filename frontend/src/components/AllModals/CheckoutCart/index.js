@@ -25,7 +25,7 @@ export default function CheckoutCart({ userId }) {
 
     const cartVals = [];
     Object.values(parsedCart).map((item) => {
-      console.log(item);
+      // console.log(item);
       cartVals.push([item.id, item.quantity]);
     });
     setCart(cartVals);
@@ -59,8 +59,8 @@ export default function CheckoutCart({ userId }) {
               }
             })
             .then(() => {
-              console.log(userId);
-              console.log(localStorage.getItem(`${userId}Cart`));
+              // console.log(userId);
+              // console.log(localStorage.getItem(`${userId}Cart`));
               localStorage.setItem(`${userId}Cart`, JSON.stringify(updateCart));
             })
             .then(() => {
