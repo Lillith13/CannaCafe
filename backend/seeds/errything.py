@@ -107,7 +107,7 @@ def seed_errything():
 
     sandwich1 = Product(
         name="BLT",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.southernliving.com/thmb/ZHPbfOxGS67POrrBjc6X0LYnizc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-sl-blt-01-4X3-b322a15a36fc436abf2796092283a40c.jpg",
@@ -118,7 +118,7 @@ def seed_errything():
 
     sandwich2 = Product(
         name="PB and Banana",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.godairyfree.org/wp-content/uploads/2013/02/ff-spiced-pb-sandwich-2.jpg",
@@ -129,7 +129,7 @@ def seed_errything():
 
     sandwich3 = Product(
         name="Egg Sandwich",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2021/12/egg1-1200x675.jpg",
@@ -140,7 +140,7 @@ def seed_errything():
 
     salad = Product(
         name="Chicken Salad",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.dinneratthezoo.com/wp-content/uploads/2020/12/grilled-chicken-salad-4.jpg",
@@ -151,7 +151,7 @@ def seed_errything():
 
     snack1 = Product(
         name="Cookie",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://publish.purewow.net/wp-content/uploads/sites/2/2021/10/giant-cookie-trend-last-crumb.jpg",
@@ -162,7 +162,7 @@ def seed_errything():
 
     snack2 = Product(
         name="Danish",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.sugarsaltmagic.com/wp-content/uploads/2021/07/How-to-make-Danish-Pastry-from-scratch-5-500x500.jpg",
@@ -173,7 +173,7 @@ def seed_errything():
 
     snack3 = Product(
         name="Muffin",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://bromabakery.com/wp-content/uploads/2018/06/Anything-But-Basic-Muffin-Recipe-1067x1600.webp",
@@ -184,7 +184,7 @@ def seed_errything():
 
     snack4 = Product(
         name="Apple Turnover",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://carlsbadcravings.com/wp-content/uploads/2022/10/apple-turnovers-9a.jpg",
@@ -195,7 +195,7 @@ def seed_errything():
 
     snack5 = Product(
         name="Chocolate Crescent",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://sallysbakingaddiction.com/wp-content/uploads/2014/08/20-Minute-Chocolate-Croissants-5.jpg",
@@ -206,7 +206,7 @@ def seed_errything():
 
     snack6 = Product(
         name="Stuffed Crust Pizza Bites",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://spicysouthernkitchen.com/wp-content/uploads/2022/03/Stuffed-Crust-Pizza-Snacks-Feature.jpg",
@@ -223,7 +223,7 @@ def seed_errything():
 
     drink1 = Product(
         name="Coffee",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/newscms/2019_33/2203981/171026-better-coffee-boost-se-329p.jpg",
@@ -234,7 +234,7 @@ def seed_errything():
 
     drink2 = Product(
         name="Frappe",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://moneysavingmom.com/wp-content/uploads/2023/02/frappuccino-1-630x840.jpeg",
@@ -245,7 +245,7 @@ def seed_errything():
 
     drink3 = Product(
         name="MilkShake",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.beeyondcereal.com/wp-content/uploads/2022/06/milkshakes-without-ice-cream6.jpg",
@@ -256,7 +256,7 @@ def seed_errything():
 
     drink4 = Product(
         name="Iced Coffee",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://frostingandfettuccine.com/wp-content/uploads/2022/12/Caramel-Iced-Coffee-6-683x1024.jpg",
@@ -267,7 +267,7 @@ def seed_errything():
 
     drink5 = Product(
         name="Matcha Latte",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://images.immediate.co.uk/production/volatile/sites/2/2023/03/Peach-iced-tea-197aa60.jpg?quality=90&webp=true&resize=300,272",
@@ -278,7 +278,7 @@ def seed_errything():
 
     drink6 = Product(
         name="Matcha Latte",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.justonecookbook.com/wp-content/uploads/2022/12/Matcha-Latte-4589-II.jpg",
@@ -294,7 +294,7 @@ def seed_errything():
 
     sandwich1 = Product(
         name="Infused BLT",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.southernliving.com/thmb/ZHPbfOxGS67POrrBjc6X0LYnizc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-sl-blt-01-4X3-b322a15a36fc436abf2796092283a40c.jpg",
@@ -305,7 +305,7 @@ def seed_errything():
 
     sandwich2 = Product(
         name="Infused PB and Banana",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2021/12/egg1-1200x675.jpg",
@@ -316,7 +316,7 @@ def seed_errything():
 
     sandwich3 = Product(
         name="Infused Egg Sandwich",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2021/12/egg1-1200x675.jpg",
@@ -327,7 +327,7 @@ def seed_errything():
 
     salad = Product(
         name="Infused Chicken Salad",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.dinneratthezoo.com/wp-content/uploads/2020/12/grilled-chicken-salad-4.jpg",
@@ -338,7 +338,7 @@ def seed_errything():
 
     snack1 = Product(
         name="Infused Cookie",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://publish.purewow.net/wp-content/uploads/sites/2/2021/10/giant-cookie-trend-last-crumb.jpg",
@@ -349,7 +349,7 @@ def seed_errything():
 
     snack2 = Product(
         name="Infused Danish",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.sugarsaltmagic.com/wp-content/uploads/2021/07/How-to-make-Danish-Pastry-from-scratch-5-500x500.jpg",
@@ -360,7 +360,7 @@ def seed_errything():
 
     snack3 = Product(
         name="Infused Muffin",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://bromabakery.com/wp-content/uploads/2018/06/Anything-But-Basic-Muffin-Recipe-1067x1600.webp",
@@ -371,7 +371,7 @@ def seed_errything():
 
     snack4 = Product(
         name="Infused Apple Turnover",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://carlsbadcravings.com/wp-content/uploads/2022/10/apple-turnovers-9a.jpg",
@@ -382,7 +382,7 @@ def seed_errything():
 
     snack5 = Product(
         name="Infused Chocolate Crescent",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://sallysbakingaddiction.com/wp-content/uploads/2014/08/20-Minute-Chocolate-Croissants-5.jpg",
@@ -393,7 +393,7 @@ def seed_errything():
 
     snack6 = Product(
         name="Infused Stuffed Crust Pizza Bites",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://spicysouthernkitchen.com/wp-content/uploads/2022/03/Stuffed-Crust-Pizza-Snacks-Feature.jpg",
@@ -409,7 +409,7 @@ def seed_errything():
 
     drink1 = Product(
         name="Coffee",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/newscms/2019_33/2203981/171026-better-coffee-boost-se-329p.jpg",
@@ -420,7 +420,7 @@ def seed_errything():
 
     drink2 = Product(
         name="Frappe",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://moneysavingmom.com/wp-content/uploads/2023/02/frappuccino-1-630x840.jpeg",
@@ -431,7 +431,7 @@ def seed_errything():
 
     drink3 = Product(
         name="MilkShake",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.beeyondcereal.com/wp-content/uploads/2022/06/milkshakes-without-ice-cream6.jpg",
@@ -442,7 +442,7 @@ def seed_errything():
 
     drink4 = Product(
         name="Iced Coffee",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://frostingandfettuccine.com/wp-content/uploads/2022/12/Caramel-Iced-Coffee-6-683x1024.jpg",
@@ -453,7 +453,7 @@ def seed_errything():
 
     drink5 = Product(
         name="Matcha Latte",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://images.immediate.co.uk/production/volatile/sites/2/2023/03/Peach-iced-tea-197aa60.jpg?quality=90&webp=true&resize=300,272",
@@ -464,7 +464,7 @@ def seed_errything():
 
     drink6 = Product(
         name="Matcha Latte",
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(0.99, 2.99)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://www.justonecookbook.com/wp-content/uploads/2022/12/Matcha-Latte-4589-II.jpg",
@@ -477,11 +477,10 @@ def seed_errything():
     _ = [db.session.add(demoInfDrink) for demoInfDrink in seededInfDrinks]
     db.session.commit()
 
-    # seededMerch = []
 
     seededMerch = Product(
             name="timeForMyMeds",
-            description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+            description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
             price=round(float(random.uniform(15.49, 30.49)), 2),
             units_available=random.randint(1, 1000),
             preview_image="https://i.ebayimg.com/images/g/BpMAAOSw1WJixcyE/s-l500.jpg",
@@ -494,7 +493,7 @@ def seed_errything():
 
     smoke1 = Product(
         name='Blue Dream',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://budsgoods.com/wp-content/uploads/2023/02/blue-dream-cannabis-strain-min-296x300.png",
@@ -505,7 +504,7 @@ def seed_errything():
 
     smoke2 = Product(
         name='Girl Scout Cookies',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://uploads.medicaljane.com/wp-content/uploads/2012/07/gscHD7.jpg",
@@ -516,7 +515,7 @@ def seed_errything():
 
     smoke3 = Product(
         name='Sour Diesel',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Sour-diesel.PNG/1200px-Sour-diesel.PNG",
@@ -527,7 +526,7 @@ def seed_errything():
 
     smoke4 = Product(
         name='Gelato',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://thcdesign.com/wp-content/uploads/2020/12/THC-Design-Gelato-Main-Image.jpg",
@@ -538,7 +537,7 @@ def seed_errything():
 
     smoke5 = Product(
         name='White Widow',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/White_widow.jpg/800px-White_widow.jpg",
@@ -549,7 +548,7 @@ def seed_errything():
 
     smoke6 = Product(
         name='Durban Poison',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://images.hytiva.com/Durban-Poison.jpg?mw667-mh1000",
@@ -560,7 +559,7 @@ def seed_errything():
 
     smoke7 = Product(
         name='Haze',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://budsgoods.com/wp-content/uploads/2023/02/super-silver-haze-MA-top-strains-300x169.png",
@@ -571,7 +570,7 @@ def seed_errything():
 
     smoke8 = Product(
         name='Strawberry Cough',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://ilgm.com/media/catalog/product/cache/823fa5a11dba5b7700dc56a0d67977e6/s/t/strawberry-cough-marijuana-seeds_feminized_480x480px.jpg",
@@ -582,7 +581,7 @@ def seed_errything():
 
     smoke9 = Product(
         name='Wedding Cake',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://thcdesign.com/wp-content/uploads/2022/02/THC-Design-Wedding-Cake-Main-Image.jpg",
@@ -593,7 +592,7 @@ def seed_errything():
 
     smoke10 = Product(
         name='Alcapulco Gold',
-        description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
+        description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://upload.wikimedia.org/wikipedia/commons/8/83/Acapulco_gold.jpg",
