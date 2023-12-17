@@ -105,8 +105,6 @@ def seed_errything():
 
     staffIds = [ownerDemo.id, managerDemo1.id, managerDemo2.id]
 
-    seededFoods = []
-
     sandwich1 = Product(
         name="BLT",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -117,7 +115,7 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(sandwich1)
+
     sandwich2 = Product(
         name="PB and Banana",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -128,7 +126,7 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(sandwich2)
+
     sandwich3 = Product(
         name="Egg Sandwich",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -139,7 +137,7 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(sandwich3)
+
     salad = Product(
         name="Chicken Salad",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -150,7 +148,7 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(salad)
+
     snack1 = Product(
         name="Cookie",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -161,7 +159,7 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(snack1)
+
     snack2 = Product(
         name="Danish",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -172,7 +170,7 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(snack2)
+
     snack3 = Product(
         name="Muffin",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -183,7 +181,7 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(snack3)
+
     snack4 = Product(
         name="Apple Turnover",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -194,7 +192,7 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(snack4)
+
     snack5 = Product(
         name="Chocolate Crescent",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -205,7 +203,7 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(snack5)
+
     snack6 = Product(
         name="Stuffed Crust Pizza Bites",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -216,13 +214,12 @@ def seed_errything():
         category_id=food.id,
         added_by=random.choice(staffIds)
     )
-    seededFoods.append(snack6)
 
+    seededFoods = [sandwich1, sandwich2, sandwich3, salad, snack1, snack2, snack3, snack4, snack5, snack6]
     _ = [db.session.add(demoFood) for demoFood in seededFoods]
 
     db.session.commit()
 
-    seededDrinks = []
 
     drink1 = Product(
         name="Coffee",
@@ -234,7 +231,7 @@ def seed_errything():
         category_id=drink.id,
         added_by=random.choice(staffIds)
     )
-    seededDrinks.append(drink1)
+
     drink2 = Product(
         name="Frappe",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -245,7 +242,7 @@ def seed_errything():
         category_id=drink.id,
         added_by=random.choice(staffIds)
     )
-    seededDrinks.append(drink2)
+
     drink3 = Product(
         name="MilkShake",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -256,7 +253,7 @@ def seed_errything():
         category_id=drink.id,
         added_by=random.choice(staffIds)
     )
-    seededDrinks.append(drink3)
+
     drink4 = Product(
         name="Iced Coffee",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -267,7 +264,7 @@ def seed_errything():
         category_id=drink.id,
         added_by=random.choice(staffIds)
     )
-    seededDrinks.append(drink4)
+
     drink5 = Product(
         name="Matcha Latte",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -278,7 +275,7 @@ def seed_errything():
         category_id=drink.id,
         added_by=random.choice(staffIds)
     )
-    seededDrinks.append(drink5)
+
     drink6 = Product(
         name="Matcha Latte",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -289,13 +286,11 @@ def seed_errything():
         category_id=drink.id,
         added_by=random.choice(staffIds)
     )
-    seededDrinks.append(drink6)
 
+    seededDrinks = [drink1, drink2, drink3, drink4, drink5, drink6]
     _ = [db.session.add(demoDrink) for demoDrink in seededDrinks]
 
     db.session.commit()
-
-    seededInfFoods = []
 
     sandwich1 = Product(
         name="Infused BLT",
@@ -307,7 +302,7 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(sandwich1)
+
     sandwich2 = Product(
         name="Infused PB and Banana",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -318,7 +313,7 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(sandwich2)
+
     sandwich3 = Product(
         name="Infused Egg Sandwich",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -329,7 +324,7 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(sandwich3)
+
     salad = Product(
         name="Infused Chicken Salad",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -340,7 +335,7 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(salad)
+
     snack1 = Product(
         name="Infused Cookie",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -351,7 +346,7 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(snack1)
+
     snack2 = Product(
         name="Infused Danish",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -362,7 +357,7 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(snack2)
+
     snack3 = Product(
         name="Infused Muffin",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -373,7 +368,7 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(snack3)
+
     snack4 = Product(
         name="Infused Apple Turnover",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -384,7 +379,7 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(snack4)
+
     snack5 = Product(
         name="Infused Chocolate Crescent",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -395,7 +390,7 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(snack5)
+
     snack6 = Product(
         name="Infused Stuffed Crust Pizza Bites",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -406,13 +401,11 @@ def seed_errything():
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)
     )
-    seededInfFoods.append(snack6)
 
+    seededInfFoods = [sandwich1, sandwich2, sandwich3, salad, snack1, snack2, snack3, snack4, snack5, snack6]
     _ = [db.session.add(demoFood) for demoFood in seededInfFoods]
 
     db.session.commit()
-
-    seededInfDrinks = []
 
     drink1 = Product(
         name="Coffee",
@@ -424,7 +417,7 @@ def seed_errything():
         category_id=infusedDrink.id,
         added_by=random.choice(staffIds)
     )
-    seededInfDrinks.append(drink1)
+
     drink2 = Product(
         name="Frappe",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -435,7 +428,7 @@ def seed_errything():
         category_id=infusedDrink.id,
         added_by=random.choice(staffIds)
     )
-    seededInfDrinks.append(drink2)
+
     drink3 = Product(
         name="MilkShake",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -446,7 +439,7 @@ def seed_errything():
         category_id=infusedDrink.id,
         added_by=random.choice(staffIds)
     )
-    seededInfDrinks.append(drink3)
+
     drink4 = Product(
         name="Iced Coffee",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -457,7 +450,7 @@ def seed_errything():
         category_id=infusedDrink.id,
         added_by=random.choice(staffIds)
     )
-    seededInfDrinks.append(drink4)
+
     drink5 = Product(
         name="Matcha Latte",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -468,7 +461,7 @@ def seed_errything():
         category_id=infusedDrink.id,
         added_by=random.choice(staffIds)
     )
-    seededInfDrinks.append(drink5)
+
     drink6 = Product(
         name="Matcha Latte",
         description= fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
@@ -479,7 +472,8 @@ def seed_errything():
         category_id=infusedDrink.id,
         added_by=random.choice(staffIds)
     )
-    seededInfDrinks.append(drink6)
+
+    seededInfDrinks = [drink1, drink2, drink3, drink4, drink5, drink6]
     _ = [db.session.add(demoInfDrink) for demoInfDrink in seededInfDrinks]
     db.session.commit()
 
@@ -496,12 +490,7 @@ def seed_errything():
             added_by=random.choice(staffIds)
         )
     db.session.add(seededMerch)
-    # seededMerch.append(demoProduct)
-    # _ = [db.session.add(demoMerch) for demoMerch in seededMerch]
-
     db.session.commit()
-
-    seededSmokeables = []
 
     smoke1 = Product(
         name='Blue Dream',
@@ -513,7 +502,6 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke1)
 
     smoke2 = Product(
         name='Girl Scout Cookies',
@@ -525,7 +513,6 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke2)
 
     smoke3 = Product(
         name='Sour Diesel',
@@ -537,7 +524,6 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke3)
 
     smoke4 = Product(
         name='Gelato',
@@ -549,7 +535,6 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke4)
 
     smoke5 = Product(
         name='White Widow',
@@ -561,7 +546,6 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke5)
 
     smoke6 = Product(
         name='Durban Poison',
@@ -573,7 +557,6 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke6)
 
     smoke7 = Product(
         name='Haze',
@@ -585,7 +568,6 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke7)
 
     smoke8 = Product(
         name='Strawberry Cough',
@@ -597,7 +579,6 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke8)
 
     smoke9 = Product(
         name='Wedding Cake',
@@ -609,7 +590,6 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke9)
 
     smoke10 = Product(
         name='Alcapulco Gold',
@@ -621,31 +601,24 @@ def seed_errything():
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
-    seededSmokeables.append(smoke10)
 
+    seededSmokeables = [smoke1, smoke2, smoke3, smoke4, smoke5, smoke6, smoke7, smoke8, smoke9, smoke10]
     _ = [db.session.add(demoStrain) for demoStrain in seededSmokeables]
 
     db.session.commit()
 
-    seededPara = []
-
-    demoParaImages = {"GlassBubbler": "https://www.grasscity.com/media/catalog/product/cache/991238b50a055d049ec701e2668bf240/m/i/mini-bubbler-glass-pipe-5.5_media-1-2.jpg"}
     demoParaNames = ["GlassBubbler"]
-    for paraName in demoParaNames:
-        formattedStrainName = "-".join(paraName.split(" "))
-        demoProduct = Product(
-                name=paraName,
-                description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
-                price=round(float(random.uniform(9.99, 99.99)), 2),
-                units_available=random.randint(1, 1000),
-                preview_image=demoParaImages[f'{paraName}'],
-                preview_image_name= f'flower_{formattedStrainName}',
-                category_id=paraphenalia.id,
-                added_by=random.choice(staffIds)
-            )
-        seededPara.append(demoProduct)
-    _ = [db.session.add(demoPara) for demoPara in seededPara]
-
+    seededPara = Product(
+            name="GlassBubbler",
+            description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
+            price=round(float(random.uniform(9.99, 99.99)), 2),
+            units_available=random.randint(1, 1000),
+            preview_image="https://www.grasscity.com/media/catalog/product/cache/991238b50a055d049ec701e2668bf240/m/i/mini-bubbler-glass-pipe-5.5_media-1-2.jpg",
+            preview_image_name= f'para-item_GlassBubbler',
+            category_id=paraphenalia.id,
+            added_by=random.choice(staffIds)
+        )
+    db.session.add(seededPara)
     db.session.commit()
 
     print(seededFoods)
@@ -655,7 +628,7 @@ def seed_errything():
     infusedDrink.products.extend(seededInfDrinks)
     merch.products.extend([seededMerch])
     smokeables.products.extend(seededSmokeables)
-    paraphenalia.products.extend(seededPara)
+    paraphenalia.products.extend([seededPara])
 
     db.session.commit()
 
