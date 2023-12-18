@@ -15,7 +15,7 @@ export default function Takeout() {
   useEffect(() => {
     let localBag = null;
     if (user) {
-      localBag = localStorage.getItem(`${user.id}takeaway`);
+      localBag = localStorage.getItem(`${user.id}Takeaway`);
     } else {
       localBag = localStorage.getItem("guestTakeaway");
     }
@@ -30,7 +30,7 @@ export default function Takeout() {
     e.preventDefault();
     let storedTakeout = null;
     if (user) {
-      storedTakeout = localStorage.getItem(`${user.id}takeaway`);
+      storedTakeout = localStorage.getItem(`${user.id}Takeaway`);
     } else {
       storedTakeout = localStorage.getItem("guestTakeaway");
     }
@@ -54,7 +54,7 @@ export default function Takeout() {
       updatedBag = { ...currBag };
     }
     if (user) {
-      localStorage.setItem(`${user.id}takeaway`, JSON.stringify(updatedBag));
+      localStorage.setItem(`${user.id}Takeaway`, JSON.stringify(updatedBag));
     } else {
       localStorage.setItem("guestTakeaway", JSON.stringify(updatedBag));
     }
