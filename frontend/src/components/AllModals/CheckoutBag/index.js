@@ -3,19 +3,23 @@ import { useHistory } from "react-router-dom";
 
 import { useModal } from "../../../context/Modal";
 import "./CheckoutBag.css";
+import { addUserOrderItems, createOrder } from "../../../store/orders";
 
 export default function CheckoutBag({ userId }) {
   const { closeModal } = useModal();
   const history = useHistory();
   const [option, setOption] = useState("");
   const [total, setTotal] = useState();
+  const [bag, setBag] = useState({});
 
   useEffect(() => {
     let storedBag = null;
     if (userId && userId != "undefined") {
-      storedBag = localStorage.getItem(`${userId}takeaway`);
+      storedBag = localStorage.getItem(`${userId}Takeaway`);
+      setBag(JSON.parse(storedBag));
     } else {
       storedBag = localStorage.getItem("guestTakeaway");
+      setBag(JSON.parse(storedBag));
     }
     const parsedBag = JSON.parse(storedBag);
     let bagTotal = 0;
@@ -27,12 +31,36 @@ export default function CheckoutBag({ userId }) {
     setTotal(bagTotal.toFixed(2));
   }, []);
 
-  const placeOrder = () => {
+  const placeOrder = (e) => {
+    e.preventDefault();
     let updateBag = {};
     if (userId && userId != "undefined") {
-      localStorage.setItem(`${userId}takeaway`, JSON.stringify(updateBag));
+      dispatch(createOrder()).then((orderId) => {
+        bag.map((item) => {
+          // console.log(item);
+          const formData = {
+            itemId: item[0],
+            quantity: item[1],
+          };
+          // console.log(formData);
+          dispatch(addUserOrderItems({ formData, orderId }))
+            .then((data) => {
+              if (data && data.errors) {
+                console.log(data);
+              }
+            })
+            .then(() => {
+              localStorage.setItem(`${userId}Cart`, JSON.stringify(updateBag));
+            })
+            .then(() => {
+              history.push("/profile");
+              closeModal();
+              return;
+            });
+        });
+      });
     } else {
-      localStorage.setItem("guestTakeaway", JSON.stringify(updateBag));
+      localStorage.setItem("guestCart", JSON.stringify(updateBag));
     }
     history.push("/home");
     closeModal();

@@ -59,12 +59,10 @@ export default function CheckoutCart({ userId }) {
               }
             })
             .then(() => {
-              // console.log(userId);
-              // console.log(localStorage.getItem(`${userId}Cart`));
               localStorage.setItem(`${userId}Cart`, JSON.stringify(updateCart));
             })
             .then(() => {
-              history.push("/home");
+              history.push("/profile");
               closeModal();
               return;
             });
