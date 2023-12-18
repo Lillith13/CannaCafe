@@ -4,9 +4,11 @@ import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import "./CheckoutBag.css";
 import { addUserOrderItems, createOrder } from "../../../store/orders";
+import { useDispatch } from "react-redux";
 
 export default function CheckoutBag({ userId }) {
   const { closeModal } = useModal();
+  const dispatch = useDispatch();
   const history = useHistory();
   const [option, setOption] = useState("");
   const [total, setTotal] = useState();
