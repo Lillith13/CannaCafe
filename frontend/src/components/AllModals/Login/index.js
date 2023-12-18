@@ -73,9 +73,7 @@ function Login() {
             <option value="employeeDemo1">employeeDemo1</option>
             <option value="employeeDemo2">employeeDemo2</option>
             <option value="employeeDemo3">employeeDemo3</option>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((count) => (
-              <option value={`memberDemo${count}`}>memberDemo{count}</option>
-            ))}
+            <option value="memberDemo">memberDemo</option>
           </select>
         </label>
 

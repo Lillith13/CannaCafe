@@ -45,7 +45,7 @@ def seed_users(roleOwner, roleManager, roleEmployee, roleMember):
         state="Cannibinoidia",
         zipcode="13420",
         username="memberDemo",
-        email="employeeDemo3@test.io",
+        email="memberDemo@test.io",
         phone = '555-555-5555',
         password="password",
         role_id=int(roleMember.id),
