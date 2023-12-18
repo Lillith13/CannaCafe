@@ -36,12 +36,6 @@ def seed_users(roleOwner, roleManager, roleEmployee, roleMember):
     seedUsers = [ownerDemo, managerDemo1, managerDemo2, employeeDemo1, employeeDemo2, employeeDemo3]
     _ = [db.session.add(user) for user in seedUsers]
 
-    # new_members = []
-    # for count in range(5):
-    fakeName = fake.name()
-    fakeFirstName = fakeName.split(" ")[0]
-    fakeLastName = fakeName.split(" ")[1]
-
     new_member = User(
         firstName="Member",
         lastName="Demo",
