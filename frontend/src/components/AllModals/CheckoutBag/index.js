@@ -35,7 +35,7 @@ export default function CheckoutBag({ userId }) {
 
   const placeOrder = (e) => {
     e.preventDefault();
-    let updateBag = {};
+
     if (userId && userId != "undefined") {
       dispatch(createOrder()).then((orderId) => {
         bag.map((item) => {
@@ -52,14 +52,12 @@ export default function CheckoutBag({ userId }) {
               }
             })
             .then(() => {
-              localStorage.setItem(
-                `${userId}Takeaway`,
-                JSON.stringify(updateBag)
-              );
+              localStorage.setItem(`${userId}Takeaway`, JSON.stringify({}));
             })
             .then(() => {
               history.push("/profile");
               closeModal();
+              return;
             });
         });
       });
