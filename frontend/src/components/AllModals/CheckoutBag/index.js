@@ -62,7 +62,7 @@ export default function CheckoutBag({ userId }) {
         });
       });
     } else {
-      localStorage.setItem("guestTakeaway", JSON.stringify(updateBag));
+      localStorage.setItem("guestTakeaway", JSON.stringify());
     }
     history.push("/home");
     closeModal();
