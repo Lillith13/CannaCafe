@@ -1,9 +1,7 @@
 from ..models import db, User, Wishlist, Favorite, environment, SCHEMA
 from sqlalchemy.sql import text
-from faker import Faker
 from datetime import datetime
 
-fake = Faker()
 
 def seed_users(roleOwner, roleManager, roleEmployee, roleMember):
 
@@ -45,15 +43,15 @@ def seed_users(roleOwner, roleManager, roleEmployee, roleMember):
     fakeLastName = fakeName.split(" ")[1]
 
     new_member = User(
-        firstName=fakeFirstName,
-        lastName=fakeLastName,
-        birthday=fake.date_of_birth(minimum_age=21),
-        address=fake.street_address(),
-        city=fake.city(),
-        state=fake.state(),
-        zipcode=fake.postcode(),
-        username=f'memberDemo',
-        email=fake.email(),
+        firstName="Member",
+        lastName="Demo",
+        birthday=datetime(1989,5,5),
+        address="1479 Demo Test Run",
+        city="Danksville",
+        state="Cannibinoidia",
+        zipcode="13420",
+        username="memberDemo",
+        email="employeeDemo3@test.io",
         phone = '555-555-5555',
         password="password",
         role_id=int(roleMember.id),
