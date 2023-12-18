@@ -176,16 +176,16 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE order_products SET SCHEMA {SCHEMA};")
 
-    op.create_table('product_images',
-    sa.Column('id', sa.INTEGER(), nullable=False),
-    sa.Column('product_id', sa.INTEGER(), nullable=True),
-    sa.Column('url', sa.String(length=2000), nullable=False),
-    sa.Column('image_name', sa.String(length=2000), nullable=False),
-    sa.ForeignKeyConstraint(['product_id'], ['products.id'], ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('id')
-    )
-    if environment == "production":
-        op.execute(f"ALTER TABLE product_images SET SCHEMA {SCHEMA};")
+    # op.create_table('product_images',
+    # sa.Column('id', sa.INTEGER(), nullable=False),
+    # sa.Column('product_id', sa.INTEGER(), nullable=True),
+    # sa.Column('url', sa.String(length=2000), nullable=False),
+    # sa.Column('image_name', sa.String(length=2000), nullable=False),
+    # sa.ForeignKeyConstraint(['product_id'], ['products.id'], ondelete='CASCADE'),
+    # sa.PrimaryKeyConstraint('id')
+    # )
+    # if environment == "production":
+    #     op.execute(f"ALTER TABLE product_images SET SCHEMA {SCHEMA};")
 
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),

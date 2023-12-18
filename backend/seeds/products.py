@@ -1,109 +1,9 @@
-from ..models import db, User, Role, Wishlist, Favorite, Product, Category, environment, SCHEMA
+from ..models import db, Category, Product, environment, SCHEMA
 from sqlalchemy.sql import text
-from faker import Faker
-from datetime import datetime
 import random
 
-fake = Faker()
-
-def seed_errything():
-
-    roleOwner = Role(name="Owner", payrate=30)
-    roleManager = Role(name="Manager", payrate=25)
-    roleEmployee = Role(name="Employee", payrate=20)
-    roleMember = Role(name="Member", payrate=0)
-
-    seedRoles = [roleMember, roleEmployee, roleManager, roleOwner]
-    _ = [db.session.add(role) for role in seedRoles]
-
-    db.session.commit()
-
-    ownerDemo = User(
-        firstName="Owner",
-        lastName="Demo",
-        birthday=datetime(1990,9,30),
-        address="1479 Demo Test Run",
-        city="Danksville",
-        state="Cannibinoidia",
-        zipcode=13420,
-        username="ownerDemo",
-        email="ownerDemo@test.io",
-        phone = "555-555-5555",
-        password="password",
-        role_id=int(roleOwner.id),
-        pay_rate=roleOwner.payrate
-    )
-
-
-    managerDemo1 = User (firstName="Manager1", lastName="Demo", birthday=datetime(1991,10,15), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo1", email="managerDemo1@test.io", phone = "555-555-5555", password="password", role_id=int(roleManager.id), pay_rate=roleManager.payrate)
-
-    managerDemo2 = User (firstName="Manager2", lastName="Demo", birthday=datetime(1993,11,23), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="managerDemo2", email="managerDemo2@test.io", phone = "555-555-5555", password="password", role_id=int(roleManager.id), pay_rate=roleManager.payrate)
-
-
-    employeeDemo1 = User (firstName="Employee1", lastName="Demo", birthday=datetime(1992,1,25), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo1", email="employeeDemo1@test.io", phone = "555-555-5555", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
-
-    employeeDemo2 = User (firstName="Employee2", lastName="Demo", birthday=datetime(1995,3,14), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo2", email="employeeDemo2@test.io", phone = "555-555-5555", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
-
-    employeeDemo3 = User (firstName="Employee3", lastName="Demo", birthday=datetime(1989,5,5), address="1479 Demo Test Run", city="Danksville", state="Cannibinoidia", zipcode=13420, username="employeeDemo3", email="employeeDemo3@test.io", phone = "555-555-5555", password="password", role_id=int(roleEmployee.id), pay_rate=roleEmployee.payrate)
-
-    seedUsers = [ownerDemo, managerDemo1, managerDemo2, employeeDemo1, employeeDemo2, employeeDemo3]
-    _ = [db.session.add(user) for user in seedUsers]
-
-    # new_members = []
-    # for count in range(5):
-    fakeName = fake.name()
-    fakeFirstName = fakeName.split(" ")[0]
-    fakeLastName = fakeName.split(" ")[1]
-
-    new_member = User(
-        firstName=fakeFirstName,
-        lastName=fakeLastName,
-        birthday=fake.date_of_birth(minimum_age=21),
-        address=fake.street_address(),
-        city=fake.city(),
-        state=fake.state(),
-        zipcode=fake.postcode(),
-        username=f'memberDemo',
-        email=fake.email(),
-        phone = '555-555-5555',
-        password="password",
-        role_id=int(roleMember.id),
-        pay_rate=roleMember.payrate
-    )
-        # new_members.append(new_member)
-    # _ = [db.session.add(member) for member in new_members]
-    db.session.add(new_member)
-    db.session.commit()
-
-    seedWishes = []
-    seedFaves = []
-    for user in seedUsers:
-        new_wishlist = Wishlist(user_id = user.id)
-        new_favorites = Favorite(user_id = user.id)
-        seedWishes.append(new_wishlist)
-        seedFaves.append(new_favorites)
-    # for user in new_members:
-    new_wishlist = Wishlist(user_id = new_member.id)
-    new_favorites = Favorite(user_id = new_member.id)
-    seedWishes.append(new_wishlist)
-    seedFaves.append(new_favorites)
-    _ = [db.session.add(wish) for wish in seedWishes]
-    _ = [db.session.add(fave) for fave in seedFaves]
-
-    food = Category(name="Food", age_restricted=False)
-    drink = Category(name="Drink", age_restricted=False)
-    infusedFood = Category(name="Infused-Food")
-    infusedDrink = Category(name="Infused-Drink")
-    smokeables = Category(name="Smoke", shippable=True)
-    merch = Category(name="Merch", age_restricted=False, shippable=True)
-    paraphenalia = Category(name="Paraphernalia", shippable=True)
-
-    seedCats = [food, drink, infusedFood, infusedDrink, smokeables, merch, paraphenalia]
-    _ = [db.session.add(cat) for cat in seedCats]
-
-    db.session.commit()
-
-    staffIds = [ownerDemo.id, managerDemo1.id, managerDemo2.id]
+def seed_products(food, drink, infusedFood, infusedDrink, smokeables, merch, paraphenalia):
+    staffIds = [1, 2, 3]
 
     sandwich1 = Product(
         name="BLT",
@@ -215,7 +115,7 @@ def seed_errything():
         added_by=random.choice(staffIds)
     )
 
-    seededFoods = [sandwich1, sandwich2, sandwich3, salad, snack1, snack2, snack3, snack4, snack5, snack6]
+    seededFoods = [sandwich1, sandwich2, sandwich3, salad, snack1,  snack2, snack3, snack4, snack5, snack6]
     _ = [db.session.add(demoFood) for demoFood in seededFoods]
 
     db.session.commit()
@@ -402,7 +302,7 @@ def seed_errything():
         added_by=random.choice(staffIds)
     )
 
-    seededInfFoods = [sandwich1, sandwich2, sandwich3, salad, snack1, snack2, snack3, snack4, snack5, snack6]
+    seededInfFoods = [sandwich1, sandwich2, sandwich3, salad, snack1,   snack2, snack3, snack4, snack5, snack6]
     _ = [db.session.add(demoFood) for demoFood in seededInfFoods]
 
     db.session.commit()
@@ -574,7 +474,7 @@ def seed_errything():
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://ilgm.com/media/catalog/product/cache/823fa5a11dba5b7700dc56a0d67977e6/s/t/strawberry-cough-marijuana-seeds_feminized_480x480px.jpg",
-        preview_image_name= f'flower_Strawberry Cough',
+        preview_image_name= f'flower_Strawberry-Cough',
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
@@ -585,7 +485,7 @@ def seed_errything():
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://thcdesign.com/wp-content/uploads/2022/02/THC-Design-Wedding-Cake-Main-Image.jpg",
-        preview_image_name= f'flower_Wedding Cake',
+        preview_image_name= f'flower_Wedding-Cake',
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
@@ -596,12 +496,12 @@ def seed_errything():
         price=round(float(random.uniform(3.49, 6.49)), 2),
         units_available=random.randint(1, 1000),
         preview_image="https://upload.wikimedia.org/wikipedia/commons/8/83/Acapulco_gold.jpg",
-        preview_image_name= f'flower_Alcapulco Gold',
+        preview_image_name= f'flower_Alcapulco-Gold',
         category_id=smokeables.id,
         added_by=random.choice(staffIds)
     )
 
-    seededSmokeables = [smoke1, smoke2, smoke3, smoke4, smoke5, smoke6, smoke7, smoke8, smoke9, smoke10]
+    seededSmokeables = [smoke1, smoke2, smoke3, smoke4, smoke5, smoke6,     smoke7, smoke8, smoke9, smoke10]
     _ = [db.session.add(demoStrain) for demoStrain in seededSmokeables]
 
     db.session.commit()
@@ -631,20 +531,13 @@ def seed_errything():
 
     db.session.commit()
 
-def undo_errything():
+def undo_products():
     if environment == 'production':
-        db.session.execute(f"TRUNCATE table {SCHEMA}.wishlists RESTART IDENTITY CASCADE")
-        db.session.execute(f"TRUNCATE table {SCHEMA}.favorites RESTART IDENTITY CASCADE")
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE")
-        db.session.execute(f"TRUNCATE table {SCHEMA}.roles RESTART IDENTITY CASCADE")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.category_products RESTART IDENTITY CASCADE")
         db.session.execute(f"TRUNCATE table {SCHEMA}.products RESTART IDENTITY CASCADE")
         db.session.execute(f"TRUNCATE table {SCHEMA}.categories RESTART IDENTITY CASCADE")
     else:
-        db.session.execute(text("DELETE FROM wishlists"))
-        db.session.execute(text("DELETE FROM favorites"))
-        db.session.execute(text("DELETE FROM users"))
-        db.session.execute(text("DELETE FROM roles"))
+        db.session.execute(text("DELETE FROM category_products"))
         db.session.execute(text("DELETE FROM products"))
         db.session.execute(text("DELETE FROM categories"))
-
-    db.session.commit()
+        db.session.commit()
