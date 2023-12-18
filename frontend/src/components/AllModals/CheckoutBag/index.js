@@ -52,17 +52,19 @@ export default function CheckoutBag({ userId }) {
               }
             })
             .then(() => {
-              localStorage.setItem(`${userId}Cart`, JSON.stringify(updateBag));
+              localStorage.setItem(
+                `${userId}Takeaway`,
+                JSON.stringify(updateBag)
+              );
             })
             .then(() => {
               history.push("/profile");
               closeModal();
-              return;
             });
         });
       });
     } else {
-      localStorage.setItem("guestCart", JSON.stringify(updateBag));
+      localStorage.setItem("guestTakeaway", JSON.stringify(updateBag));
     }
     history.push("/home");
     closeModal();
