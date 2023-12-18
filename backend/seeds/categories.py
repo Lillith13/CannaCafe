@@ -16,4 +16,5 @@ def seed_categories():
     _ = [db.session.add(cat) for cat in seedCats]
 
     db.session.commit()
+    
     seed_products(food, drink, infusedFood, infusedDrink, smokeables, merch, paraphenalia)
