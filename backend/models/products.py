@@ -10,7 +10,7 @@ class Product(db.Model):
 
   name = db.Column(db.String(50), nullable=False)
 
-  description = db.Column(db.String(255), nullable=False)
+  description = db.Column(db.String(2000), nullable=False)
 
   price = db.Column(db.Numeric(precision=10, scale=2), nullable=False)
 
