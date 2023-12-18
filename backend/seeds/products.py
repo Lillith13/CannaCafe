@@ -509,7 +509,7 @@ def seed_products(food, drink, infusedFood, infusedDrink, smokeables, merch, par
         added_by=random.choice(staffIds)
     )
 
-    seededSmokeables = [smoke1, smoke2, smoke3, smoke4, smoke5, smoke6,     smoke7, smoke8, smoke9, smoke10]
+    seededSmokeables = [smoke1, smoke2, smoke3, smoke4, smoke5, smoke6, smoke7, smoke8, smoke9, smoke10]
     _ = [db.session.add(demoStrain) for demoStrain in seededSmokeables]
 
     db.session.commit()
@@ -529,25 +529,25 @@ def seed_products(food, drink, infusedFood, infusedDrink, smokeables, merch, par
     db.session.commit()
 
     print("print before linking products with their respective categories")
-    print("", food.products)
+    print("print at end food =>", food.products)
     food.products.extend(seededFoods)
 
-    print("", drink.products)
+    print("print at end food =>", drink.products)
     drink.products.extend(seededDrinks)
 
-    print("", infusedFood.products)
+    print("print at end infusedFood =>", infusedFood.products)
     infusedFood.products.extend(seededInfFoods)
 
-    print("", infusedDrink.products)
+    print("print at end infusedDrink =>", infusedDrink.products)
     infusedDrink.products.extend(seededInfDrinks)
 
-    print("", merch.products)
+    print("print at end merch =>", merch.products)
     merch.products.extend([seededMerch])
 
-    print("", smokeables.products)
+    print("print at end smokeables =>", smokeables.products)
     smokeables.products.extend(seededSmokeables)
 
-    print("", paraphenalia.products)
+    print("print at end paraphenalia =>", paraphenalia.products)
     paraphenalia.products.extend([seededPara])
     print("print after linking products with their respective categories")
 
