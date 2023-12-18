@@ -22,7 +22,6 @@ export const createOrder = () => async (dispatch) => {
     method: ["POST"],
   });
   const data = await res.json();
-  //   console.log(data);
   return data.Order;
 };
 
