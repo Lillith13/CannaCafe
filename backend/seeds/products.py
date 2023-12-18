@@ -528,14 +528,28 @@ def seed_products(food, drink, infusedFood, infusedDrink, smokeables, merch, par
     db.session.add(seededPara)
     db.session.commit()
 
-    print(seededFoods)
+    print("print before linking products with their respective categories")
+    print("", food.products)
     food.products.extend(seededFoods)
+
+    print("", drink.products)
     drink.products.extend(seededDrinks)
+
+    print("", infusedFood.products)
     infusedFood.products.extend(seededInfFoods)
+
+    print("", infusedDrink.products)
     infusedDrink.products.extend(seededInfDrinks)
+
+    print("", merch.products)
     merch.products.extend([seededMerch])
+
+    print("", smokeables.products)
     smokeables.products.extend(seededSmokeables)
+
+    print("", paraphenalia.products)
     paraphenalia.products.extend([seededPara])
+    print("print after linking products with their respective categories")
 
     db.session.commit()
 
