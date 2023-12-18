@@ -18,7 +18,9 @@ export default function CheckoutBag({ userId }) {
     let storedBag = null;
     if (userId && userId != "undefined") {
       storedBag = localStorage.getItem(`${userId}Takeaway`);
-      setBag(JSON.parse(storedBag));
+      // console.log(storedBag)
+      const parsedBag = JSON.parse(storedBag);
+      setBag(parsedBag);
     } else {
       storedBag = localStorage.getItem("guestTakeaway");
       setBag(JSON.parse(storedBag));
@@ -62,7 +64,7 @@ export default function CheckoutBag({ userId }) {
         });
       });
     } else {
-      localStorage.setItem("guestTakeaway", JSON.stringify());
+      localStorage.setItem("guestTakeaway", JSON.stringify({}));
     }
     history.push("/home");
     closeModal();
