@@ -20,6 +20,7 @@ import ConfirmRemove from "../AllModals/ConfirmRemove";
 import ProductReviews from "./ProductReviews";
 
 import "./ProductDetails.css";
+import CreateReview from "../AllModals/Review";
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ export default function ProductDetails() {
   const userWishes = useSelector((state) => state.wishlist);
   const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showReviews, setShowReviews] = useState(false);
 
   useEffect(async () => {
     const data = await dispatch(loadProduct(id))
@@ -223,10 +225,36 @@ export default function ProductDetails() {
             </div>
           </div>
 
-          <ProductReviews
-            productId={product.id}
-            userId={user ? user.id : null}
-          />
+          {Object.values(reviews).length > 0 ? (
+            <>
+              <p
+                onClick={() => setShowReviews(!showReviews)}
+                style={{ cursor: "pointer" }}
+              >
+                {showReviews ? "Hide " : "Show "} Reviews
+              </p>
+              {showReviews ? (
+                <ProductReviews
+                  productId={product.id}
+                  user={user ? user : null}
+                />
+              ) : (
+                ""
+              )}
+            </>
+          ) : (
+            <>
+              <h1>Be the first to review!</h1>
+              <div className="postReviewModalButton">
+                <OpenModalButton
+                  buttonText="Add Review"
+                  modalComponent={
+                    <CreateReview itemId={product.id} from="productDetails" />
+                  }
+                />
+              </div>
+            </>
+          )}
         </>
       ) : (
         <>

@@ -20,11 +20,15 @@ export default function UserWishlist() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div className="userWishTabContainer">
+    <div className="userWishTabContainer" id={Object.values(wishlist).length > 0 ? "" : "empty"}>
       {Object.values(wishlist).length > 0 ? (
         <>
           {Object.values(wishlist).map((wish) => (
-            <div key={wish.id} className="userWishContainer">
+            <div
+              key={wish.id}
+              className="userWishContainer"
+              style={{ backgroundImage: `url(${wish.previewImg})` }}
+            >
               <NavLink exact to={`/product/${wish.id}`}>
                 <h1>{wish.name}</h1>
               </NavLink>

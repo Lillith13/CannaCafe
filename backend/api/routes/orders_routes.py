@@ -81,6 +81,9 @@ def order(id):
             )
             product['units_available'] = units_available - quantity
             order.total += product['price'] * quantity
+            print("product price => ", product['price'])
+            print("product quantity => ", quantity)
+            print("order totals => ", order.total)
             db.session.add(newOrderItem)
             db.session.commit()
             return {"message": "successful"}

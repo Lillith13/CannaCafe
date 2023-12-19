@@ -22,11 +22,19 @@ export default function UserFavorites() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div className="userFavesTabContainer">
+    <div
+      className="userFavesTabContainer"
+      id={Object.values(faves).length > 0 ? "" : "empty"}
+    >
       {Object.values(faves).length > 0 ? (
         <>
           {Object.values(faves).map((fave) => (
-            <div key={fave.id} className="userFavesContainer">
+            <div
+              key={fave.id}
+              className="userFavesContainer"
+              style={{ backgroundImage: `url(${fave.previewImg})` }}
+            >
+              {console.log(fave.previewImg)}
               <NavLink exact to={`/menu/${fave.id}`}>
                 <h1>{fave.name}</h1>
               </NavLink>

@@ -39,12 +39,14 @@ export default function HomePage() {
         <div className="productLinksContainer">
           {Object.values(categories).map((category) => (
             <>
+              {console.log(category)}
               {category.shippable && (
                 <NavLink
                   exact
                   to={`/category/${category.name}`}
                   key={category.id}
                   className="idvProduct"
+                  // style={{backgroundImage={}}}
                 >
                   <h2>{category.name}</h2>
                 </NavLink>

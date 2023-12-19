@@ -11,6 +11,7 @@ review_routes = Blueprint("/reviews", __name__, url_prefix="/reviews")
 @login_required
 def usersReviews():
     reviews = Review.query.all()
+    print(reviews)
     if not len(reviews):
         return { "Reviews": None }
     return { "Reviews": [review.to_dict() for review in reviews] }

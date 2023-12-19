@@ -42,36 +42,46 @@
   width: 50%;
 }
 .idvProdContainerTile {
-  width: 30%;
   padding: 15px;
   border: 1px solid black;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  background-size: cover;
 }
 .idvProdContainerTile#idvProdContainerAlt {
   width: 100%;
 }
-.productImageTile {
+
+/* .productImageTile {
   width: 100%;
   border-radius: 15px;
-}
+} */
 
 .idvProdNameNPriceContainerTile {
   display: flex;
   justify-content: space-between;
+  width: 95%;
+  background-color: rgba(100, 101, 120, 0.9);
+  color: #fefae0;
+  border-radius: 15px 15px 0px 0px;
+  padding: 0px 15px 0px 15px;
+  margin: 0px;
 }
 
 .idvProdButtonContainerTile {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  border-radius: 0px 0px 15px 15px;
+  padding: 0px 15px 15px 15px;
+  background-color: rgba(100, 101, 120, 0.9);
+  width: 95%;
 }
 .universalProdButtonsTile,
 .roleProtectedButtonsTile {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .universalProdButtonsTile > button,
@@ -79,6 +89,9 @@
 .roleProtectedButtonsTile > button,
 .productsUnivButton {
   width: 45%;
+  background-color: rgba(100, 110, 200, 0.5);
+  color: #fefae0;
+  border-radius: 0px;
 }
 
 .universalProdButtonsTile > button,
@@ -97,6 +110,12 @@
 .editProductButton > button,
 .removeFromButton > button {
   height: 100%;
+  background-color: rgba(100, 110, 200, 0.5);
+  color: #fefae0;
+}
+.deleteProductButton > button {
+  background-color: rgba(100, 110, 200, 0.5);
+  color: #fefae0;
 }
 
 .removeFromButton > button:hover,
@@ -105,20 +124,18 @@
   color: #362706;
 }
 
-.removeFromButton > button:hover,
-.deleteProductButton > button:hover {
+.removeFromButton > button:hover {
   background-color: #dbc1bb;
+}
+.deleteProductButton > button:hover {
+  color: #fefae0;
+  background-color: #6f2818;
 }
 
 .editProductButton > button:hover {
   background-color: #f1d3b3;
 }
 
-/* .navLinkArea {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
 @media screen and (max-width: 850px) {
   /* force to list view */
 }

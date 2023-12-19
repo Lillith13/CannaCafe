@@ -22,6 +22,7 @@ export const getUserReviews = () => async (dispatch) => {
 
   const data = await res.json();
   if (res.ok) {
+    console.log(data);
     dispatch(loadReviews(data.Reviews));
     return null;
   } else {
@@ -101,15 +102,7 @@ export default function reducer(state = {}, action) {
   let new_state = {};
   switch (action.type) {
     case GET_ALL:
-      console.log(action.payload);
-      if (action.payload == null) {
-        new_state = {};
-      } else {
-        action.payload.forEach((review) => {
-          new_state[review.user.id] = review;
-        });
-      }
-      return new_state;
+      return action.payload;
     default:
       return state;
   }

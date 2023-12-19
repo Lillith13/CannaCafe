@@ -67,15 +67,15 @@ def createReview(id):
     if request.method == 'POST':
         form = ReviewForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        print(" ")
-        print("form data before validate => ", form.data)
-        print(" ")
+        # print(" ")
+        # print("form data before validate => ", form.data)
+        # print(" ")
 
         if form.validate_on_submit():
             data = form.data
-            print(" ")
-            print("form data => ", data)
-            print(" ")
+            # print(" ")
+            # print("form data => ", data)
+            # print(" ")
 
             userId = int(current_user.get_id())
 

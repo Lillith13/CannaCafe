@@ -125,49 +125,36 @@ export default function Products() {
                     id={
                       Object.values(products).length < 3
                         ? "idvProdContainerAlt"
-                        : null
+                        : "indProdContainerMain"
                     }
-                  >
-                    <NavLink
-                      exact
-                      to={
+                    onClick={(e) => {
+                      e.preventDefault();
+                      console.log(e.target.tagName);
+                      if (e.target.tagName != "BUTTON") {
                         product.category.shippable
-                          ? `/product/${product.id}`
-                          : `/menu/${product.id}`
+                          ? history.push(`/product/${product.id}`)
+                          : history.push(`/menu/${product.id}`);
                       }
-                      className="navLinkArea"
+                    }}
+                    style={{
+                      backgroundImage: `url(${
+                        product.previewImg ? product.previewImg : imgPlaceholder
+                      })`,
+                      cursor: "pointer",
+                    }}
+                  >
+                    <div style={{ height: "150px" }}></div>
+                    <div
+                      className={
+                        view === "tile"
+                          ? "idvProdNameNPriceContainerTile"
+                          : "idvProdNameNPriceContainerList"
+                      }
                     >
-                      {product.previewImg ? (
-                        <img
-                          src={`${product.previewImg}`}
-                          className={
-                            view === "tile"
-                              ? "productImageTile"
-                              : "productImageList"
-                          }
-                        />
-                      ) : (
-                        <img
-                          src={imgPlaceholder}
-                          className={
-                            view === "tile"
-                              ? "productImageTile"
-                              : "productImageList"
-                          }
-                        />
-                      )}
-
-                      <div
-                        className={
-                          view === "tile"
-                            ? "idvProdNameNPriceContainerTile"
-                            : "idvProdNameNPriceContainerList"
-                        }
-                      >
-                        <h3>{product.name}</h3>
-                        <h3>${product.price}</h3>
-                      </div>
-                    </NavLink>
+                      <h3>{product.name}</h3>
+                      <h3>${product.price}</h3>
+                    </div>
+                    {/* </NavLink> */}
 
                     <div
                       className={
@@ -175,6 +162,7 @@ export default function Products() {
                           ? "idvProdButtonContainerTile"
                           : "idvProdButtonContainerList"
                       }
+                      style={{ gap: "0px" }}
                     >
                       <div
                         className={
@@ -182,6 +170,7 @@ export default function Products() {
                             ? "universalProdButtonsTile"
                             : "universalProdButtonsList"
                         }
+                        style={{ gap: "0px" }}
                       >
                         <OpenModalButton
                           buttonText={`Add to ${
