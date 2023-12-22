@@ -1,37 +1,118 @@
 #home {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 5px;
+  /* border: 1px solid black; */
 }
-
-.viewAllButton {
+.viewAllItemsButton {
+  width: 15%;
+}
+.viewAllProductsButton,
+.viewAllMenuButton {
   width: 35%;
+}
+.viewAllItemsButton,
+.viewAllProductsButton,
+.viewAllMenuButton {
   font-size: 25px;
-  padding: 10px 0px;
+  padding: 5px 0px;
 }
 
-.itemsContainerDiv {
+.productsContainerDiv,
+.menuItemsContainerDiv {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  margin: 25px 50px;
+  gap: 15px;
+  margin: 15px 25px;
+  padding: 30px;
+  border: 5px inset #4e6c50;
+  background-color: #2d3d2e;
+  color: white;
 }
 
-.categoryContainer {
+.productLinksContainer,
+.menuItemsContainer {
   display: flex;
   justify-content: space-evenly;
-  gap: 15px;
+  gap: 10px;
+  padding: 5px;
+  /* border: 1px solid black; */
+  border-radius: 10px;
 }
 
-.idvItem {
+.idvProduct,
+.idvMenuItem {
   border: 3px solid #4e6c50;
   border-radius: 15px;
-  background-color: #b99470;
   width: 35%;
   padding: 50px 0px;
   flex-wrap: wrap;
   color: #fefae0;
 }
-.idvItem:hover {
-  background-color: #4e6c50;
+
+#Food {
+  background-image: url("https://media.istockphoto.com/id/645542956/photo/french-pastry.jpg?s=612x612&w=0&k=20&c=JE4QgqBdtvMqdMvUPRqvnw-hIfftwtSV8qSoPygF0Qk=");
+  background-size: cover;
+}
+#Food:hover {
+  background-image: url("https://media.istockphoto.com/id/1266736410/photo/a-woman-holding-and-showing-a-plate-of-mixed-fruits-cheesecake-in-cafe.jpg?s=612x612&w=0&k=20&c=ZxuwDV7vv_GdpelWOrfYnGOgpnAN3_qIJDv9mqRmQ7g=");
+  background-size: cover;
+}
+
+#Drink {
+  background-image: url("https://www.acouplecooks.com/wp-content/uploads/2021/08/Cafe-Au-Lait-001s.jpg");
+  background-size: cover;
+}
+#Drink:hover {
+  background-image: url("https://popmenucloud.com/eijmgzbs/38e54f4b-6020-4db5-a967-5ce71a8285e6.jpg");
+  background-size: cover;
+}
+
+#Infused-Food {
+  background-image: url("https://cdn.hourdetroit.com/wp-content/uploads/sites/20/2021/12/FoodDrink-CannabisEdibles-HourDetroit-StacyFeyer-SaloPhotography5of5-1.jpg");
+  background-size: cover;
+}
+#Infused-Food:hover {
+  background-image: url("https://cdn.vox-cdn.com/thumbor/Fp5lWdh4WFZLjknyQSn2N34b9nQ=/0x0:2000x1335/1200x800/filters:focal(840x508:1160x828)/cdn.vox-cdn.com/uploads/chorus_image/image/70596519/2019_09_29_Lowell_Cafe_003.0.jpg");
+  background-size: cover;
+}
+
+#Infused-Drink {
+  background-image: url("https://cannabisnow.com/wp-content/uploads/2023/06/Cannabis-Cafe-California.jpg");
+  background-size: cover;
+}
+#Infused-Drink:hover {
+  background-image: url("https://imageio.forbes.com/specials-images/imageserve/5d93f6d64223bf0006b77bbe/0x0.jpg?format=jpg&crop=1080,607,x0,y54,safe&height=900&width=1600&fit=bounds");
+  background-size: cover;
+}
+
+#Smoke {
+  background-image: url("https://i2.wp.com/www.denverpost.com/wp-content/uploads/2016/08/marijuana-editorial.jpg?w=620&crop=0%2C0px%2C100%2C9999px");
+  background-size: cover;
+}
+#Smoke:hover {
+  background-image: url("https://ww2.kqed.org/app/uploads/sites/10/2019/08/marijuana-sales-california_wide-743e40c81ba897b6c26fc60cef1e0178d55e8554-800x450.jpg");
+  background-size: cover;
+}
+
+#Merch {
+  background-image: url("https://www.dailycamera.com/wp-content/uploads/migration/2014/1108/20141108_10DCAPOTw-3.jpg?w=620");
+  background-size: cover;
+}
+#Merch:hover {
+  background-image: url("https://www.365recreational.com/wp-content/uploads/2019/09/california-cannabis-product-shelves.jpg");
+  background-size: cover;
+}
+
+#Paraphenalia {
+  background-image: url("https://i0.wp.com/smokepromos.com/wp-content/uploads/2022/07/IMGL9460-e1688932622133.jpg?fit=292%2C292&ssl=1");
+  background-size: cover;
+}
+#Paraphenalia:hover {
+  background-image: url("https://storage.parsonscloud.com/the-dark-side/sites/12/2015/09/noble-glass.jpg");
+  background-size: cover;
+}
+
+#cardInfo {
+  background-color: rgba(0, 0, 0, 0.65);
 }

@@ -21,34 +21,51 @@
 .productsContainer {
   display: flex;
   flex-direction: column;
-  justify-items: center;
+  justify-content: center;
 }
 
 .productsPageTitle {
   font-size: 50px;
+  background-color: rgba(100, 101, 120, 0.9);
+  padding: 15px;
+  border-radius: 15px;
+  margin: 15px 0px;
 }
-.productDisplayAreaTile {
+div.productDisplayAreaTile {
   display: flex;
   justify-content: center;
+  border: 5px outset #76824f;
+  background-color: #3f4727;
+
+  padding: 25px;
+  margin: 0px;
 }
 .prodsDivTileView {
+  border: 5px inset #31391d;
+  background-color: #a9b388;
   display: flex;
   flex-wrap: wrap;
-  width: fit-content;
+  overflow-y: scroll;
+  justify-content: space-evenly;
+  height: 400px;
+  padding: 25px 10px;
   gap: 15px;
 }
 .prodsDivTileView#prodsDivAlt {
   justify-content: center;
-  width: 50%;
+  width: 100%;
 }
 .idvProdContainerTile {
   padding: 15px;
-  border: 1px solid black;
+  border: 1px solid #e4fa9b;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-size: cover;
+}
+.idvProdContainerTile:hover {
+  box-shadow: 13px 10px 5px 0px #76824f;
 }
 .idvProdContainerTile#idvProdContainerAlt {
   width: 100%;

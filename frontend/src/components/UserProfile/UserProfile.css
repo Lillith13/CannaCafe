@@ -1,49 +1,61 @@
-.profileButtonsContainer,
-.barrierProtectedProfileButtonsDiv {
+#userProfileNav {
   display: flex;
-  flex-direction: column;
-}
-
-.universalProfileButtonsDiv,
-.employeeAccessibleProfileButtonsDiv,
-.managementOnlyButtosDiv {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
-}
-.universalProfileButtonsDiv > button {
-  width: 250px;
-}
-.universalProfileButtonsDiv > button,
-.employeeAccessibleProfileButtonsDiv > button,
-.employeeAccessibleProfileButtonsDiv > a > button,
-.managementOnlyButtosDiv > button,
-.userFavesContainer > button,
-.userWishContainer > button {
+  justify-content: space-evenly;
   padding: 15px;
+  background-color: #395144;
+  border: 5px inset #a9b388;
+}
+#userProfileNav > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 5px;
+  padding: 7px;
+  background-color: #4e6c50;
+}
+#userProfileNav > * > button,
+#userProfileNav > * > * > button {
   background-color: #f0ebce;
   color: #675d50;
-  font-weight: bold;
 }
-.universalProfileButtonsDiv > button:hover,
-.employeeAccessibleProfileButtonsDiv > button:hover,
-.employeeAccessibleProfileButtonsDiv > a > button:hover,
-.managementOnlyButtosDiv > button:hover {
+#userProfileNav > * > * {
+  display: flex;
+  align-items: center;
+}
+#userProfileNav > * > * > button {
+  padding: 8px 3px;
+}
+#userProfileNav > * > button:hover,
+#userProfileNav > * > * > button:hover {
   background-color: #807464;
   color: #f0ebce;
 }
 
 .profileTabsContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 1%;
   cursor: pointer;
+}
+.profileTabsContainer > h3 {
+  border: 3px solid #4e6c50;
+  background-color: #acb992;
+  color: #675d50;
+  border-radius: 15px;
+  padding: 15px;
+  font-size: 15px;
+  width: fit-content;
+}
+.profileTabsContainer > h3:hover {
+  background-color: #f0ebce;
+  color: #675d50;
+  border-radius: 15px;
 }
 .profileTabsDisplaysContainer {
   background-color: #807464;
   color: #f0ebce;
   border-radius: 15px;
-  height: 383px;
+  height: 500px;
   width: 98%;
   overflow-y: scroll;
   scrollbar-color: #d3b5a0;
@@ -82,19 +94,16 @@
   border: 3px dotted #a9b388;
   border-radius: 15px;
   padding: 25px;
-  width: 80%;
+  width: 90%;
+  overflow-x: scroll;
 }
-/* .empListContainer > label {
-  justify-items: center;
-} */
+
 .empListDiv,
 .managerListDiv,
 .ownerListDiv {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  overflow-x: scroll;
   font-size: 20px;
-  gap: 25px;
 }
 .empListDiv > a,
 .managerListDiv > a,
@@ -104,7 +113,7 @@
   /* max-width: 50%; */
 }
 .staffName {
-  color: #a9b388;
+  color: #d6e4a8;
 }
 
 .userFavesTabContainer,
@@ -129,6 +138,10 @@
   height: 250px;
   border: 3px solid #a9b388;
   border-radius: 15px;
+}
+.userFavesContainer:hover,
+.userWishContainer:hover {
+  box-shadow: 10px 10px 5px 1px #395144;
 }
 .userFavesContainer > button,
 .userWishContainer > button {
@@ -231,6 +244,7 @@
 .reviewedProductImageDiv {
   padding: 15px 25px 15px 5px;
   width: 50%;
+  /* max-height: 150px; */
   border-radius: 15px;
   background-size: cover;
 }
@@ -240,13 +254,8 @@
 .userProfilePicture {
   width: 25px;
 }
-/* .reviewedProductImage {
-  width: 100%;
-  border-radius: 15px;
-} */
 
 .reviewBodyContainer {
-  /* padding: 15px 25px 15px 5px;  */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -272,23 +281,7 @@
 
 .usersReviewBody::-webkit-scrollbar {
   display: none;
-  /* width: 5px;
-  height: 100%;
-  background-color: #395144; */
 }
-/* .usersReviewBody::-webkit-scrollbar-track,
-.usersReviewBody::-webkit-scrollbar-track-piece {
-  background-color: #395144;
-}
-.usersReviewBody::-webkit-scrollbar-thumb,
-.usersReviewBody::-webkit-scrollbar-thumb:vertical {
-  width: 5px;
-  background-color: #a9b388;
-  border-radius: 30px;
-}
-.usersReviewBody::-webkit-scrollbar-thumb:horizontal {
-  display: none;
-} */
 
 .reviewedProductName {
   color: #e5e5cb;
@@ -311,23 +304,14 @@
   width: 25px;
 }
 
-.reviewButtonsContainer {
-  display: flex;
-  justify-content: space-evenly;
-  /* border: 1px solid white; */
-}
-.reviewButtonsContainer > button {
-  padding: 5px 0px;
-  width: 45%;
-}
-.reviewButtonsContainer > button:first-child:hover {
-  color: #362706;
+/* .reviewButtonsContainer > button:first-child:hover {
+  color: #1a120b;
   background-color: #f1d3b3;
 }
 .reviewButtonsContainer > button:last-child:hover {
-  color: #362706;
+  color: #1a120b;
   background-color: #dbc1bb;
-}
+} */
 
 .orderTabContainer {
   display: flex;
@@ -375,14 +359,34 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.orderItemDetails > a {
+  font-size: 25px;
+  font-weight: bold;
+  color: #1a120b;
+}
+.orderItemDetails > a:hover {
+  font-size: 25px;
+  font-weight: bold;
+  color: #464e2e;
+}
 .orderDetails > button {
   margin: 0px 10px 20px 10px;
   padding: 5px 10px;
 }
-.orderDetails > button:hover,
-#orderReturnButton:hover {
+#reorder > button,
+#review > button {
+  padding: 5px;
+}
+#return > button {
+  padding: 10px;
+}
+#review > button:hover {
+  background-color: rgba(101, 100, 124, 0.5);
+}
+#return > button:hover,
+.orderDetails > button:hover {
   background-color: #e2bcb7;
-  color: rgb(101, 100, 124);
+  color: #1a120b;
 }
 
 .orderItemsDiv {

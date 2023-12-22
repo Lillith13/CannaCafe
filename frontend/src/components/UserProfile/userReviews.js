@@ -35,8 +35,6 @@ export default function UserReviews() {
     }
   }, [dispatch]);
 
-  // ! view your posted Reviews as Member - view reviews posted by Members as Manager & Owner
-
   return isLoaded ? (
     <div className="profileReviewsTabContainer" id="doASiSAYdammit">
       {reviews && reviews.length > 0 ? (
@@ -236,7 +234,6 @@ export default function UserReviews() {
                       <div className="usersReviewBody">{review.review}</div>
                     </div>
                   </div>
-
                   <div
                     className="reviewButtonsContainer"
                     style={{

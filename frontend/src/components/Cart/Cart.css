@@ -1,22 +1,29 @@
-.cartContainer {
+#cart {
   display: flex;
   flex-direction: column;
+  border: 1px solid #aba6f5;
+  background-color: #65647c;
+  padding: 5px;
 }
 
 .cartContainerDiv {
   display: flex;
+  border: 1px solid #232231;
   flex-direction: column;
-  margin-left: 45px;
   gap: 25px;
+  padding: 10px;
+  overflow-y: scroll;
+  height: 455px;
 }
 .cartItemContainer {
   display: flex;
+  border: 5px solid #abc4aa;
+  background: linear-gradient(190deg, #4e6c50, #a7a5de);
   justify-content: space-evenly;
-  border: 3px dotted #abc4aa;
+  align-items: center;
   border-radius: 15px;
-  width: fit-content;
   padding: 25px 0px;
-  width: 95%;
+  width: 99%;
 }
 
 .itemImageContainer {
@@ -28,62 +35,63 @@
   border-radius: 15px;
 }
 
+#cartItemDetails {
+  width: 55%;
+}
+
 .cartItemInfoContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 20px;
+  background-color: #65647c;
+  border-left: 5px solid #a7a5de;
+  border-right: 5px solid #a7a5de;
+  border-top: 5px solid #a7a5de;
+  color: #e9e5d6;
+  border-radius: 15px 15px 0px 0px;
 }
 .cartItemInfoContainer > a {
-  color: #4e6c50;
+  color: #e9e5d6;
 }
 .cartItemInfoContainer > a:hover {
   color: #abc4aa;
 }
 .cartButtonsContainer {
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
-}
-
-.quantChangeContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  font-weight: bold;
-}
-.quantChangeButtonsContainer {
-  display: flex;
-  gap: 7px;
-}
-.incButton,
-.decButton {
-  display: flex;
-  padding: 7px 15px;
-  font-weight: bold;
-  font-size: 15px;
-  justify-content: center;
-  text-align: center;
-  width: fit-content;
-}
-.removeButton {
-  width: 75%;
-  padding: 10px 5px;
-}
-.decButton#removeButton:hover,
-.removeButton:hover {
-  background-color: #b67162;
-  font-weight: bold;
-}
-
-.checkoutNcontinueShoppingButtonsContainer {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
-.checkoutNcontinueShoppingButtonsContainer > button,
-.checkoutNcontinueShoppingButtonsContainer > a > button,
-.emptyCartButton {
   padding: 15px;
+  background-color: #65647c;
+  border-left: 5px solid #a7a5de;
+  border-right: 5px solid #a7a5de;
+  border-bottom: 5px solid #a7a5de;
+  color: #e9e5d6;
+  border-radius: 0px 0px 15px 15px;
+}
+
+@media screen and (min-height: 875px) {
+  .cartContainerDiv {
+    height: 500px;
+  }
+}
+@media screen and (min-height: 925px) {
+  .cartContainerDiv {
+    height: 550px;
+  }
+}
+@media screen and (min-height: 975px) {
+  .cartContainerDiv {
+    height: 600px;
+  }
+}
+@media screen and (min-height: 1000px) {
+  .cartContainerDiv {
+    height: 750px;
+  }
+}
+@media screen and (min-height: 1150px) {
+  .cartContainerDiv {
+    height: 1000px;
+  }
 }

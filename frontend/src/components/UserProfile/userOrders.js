@@ -20,24 +20,6 @@ export default function UserOrders() {
     dispatch(getAllOrders()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (orders.length) {
-  //     orders.map((order) => {
-  //       let sum = 0;
-  //       order.products.map((item) => {
-  //         sum += parseFloat(item.price) * item.quantity;
-  //       });
-  //       if (order.total != sum) {
-  //         // order.total = sum.toFixed(2);
-  //         setOrderTotal(sum.toFixed(2))
-  //       } else {
-  //         setOrderTotal(order.total)
-  //       }
-  //     });
-  //   }
-  //   setFullLoad(true);
-  // }, [isLoaded]);
-
   const calcTotal = (order) => {
     let sum = 0;
     order.products.map((item) => {
@@ -105,7 +87,7 @@ export default function UserOrders() {
                                 : `/menu/${item.id}`
                             }
                           >
-                            {item.name}:{" "}
+                            {item.name}
                           </NavLink>
                           <div>
                             <p>${item.price}</p>
@@ -121,7 +103,7 @@ export default function UserOrders() {
                         </div>
 
                         <div className="orderButtons">
-                          <div id="orderBuyAgainButton">
+                          <div id="reorder">
                             <OpenModalButton
                               buttonText="Buy Again"
                               modalComponent={
@@ -134,7 +116,7 @@ export default function UserOrders() {
                             />
                           </div>
 
-                          <div id="orderPostReviewButton">
+                          <div id="review">
                             <OpenModalButton
                               buttonText="Post Review"
                               modalComponent={
@@ -147,7 +129,7 @@ export default function UserOrders() {
                           </div>
 
                           {item.category.shippable && (
-                            <div id="orderReturnButton">
+                            <div id="return">
                               <OpenModalButton
                                 buttonText="Return"
                                 modalComponent={

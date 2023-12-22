@@ -10,8 +10,18 @@ export default function HomePage() {
   const user = useSelector((state) => state.session.user);
   const categories = useSelector((state) => state.categories);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [descriptions, setDescriptions] = useState({});
 
   useEffect(() => {
+    setDescriptions({
+      Menu: "Welcome to Canna Cafe, where flavor meets innovation. Our Herbal Harmony Selections allow you to curate your coffee or snack experience. Elevate your brew with our Herbal Infusions or enjoy the familiar warmth of our classic offerings. Discover a new level of taste at your favorite cafe.",
+      Smoke:
+        "Elevate your smoking experience with our Herbal Elevation product. Immerse yourself in the natural essence of pure herbs, carefully curated for a distinctive and invigorating experience. Ignite the senses, embrace the moment, and discover a new dimension to your smoke ritual.",
+      Merch:
+        "Take a piece of the Canna Cafe experience with you wherever you go. Our exclusive merchandise collection embodies the essence of our cafe – from stylish logo tees to cozy branded mugs. Elevate your style and make a statement with our signature merch.",
+      Paraphenalia:
+        "Elevate your experience with sleek pipes, artisanal rolling papers, and premium lighters. Immerse yourself in a world of sophistication and elevate your smoking ritual to new heights.",
+    });
     dispatch(getCategories()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -21,7 +31,7 @@ export default function HomePage() {
         <button
           className={
             user && (user.role.name === "Manager" || user.role.name === "Owner")
-              ? "viewAllButton"
+              ? "viewAllItemsButton"
               : "hidden"
           }
         >
@@ -29,45 +39,14 @@ export default function HomePage() {
         </button>
       </NavLink>
 
-      <div className="itemsContainerDiv">
-        <div>
-          <h1>Checkout our Products</h1>
-
-          <NavLink exact to="/products">
-            <button className={!user ? "hidden" : "viewAllButton"}>
-              View All Products
-            </button>
-          </NavLink>
-        </div>
-
-        <div className="categoryContainer">
-          {Object.values(categories).map((category) => (
-            <>
-              {console.log(category)}
-              {category.shippable && (
-                <NavLink
-                  exact
-                  to={`/category/${category.name}`}
-                  key={category.id}
-                  className="idvItem"
-                  // style={{backgroundImage={}}}
-                >
-                  <h2>{category.name}</h2>
-                </NavLink>
-              )}
-            </>
-          ))}
-        </div>
-      </div>
-
-      <div className="itemsContainerDiv"
-
-      >
+      <div className="menuItemsContainerDiv">
         <div className="menuItemsTitleContainer">
           <h1>Checkout our Menu</h1>
 
+          <p>{descriptions.Menu}</p>
+
           <NavLink exact to="/menu">
-            <button className={!user ? "hidden" : "viewAllButton"}>
+            <button className={!user ? "hidden" : "viewAllMenuButton"}>
               View Full Menu
             </button>
           </NavLink>
@@ -81,9 +60,46 @@ export default function HomePage() {
                   exact
                   to={`/category/${category.name}`}
                   key={category.id}
-                  className="idvItem"
+                  className="idvMenuItem"
+                  id={category.name}
                 >
-                  <h2>{category.name}</h2>
+                  <h2 id="cardInfo">
+                    {category.name == "Drink" ||
+                    category.name == "Infused-Drink"
+                      ? category.name + "s"
+                      : category.name}
+                  </h2>
+                </NavLink>
+              )}
+            </>
+          ))}
+        </div>
+      </div>
+
+      <div className="productsContainerDiv">
+        <div className="productsTitleContainer">
+          <h1>Checkout our Products</h1>
+          <NavLink exact to="/products">
+            <button className={!user ? "hidden" : "viewAllProductsButton"}>
+              View All Products
+            </button>
+          </NavLink>
+        </div>
+
+        <div className="productLinksContainer">
+          {Object.values(categories).map((category) => (
+            <>
+              {category.shippable && (
+                <NavLink
+                  exact
+                  to={`/category/${category.name}`}
+                  key={category.id}
+                  className="idvProduct"
+                  id={category.name}
+                  // style={{backgroundImage={}}}
+                >
+                  <h2 id="cardInfo">{category.name}</h2>
+                  <p id="cardInfo">{descriptions[category.name]}</p>
                 </NavLink>
               )}
             </>

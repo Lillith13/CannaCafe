@@ -62,7 +62,7 @@ export default function Cart() {
   };
 
   return isLoaded ? (
-    <div className="pageContainer">
+    <div className="pageContainer" id="cart">
       {cart.length > 0 ? (
         <div className="cartContainerDiv">
           {cart.map((item) => (
@@ -70,56 +70,51 @@ export default function Cart() {
               <div className="itemImageContainer">
                 <img src={item.previewImg} />
               </div>
-              <div className="cartItemInfoContainer">
-                <NavLink exact to={`/product/${item.id}`}>
-                  <h2>{item.name}</h2>
-                </NavLink>
-                <h3>
-                  {item.quantity} x ${item.price}
-                </h3>
-                <h3>Item Total: ${(item.quantity * item.price).toFixed(2)}</h3>
-              </div>
-              <div className="cartButtonsContainer">
-                <div className="quantChangeContainer">
-                  <label>Change Quantity:</label>
-                  <div className="quantChangeButtonsContainer">
+              <div id="cartItemDetails">
+                <div className="cartItemInfoContainer">
+                  <NavLink exact to={`/product/${item.id}`}>
+                    <h2>{item.name}</h2>
+                  </NavLink>
+                  <h3>
+                    {item.quantity} x ${item.price}
+                  </h3>
+                  <h3>
+                    Item Total: ${(item.quantity * item.price).toFixed(2)}
+                  </h3>
+                </div>
+                <div className="cartButtonsContainer">
+                  <div className="quantChangeContainer">
+                    <label>Change Quantity:</label>
+                    <div className="quantChangeButtonsContainer">
+                      <button
+                        className="incButton"
+                        onClick={(e) => changeQuant(e, "inc", item.id)}
+                      >
+                        {" "}
+                        +{" "}
+                      </button>
+                      <button
+                        className="decButton"
+                        id={item.quantity <= 1 && "removeButton"}
+                        onClick={(e) => changeQuant(e, "dec", item.id)}
+                      >
+                        {" "}
+                        -{" "}
+                      </button>
+                    </div>
+                  </div>
+                  <div className="removeButtonContainer">
                     <button
-                      className="incButton"
-                      onClick={(e) => changeQuant(e, "inc", item.id)}
+                      className="removeButton"
+                      onClick={(e) => changeQuant(e, "remove", item.id)}
                     >
-                      {" "}
-                      +{" "}
-                    </button>
-                    <button
-                      className="decButton"
-                      id={item.quantity <= 1 && "removeButton"}
-                      onClick={(e) => changeQuant(e, "dec", item.id)}
-                    >
-                      {" "}
-                      -{" "}
+                      Remove from Cart
                     </button>
                   </div>
-                </div>
-                <div className="removeButtonContainer">
-                  <button
-                    className="removeButton"
-                    onClick={(e) => changeQuant(e, "remove", item.id)}
-                  >
-                    Remove from Cart
-                  </button>
                 </div>
               </div>
             </div>
           ))}
-          <div className="checkoutNcontinueShoppingButtonsContainer">
-            <NavLink exact to="/products">
-              <button>Continue Shopping</button>
-            </NavLink>
-            <OpenModalButton
-              buttonText="Checkout"
-              modalComponent={<CheckoutCart userId={user ? user.id : null} />}
-            />
-          </div>
         </div>
       ) : (
         <div className="emptyCartContainer">
@@ -129,6 +124,15 @@ export default function Cart() {
           </NavLink>
         </div>
       )}
+      <div id="checkoutNcontinueShopButtons">
+        <NavLink exact to="/products">
+          <button>Continue Shopping</button>
+        </NavLink>
+        <OpenModalButton
+          buttonText="Checkout"
+          modalComponent={<CheckoutCart userId={user ? user.id : null} />}
+        />
+      </div>
     </div>
   ) : (
     <h1>Loading...</h1>

@@ -8,7 +8,7 @@ body {
 }
 
 #root {
-  width: 100%;
+  width: 98%;
 }
 
 a {
@@ -52,9 +52,9 @@ button:hover {
   color: #f0ebce;
   cursor: pointer;
 }
-a:hover {
+/* a:hover {
   color: #b67162;
-}
+} */
 
 input {
   border-radius: 5px;
@@ -78,8 +78,8 @@ select {
   font-weight: bold;
 }
 .pageContainer {
-  margin-top: 125px;
-  margin-bottom: 150px;
+  margin-top: 110px;
+  margin-bottom: 100px;
   width: 100%;
 }
 

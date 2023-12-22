@@ -62,7 +62,7 @@ export default function Takeout() {
   };
 
   return isLoaded ? (
-    <div className="pageContainer">
+    <div className="pageContainer" id="takeout">
       {bag.length > 0 ? (
         <div className="takeoutContainerDiv">
           {bag.map((item) => (
@@ -71,56 +71,55 @@ export default function Takeout() {
                 <img src={item.previewImg} />
                 {console.log(item)}
               </div>
-              <div className="takeoutItemInfoContainer">
-                <NavLink exact to={`/menu/${item.id}`}>
-                  <h2>{item.name}</h2>
-                </NavLink>
-                <h4>
-                  {item.quantity} x ${item.price}
-                </h4>
-                <h4>Item Total: ${(item.quantity * item.price).toFixed(2)}</h4>
-              </div>
-              <div className="takeoutButtonsContainer">
-                <div className="quantChangeContainer">
-                  <label>Change Quantity:</label>
-                  <div className="quantChangeButtonsContainer">
-                    <button
-                      className="incButton"
-                      onClick={(e) => changeQuant(e, "inc", item.id)}
-                    >
-                      {" "}
-                      +{" "}
-                    </button>
-                    <button
-                      className="decButton"
-                      id={item.quantity <= 1 && "removeButton"}
-                      onClick={(e) => changeQuant(e, "dec", item.id)}
-                    >
-                      {" "}
-                      -{" "}
-                    </button>
+
+              <div id="takeoutItemDetails">
+                {" "}
+                <div className="takeoutItemInfoContainer">
+                  <NavLink exact to={`/menu/${item.id}`}>
+                    <h2>{item.name}</h2>
+                  </NavLink>
+                  <div id="takeoutItemPrice">
+                    <h4>
+                      {item.quantity} x ${item.price}
+                    </h4>
+                    <h4>
+                      Item Total: ${(item.quantity * item.price).toFixed(2)}
+                    </h4>
                   </div>
                 </div>
-                <div className="removeButtonContainer">
-                  <button
-                    className="removeButton"
-                    onClick={(e) => changeQuant(e, "remove", item.id)}
-                  >
-                    Remove from Cart
-                  </button>
+                <div className="takeoutButtonsContainer">
+                  <div className="quantChangeContainer">
+                    <label>Change Quantity:</label>
+                    <div className="quantChangeButtonsContainer">
+                      <button
+                        className="incButton"
+                        onClick={(e) => changeQuant(e, "inc", item.id)}
+                      >
+                        {" "}
+                        +{" "}
+                      </button>
+                      <button
+                        className="decButton"
+                        id={item.quantity <= 1 && "removeButton"}
+                        onClick={(e) => changeQuant(e, "dec", item.id)}
+                      >
+                        {" "}
+                        -{" "}
+                      </button>
+                    </div>
+                  </div>
+                  <div className="removeButtonContainer">
+                    <button
+                      className="removeButton"
+                      onClick={(e) => changeQuant(e, "remove", item.id)}
+                    >
+                      Remove from Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
-          <div className="checkoutNcontinueShoppingButtonsContainer">
-            <NavLink exact to="/menu">
-              <button>Add More to Bag</button>
-            </NavLink>
-            <OpenModalButton
-              buttonText="Checkout"
-              modalComponent={<CheckoutBag userId={user ? user.id : null} />}
-            />
-          </div>
         </div>
       ) : (
         <div className="emptyBagContainer">
@@ -130,6 +129,15 @@ export default function Takeout() {
           </NavLink>
         </div>
       )}
+      <div id="checkoutNcontinueShopButtons">
+        <NavLink exact to="/menu">
+          <button>Add More to Bag</button>
+        </NavLink>
+        <OpenModalButton
+          buttonText="Checkout"
+          modalComponent={<CheckoutBag userId={user ? user.id : null} />}
+        />
+      </div>
     </div>
   ) : (
     <h1>Loading...</h1>

@@ -18,7 +18,7 @@ def seed_products(food, drink, infusedFood, infusedDrink, smokeables, merch, par
         description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
-        preview_image="https://www.southernliving.com/thmb/ZHPbfOxGS67POrrBjc6X0LYnizc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-sl-blt-01-4X3-b322a15a36fc436abf2796092283a40c.jpg",
+        preview_image="https://www.wellplated.com/wp-content/uploads/2021/06/Best-BLT.jpg",
         preview_image_name="sandwich_BLT",
         category_id=food.id,
         added_by=random.choice(staffIds)
@@ -205,7 +205,7 @@ def seed_products(food, drink, infusedFood, infusedDrink, smokeables, merch, par
         description= "In vitae tortor id eros tempus tincidunt at sed nisl. Nunc vehicula, metus non egestas sodales, lacus enim venenatis mauris, et ultrices ante ante eget nisl. Sed posuere efficitur sodales. Sed maximus felis at nisi varius eleifend. Cras varius nec urna nec rutrum. Donec at lectus quis neque maximus tempor nec sit amet leo. Donec maximus, arcu ac porta ullamcorper, ante eros ultricies tellus, nec egestas est lorem id libero. Nulla semper fringilla eros ultricies sollicitudin. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ipsum quam, bibendum et lectus id, condimentum finibus quam. Curabitur pharetra ultrices magna sit amet scelerisque. Suspendisse ligula sapien, pretium eu rutrum nec, rutrum et quam.",
         price=round(float(random.uniform(4.99, 7.99)), 2),
         units_available=random.randint(1, 1000),
-        preview_image="https://www.southernliving.com/thmb/ZHPbfOxGS67POrrBjc6X0LYnizc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-sl-blt-01-4X3-b322a15a36fc436abf2796092283a40c.jpg",
+        preview_image="https://www.wellplated.com/wp-content/uploads/2021/06/Best-BLT.jpg",
         preview_image_name="sandwich_Infused-BLT",
         category_id=infusedFood.id,
         added_by=random.choice(staffIds)

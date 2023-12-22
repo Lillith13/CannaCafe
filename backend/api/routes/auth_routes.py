@@ -64,9 +64,6 @@ def sign_up():
         if current_user.get_id():
             """check if new employee has a member account by first and last name"""
             emp = User.query.filter(User.firstName == data['firstName'] and User.lastName == data['lastName']).first()
-            print()
-            print(emp.to_dict())
-            print()
             if not emp:
                 """last resort check if new employee has a member account by first and last name"""
                 emp = User.query.filter(User.email == data['email']).first()
