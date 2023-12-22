@@ -39,7 +39,7 @@ export default function UserReviews() {
 
   return isLoaded ? (
     <div className="profileReviewsTabContainer" id="doASiSAYdammit">
-      {reviews.length > 0 ? (
+      {reviews && reviews.length > 0 ? (
         <>
           {user.role.name == "Owner" || user.role.name == "Manager" ? (
             reviews.reverse().map((review) => (
@@ -178,7 +178,14 @@ export default function UserReviews() {
                     ></div>
 
                     <div className="reviewBodyContainer">
-                      <NavLink exact to={`/products/`}>
+                      <NavLink
+                        exact
+                        to={
+                          review.product.category.shippable
+                            ? `/product/${review.product.id}`
+                            : `/menu/${review.product.id}`
+                        }
+                      >
                         <h4 className="reviewedProductName">
                           {review.product.name}
                         </h4>

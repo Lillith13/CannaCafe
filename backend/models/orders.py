@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .joins import OrderProduct
 from .products import Product
-from datetime import date
+import datetime
 
 class Order(db.Model):
     __tablename__ = 'orders'
@@ -15,7 +15,7 @@ class Order(db.Model):
 
     total = db.Column(db.Numeric(precision=10, scale=2), default=0)
 
-    placed = db.Column(db.Date, default=date.today(), nullable=False)
+    placed = db.Column(db.DateTime, default=datetime.datetime.utcnow(), nullable=False)
 
     shipped = db.Column(db.Date)
 

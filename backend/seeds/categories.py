@@ -10,11 +10,11 @@ def seed_categories():
     infusedDrink = Category(name="Infused-Drink")
     smokeables = Category(name="Smoke", shippable=True)
     merch = Category(name="Merch", age_restricted=False, shippable=True)
-    paraphenalia = Category(name="Paraphernalia", shippable=True)
+    paraphenalia = Category(name="Paraphenalia", shippable=True)
 
     seedCats = [food, drink, infusedFood, infusedDrink, smokeables, merch, paraphenalia]
     _ = [db.session.add(cat) for cat in seedCats]
 
     db.session.commit()
-    
+
     seed_products(food, drink, infusedFood, infusedDrink, smokeables, merch, paraphenalia)

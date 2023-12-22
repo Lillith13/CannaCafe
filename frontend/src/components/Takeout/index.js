@@ -62,7 +62,7 @@ export default function Takeout() {
   };
 
   return isLoaded ? (
-    <div className="takeoutContainer">
+    <div className="pageContainer">
       {bag.length > 0 ? (
         <div className="takeoutContainerDiv">
           {bag.map((item) => (

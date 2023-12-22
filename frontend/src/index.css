@@ -65,20 +65,6 @@ select {
   padding: 5px;
 }
 
-.homeContainer,
-.productsContainer,
-.productDetailsContainer,
-.takeoutContainer,
-.cartContainer,
-.userProfileContainer,
-.payStubsContainer,
-.employeeProfileContainer,
-.oopseyMessageContainer {
-  margin-top: 125px;
-  margin-bottom: 150px;
-  width: 100%;
-}
-
 .hidden {
   display: none;
 }
@@ -90,6 +76,11 @@ select {
 .errors {
   color: #b67162;
   font-weight: bold;
+}
+.pageContainer {
+  margin-top: 125px;
+  margin-bottom: 150px;
+  width: 100%;
 }
 
 ::-webkit-scrollbar {

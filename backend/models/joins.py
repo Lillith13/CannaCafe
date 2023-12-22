@@ -15,6 +15,14 @@ class OrderProduct(db.Model):
 
   quantity = db.Column(db.INTEGER, default=1)
 
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'order_id': self.order_id,
+      'product_id': self.product_id,
+      'quantity': self.quantity
+    }
+
 
 class WishlistDetail(db.Model):
     __tablename__ = "wishlist_details"

@@ -17,10 +17,11 @@ import EditProduct from "../AllModals/EditProduct";
 import ConfirmDeleteItem from "../AllModals/ConfirmDelete/confirmDeleteItem";
 import ConfirmAdd from "../AllModals/ConfirmAddTo";
 import ConfirmRemove from "../AllModals/ConfirmRemove";
+import CreateReview from "../AllModals/Review";
 import ProductReviews from "./ProductReviews";
 
 import "./ProductDetails.css";
-import CreateReview from "../AllModals/Review";
+import { getProductReviews } from "../../store/reviews";
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ export default function ProductDetails() {
     const data = await dispatch(loadProduct(id))
       .then(() => dispatch(getAllFavorites()))
       .then(() => dispatch(getWishlist()))
+      .then(() => dispatch(getProductReviews(id)))
       .then(() => setIsLoaded(true));
     if (data) {
       console.log("data.errors => ", data.errors);
@@ -45,7 +47,7 @@ export default function ProductDetails() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div className="productDetailsContainer">
+    <div className="pageContainer">
       {!product.category.age_restricted ||
       (product.category.age_restricted && user) ? (
         <>
@@ -213,7 +215,14 @@ export default function ProductDetails() {
                             <OpenModalButton
                               buttonText="Delete Product"
                               modalComponent={
-                                <ConfirmDeleteItem product={product} />
+                                <ConfirmDeleteItem
+                                  product={product}
+                                  type={
+                                    product.category.shippable
+                                      ? "product"
+                                      : "menu"
+                                  }
+                                />
                               }
                             />
                           </div>
@@ -225,7 +234,7 @@ export default function ProductDetails() {
             </div>
           </div>
 
-          {Object.values(reviews).length > 0 ? (
+          {reviews && Object.values(reviews).length > 0 ? (
             <>
               <p
                 onClick={() => setShowReviews(!showReviews)}
@@ -249,7 +258,10 @@ export default function ProductDetails() {
                 <OpenModalButton
                   buttonText="Add Review"
                   modalComponent={
-                    <CreateReview itemId={product.id} from="productDetails" />
+                    <CreateReview
+                      itemId={product.id}
+                      locationInfo={{ from: "productDetails" }}
+                    />
                   }
                 />
               </div>

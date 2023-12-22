@@ -39,7 +39,7 @@ export default function EmployeeProfile() {
   }, [isLoaded]);
 
   return isLoaded ? (
-    <div className="employeeProfileContainer">
+    <div className="pageContainer">
       <button
         className="goBackButtonFromStaffProfile"
         onClick={(e) => {

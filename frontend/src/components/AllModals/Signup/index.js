@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { signUp } from "../../../store/session";
 import { useModal } from "../../../context/Modal";
@@ -10,6 +11,7 @@ import "./Signup.css";
 
 export default function Signup({ currUser }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((state) => state.session.user);
   const [profilePic, setProfilePic] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -58,20 +60,20 @@ export default function Signup({ currUser }) {
       data["currUser"] = currUser;
     }
 
-    console.log(data);
-
     const returnData = await dispatch(signUp(data));
 
     if (returnData) {
       console.log(returnData);
-      if (returnData) {
+      if (returnData.errors) {
         setErrors(returnData.errors);
       } else {
-        setErrors(returnData);
+        setErrors({});
+        if (!isNaN(returnData)) {
+          history.push(`/profile/${returnData}`);
+        }
+        closeModal();
       }
     } else {
-      setErrors({});
-      closeModal();
     }
   };
 
@@ -216,10 +218,10 @@ export default function Signup({ currUser }) {
               Birthday
               <input
                 className="signUpInput"
+                id={errors.birthday ? "errors" : ""}
                 type="date"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
-                placeholder={errors.birthday ? "* " + errors.birthday : " "}
               />
             </label>
           </div>

@@ -232,6 +232,7 @@
   padding: 15px 25px 15px 5px;
   width: 50%;
   border-radius: 15px;
+  background-size: cover;
 }
 .reviewedProductImageDiv:hover {
   box-shadow: 7px 5px 5px #a9b388;

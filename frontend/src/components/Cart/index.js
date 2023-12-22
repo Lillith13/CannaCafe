@@ -62,7 +62,7 @@ export default function Cart() {
   };
 
   return isLoaded ? (
-    <div className="cartContainer">
+    <div className="pageContainer">
       {cart.length > 0 ? (
         <div className="cartContainerDiv">
           {cart.map((item) => (

@@ -64,6 +64,10 @@
   color: #d3b5a0;
 }
 .signupErrors {
-  color: #b67162;
+  color: rgb(246, 139, 116);
   font-weight: bold;
+}
+
+.signUpInput#errors {
+  border: 3px solid rgb(246, 139, 116);
 }

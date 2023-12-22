@@ -9,11 +9,11 @@ from datetime import datetime
 from ..models import User
 
 
-def email_correct_format(form, field):
-    validityChecker = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
-    email = field.data
-    if not re.fullmatch(validityChecker, email):
-        raise ValidationError('Email must be a valid email address')
+# def email_correct_format(form, field):
+#     validityChecker = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+#     email = field.data
+#     if not re.fullmatch(validityChecker, email):
+#         raise ValidationError('Email must be a valid email address')
 
 
 # def email_exists(form, field):

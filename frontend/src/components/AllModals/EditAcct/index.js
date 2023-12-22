@@ -68,6 +68,8 @@ export default function EditAccount({ empId }) {
     }
   }, [dispatch]);
 
+  console.log(oldPassword);
+  console.log(newPassword);
   const submitValidSignup = async () => {
     const formData = new FormData();
     formData.append("profile_pic", profilePic);
@@ -78,8 +80,9 @@ export default function EditAccount({ empId }) {
     formData.append("state", state);
     formData.append("zipcode", String(zipcode));
     formData.append("phone", phone);
-    formData.append("oldPassword", oldPassword);
-    formData.append("newPassword", newPassword);
+    formData.append("oldpassword", oldPassword);
+    formData.append("newpassword", newPassword);
+    console.log(formData);
 
     if (phone) {
       formData.append("phone", phone);
@@ -102,6 +105,8 @@ export default function EditAccount({ empId }) {
       inputData["employeeId"] = user.id;
       inputData["userId"] = user.id;
     }
+
+    console.log(inputData);
 
     const data = await dispatch(editUser(inputData));
     if (data) {

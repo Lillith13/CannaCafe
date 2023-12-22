@@ -38,46 +38,48 @@ def sign_up():
     if form.validate_on_submit():
         data = form.data
 
-        role = Role.query.filter(Role.name == "Member").first()
-        roleId = role.id
-        payrate = role.payrate
+        role = None
+        roleId = 1
+        payrate = 0
 
-        if data['roleName']:
+        if data['role']:
             """if a roleName was selected and sent - overwrite default Member role"""
             user = User.query.get(current_user.get_id())
-            if data['roleName'] == "Employee":
+
+            if data['role'] == "Employee":
                 if user.role.name == "Manager" or user.role.name == "Owner":
                     role = Role.query.filter(Role.name == "Employee").first()
                     roleId = role.id
                     payrate = role.payrate
-            elif data['roleName'] == "Manager":
+            elif data['role'] == "Manager":
                 if user.role.name == "Owner":
                     role = Role.query.filter(Role.name == "Manager").first()
                     roleId = role.id
                     payrate = role.payrate
+            else:
+                role = Role.query.filter(Role.name == "Member").first()
+                roleId = role.id
+                payrate = role.payrate
 
-        if current_user.is_authenticated:
+        if current_user.get_id():
             """check if new employee has a member account by first and last name"""
-            user = User.query.filter(User.firstName == data['firstName'] and User.lastName == data['lastName']).first()
-            if not user:
+            emp = User.query.filter(User.firstName == data['firstName'] and User.lastName == data['lastName']).first()
+            print()
+            print(emp.to_dict())
+            print()
+            if not emp:
                 """last resort check if new employee has a member account by first and last name"""
-                user = User.query.filter(User.email == data['email']).first()
-            if user:
+                emp = User.query.filter(User.email == data['email']).first()
+            if emp:
                 """if the new emp has member account edit that account, changing role and adding payrate"""
-                user.role_id = roleId
-                user.pay_rate = payrate
+                emp.role_id = roleId
+                emp.pay_rate = payrate
                 db.session.commit()
-                return user.to_dict()
+                print(emp.to_dict())
+                return emp.to_dict()
 
         """no member account found for emp -> create one"""
-        prev_img = data['profile_pic']
-        filename = prev_img.filename
-        prev_img.filename = get_unique_filename(filename)
-        upload = upload_file_to_s3(prev_img)
-        if 'url' not in upload:
-            return upload
         new_user = User(
-            profile_image = upload['url'],
             firstName = data['firstName'],
             lastName = data['lastName'],
             birthday = data['birthday'],
@@ -92,6 +94,14 @@ def sign_up():
             role_id = roleId,
             pay_rate = payrate
         )
+        if data['profile_pic']:
+            prev_img = data['profile_pic']
+            filename = prev_img.filename
+            prev_img.filename = get_unique_filename(filename)
+            upload = upload_file_to_s3(prev_img)
+            if 'url' not in upload:
+                return upload
+            new_user.profile_image = upload['url']
 
         db.session.add(new_user)
         db.session.commit()
@@ -102,11 +112,11 @@ def sign_up():
         db.session.add(new_favorites)
         db.session.commit()
 
-        if not current_user.is_authenticated:
+        if not current_user.get_id():
             """login new user - IF the user was created by the user and not as a new employee by management/owner"""
             login_user(new_user)
         return new_user.to_dict()
-    print(form.errors)
+
     return { 'errors': validation_errors_to_error_messages(form.errors) }, 401
 
 @auth_routes.route('/unauthorized')

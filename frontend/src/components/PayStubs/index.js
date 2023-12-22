@@ -24,7 +24,7 @@ export default function PayStubs() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div className="payStubsContainer">
+    <div className="pageContainer">
       <div className="goBackButtonDiv" id="goBack">
         <button
           className="goBackButton"

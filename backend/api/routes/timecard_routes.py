@@ -37,9 +37,11 @@ def getPaystubs(userId):
 @timecard_routes.route("/clockin", methods=["POST"])
 @login_required
 def empClockin():
-    cardCheck = TimeCard.query.filter(TimeCard.clocked_out == None).first()
+    cardCheck = TimeCard.query.filter(TimeCard.user_id == current_user.get_id()).filter(TimeCard.clocked_out == None).first()
+
     if cardCheck:
         return {'errors': "Cannot clock in with an already open timecard"}, 403
+
     new_timecard = TimeCard(
         user_id = current_user.get_id(),
         clocked_in = datetime.now()

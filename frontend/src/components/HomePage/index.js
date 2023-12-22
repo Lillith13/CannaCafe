@@ -16,27 +16,31 @@ export default function HomePage() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div className="homeContainer">
-      {user ? (
-        <>
-          {(user.role.name === "Manager" || user.role.name === "Owner") && (
-            <NavLink exact to="/allProducts">
-              <button className="viewAllItemsButton">View All</button>
-            </NavLink>
-          )}
-        </>
-      ) : null}
+    <div className="pageContainer" id="home">
+      <NavLink exact to="/allProducts">
+        <button
+          className={
+            user && (user.role.name === "Manager" || user.role.name === "Owner")
+              ? "viewAllButton"
+              : "hidden"
+          }
+        >
+          View All
+        </button>
+      </NavLink>
 
-      <div className="productsContainerDiv">
-        <div className="productsTitleContainer">
+      <div className="itemsContainerDiv">
+        <div>
           <h1>Checkout our Products</h1>
 
           <NavLink exact to="/products">
-            <button className="viewAllProductsButton">View All Products</button>
+            <button className={!user ? "hidden" : "viewAllButton"}>
+              View All Products
+            </button>
           </NavLink>
         </div>
 
-        <div className="productLinksContainer">
+        <div className="categoryContainer">
           {Object.values(categories).map((category) => (
             <>
               {console.log(category)}
@@ -45,7 +49,7 @@ export default function HomePage() {
                   exact
                   to={`/category/${category.name}`}
                   key={category.id}
-                  className="idvProduct"
+                  className="idvItem"
                   // style={{backgroundImage={}}}
                 >
                   <h2>{category.name}</h2>
@@ -56,12 +60,16 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="menuItemsContainerDiv">
+      <div className="itemsContainerDiv"
+
+      >
         <div className="menuItemsTitleContainer">
           <h1>Checkout our Menu</h1>
 
           <NavLink exact to="/menu">
-            <button className="viewAllMenuButton">View Full Menu</button>
+            <button className={!user ? "hidden" : "viewAllButton"}>
+              View Full Menu
+            </button>
           </NavLink>
         </div>
 
@@ -73,7 +81,7 @@ export default function HomePage() {
                   exact
                   to={`/category/${category.name}`}
                   key={category.id}
-                  className="idvMenuItem"
+                  className="idvItem"
                 >
                   <h2>{category.name}</h2>
                 </NavLink>

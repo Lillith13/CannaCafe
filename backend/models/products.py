@@ -54,10 +54,10 @@ class Product(db.Model):
     back_populates="products"
   )
 
-  images = db.relationship(
-    "ProductImage",
-    back_populates="product"
-  )
+  # images = db.relationship(
+  #   "ProductImage",
+  #   back_populates="product"
+  # )
 
   def to_dict(self):
     return {

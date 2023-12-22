@@ -6,6 +6,7 @@ import { delFromWishlist } from "../../../store/wishlist";
 import { delFromFaves } from "../../../store/favorites";
 
 import "./ConfirmRemove.css";
+import { returnItem } from "../../../store/orders";
 
 export default function ConfirmRemove({ where, product }) {
   const { closeModal } = useModal();

@@ -10,5 +10,5 @@ from .favorites import Favorite
 from .orders import Order
 from .reviews import Review
 from .complaints import Complaint
-from .product_images import ProductImage
+# from .product_images import ProductImage
 from .joins import WishlistDetail, FavoriteDetail, OrderProduct, CategoryProduct

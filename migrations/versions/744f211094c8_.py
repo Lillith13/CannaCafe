@@ -79,7 +79,7 @@ def upgrade():
     sa.Column('id', sa.INTEGER(), nullable=False),
     sa.Column('user_id', sa.INTEGER(), nullable=False),
     sa.Column('total', sa.Numeric(precision=10, scale=2), default=0),
-    sa.Column('placed', sa.Date(), nullable=False),
+    sa.Column('placed', sa.DateTime(), nullable=False),
     sa.Column('shipped', sa.Date(), nullable=True),
     sa.Column('fulfilled', sa.Date(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),

@@ -90,7 +90,7 @@ export const createProduct = (formData) => async (dispatch) => {
       return data;
     }
   } else {
-    return null;
+    return data.id;
   }
 };
 
@@ -102,22 +102,43 @@ export const editProduct = (formData) => async (dispatch) => {
   const data = await res.json();
 };
 
-export const deleteProduct = (productId) => async (dispatch) => {
-  const res = await fetch("/api/products/", {
-    method: "DELETE",
-    body: productId,
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    if (data.errors) {
-      return data.errors;
+export const deleteProduct =
+  (productId, type, category) => async (dispatch) => {
+    const res = await fetch("/api/products/", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: productId,
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      if (data.errors) {
+        return data.errors;
+      } else {
+        return data;
+      }
     } else {
-      return data;
+      if (category) {
+        // * load products by category
+        dispatch(getProdsByCat(category));
+        return null;
+      } else {
+        // * decide loadALLAll or by type
+        switch (type) {
+          case "menu":
+            dispatch(loadAllProducts(type));
+            return null;
+          case "product":
+            dispatch(loadAllProducts(type));
+            return null;
+          default:
+            dispatch(loadAllAll());
+            return null;
+        }
+      }
     }
-  } else {
-    return null;
-  }
-};
+  };
 
 export default function reducer(state = {}, action) {
   let new_state = {};

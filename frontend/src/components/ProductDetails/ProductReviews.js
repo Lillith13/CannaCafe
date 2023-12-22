@@ -63,17 +63,19 @@ export default function ProductReviews({ productId, user }) {
           <div className="productReviewContainerDiv">
             <div className="postReviewModalButton">
               {user.id &&
-                !Object.keys(reviews).includes(String(user.id)) &&
-                user.role.name != "Owner" &&
-                user.role.name != "Manager" &&
-                user.role.name != "Employee" && (
-                  <OpenModalButton
-                    buttonText="Add Review"
-                    modalComponent={
-                      <CreateReview itemId={productId} from="productDetails" />
-                    }
-                  />
-                )}
+                user.role.name == "Member" &&
+                (!Object.keys(reviews).includes(String(user.id)) ||
+                  !Object.keys(reviews).includes(user.id)(
+                    <OpenModalButton
+                      buttonText="Add Review"
+                      modalComponent={
+                        <CreateReview
+                          itemId={productId}
+                          from="productDetails"
+                        />
+                      }
+                    />
+                  ))}
             </div>
             <div className="prodReviewsContainer">
               {Object.values(reviews).map((review) => (

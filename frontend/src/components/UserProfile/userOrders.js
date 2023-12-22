@@ -1,38 +1,59 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getAllOrders } from "../../store/orders";
 
 import "./UserProfile.css";
+import OpenModalButton from "../OpenModalButton";
+import ConfirmAdd from "../AllModals/ConfirmAddTo";
+import CreateReview from "../AllModals/Review";
+import ReturnItem from "../AllModals/ReturnItem";
 
 export default function UserOrders() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const orders = useSelector((state) => state.orders);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [fullLoad, setFullLoad] = useState(false);
+  // const [fullLoad, setFullLoad] = useState(false);
 
   useEffect(() => {
     dispatch(getAllOrders()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  useEffect(() => {
-    if (orders.length) {
-      orders.map((order) => {
-        let sum = 0;
-        order.products.map((item) => {
-          sum += parseFloat(item.price) * item.quantity;
-        });
-        if (order.total != sum) {
-          order.total = sum.toFixed(2);
-        }
-      });
-      setFullLoad(true);
-    }
-  }, [isLoaded]);
+  // useEffect(() => {
+  //   if (orders.length) {
+  //     orders.map((order) => {
+  //       let sum = 0;
+  //       order.products.map((item) => {
+  //         sum += parseFloat(item.price) * item.quantity;
+  //       });
+  //       if (order.total != sum) {
+  //         // order.total = sum.toFixed(2);
+  //         setOrderTotal(sum.toFixed(2))
+  //       } else {
+  //         setOrderTotal(order.total)
+  //       }
+  //     });
+  //   }
+  //   setFullLoad(true);
+  // }, [isLoaded]);
+
+  const calcTotal = (order) => {
+    let sum = 0;
+    order.products.map((item) => {
+      sum += parseFloat(item.price) * item.quantity;
+    });
+    if (order.total != sum) {
+      order.total = sum.toFixed(2);
+      // return sum.toFixed(2);
+    } /* else {
+      return order.total;
+    } */
+  };
 
   // ! Orders to be seperated by bag or cart orders - only cart orders can be returned
 
-  return fullLoad ? (
+  return isLoaded ? (
     <>
       {orders && orders.length > 0 ? (
         <div className="orderTabContainer">
@@ -41,17 +62,31 @@ export default function UserOrders() {
               <div className="idvOrderDiv" key={order.id}>
                 <div className="orderCardTitle">
                   Order #: {order.id} - Order Total: ${order.total}
-                  {/* {console.log(order)} */}
                 </div>
 
                 <div className="orderItemsContainer">
                   <div className="orderDetails">
                     <p>Order Date: {order.placed}</p>
                     <div>
-                      <p>Ship Date: {order.shipped}</p>
-                      <p>Delivered: {order.fulfilled}</p>
+                      {order.products[0].category.shippable && (
+                        <>
+                          <p>
+                            Ship Date:
+                            {order.createdAt}
+                          </p>
+                          <p>Delivered: {order.fulfilled}</p>
+                        </>
+                      )}
                     </div>
-                    <button>Return All</button>
+
+                    {order.products[0].category.shippable && (
+                      <OpenModalButton
+                        buttonText="Return All"
+                        modalComponent={
+                          <ReturnItem item={null} order={order} />
+                        }
+                      />
+                    )}
                   </div>
 
                   <div className="orderItemsDiv">
@@ -62,7 +97,16 @@ export default function UserOrders() {
                           alt={item.name + "_previewImg"}
                         />
                         <div className="orderItemDetails">
-                          <p>{item.name}: </p>
+                          <NavLink
+                            exact
+                            to={
+                              item.category.shippable
+                                ? `/product/${item.id}`
+                                : `/menu/${item.id}`
+                            }
+                          >
+                            {item.name}:{" "}
+                          </NavLink>
                           <div>
                             <p>${item.price}</p>
                             {" x "}
@@ -77,14 +121,41 @@ export default function UserOrders() {
                         </div>
 
                         <div className="orderButtons">
-                          <button id="orderBuyAgainButton">Buy Again</button>
-                          <button
-                            title="coming soon..."
-                            id="orderPostReviewButton"
-                          >
-                            Post Review
-                          </button>
-                          <button id="orderReturnButton">Return</button>
+                          <div id="orderBuyAgainButton">
+                            <OpenModalButton
+                              buttonText="Buy Again"
+                              modalComponent={
+                                <ConfirmAdd
+                                  where="Shopping Cart"
+                                  product={item}
+                                  user={user}
+                                />
+                              }
+                            />
+                          </div>
+
+                          <div id="orderPostReviewButton">
+                            <OpenModalButton
+                              buttonText="Post Review"
+                              modalComponent={
+                                <CreateReview
+                                  itemId={item.id}
+                                  locationInfo={{ from: "userProfile" }}
+                                />
+                              }
+                            />
+                          </div>
+
+                          {item.category.shippable && (
+                            <div id="orderReturnButton">
+                              <OpenModalButton
+                                buttonText="Return"
+                                modalComponent={
+                                  <ReturnItem item={item} order={order} />
+                                }
+                              />
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}

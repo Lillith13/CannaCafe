@@ -30,18 +30,31 @@ export default function Products() {
   const userFaves = useSelector((state) => state.favorites);
   const userWishes = useSelector((state) => state.wishlist);
   const [type, setType] = useState();
+  const [category, setCategory] = useState(null);
   const [view, setView] = useState("tile");
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(async () => {
     let data;
 
-    setType(
-      location.pathname.slice(1)[location.pathname.slice(1).length - 1] ==
-        "s" && location.pathname.slice(1) != "allProducts"
-        ? `${location.pathname.slice(1, location.pathname.length - 1)}`
-        : `${location.pathname.slice(1, location.pathname.length)}`
-    );
+    let here = location.pathname.slice(1);
+
+    if (here.includes("/")) {
+      const cat = here.split("/")[1];
+      const menu = ["Food", "Drinks", "Infused-Food", "Infused-Drinks"];
+
+      menu.includes(cat) && isNaN(cat) ? (here = "menu") : (here = "product");
+
+      if (isNaN(cat)) {
+        setCategory(cat);
+      }
+    } else {
+      here[here.length - 1] == "s" && here != "allProducts"
+        ? (here = `${location.pathname.slice(1, location.pathname.length - 1)}`)
+        : (here = `${location.pathname.slice(1, location.pathname.length)}`);
+    }
+
+    setType(here);
 
     if (params.name) {
       data = await dispatch(getProdsByCat(params.name))
@@ -64,9 +77,9 @@ export default function Products() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div className="productsContainer">
+    <div className="pageContainer">
       <div className="topOfPageItems">
-        <div className="goBackButtonDiv" id="goBack">
+        <div>
           <button
             className="goBackButton"
             onClick={(e) => {
@@ -77,7 +90,7 @@ export default function Products() {
             Go Back
           </button>
         </div>
-        <div className="viewOptionsButtonsDiv">
+        <div className="viewOptionsDiv">
           <button className="viewOptionsButton" onClick={() => setView("list")}>
             List
           </button>
@@ -129,7 +142,6 @@ export default function Products() {
                     }
                     onClick={(e) => {
                       e.preventDefault();
-                      console.log(e.target.tagName);
                       if (e.target.tagName != "BUTTON") {
                         product.category.shippable
                           ? history.push(`/product/${product.id}`)
@@ -299,7 +311,11 @@ export default function Products() {
                                 <OpenModalButton
                                   buttonText="Delete Product"
                                   modalComponent={
-                                    <ConfirmDeleteItem product={product} />
+                                    <ConfirmDeleteItem
+                                      product={product}
+                                      type={type}
+                                      category={category}
+                                    />
                                   }
                                 />
                               </div>

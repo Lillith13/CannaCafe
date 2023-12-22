@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 
 from .auth_helper import validation_errors_to_error_messages
 
-from ...models import db, Order, ProductImage, Product, OrderProduct, User
+from ...models import db, Order, Product, OrderProduct, User
 from ...forms import PlaceOrder
 
 order_routes = Blueprint('orders', __name__, url_prefix="/orders")
@@ -40,11 +40,12 @@ def orders():
         return { "Order": order.id }
     return
 
-@order_routes.route('/<int:id>', methods=['GET', 'POST'])
+@order_routes.route('/<int:id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @login_required
 def order(id):
+    order = Order.query.get(id)
+
     if request.method == "GET":
-        order = Order.query.get(id)
         if order:
             return { "Order": order.to_dict() }
 
@@ -52,9 +53,8 @@ def order(id):
         form = PlaceOrder()
         form['csrf_token'].data = request.cookies['csrf_token']
 
-        order = Order.query.get(id)
         if not order:
-            return {'errors': [{"Order": "Order not found"}]}, 404
+            return {'errors': {"Order": "Order not found"}}, 404
 
         if form.validate_on_submit():
             data = form.data
@@ -90,21 +90,32 @@ def order(id):
 
         if form.errors:
             return {'errors': validation_errors_to_error_messages(form.errors)}
-        return None
+
+    if request.method == "PUT":
+        # ! For changing shipped and fulfilled dates
+        pass
+
+    if request.method == "DELETE":
+        print()
+        print(order)
+        print(request.method)
+        print()
+
+        if not order:
+            return {'errors': {"Bad_Request": "Order not found"}}, 404
+        db.session.delete(order)
+        db.session.commit()
+        return {'message': "successful"}
 
 @order_routes.route('/<int:orderId>/<int:itemId>', methods=['DELETE'])
 @login_required
 def processReturn(orderId, itemId):
-    product = Product.query.get(itemId)
-    inOrder = False
-    if product:
-        order = Order.query.filter(Order.user_id == current_user.get_id() and Order.id == orderId).first()
-        for item in order.products:
-            if item.id == itemId:
-                inOrder = True
-        if not inOrder:
-            return { 'errors': validation_errors_to_error_messages({"Bad_Request": "Product not found"})}, 403
-        order.product.remove(product)
-        db.session.commit()
-        return { "message": "successful" }
-    return { 'errors': validation_errors_to_error_messages({"Product": "Product doesn't exist"})}, 404
+
+    orderItem = OrderProduct.query.filter(OrderProduct.order_id == orderId, OrderProduct.product_id == itemId).first()
+
+    if not orderItem:
+        return { 'errors': {"Bad_Request": "Product not found"}}, 404
+
+    db.session.delete(orderItem)
+    db.session.commit()
+    return { "message": "successful" }

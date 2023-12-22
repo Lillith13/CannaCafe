@@ -64,11 +64,7 @@ export default function EditProduct({ type, product }) {
         Object.keys(products).map((key) => {
           const test = isNaN(key);
           if (!test) {
-            if (type == "product") {
-              history.push(`/product/${product.id}`);
-            } else {
-              history.push(`/menu/${product.id}`);
-            }
+            history.push(`/${type}/${product.id}`);
           }
         });
         dispatch(loadProduct(product.id));

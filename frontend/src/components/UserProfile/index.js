@@ -72,7 +72,7 @@ export default function UserProfile() {
   };
 
   return (
-    <div className="userProfileContainer">
+    <div className="pageContainer">
       <h1>
         Hello, {user.firstName} {user.lastName}
       </h1>

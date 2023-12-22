@@ -2,39 +2,63 @@ from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from .auth_helper import validation_errors_to_error_messages
 
-from ...models import db, Product, Category, User, ProductImage, Review
+from ...models import db, Product, Category, User, Review
 from ...forms import ProductForm, ReviewForm
 from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 
 product_routes = Blueprint('products', __name__, url_prefix="/products")
 
 
-@product_routes.route('/')
+@product_routes.route('/', methods=['GET', 'DELETE'])
 @login_required
 def allProducts():
-    products = Product.query.all()
-    safe_products = []
-    user = User.query.get(current_user.get_id())
-    if not user:
-        for product in products:
-            prod = product.to_dict()
-            category = prod['category']
-            if not category["age_restricted"]:
+
+    if request.method == 'GET':
+        products = Product.query.all()
+        safe_products = []
+        user = User.query.get(current_user.get_id())
+
+        if not user:
+            for product in products:
+                prod = product.to_dict()
+                category = prod['category']
+                if not category["age_restricted"]:
+                    prod['category'] = category
+                    safe_products.append(prod)
+        else:
+            for product in products:
+                prod = product.to_dict()
+                category = prod['category']
                 prod['category'] = category
                 safe_products.append(prod)
-    else:
-        for product in products:
-            prod = product.to_dict()
-            category = prod['category']
-            prod['category'] = category
-            safe_products.append(prod)
-    print({ 'Products': safe_products })
-    return { 'Products': safe_products }
+        # print({ 'Products': safe_products })
+        return { 'Products': safe_products }
+
+    if request.method == "DELETE":
+        data = request.get_data().decode( "utf-8" )
+        print("parsed data from request => ", int(data))
+        product = Product.query.get(int(data))
+
+        print(product)
+
+        if not product:
+            return {"errors": validation_errors_to_error_messages({"Not_Found" : "No product with that id found"})}, 404
+
+        if product.preview_image:
+            remove_file_from_s3(product.preview_image)
+
+        db.session.delete(product)
+        db.session.commit()
+        return {'message': 'successful'}
+
+    return None
 
 @product_routes.route('/<string:path>')
 def allProducts_byPath(path):
     products = Product.query.all()
     safe_products = []
+    if current_user.get_id():
+        pass
     if path == "menu":
         for product in products:
             prod = product.to_dict()
@@ -67,15 +91,9 @@ def createReview(id):
     if request.method == 'POST':
         form = ReviewForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        # print(" ")
-        # print("form data before validate => ", form.data)
-        # print(" ")
 
         if form.validate_on_submit():
             data = form.data
-            # print(" ")
-            # print("form data => ", data)
-            # print(" ")
 
             userId = int(current_user.get_id())
 
@@ -107,7 +125,7 @@ def specificProduct(id):
     return prodDict
 
 
-@product_routes.route('/', methods=["POST", "PUT", "DELETE"])
+@product_routes.route('/', methods=["POST", "PUT"])
 @login_required
 def productSubmits():
     form = ProductForm()
@@ -137,8 +155,7 @@ def productSubmits():
                 cat.products.extend([new_product])
                 db.session.add(new_product)
                 db.session.commit()
-
-                return { "message": "success" }
+                return new_product
 
             if request.method == "PUT":
                 print("edit form data => ", data)
@@ -168,25 +185,14 @@ def productSubmits():
                     product.preview_image = upload['url']
                     product.preview_image_name = filename
 
-                print("product category in edit product backend route => ", product.category)
+                # print("product category in edit product backend route => ", product.category)
                 if data['category'] != product.category[0].name:
                     cat = Category.query.filter(Category.name == data['category']).first()
                     product.category_id = cat.id
 
                 product.added_by = current_user.get_id()
                 db.session.commit()
-                return { "message": "success" }
-
-    if request.method == "DELETE":
-            data = request.get_data().decode( "utf-8" )
-            # print("parsed data from request => ", int(data))
-            product = Product.query.get(int(data))
-            if not product:
-                return {"errors": validation_errors_to_error_messages({"Not_Found" : "No product with that id found"})}, 404
-            remove_file_from_s3(product.preview_image)
-            db.session.delete(product)
-            db.session.commit()
-            return {'message': 'successful'}
+                return product
 
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401

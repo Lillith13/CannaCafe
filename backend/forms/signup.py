@@ -61,7 +61,7 @@ class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired("Username is required"), username_exists])
 
-    roleName = StringField('roleName')
+    role = StringField('roleName')
 
     email = StringField('email', validators=[DataRequired("Email is required"), email_exists, email_correct_format])
 

@@ -6,7 +6,6 @@ const loadUserOrders = (userOrders) => ({
 });
 
 export const getAllOrders = () => async (dispatch) => {
-  // ! load user orders
   const res = await fetch("/api/orders/");
 
   const data = await res.json();
@@ -28,8 +27,6 @@ export const createOrder = () => async (dispatch) => {
 export const addUserOrderItems =
   ({ formData, orderId }) =>
   async (dispatch) => {
-    // ! add orders
-    // console.log(formData);
     const res = await fetch(`/api/orders/${orderId}`, {
       method: "POST",
       headers: {
@@ -37,14 +34,32 @@ export const addUserOrderItems =
       },
       body: JSON.stringify(formData),
     });
-    // console.log(res);
-    // const data = await res.json();
-    // console.log(data);
   };
 
-// ! remove orders <- for full order returns
+export const returnWholeOrder = (orderId) => async (dispatch) => {
+  const res = await fetch(`api/orders/${orderId}`, {
+    method: "DELETE",
+  });
+  console.log(res);
+  if (res.ok) {
+    return null;
+  } else {
+    const data = await res.json();
+    return data.errors;
+  }
+};
 
-// ! remove individual item(s) from order <- for item returns (edit order)
+export const returnItem = (orderId, itemId) => async (dispatch) => {
+  const res = await fetch(`api/orders/${orderId}/${itemId}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    return null;
+  } else {
+    const data = await res.json();
+    return data.errors;
+  }
+};
 
 export default function reducer(state = {}, action) {
   switch (action.type) {

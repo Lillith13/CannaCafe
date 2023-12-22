@@ -45,7 +45,7 @@ def delAccount(userId):
     return { "message": "successful" }
 
 
-@user_routes.route('/<int:id>', methods=["POST"])
+@user_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def editAccount(id):
     """ edit account details """
@@ -96,17 +96,21 @@ def editAccount(id):
         if int(current_user.get_id()) == int(user.id):
             if data['newpassword'] and user.check_password(data['oldpassword']):
                 user.password = data['newpassword']
+            else:
+                return {'errors': {'password': 'Current Password Incorrect'}}
 
         if int(current_user.get_id()) != int(user.id):
             thirdParty = User.query.get(current_user.get_id())
 
-            if thirdParty.role.name != "Manager" and thirdParty.role.name != "Owner":
-                print("is this where the error is hitting? 1")
-                return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
+            print()
+            print(thirdParty.role.name)
+            print()
 
-            if thirdParty.role.name == "Manager" and user.role.name != "Owner":
-                print("is this where the error is hitting? 2")
-                return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have permission to perform this action"})}, 403
+            if thirdParty.role.name != "Manager" and thirdParty.role.name != "Owner":
+                return {'errors': {"Not_Allowed": "You do not have permission to perform this action"}}, 403
+
+            if thirdParty.role.name == "Manager" and (user.role.name == "Owner" or user.role.name == "Manager"):
+                return {'errors': {"Not_Allowed": "You do not have permission to perform this action"}}, 403
 
             role = Role.query.filter(Role.name == data['role']).first()
             user.role_id = role.id
@@ -115,8 +119,8 @@ def editAccount(id):
             if role.name == "Member":
                 user.pay_rate = None
         db.session.commit()
+        print("Editted User ===> ", user.to_dict())
         return user.to_dict()
-    print(form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

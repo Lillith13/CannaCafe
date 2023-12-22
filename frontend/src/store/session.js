@@ -80,8 +80,10 @@ export const signUp =
     if (res.ok) {
       if (!currUser || currUser == "undefined") {
         dispatch(setUser(userData));
+        return null;
+      } else {
+        return userData.id;
       }
-      return null;
     } else if (res.status < 500) {
       if (userData) {
         return userData.errors;
@@ -109,8 +111,9 @@ export const deleteUser = (userId) => async (dispatch) => {
 export const editUser = (inputData) => async (dispatch) => {
   const { formData, employeeId, userId } = inputData;
   // console.log(inputData);
+
   const res = await fetch(`/api/users/${employeeId}`, {
-    method: "POST",
+    method: "PUT",
     body: formData,
   });
   // console.log(res);
