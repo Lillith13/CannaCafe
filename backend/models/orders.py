@@ -15,7 +15,7 @@ class Order(db.Model):
 
     total = db.Column(db.Numeric(precision=10, scale=2), default=0)
 
-    placed = db.Column(db.DateTime, default=datetime.datetime.utcnow(), nullable=False)
+    placed = db.Column(db.Date, default=datetime.datetime.utcnow(), nullable=False)
 
     shipped = db.Column(db.Date)
 
