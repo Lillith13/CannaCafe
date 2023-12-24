@@ -14,16 +14,13 @@ Welcome to CannaCafe, the place where your inner child can finally be let loose!
   - [General info](#general-info)
   - [Languages, Frameworks, and Tools](#languages-frameworks-and-tools)
   - [Setup](#setup)
-  - [What to Expect](#what-to-expect)
+  - [Quick Tour](#quick-tour)
     - [Sign-Up Modal](#sign-up-modal)
     - [Log In Modal](#log-in-modal)
     - [Home Page](#home-page)
     - [Products](#products)
     - [Place Order](#place-order)
-    - [Member Profile](#member-profile)
-    - [Employee Profile](#employee-profile)
-    - [Manager Profile](#manager-profile)
-    - [Owner Profile](#owner-profile)
+    - [User Profile](#user-profile)
   - [Documetation](#documetation)
   - [Current Features](#current-features)
   - [Future Plans](#future-plans)
@@ -47,8 +44,6 @@ CannaCafe will be a versatile platform seamlessly integrating staff management, 
 
 ## Setup
 
-<!-- how to install if cloned down -->
-
 Startup Backend - from the root of this repository, run the following in the terminal:
 
 - pipenv install -r requirements.txt && pipenv shell
@@ -59,27 +54,25 @@ Startup Frontend - from the file frontend, make sure you are using nvm v16 then 
 - npm install
 - npm start
 
-## What to Expect
+## Quick Tour
 
 ### Sign-Up Modal
 
-![SignUpForm](/assets/SignUp/SignUp%20Modal.png)
-<!-- show sign-up modal, details requirements & example inputs n outputs -->
-<!-- display event of error for all errors -->
-Signup Errors display
+![SignUpForm](/CannaCafe/assets/SignUp/Modal.png)
 
-![SignUpFormErrors](/assets/SignUp/SignUp%20Errors.png)
+Signup Error Handling
+
+![SignUpFormErrors](/CannaCafe/assets/SignUp/Errors.png)
 
 Birthday is also a requirement (styling to display this will be added soon)
 
 ### Log In Modal
 
-![LoginModel](/assets/LogIn/LogInModal.png)
+![LoginModel](/CannaCafe/assets/LogIn/Modal.png)
 
-![LoginDemoUsers](/assets/LogIn/showingOffDemoUserDropDown.png)
+![LoginDemoUsers](/CannaCafe/assets/LogIn/DemoUsers-Options.png)
 
-<!-- ! FIX LOGIN ERROR HANDLING!!! -->
-<!-- display modal & show event of error for all errors -->
+![LoginErrors](/CannaCafe/assets/LogIn/Errors.png)
 
 ### Home Page
 
@@ -87,85 +80,139 @@ After clicking the Enter button on the splash page youll be brought here. You ca
 
 Roaming as a guest, you can till view some products (non-age-restricted products only) & place orders (takeout & cart)
 
-![Logged out HomePage](/assets/loggedOut_homePage.png)
+Logged out:
+![Logged out HomePage](/CannaCafe/assets/HomePage/LoggedOut.png)
+
+Logged in - Member and Base level Employees:
+![Logged in HomePage](/CannaCafe/assets/HomePage/Member-Employee.png)
+
+Logged in - Management (roles: Manager and Owner)
+![Logged in FullAccess Homepage](/CannaCafe/assets/HomePage/Management.png)
 
 ### Products
 
-![Products By Category]()
+Products rendered by clicking the "Food" button - as viewed by Management
+![Products By Category](/CannaCafe/assets/ProductsPage/Management_View.png)
 
-Image above is of products rendered by clicking the "Food" button
-
-![Products by Type]()
-
-Image above is of products rendered by clicking on the "View All Products button"
+Products rendered by clicking on the "View All Products button" - as viewed by Member or base level Employee
+![Products by Type](/CannaCafe/assets/ProductsPage/Member-Employee_View.png)
 
 ### Place Order
 
-- Shopping Cart
-![Empty Cart](/assets/Cart/empty/noItemsInCart.png)
-![Filled Cart](/assets/Cart/filled/cart.png)
-![Cart Checkout Modal](/assets/Cart/checkout/cartCheckoutModal.png)
+The shopping cart and the takeout bag are styled extremely similarly - Displayed is the shopping cart
+![Cart](/CannaCafe/assets/Cart-TakeoutBag.png)
 
-- Takeaway Bag
-![Empty Takeout Bag](/assets/Cart/empty/noItemsInBag.png)
-![Filled Takeout Bag](/assets/Cart/filled/takeoutPT1.png)
-![Filled Takeout Bag](/assets/Cart/filled/takeoutPT2.png)
-![Takeout Bag Checkout Modal](/assets/Cart/checkout/takeoutCheckoutModal.png)
-![Bag Checkout Options Available](/assets/Cart/checkout/OptionsAvailable.png)
-![Back Checkout Option Chosen](/assets/Cart/checkout/OptionChosen.png)
+The checkout modals are a tad different however...
 
+![Checkout TakeoutBag](/CannaCafe/assets/CheckOutModal-Takeout.png)
 
-<!-- home page logged out -->
+The checkout modal for the takeout bag, requires you to select an option
 
-<!-- ! Fix conditional for product filtering if not logged in ( @ /products && /menu ) -->
-<!-- view all (view all all should not be accessible as guest) -->
+![Back Checkout Options](/CannaCafe/assets/CheckOutModal-Takeout-Options.png)
 
-### Member Profile
+Where-as the shopping cart checkout does not
+![Cart Checkout](/CannaCafe/assets/CheckOutModal-Cart.png)
 
-- Edit Account
-  - modal
-  - errors
-- Delete Account
-  - modal
-- Tabs
-  - Your Orders
-  - Your Reviews (order by newest)
-  - Your Complaints
-  - Your Wishlist (shippable products)
-  - Your Favorites (menu items)
+### User Profile
 
-### Employee Profile
+Member
+![Member Profile](/CannaCafe/assets/UserProfile/Member.png)
 
-+ Clock in
-+ Clock out
-+ View paystubs
-+ Tabs =>
-  - Your Reviews -> null
-  - Staff -> Staff Name links to Staff Profile (view only)
+- User's Reviews
+  ![User Review](/CannaCafe/assets/UserProfile/UserReviews-AsViewedBy,Member.png)
 
+Employee
+![Employee Profile](/CannaCafe/assets/UserProfile/Employee.png)
 
-### Manager Profile
+Management
+![Management Profile](/CannaCafe/assets/UserProfile/Management.png)
 
-+ Create New Product/Menu Item Buttons (only difference is whether or not quantity required or not and what categories render to the dropdown)
-+ Hire New Employee
-- Tab
-  - Your Reviews -> View Member Reviews (order by newest)
-  - Sent Complaints -> View Member Complaints (order by newest)
-  + Staff => Employee Profile, edit button opened to edit role Employee instances
+- All users' reviews
+  ![All user reviews](/CannaCafe/assets/UserProfile/MemberReviews-AsViewedByManagement.png)
 
-### Owner Profile
+Universal
 
-<!--  -->
+- Favorites
+  ![Faves](/CannaCafe/assets/UserProfile/Favorites.png)
+- Wishlist
+  ![Wishlist](/CannaCafe/assets/UserProfile/Wishlist.png)
+- Past Orders
+  ![Orders](/CannaCafe/assets/UserProfile/PastOrders.png)
 
+This is is just scratching the surface, there is more to explore and much much more to come. In the mean time, the most current stable version is running [HERE](cannacafe.onrender.com) for you to test out 😊
 
 ## Documetation
 
-<!-- Links directly to wiki pages for each listed here -->
+[Backend Docs](https://github.com/Lillith13/CannaCafe/wiki/Backend-Documentation)
+
+- Last updated: 11/29/2023
+
+[Frontend Docs](https://github.com/Lillith13/CannaCafe/wiki/Frontend-Documentation)
+
+- Last updated: 11/28/2023
+
+[All Current Screenshots](/CannaCafe/assets/)
+
+- Last updated: 12/24/2023
 
 ## Current Features
 
 <!-- group by most universally accessible to least -->
 
+| Minimum Role Requirment | Feature Available                                   |
+| ----------------------- | --------------------------------------------------- |
+| Guest                   | Read Products/MenuItems (filtered - age-restricted) |
+|                         | Read/Update Shopping Cart                           |
+|                         | Read/Update Takeaway Bag                            |
+| Member                  | Read Products/MenuItems (all)                       |
+|                         | Create/Read/Update/Delete Reviews\*                 |
+|                         | Create/Read/Update/Delete Orders                    |
+|                         | Read/Update Wishlist (Shippable Products)           |
+|                         | Read/Update Favorites (Menu Items)                  |
+|                         | Create/Read/Update/Delete Account &&\*              |
+| Employee                | Create/Update (Clock in/out) Timecard               |
+|                         | Read (Paystubs) Timecards                           |
+|                         | View coworker contact info                          |
+| Management              | Create/Read/Update/Delete products/menu items       |
+|                         | View ALL posted reviews                             |
+|                         | Create/Update Employee Accounts\*\*                 |
+
+\* Create/Update/Delete Reviews is Exclusive to users with "Member" role
+
+&&\* Delete Account is Exclusive to users with "Member" role
+
+\*\* BUT! ->
+
+- Only Owners have full access to create/update all staff.
+- Managers cannot create/update other managers nor can they create/edit owner accounts.
+
+\^ Paystubs in the form of per day worked pay
+
 ## Future Plans
 
-<!-- order by priority -->
+Implement user complaints. Similar to reviews but will be for in general complaints a member may have about anything from shipping to customer service. These will be only viewable by management staff (Managers & Owners) and the user who submitted the complaint.
+
+Add a small dash of social media in the mix by adding the ability for users to connect/friend one another. Piggy backing off this feature will come events. Where a user can reserve for an event and upon reservation there will be a notification sent to all users that fall into a spcific categories pertaining to the event (such as "event = private, notify only friends").
+
+Connect maps to better develop the shopping cart, takeout features, complaints, friends, and events features.
+
+- Piggybacking off of the new connection to maps, all features will be redesigned to incorporate location. Management staff will begin to see only the complaints and reviews for the products from their specific location. Notifications will gain new filter of location. Events will get a new modifier of location and friend suggestions will become a thing.
+
+Add user ability to DM each other
+
+Add community forums
+
+- Specifically for:
+  - Q&As/FAQs
+  - Event Planning / Event Details
+
+Add scheduling to staff pages
+
+- Management ability to set/edit schedules notifying all other staff at that location
+- Employee ability to view schedule (their own and coworkers) and request days off
+
+Themes
+
+Restyling to accomodate various screen sizes and browsers
+
+...figure out how to make this into a downloadable software and then app for mobile devices 😊
