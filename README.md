@@ -1,4 +1,4 @@
-# [CannaCafe]("https://cannacafe.onrender.com")
+# [CannaCafe]("cannacafe.onrender.com")
 
 ![statusBadge](https://img.shields.io/badge/demo-Live-green)
 
