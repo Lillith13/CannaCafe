@@ -1,6 +1,6 @@
 # CannaCafe
 
-![statusBadge](https://img.shields.io/badge/demo-Live-green)
+[![statusBadge](https://img.shields.io/badge/demo-Live-green)]("https://cannacafe.onrender.com)
 
 Your One Stop Shop For All Things Relating To Cannabis
 Welcome to CannaCafe, the place where your inner child can finally be let loose! This platform is a lively online shop designed for fellow lovers and connoisseurs of the amazing and weirdly controversial herb with calming and healing properties. If you're passionate about the potent and smelly healing herb and an opposer to the government imposed hate directed at the kind and lovely sweetheart that is Cannabis, CannaCafe is the place for you.
