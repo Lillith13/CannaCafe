@@ -63,9 +63,9 @@ export default function ProductReviews({ productId, user }) {
           <div className="productReviewContainerDiv">
             <div className="postReviewModalButton">
               {user.id &&
-                user.role.name == "Member" &&
-                (!Object.keys(reviews).includes(String(user.id)) ||
-                  !Object.keys(reviews).includes(user.id)(
+                !Object.keys(reviews).includes(String(user.id)) &&
+                !Object.keys(reviews).includes(user.id)(
+                  <div className={user.role.name === "Member" ? "" : "hidden"}>
                     <OpenModalButton
                       buttonText="Add Review"
                       modalComponent={
@@ -75,7 +75,8 @@ export default function ProductReviews({ productId, user }) {
                         />
                       }
                     />
-                  ))}
+                  </div>
+                )}
             </div>
             <div className="prodReviewsContainer">
               {Object.values(reviews).map((review) => (

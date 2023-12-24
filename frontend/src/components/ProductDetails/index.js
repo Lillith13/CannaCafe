@@ -252,7 +252,7 @@ export default function ProductDetails() {
               )}
             </>
           ) : (
-            <>
+            <div className={user.role.name === "Member" ? "" : "hidden"}>
               <h1>Be the first to review!</h1>
               <div className="postReviewModalButton">
                 <OpenModalButton
@@ -265,7 +265,7 @@ export default function ProductDetails() {
                   }
                 />
               </div>
-            </>
+            </div>
           )}
         </>
       ) : (

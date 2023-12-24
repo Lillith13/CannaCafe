@@ -116,7 +116,12 @@ export default function UserOrders() {
                             />
                           </div>
 
-                          <div id="review">
+                          <div
+                            id="review"
+                            className={
+                              user.role.name === "Member" ? "" : "hidden"
+                            }
+                          >
                             <OpenModalButton
                               buttonText="Post Review"
                               modalComponent={
