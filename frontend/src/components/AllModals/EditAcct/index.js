@@ -80,8 +80,11 @@ export default function EditAccount({ empId }) {
     formData.append("state", state);
     formData.append("zipcode", String(zipcode));
     formData.append("phone", phone);
-    formData.append("oldpassword", oldPassword);
-    formData.append("newpassword", newPassword);
+
+    if (newPassword && newPassword != "undefined") {
+      formData.append("newpassword", newPassword);
+      formData.append("oldpassword", oldPassword);
+    }
     console.log(formData);
 
     if (phone) {
@@ -111,7 +114,11 @@ export default function EditAccount({ empId }) {
     const data = await dispatch(editUser(inputData));
     if (data) {
       console.log(data);
-      setErrors(data.errors);
+      if (data.errors) {
+        setErrors(data.errors);
+      } else {
+        setErrors({ ...errors, ...data });
+      }
     } else {
       if (empId) {
         dispatch(getAnEmployee(empId));
@@ -184,8 +191,13 @@ export default function EditAccount({ empId }) {
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              placeholder={errors.firstName ? "* " + errors.firstName : " "}
+              placeholder={
+                errors?.firstName != "undefined"
+                  ? "* " + errors?.firstName
+                  : " "
+              }
             />
+            {console.log(errors.firstName != "undefined")}
           </label>
           <label className="editAcctLabel">
             Last Name
@@ -358,6 +370,7 @@ export default function EditAccount({ empId }) {
             />
           </label>
         </div>
+        {errors.password && <p className="error">{errors.password}</p>}
 
         <label>
           Profile Picture

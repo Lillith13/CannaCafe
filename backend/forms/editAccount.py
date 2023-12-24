@@ -37,7 +37,7 @@ def check_if_required(form, field):
     oldpass = form.data['oldpassword']
     newpass = field.data
     if newpass and not oldpass:
-        raise ValidationError('You current password to change your password.')
+        raise ValidationError('Current password required to change password.')
 
 
 class EditAccountForm(FlaskForm):

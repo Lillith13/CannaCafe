@@ -52,7 +52,6 @@ def editAccount(id):
     user = User.query.get(id)
     form = EditAccountForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("edit route before validator => ", form.data)
 
     if form.validate_on_submit():
         data = form.data
@@ -93,7 +92,7 @@ def editAccount(id):
         if user.phone != data['phone']:
             user.phone = data['phone']
 
-        if int(current_user.get_id()) == int(user.id):
+        if int(current_user.get_id()) == int(user.id) and data['newpassword']:
             if data['newpassword'] and user.check_password(data['oldpassword']):
                 user.password = data['newpassword']
             else:
@@ -101,10 +100,6 @@ def editAccount(id):
 
         if int(current_user.get_id()) != int(user.id):
             thirdParty = User.query.get(current_user.get_id())
-
-            print()
-            print(thirdParty.role.name)
-            print()
 
             if thirdParty.role.name != "Manager" and thirdParty.role.name != "Owner":
                 return {'errors': {"Not_Allowed": "You do not have permission to perform this action"}}, 403
