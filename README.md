@@ -5,7 +5,7 @@
 Your One Stop Shop For All Things Relating To Cannabis
 Welcome to CannaCafe, the place where your inner child can finally be let loose! This platform is a lively online shop designed for fellow lovers and connoisseurs of the amazing and weirdly controversial herb with calming and healing properties. If you're passionate about the potent and smelly healing herb and an opposer to the government imposed hate directed at the kind and lovely sweetheart that is Cannabis, CannaCafe is the place for you.
 
-[![splashPage](assets/SplashScreen%20-%20logged%20out.png)]("https://cannacafe.onrender.com/")
+[![splashPage](assets//SplashPage/LoggedOut.png)]("https://cannacafe.onrender.com/")
 
 ## Table of Contents
 
@@ -58,21 +58,21 @@ Startup Frontend - from the file frontend, make sure you are using nvm v16 then 
 
 ### Sign-Up Modal
 
-![SignUpForm](/CannaCafe/assets/SignUp/Modal.png)
+![SignUpForm](assets/SignUp/Modal.png)
 
 Signup Error Handling
 
-![SignUpFormErrors](/CannaCafe/assets/SignUp/Errors.png)
+![SignUpFormErrors](assets/SignUp/Errors.png)
 
 Birthday is also a requirement (styling to display this will be added soon)
 
 ### Log In Modal
 
-![LoginModel](/CannaCafe/assets/LogIn/Modal.png)
+![LoginModel](assets/LogIn/Modal.png)
 
-![LoginDemoUsers](/CannaCafe/assets/LogIn/DemoUsers-Options.png)
+![LoginDemoUsers](assets/LogIn/DemoUsers-Options.png)
 
-![LoginErrors](/CannaCafe/assets/LogIn/Errors.png)
+![LoginErrors](assets/LogIn/Errors.png)
 
 ### Home Page
 
@@ -81,63 +81,63 @@ After clicking the Enter button on the splash page youll be brought here. You ca
 Roaming as a guest, you can till view some products (non-age-restricted products only) & place orders (takeout & cart)
 
 Logged out:
-![Logged out HomePage](/CannaCafe/assets/HomePage/LoggedOut.png)
+![Logged out HomePage](assets/HomePage/LoggedOut.png)
 
 Logged in - Member and Base level Employees:
-![Logged in HomePage](/CannaCafe/assets/HomePage/Member-Employee.png)
+![Logged in HomePage](assets/HomePage/Member-Employee.png)
 
 Logged in - Management (roles: Manager and Owner)
-![Logged in FullAccess Homepage](/CannaCafe/assets/HomePage/Management.png)
+![Logged in FullAccess Homepage](assets/HomePage/Management.png)
 
 ### Products
 
 Products rendered by clicking the "Food" button - as viewed by Management
-![Products By Category](/CannaCafe/assets/ProductsPage/Management_View.png)
+![Products By Category](assets/ProductsPage/Management_View.png)
 
 Products rendered by clicking on the "View All Products button" - as viewed by Member or base level Employee
-![Products by Type](/CannaCafe/assets/ProductsPage/Member-Employee_View.png)
+![Products by Type](assets/ProductsPage/Member-Employee_View.png)
 
 ### Place Order
 
 The shopping cart and the takeout bag are styled extremely similarly - Displayed is the shopping cart
-![Cart](/CannaCafe/assets/Cart-TakeoutBag.png)
+![Cart](assets/Cart-TakeoutBag.png)
 
 The checkout modals are a tad different however...
 
-![Checkout TakeoutBag](/CannaCafe/assets/CheckOutModal-Takeout.png)
+![Checkout TakeoutBag](assets/CheckOutModal-Takeout.png)
 
 The checkout modal for the takeout bag, requires you to select an option
 
-![Back Checkout Options](/CannaCafe/assets/CheckOutModal-Takeout-Options.png)
+![Back Checkout Options](assets/CheckOutModal-Takeout-Options.png)
 
 Where-as the shopping cart checkout does not
-![Cart Checkout](/CannaCafe/assets/CheckOutModal-Cart.png)
+![Cart Checkout](assets/CheckOutModal-Cart.png)
 
 ### User Profile
 
 Member
-![Member Profile](/CannaCafe/assets/UserProfile/Member.png)
+![Member Profile](assets/UserProfile/Member.png)
 
 - User's Reviews
-  ![User Review](/CannaCafe/assets/UserProfile/UserReviews-AsViewedBy,Member.png)
+  ![User Review](assets/UserProfile/UserReviews-AsViewedBy,Member.png)
 
 Employee
-![Employee Profile](/CannaCafe/assets/UserProfile/Employee.png)
+![Employee Profile](assets/UserProfile/Employee.png)
 
 Management
-![Management Profile](/CannaCafe/assets/UserProfile/Management.png)
+![Management Profile](assets/UserProfile/Management.png)
 
 - All users' reviews
-  ![All user reviews](/CannaCafe/assets/UserProfile/MemberReviews-AsViewedByManagement.png)
+  ![All user reviews](assets/UserProfile/MemberReviews-AsViewedByManagement.png)
 
 Universal
 
 - Favorites
-  ![Faves](/CannaCafe/assets/UserProfile/Favorites.png)
+  ![Faves](assets/UserProfile/Favorites.png)
 - Wishlist
-  ![Wishlist](/CannaCafe/assets/UserProfile/Wishlist.png)
+  ![Wishlist](assets/UserProfile/Wishlist.png)
 - Past Orders
-  ![Orders](/CannaCafe/assets/UserProfile/PastOrders.png)
+  ![Orders](assets/UserProfile/PastOrders.png)
 
 This is is just scratching the surface, there is more to explore and much much more to come. In the mean time, the most current stable version is running [HERE](cannacafe.onrender.com) for you to test out 😊
 
@@ -151,7 +151,7 @@ This is is just scratching the surface, there is more to explore and much much m
 
 - Last updated: 11/28/2023
 
-[All Current Screenshots](/CannaCafe/assets/)
+[All Current Screenshots](assets/)
 
 - Last updated: 12/24/2023
 
