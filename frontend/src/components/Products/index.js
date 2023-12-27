@@ -294,11 +294,11 @@ export default function Products() {
                                   buttonText="Edit Product"
                                   modalComponent={
                                     <EditProduct
-                                      type={[
+                                      type={
                                         product.category.shippable
                                           ? "product"
-                                          : "menu",
-                                      ]}
+                                          : "menu"
+                                      }
                                       product={product}
                                     />
                                   }

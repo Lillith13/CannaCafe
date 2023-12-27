@@ -95,11 +95,13 @@ export const createProduct = (formData) => async (dispatch) => {
 };
 
 export const editProduct = (formData) => async (dispatch) => {
+  // console.log(formData);
   const res = await fetch("/api/products/", {
     method: "PUT",
     body: formData,
   });
-  const data = await res.json();
+  // console.log(res);
+  // * may add a load later to provent need for redirect to product details
 };
 
 export const deleteProduct =

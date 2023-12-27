@@ -158,7 +158,7 @@ def productSubmits():
                 return new_product
 
             if request.method == "PUT":
-                print("edit form data => ", data)
+                # print("edit form data => ", data)
                 id = data['productId']
                 product = Product.query.get(id)
                 if data['name'] != product.name:
@@ -192,7 +192,7 @@ def productSubmits():
 
                 product.added_by = current_user.get_id()
                 db.session.commit()
-                return product
+                return product.to_dict()
 
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
