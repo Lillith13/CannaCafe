@@ -80,16 +80,14 @@ export default function ProductDetails() {
               </div>
 
               <div className="productContainer">
-                <div className="productImageDiv">
-                  {product.previewImg ? (
-                    <img
-                      className="productImage"
-                      src={`${product.previewImg}`}
-                    />
-                  ) : (
-                    <img className="productImage" src={imgPlaceholder} />
-                  )}
-                </div>
+                <div
+                  className="productImageDiv"
+                  style={{
+                    backgroundImage: `url(${
+                      product.previewImg ? product.previewImg : imgPlaceholder
+                    })`,
+                  }}
+                ></div>
                 <div className="prodInfoNButtonsDiv">
                   <div className="productInfoDiv">
                     <p>{product.description}</p>

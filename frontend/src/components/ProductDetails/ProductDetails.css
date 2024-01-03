@@ -34,12 +34,10 @@
 
 .productImageDiv {
   width: 50%;
-  padding: 15px;
-}
-.productImage {
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
+  height: 250px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .nameNavailNpriceDiv {
@@ -80,6 +78,8 @@
 
 .universallyAccessibleButtons > button {
   padding: 5px;
+  background-color: rgba(100, 110, 200, 0.5);
+  color: #fefae0;
 }
 
 .universallyAccessibleButtons > button,

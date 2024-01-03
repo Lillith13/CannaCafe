@@ -10,7 +10,6 @@ export const getALLreviews = () => async (dispatch) => {
 
   const data = await res.json();
   if (res.ok) {
-    console.log(data.Reviews);
     dispatch(loadReviews(data.Reviews));
     return null;
   }
@@ -21,11 +20,6 @@ export const getUserReviews = () => async (dispatch) => {
 
   const data = await res.json();
   if (res.ok) {
-    console.log(data.Reviews);
-    // const normalized = {};
-    // data.Reviews.forEach((review) => {
-    //   normalized[review.id] = review;
-    // });
     dispatch(loadReviews(data.Reviews));
     return null;
   }
@@ -36,13 +30,13 @@ export const getProductReviews = (productId) => async (dispatch) => {
 
   const data = await res.json();
   if (res.ok) {
-    console.log(data.Reviews);
-
-    const normalized = {};
-    data.Reviews.forEach((review) => {
-      normalized[review.id] = review;
-    });
-    dispatch(loadReviews(normalized));
+    if (data.Reviews) {
+      const normalized = {};
+      data.Reviews.forEach((review) => {
+        normalized[review.id] = review;
+      });
+      dispatch(loadReviews(normalized));
+    }
 
     return null;
   }
@@ -94,7 +88,6 @@ export default function reducer(state = {}, action) {
   let new_state = {};
   switch (action.type) {
     case GET_ALL:
-      console.log(action.payload);
       new_state = action.payload;
       return new_state;
     default:
