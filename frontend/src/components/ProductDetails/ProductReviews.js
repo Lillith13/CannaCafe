@@ -38,7 +38,7 @@ export default function ProductReviews({ productId, user }) {
     setFullLoad(true);
   }, [dispatchLoaded]);
 
-  return setFullLoad ? (
+  return fullLoad ? (
     <div className="reviewsOuterMostContainer">
       <h2>Product Reviews</h2>
       <div className="reviewContainerTitleDiv">
@@ -63,8 +63,8 @@ export default function ProductReviews({ productId, user }) {
           <div className="productReviewContainerDiv">
             <div className="postReviewModalButton">
               {user.id &&
-                !Object.keys(reviews).includes(String(user.id)) &&
-                !Object.keys(reviews).includes(user.id)(
+                (!Object.keys(reviews).includes(String(user.id)) ||
+                  !Object.keys(reviews).includes(user.id)) && (
                   <div className={user.role.name === "Member" ? "" : "hidden"}>
                     <OpenModalButton
                       buttonText="Add Review"

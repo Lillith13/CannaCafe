@@ -10,10 +10,9 @@ export const getALLreviews = () => async (dispatch) => {
 
   const data = await res.json();
   if (res.ok) {
+    console.log(data.Reviews);
     dispatch(loadReviews(data.Reviews));
     return null;
-  } else {
-    console.log(data);
   }
 };
 
@@ -22,25 +21,30 @@ export const getUserReviews = () => async (dispatch) => {
 
   const data = await res.json();
   if (res.ok) {
-    console.log(data);
+    console.log(data.Reviews);
+    // const normalized = {};
+    // data.Reviews.forEach((review) => {
+    //   normalized[review.id] = review;
+    // });
     dispatch(loadReviews(data.Reviews));
     return null;
-  } else {
-    console.log(data);
   }
 };
 
 export const getProductReviews = (productId) => async (dispatch) => {
   const res = await fetch(`/api/products/${productId}/reviews`);
-  console.log(res);
 
   const data = await res.json();
   if (res.ok) {
-    console.log(data);
-    dispatch(loadReviews(data.Reviews));
+    console.log(data.Reviews);
+
+    const normalized = {};
+    data.Reviews.forEach((review) => {
+      normalized[review.id] = review;
+    });
+    dispatch(loadReviews(normalized));
+
     return null;
-  } else {
-    console.log(data);
   }
 };
 
@@ -55,13 +59,8 @@ export const addReview =
       body: JSON.stringify(formData),
     });
 
-    console.log(res);
-
     if (res.ok) {
       return null;
-    } else {
-      const data = await res.json();
-      console.log(data);
     }
   };
 
@@ -78,9 +77,6 @@ export const editReview =
 
     if (res.ok) {
       return null;
-    } else {
-      const data = await res.json();
-      console.log(data);
     }
   };
 
@@ -91,18 +87,16 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 
   if (res.ok) {
     return null;
-  } else {
-    const data = await res.json();
-    console.log(data);
   }
 };
-// ! delete review
 
 export default function reducer(state = {}, action) {
   let new_state = {};
   switch (action.type) {
     case GET_ALL:
-      return action.payload;
+      console.log(action.payload);
+      new_state = action.payload;
+      return new_state;
     default:
       return state;
   }
