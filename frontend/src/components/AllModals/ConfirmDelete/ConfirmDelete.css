@@ -1,25 +1,30 @@
 .confirmDeleteItemContainer,
-.confirmDeleteAcctContainer {
+.confirmDeleteAcctContainer,
+.confirmDeleteReviewContainer {
   padding: 25px;
 }
 .confirmDeleteItemButtonsContainer,
-.confirmDeleteAcctButtonsContainer {
+.confirmDeleteAcctButtonsContainer,
+.confirmDeleteReviewButtonsContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 15px;
 }
 .confirmDeleteItemButtonsContainer > button,
-.confirmDeleteAcctButtonsContainer > button {
+.confirmDeleteAcctButtonsContainer > button,
+.confirmDeleteReviewButtonsContainer > button {
   padding: 15px;
 }
 .confirmDeleteItemButton,
-.confirmDeleteAcctButton {
+.confirmDeleteAcctButton,
+.confirmDeleteReviewButton {
   background-color: #e2bcb7;
   color: #1a120b;
 }
 .confirmDeleteItemButton:hover,
-.confirmDeleteAcctButton:hover {
+.confirmDeleteAcctButton:hover,
+.confirmDeleteReviewButton:hover {
   background-color: #8a5049;
   color: #fefae0;
 }

@@ -234,14 +234,9 @@ export default function UserReviews() {
                       <div className="usersReviewBody">{review.review}</div>
                     </div>
                   </div>
-                  <div
-                    className="reviewButtonsContainer"
-                    style={{
-                      flexDirection: "row",
-                    }}
-                  >
+                  <div className="reviewButtonsContainer">
                     <OpenModalButton
-                      buttonText="Edit Review"
+                      buttonText=" Edit Review "
                       modalComponent={
                         <EditReview
                           targetReview={review}
@@ -253,7 +248,7 @@ export default function UserReviews() {
                       }
                     />
                     <OpenModalButton
-                      buttonText="Delete Review"
+                      buttonText=" Delete Review "
                       modalComponent={
                         <DeleteReview
                           reviewId={review.id}

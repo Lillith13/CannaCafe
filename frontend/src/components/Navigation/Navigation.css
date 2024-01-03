@@ -37,13 +37,13 @@
 
 .profile-dropdown {
   position: fixed;
-  top: 75px;
-  right: 15px;
+  top: 65px;
+  right: 5px;
   display: flex;
   flex-direction: column;
   text-align: center;
   gap: 10px;
-  padding: 25px;
+  padding: 15px 25px;
   border: 1px solid #395144;
   border-radius: 15px;
   background-color: #aa8b56;
@@ -51,10 +51,44 @@
   font-size: 20px;
   font-weight: bold;
   list-style: none;
+  z-index: 0;
+}
+#staffMenuDropDown {
+  width: 93%;
 }
 
-.profile-dropdown > li > button,
-.profile-dropdown > li > a > button {
+.currUser,
+.staffUser {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.currUserButtons,
+#noCurrUser {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.currUserButtons > li > button,
+.currUserButtons > li > a > button {
   padding: 10px 10px;
   width: 80%;
+}
+#noCurrUser > button {
+  padding: 10px 10px;
+}
+
+.currStaffDetails {
+  display: flex;
+  justify-content: space-between;
+}
+.currStaffButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+#clockButtons,
+#managementOnlyButtons {
+  display: flex;
+  gap: 5px;
 }

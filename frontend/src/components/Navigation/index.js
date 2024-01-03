@@ -19,7 +19,7 @@ export default function Navigation({ isLoaded }) {
           <h1 className="siteName">CannaCafe</h1>
         </NavLink>
       </div>
-      {/* Implement Search Bar later */}
+      {/* ❗ Implement Search Bar later */}
       {/* <input type="text" placeholder="Search..." onChange={}/> */}
       <div className="navlinkContainer">
         <NavLink exact to="/takeout">

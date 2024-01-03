@@ -296,12 +296,20 @@
   display: flex;
   gap: 5px;
 }
-.starsInProfile {
+/* .starsInProfile {
   width: 25px;
   filter: invert(0.25) blur(1px);
-}
-.selectedRating {
+} */
+/* .selectedRating {
   width: 25px;
+} */
+
+.reviewButtonsContainer {
+  display: flex;
+  flex-direction: row;
+}
+.reviewButtonsContainer > button {
+  padding: 50px;
 }
 
 /* .reviewButtonsContainer > button:first-child:hover {

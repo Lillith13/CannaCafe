@@ -82,64 +82,98 @@ function ProfileButton({ user }) {
           alt="profileLogo"
         />
       </div>
-      <ul className={`${ulClassName} profile-dropdown`} ref={ulRef}>
+      <ul
+        className={`${ulClassName} profile-dropdown`}
+        ref={ulRef}
+        id={
+          user
+            ? user.role.name === "Member"
+              ? "memberMenuDropDown"
+              : "staffMenuDropDown"
+            : "noCurrUserDropDown"
+        }
+      >
         {user ? (
-          <>
-            <li>Welcome back, {user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <NavLink to="/profile">
-                <button className="dropdown-btn">View Profile</button>
-              </NavLink>
-            </li>
-            {(user.role.name === "Employee" ||
-              user.role.name === "Manager" ||
-              user.role.name === "Owner") && (
-              <>
-                <li>
-                  <button onClick={(e) => handleClockIn(e)}>Clock In</button>
-                </li>
-                <li>
-                  <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
-                </li>
-                <li>
-                  <NavLink exact to={`/paystubs/${user.id}`}>
-                    <button>View Paystubs</button>
-                  </NavLink>
-                </li>
-              </>
-            )}
-            {(user.role.name === "Manager" || user.role.name === "Owner") && (
-              <>
-                <li>
-                  <OpenModalButton
-                    buttonText="Add to Products"
-                    modalComponent={<CreateProduct type="product" />}
-                  />
-                </li>
-                <li>
-                  <OpenModalButton
-                    buttonText="Add to Menu"
-                    modalComponent={<CreateProduct type="menu" />}
-                  />
-                </li>
-                <li>
-                  <OpenModalButton
-                    buttonText="New Employee"
-                    onItemClick={closeMenu}
-                    modalComponent={<Signup />}
-                  />
-                </li>
-              </>
-            )}
-            <li>
-              <button onClick={handleLogout} className="dropdown-btn">
-                Log Out
-              </button>
-            </li>
-          </>
+          <div
+            className={user.role.name === "Member" ? "currUser" : "staffUser"}
+          >
+            <div
+              className={
+                user.role.name === "Member"
+                  ? "currUserDetails"
+                  : "currStaffDetails"
+              }
+            >
+              <li>Welcome back, {user.username}</li>
+              <li>{user.email}</li>
+            </div>
+
+            <div
+              className={
+                user.role.name === "Member"
+                  ? "currUserButtons"
+                  : "currStaffButtons"
+              }
+              id={
+                user && user.role.name === "Member" ? "memberMenu" : "staffMenu"
+              }
+            >
+              <li>
+                <NavLink to="/profile">
+                  <button className="dropdown-btn">View Profile</button>
+                </NavLink>
+              </li>
+              {(user.role.name === "Employee" ||
+                user.role.name === "Manager" ||
+                user.role.name === "Owner") && (
+                <div id="clockButtons">
+                  <li>
+                    <button onClick={(e) => handleClockIn(e)}>Clock In</button>
+                  </li>
+                  <li>
+                    <button onClick={(e) => handleClockOut(e)}>
+                      Clock Out
+                    </button>
+                  </li>
+                  <li>
+                    <NavLink exact to={`/paystubs/${user.id}`}>
+                      <button>View Paystubs</button>
+                    </NavLink>
+                  </li>
+                </div>
+              )}
+              {(user.role.name === "Manager" || user.role.name === "Owner") && (
+                <div id="managementOnlyButtons">
+                  <li>
+                    <OpenModalButton
+                      buttonText="Add to Products"
+                      modalComponent={<CreateProduct type="product" />}
+                    />
+                  </li>
+                  <li>
+                    <OpenModalButton
+                      buttonText="Add to Menu"
+                      modalComponent={<CreateProduct type="menu" />}
+                    />
+                  </li>
+                  <li>
+                    <OpenModalButton
+                      buttonText="New Employee"
+                      onItemClick={closeMenu}
+                      modalComponent={<Signup />}
+                    />
+                  </li>
+                </div>
+              )}
+              <li>
+                <button onClick={handleLogout} className="dropdown-btn">
+                  Log Out
+                </button>
+              </li>
+            </div>
+          </div>
         ) : (
-          <>
+          <div id="noCurrUser">
             <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
@@ -151,7 +185,7 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<Signup />}
             />
-          </>
+          </div>
         )}
       </ul>
     </>

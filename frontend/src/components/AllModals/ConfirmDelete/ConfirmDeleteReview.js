@@ -30,10 +30,14 @@ export default function DeleteReview({ reviewId, locationInfo }) {
   };
 
   return (
-    <div>
+    <div className="confirmDeleteReviewContainer">
       <h1>Are you sure you would like to delete your review?</h1>
-      <button onClick={handleDelete}>Yes (delete review)</button>
-      <button onClick={closeModal}>No (keep review)</button>
+      <div className="confirmDeleteReviewButtonsContainer">
+        <button className="confirmDeleteReviewButton" onClick={handleDelete}>
+          Yes (delete review)
+        </button>
+        <button onClick={closeModal}>No (keep review)</button>
+      </div>
     </div>
   );
 }

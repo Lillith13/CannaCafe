@@ -62,7 +62,8 @@ export default function ProductReviews({ productId, user }) {
           //
           <div className="productReviewContainerDiv">
             <div className="postReviewModalButton">
-              {user.id &&
+              {user &&
+                user.id &&
                 (!Object.keys(reviews).includes(String(user.id)) ||
                   !Object.keys(reviews).includes(user.id)) && (
                   <div className={user.role.name === "Member" ? "" : "hidden"}>
@@ -83,7 +84,7 @@ export default function ProductReviews({ productId, user }) {
                 <div key={review.id} className="productTabReviewDiv">
                   <div
                     className="userPicNInfo"
-                    id={user.id != review.user.id ? "usersReview" : ""}
+                    id={user && user.id != review.user.id ? "usersReview" : ""}
                   >
                     <img
                       src={
