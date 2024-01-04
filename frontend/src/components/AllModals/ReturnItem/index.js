@@ -7,6 +7,8 @@ import {
   returnWholeOrder,
 } from "../../../store/orders";
 
+import "./ReturnItem.css";
+
 export default function ReturnItem({ item, order }) {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
@@ -34,10 +36,14 @@ export default function ReturnItem({ item, order }) {
   };
 
   return (
-    <div>
+    <div className="returnItemsModalDiv">
       <h1>Return {item ? item.name : "Order"}?</h1>
-      <button onClick={submitReturn}>Yes</button>
-      <button onClick={closeModal}>No</button>
+      <div className="returnItemsModalButtons">
+        <button id="returnItems" onClick={submitReturn}>
+          Yes (return)
+        </button>
+        <button onClick={closeModal}>No (keep)</button>
+      </div>
     </div>
   );
 }

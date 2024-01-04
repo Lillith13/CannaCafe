@@ -41,9 +41,9 @@
   display: flex;
   justify-content: center;
   gap: 1%;
-  cursor: pointer;
 }
 .profileTabsContainer > h3 {
+  cursor: pointer;
   border: 3px solid #4e6c50;
   background-color: #acb992;
   color: #675d50;

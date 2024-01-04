@@ -1,0 +1,19 @@
+.returnItemsModalDiv {
+  width: 100%;
+  padding: 20px 10px;
+}
+
+.returnItemsModalButtons {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.returnItemsModalButtons > button {
+  padding: 15px 25px;
+}
+
+#returnItems:hover {
+  background-color: #e2bcb7;
+  color: #1a120b;
+}
