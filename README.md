@@ -1,8 +1,8 @@
 # [CannaCafe](https://cannacafe.onrender.com)
 
-![statusBadge](https://img.shields.io/badge/demo-Live-green)
+[![statusBadge](https://img.shields.io/badge/demo-Live-green)](https://cannacafe.onrender.com)
 
-Visit the CannaCafe live site [Here!](https://www.cannacafe.onrender.com)
+Visit the CannaCafe live site [Here!](https://cannacafe.onrender.com)
 
 Your One Stop Shop For All Things Relating To Cannabis
 Welcome to CannaCafe, the place where your inner child can finally be let loose! This platform is a lively online shop designed for fellow lovers and connoisseurs of the amazing and weirdly controversial herb with calming and healing properties. If you're passionate about the potent and smelly healing herb and an opposer to the government imposed hate directed at the kind and lovely sweetheart that is Cannabis, CannaCafe is the place for you.
@@ -141,7 +141,7 @@ Universal
 - Past Orders
   ![Orders](assets/UserProfile/PastOrders.png)
 
-This is is just scratching the surface, there is more to explore and much much more to come. In the mean time, the most current stable version is running [HERE](cannacafe.onrender.com) for you to test out 😊
+This is is just scratching the surface, there is more to explore and much much more to come. In the meantime, the most current stable version is running [HERE](https://cannacafe.onrender.com) for you to test out 😊
 
 ## Documetation
 
@@ -188,17 +188,17 @@ This is is just scratching the surface, there is more to explore and much much m
 - Only Owners have full access to create/update all staff.
 - Managers cannot create/update other managers nor can they create/edit owner accounts.
 
-\^ Paystubs in the form of per day worked pay
+\^ Paystubs in the form of per-day worked pay
 
 ## Future Plans
 
-Implement user complaints. Similar to reviews but will be for in general complaints a member may have about anything from shipping to customer service. These will be only viewable by management staff (Managers & Owners) and the user who submitted the complaint.
+Implement user complaints. Similar to reviews but will be for general complaints a member may have about anything from shipping to customer service. These will be only viewable by management staff (Managers & Owners) and the user who submitted the complaint.
 
-Add a small dash of social media in the mix by adding the ability for users to connect/friend one another. Piggy backing off this feature will come events. Where a user can reserve for an event and upon reservation there will be a notification sent to all users that fall into a spcific categories pertaining to the event (such as "event = private, notify only friends").
+Add a small dash of social media in the mix by adding the ability for users to connect/friend one another. Piggybacking off this feature will come events. Where a user can reserve for an event and upon reservation there will be a notification sent to all users that fall into specific categories about the event (such as "event = private, notify only friends").
 
 Connect maps to better develop the shopping cart, takeout features, complaints, friends, and events features.
 
-- Piggybacking off of the new connection to maps, all features will be redesigned to incorporate location. Management staff will begin to see only the complaints and reviews for the products from their specific location. Notifications will gain new filter of location. Events will get a new modifier of location and friend suggestions will become a thing.
+- Piggybacking off of the new connection to maps, all features will be redesigned to incorporate location. Management staff will begin to see only the complaints and reviews for the products from their specific location. Notifications will gain a new filter of location. Events will get a new modifier of location and friend suggestions will become a thing.
 
 Add user ability to DM each other
 
