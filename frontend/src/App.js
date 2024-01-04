@@ -21,7 +21,7 @@ import OopsyMessage from "./components/OopseyDaiseys";
 import ErrorFourOHFour from "./components/Error404Page";
 
 import ReactGA from "react-ga";
-const TRACKING_ID = process.env.REACT_APP_TRACKING_ID;
+const TRACKING_ID = process.env.REACT_APP_STREAM_ID;
 ReactGA.initialize(TRACKING_ID);
 
 function App() {
