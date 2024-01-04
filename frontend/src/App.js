@@ -20,7 +20,9 @@ import Footer from "./components/Footer";
 import OopsyMessage from "./components/OopseyDaiseys";
 import ErrorFourOHFour from "./components/Error404Page";
 
-// Import any needed thunks here
+import ReactGA from "react-ga";
+const TRACKING_ID = process.env.REACT_APP_TRACKING_ID;
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +35,7 @@ function App() {
     if (user) {
       // ! dispatch for user role <- to lock some routes behind user role accessible only
     }
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }, [dispatch]);
 
   return (
