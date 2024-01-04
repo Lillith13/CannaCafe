@@ -19,7 +19,6 @@ import PayStubs from "./components/PayStubs";
 import Footer from "./components/Footer";
 import OopsyMessage from "./components/OopseyDaiseys";
 import ErrorFourOHFour from "./components/Error404Page";
-import RouteChangeTracker from "./Analytics";
 
 // Import any needed thunks here
 
@@ -106,7 +105,6 @@ function App() {
         </Switch>
       )}
       {location.pathname === "/" ? null : <Footer />}
-      <RouteChangeTracker />
     </>
   );
 }
