@@ -12,7 +12,7 @@ import "./index.css";
 
 import ReactGA from "react-ga";
 require("dotenv").config();
-const TRACKING_ID = process.env.REACT_APP_STREAM_ID;
+const TRACKING_ID = process.env.REACT_APP_TRACKING_ID;
 ReactGA.initialize(TRACKING_ID);
 
 const store = configureStore();
