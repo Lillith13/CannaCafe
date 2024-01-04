@@ -31,10 +31,28 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Initialize Google Analytics
+    if (process.env.NODE_ENV === "production") {
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`;
+      document.head.appendChild(script);
+
+      script.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", TRACKING_ID);
+      };
+    }
+
     dispatch(authenticate()).then(() => setIsLoaded(true));
     if (user) {
       // ! dispatch for user role <- to lock some routes behind user role accessible only
     }
+
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, [dispatch]);
 

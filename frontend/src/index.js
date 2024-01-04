@@ -10,6 +10,8 @@ import App from "./App";
 
 import "./index.css";
 
+require("dotenv").config();
+
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
