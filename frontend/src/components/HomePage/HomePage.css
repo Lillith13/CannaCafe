@@ -51,11 +51,12 @@
 }
 
 #Food {
-  background-image: url("https://media.istockphoto.com/id/645542956/photo/french-pastry.jpg?s=612x612&w=0&k=20&c=JE4QgqBdtvMqdMvUPRqvnw-hIfftwtSV8qSoPygF0Qk=");
+  background-image: url("https://all.accor.com/magazine/imagerie/image-1-assorted-pastries-in-a-bakery-5c70.jpg");
   background-size: cover;
+  background-position: center;
 }
 #Food:hover {
-  background-image: url("https://media.istockphoto.com/id/1266736410/photo/a-woman-holding-and-showing-a-plate-of-mixed-fruits-cheesecake-in-cafe.jpg?s=612x612&w=0&k=20&c=ZxuwDV7vv_GdpelWOrfYnGOgpnAN3_qIJDv9mqRmQ7g=");
+  background-image: url("https://www.browneyedbaker.com/wp-content/uploads/2021/10/new-york-cheesecake-21-square.jpg");
   background-size: cover;
 }
 
@@ -82,12 +83,12 @@
   background-size: cover;
 }
 #Infused-Drink:hover {
-  background-image: url("https://imageio.forbes.com/specials-images/imageserve/5d93f6d64223bf0006b77bbe/0x0.jpg?format=jpg&crop=1080,607,x0,y54,safe&height=900&width=1600&fit=bounds");
+  background-image: url("https://imageio.forbes.com/specials-images/imageserve/5d93f6d64223bf0006b77bbe/0x0.jpg");
   background-size: cover;
 }
 
 #Smoke {
-  background-image: url("https://i2.wp.com/www.denverpost.com/wp-content/uploads/2016/08/marijuana-editorial.jpg?w=620&crop=0%2C0px%2C100%2C9999px");
+  background-image: url("https://i2.wp.com/www.denverpost.com/wp-content/uploads/2016/08/marijuana-editorial.jpg");
   background-size: cover;
 }
 #Smoke:hover {
@@ -96,7 +97,7 @@
 }
 
 #Merch {
-  background-image: url("https://www.dailycamera.com/wp-content/uploads/migration/2014/1108/20141108_10DCAPOTw-3.jpg?w=620");
+  background-image: url("https://www.dailycamera.com/wp-content/uploads/migration/2014/1108/20141108_10DCAPOTw-3.jpg");
   background-size: cover;
 }
 #Merch:hover {
@@ -105,7 +106,7 @@
 }
 
 #Paraphenalia {
-  background-image: url("https://i0.wp.com/smokepromos.com/wp-content/uploads/2022/07/IMGL9460-e1688932622133.jpg?fit=292%2C292&ssl=1");
+  background-image: url("https://i0.wp.com/smokepromos.com/wp-content/uploads/2022/07/IMGL9460-e1688932622133.jpg");
   background-size: cover;
 }
 #Paraphenalia:hover {
