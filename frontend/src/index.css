@@ -22,6 +22,7 @@ nav {
   position: fixed;
   left: 0%;
   top: 0%;
+  height: 50px;
   width: 100%;
   background-color: #4e6c50;
   padding: 20px 20px;
@@ -32,7 +33,7 @@ footer {
   justify-content: space-evenly;
   align-items: center;
   position: fixed;
-  height: 100px;
+  height: 75px;
   width: 100%;
   background-color: #4e6c50;
   color: #f0ebce;
@@ -78,7 +79,7 @@ select {
   font-weight: bold;
 }
 .pageContainer {
-  margin-top: 110px;
+  margin-top: 95px;
   margin-bottom: 100px;
   width: 100%;
 }

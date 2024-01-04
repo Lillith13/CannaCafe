@@ -78,7 +78,13 @@ export default function UserProfile() {
           Hello, {user.firstName} {user.lastName}
         </h1>
         <div id="userProfileNav">
-          <div>
+          <div
+            id={
+              user && user.role.name === "Member"
+                ? "memberProfileButtons"
+                : "staffProfileButtons"
+            }
+          >
             <OpenModalButton
               buttonText="Edit Account"
               modalComponent={<EditAccount />}
@@ -90,37 +96,35 @@ export default function UserProfile() {
               />
             )}
           </div>
-          <>
-            {(user.role.name === "Employee" ||
-              user.role.name === "Manager" ||
-              user.role.name === "Owner") && (
-              <div>
-                <button onClick={(e) => handleClockIn(e)}>Clock In</button>
-                <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
-                <NavLink exact to={`/paystubs/${user.id}`}>
-                  <button>View Paystubs</button>
-                </NavLink>
-              </div>
-            )}
-          </>
-          <>
-            {(user.role.name === "Manager" || user.role.name === "Owner") && (
-              <div>
-                <OpenModalButton
-                  buttonText="Add to Products"
-                  modalComponent={<CreateProduct type="product" />}
-                />
-                <OpenModalButton
-                  buttonText="Add to Menu"
-                  modalComponent={<CreateProduct type="menu" />}
-                />
-                <OpenModalButton
-                  buttonText="New Employee"
-                  modalComponent={<Signup currUser={user.id} />}
-                />
-              </div>
-            )}
-          </>
+
+          {(user.role.name === "Employee" ||
+            user.role.name === "Manager" ||
+            user.role.name === "Owner") && (
+            <div id="staffOnlyButtons">
+              <button onClick={(e) => handleClockIn(e)}>Clock In</button>
+              <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
+              <NavLink exact to={`/paystubs/${user.id}`}>
+                <button>View Paystubs</button>
+              </NavLink>
+            </div>
+          )}
+
+          {(user.role.name === "Manager" || user.role.name === "Owner") && (
+            <div id="managementOnlyButtons">
+              <OpenModalButton
+                buttonText="Add to Products"
+                modalComponent={<CreateProduct type="product" />}
+              />
+              <OpenModalButton
+                buttonText="Add to Menu"
+                modalComponent={<CreateProduct type="menu" />}
+              />
+              <OpenModalButton
+                buttonText="New Employee"
+                modalComponent={<Signup currUser={user.id} />}
+              />
+            </div>
+          )}
         </div>
       </div>
       <div>

@@ -31,11 +31,14 @@ export const getProductReviews = (productId) => async (dispatch) => {
   const data = await res.json();
   if (res.ok) {
     if (data.Reviews) {
+      console.log(data.Reviews);
       const normalized = {};
       data.Reviews.forEach((review) => {
-        normalized[review.id] = review;
+        normalized[review.user.id] = review;
       });
       dispatch(loadReviews(normalized));
+    } else {
+      dispatch(loadReviews(data.Reviews));
     }
 
     return null;

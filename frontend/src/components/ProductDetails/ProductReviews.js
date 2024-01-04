@@ -63,9 +63,8 @@ export default function ProductReviews({ productId, user }) {
           <div className="productReviewContainerDiv">
             <div className="postReviewModalButton">
               {user &&
-                user.id &&
-                (!Object.keys(reviews).includes(String(user.id)) ||
-                  !Object.keys(reviews).includes(user.id)) && (
+                !Object.keys(reviews).includes(String(user.id)) &&
+                !Object.keys(reviews).includes(user.id) && (
                   <div className={user.role.name === "Member" ? "" : "hidden"}>
                     <OpenModalButton
                       buttonText="Add Review"

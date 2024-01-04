@@ -40,60 +40,88 @@ export default function EmployeeProfile() {
 
   return isLoaded ? (
     <div className="pageContainer">
-      <button
-        className="goBackButtonFromStaffProfile"
-        onClick={(e) => {
-          e.preventDefault(e);
-          history.goBack();
-        }}
-      >
-        Go Back
-      </button>
-      <div>
+      <div className="backButtonDiv">
+        <button
+          className="goBackButtonFromStaffProfile"
+          onClick={(e) => {
+            e.preventDefault(e);
+            history.goBack();
+          }}
+        >
+          Go Back
+        </button>
+      </div>
+
+      <div className="staffDetails">
         <img
-          className={employee.profile_pic ? "userProfilePic" : "profileLogo"}
+          className={
+            employee.profile_pic ? "staffProfilePic" : "staffProfileLogo"
+          }
           src={employee.profile_pic ? employee.profile_pic : profileIcon}
           alt="profileLogo"
         />
-      </div>
 
-      <h2>
-        {employee.firstName} {employee.lastName}
-      </h2>
-      <p>Username: {employee.username}</p>
-      <div>
-        <label>
-          Contact Info:
-          <p>Phone: {employee.phone}</p>
-          <p>Email: {employee.email}</p>
+        <div id="nameAndUsername">
+          <h2>
+            {employee.firstName} {employee.lastName}
+          </h2>
+          <p>Username: {employee.username}</p>
+
+          <div
+            className={
+              (user.role.name == "Owner" && employee.role.name == "Manager") ||
+              (user.role.name == "Owner" && employee.role.name == "Employee") ||
+              (user.role.name == "Manager" && employee.role.name == "Employee")
+                ? null
+                : "hidden"
+            }
+          >
+            <OpenModalButton
+              buttonText="Edit Account"
+              modalComponent={<EditAccount empId={empId} />}
+            />
+            <h2
+              className="staffProfilePayStubTab"
+              onClick={() => setLoadTimeCards(!loadTimeCards)}
+            >
+              Timecards
+            </h2>
+          </div>
+
+          {/* {(user.role.name == "Owner" && employee.role.name == "Manager") ||
+          (user.role.name == "Owner" && employee.role.name == "Employee") ||
+          (user.role.name == "Manager" && employee.role.name == "Employee") ? (
+          ) : null} */}
+        </div>
+
+        <div id="contactInfo">
           <label>
-            Address:
-            <div>
-              <p>{employee.full_address.address}</p>
-              <p>
-                {employee.full_address.city}, {employee.full_address.state},{" "}
-                {employee.full_address.zip}
-              </p>
+            Contact Info:
+            <div id="contactCard">
+              Phone:
+              <a href={`tel:${employee.phone}`} style={{ alignSelf: "center" }}>
+                {employee.phone}
+              </a>
+              Email:
+              <a
+                href={`mailto:${employee.email}`}
+                style={{ alignSelf: "center" }}
+              >
+                {employee.email}
+              </a>
+              Address:
+              <div style={{ alignSelf: "center" }}>
+                <p>{employee.full_address.address}</p>
+                <p>
+                  {employee.full_address.city}, {employee.full_address.state},{" "}
+                  {employee.full_address.zip}
+                </p>
+              </div>
             </div>
           </label>
-        </label>
-      </div>
-      {(user.role.name == "Owner" && employee.role.name == "Manager") ||
-      (user.role.name == "Owner" && employee.role.name == "Employee") ||
-      (user.role.name == "Manager" && employee.role.name == "Employee") ? (
-        <div className="staffProfileOptions">
-          <OpenModalButton
-            buttonText="Edit Account"
-            modalComponent={<EditAccount empId={empId} />}
-          />
-          <h2
-            className="staffProfilePayStubTab"
-            onClick={() => setLoadTimeCards(!loadTimeCards)}
-          >
-            Timecards
-          </h2>
         </div>
-      ) : null}
+      </div>
+
       {loadTimeCards && <TimeCards emp={employee} />}
     </div>
   ) : (

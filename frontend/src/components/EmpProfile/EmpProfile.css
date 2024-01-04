@@ -1,16 +1,80 @@
-.goBackButtonFromStaffProfile,
-.staffProfileOptions > button {
+.goBackButtonFromStaffProfile {
   padding: 5px 15px;
   font-size: 20px;
 }
+
+#nameAndUsername > button {
+  padding: 5px;
+}
+/* #nameAndUsername > button:hover {
+  //
+} */
 
 .staffProfilePayStubTab {
   cursor: pointer;
 }
 
-.employeeProfileContainer > div > img.userProfilePic,
-.employeeProfileContainer > div > img.profileLogo {
+.staffProfilePic,
+.staffProfileLogo {
   width: 25%;
   height: 25%;
   margin: 15px;
+  border-radius: 15px;
+}
+
+.backButtonDiv {
+  width: 100%;
+  /* border: 1px solid black; */
+  display: flex;
+}
+
+.staffDetails {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-evenly;
+}
+#nameAndUsername,
+#contactInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#contactCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.idvTimeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 25px 15px 25px 15px;
+  height: 325px;
+  overflow-y: scroll;
+  border: 1px solid #65647c;
+  border-radius: 15px;
+  background-color: #abc4aa;
+}
+.idvTimeCard::-webkit-scrollbar {
+  display: none;
+}
+#timecardInfo {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px 0px;
+  /* border: 1px solid black; */
+  border-radius: 15px;
+  background-color: #65647c;
+  color: #f1d3b3;
+  font-weight: bold;
+}
+#timecardInfo > label {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  padding: 5px;
+}
+#timecardInfo > label > p {
+  margin: 0px;
 }

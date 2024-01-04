@@ -153,7 +153,18 @@ export default function UserOrders() {
           </div>
         </div>
       ) : (
-        <h2>No past orders to display...</h2>
+        <div className="noOrdersToDisplay">
+          <h2>No past orders to display...</h2>
+          <div id="noOrdersButtons">
+            <NavLink exact to="/menu">
+              <button>Order Takeout</button>
+            </NavLink>
+
+            <NavLink exact to="/products">
+              <button>Shop Products</button>
+            </NavLink>
+          </div>
+        </div>
       )}
     </>
   ) : (
