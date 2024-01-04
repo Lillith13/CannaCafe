@@ -20,9 +20,9 @@ import Footer from "./components/Footer";
 import OopsyMessage from "./components/OopseyDaiseys";
 import ErrorFourOHFour from "./components/Error404Page";
 
-import ReactGA from "react-ga";
-const TRACKING_ID = process.env.REACT_APP_STREAM_ID;
-ReactGA.initialize(TRACKING_ID);
+// import ReactGA from "react-ga";
+// const TRACKING_ID = process.env.REACT_APP_STREAM_ID;
+// ReactGA.initialize(TRACKING_ID);
 
 function App() {
   const dispatch = useDispatch();
@@ -31,29 +31,29 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Initialize Google Analytics
-    if (process.env.NODE_ENV === "production") {
-      const script = document.createElement("script");
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`;
-      document.head.appendChild(script);
+    // // Initialize Google Analytics
+    // if (process.env.NODE_ENV === "production") {
+    //   const script = document.createElement("script");
+    //   script.async = true;
+    //   script.src = `https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`;
+    //   document.head.appendChild(script);
 
-      script.onload = () => {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          window.dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-        gtag("config", TRACKING_ID);
-      };
-    }
+    //   script.onload = () => {
+    //     window.dataLayer = window.dataLayer || [];
+    //     function gtag() {
+    //       window.dataLayer.push(arguments);
+    //     }
+    //     gtag("js", new Date());
+    //     gtag("config", TRACKING_ID);
+    //   };
+    // }
 
     dispatch(authenticate()).then(() => setIsLoaded(true));
-    if (user) {
-      // ! dispatch for user role <- to lock some routes behind user role accessible only
-    }
+    // if (user) {
+    //   // ! dispatch for user role <- to lock some routes behind user role accessible only
+    // }
 
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    // ReactGA.pageview(window.location.pathname + window.location.search);
   }, [dispatch]);
 
   return (
