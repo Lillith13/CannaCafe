@@ -179,7 +179,7 @@ This is is just scratching the surface, there is more to explore and much much m
 |                         | View ALL posted reviews                             |
 |                         | Create/Update Employee Accounts\*\*                 |
 
-\* Create/Update/Delete Reviews is Exclusive to users with "Member" role
+\* Create/Update/Delete Reviews is Exclusive to users with "Member" role, Read accessible by all
 
 &&\* Delete Account is Exclusive to users with "Member" role
 
