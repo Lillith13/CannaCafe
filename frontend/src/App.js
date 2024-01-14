@@ -9,8 +9,7 @@ import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
 import UserProfile from "./components/UserProfile";
 import EmployeeProfile from "./components/EmpProfile";
-import Takeout from "./components/Takeout";
-import Cart from "./components/Cart";
+import { Cart, Takeout } from "./components/Cart";
 import CheckoutCart from "./components/AllModals/CheckoutCart";
 import CheckoutBag from "./components/AllModals/CheckoutBag";
 import Products from "./components/Products";
@@ -28,6 +27,12 @@ function App() {
 
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+
+    // * set default theme if no theme saved to client
+    const themeCheck = localStorage.getItem("clientTheme");
+    if (!themeCheck) {
+      localStorage.setItem("clientTheme", "GL");
+    }
   }, [dispatch]);
 
   return (

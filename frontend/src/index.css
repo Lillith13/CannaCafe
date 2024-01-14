@@ -4,7 +4,6 @@ body {
   justify-content: center;
   align-content: center;
   text-align: center;
-  background-color: blanchedalmond;
 }
 
 #root {
@@ -24,7 +23,6 @@ nav {
   top: 0%;
   height: 50px;
   width: 100%;
-  background-color: #4e6c50;
   padding: 20px 20px;
 }
 
@@ -35,27 +33,18 @@ footer {
   position: fixed;
   height: 75px;
   width: 100%;
-  background-color: #4e6c50;
-  color: #f0ebce;
   left: 0%;
   bottom: 0%;
 }
 
 button {
-  background-color: #f0ebce;
-  color: #4e6c50;
   font-weight: bold;
   border-radius: 5px;
   border-width: 3px;
 }
 button:hover {
-  background-color: #4e6c50;
-  color: #f0ebce;
   cursor: pointer;
 }
-/* a:hover {
-  color: #b67162;
-} */
 
 input {
   border-radius: 5px;
@@ -75,7 +64,6 @@ select {
 }
 
 .errors {
-  color: #b67162;
   font-weight: bold;
 }
 .pageContainer {
@@ -87,16 +75,10 @@ select {
 ::-webkit-scrollbar {
   width: 15px;
   height: 100%;
-  background-color: #395144;
-}
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-track-piece {
-  background-color: #395144;
 }
 ::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-thumb:vertical {
   width: 10px;
-  background-color: #a9b388;
   border-radius: 30px;
 }
 ::-webkit-scrollbar-thumb:horizontal {

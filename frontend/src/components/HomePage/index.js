@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import "./HomePage.css";
+import "./themes.css";
+
 import { getCategories } from "../../store/categories";
 
 export default function HomePage() {
@@ -11,6 +13,7 @@ export default function HomePage() {
   const categories = useSelector((state) => state.categories);
   const [isLoaded, setIsLoaded] = useState(false);
   const [descriptions, setDescriptions] = useState({});
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
 
   useEffect(() => {
     setDescriptions({
@@ -38,9 +41,9 @@ export default function HomePage() {
           View All
         </button>
       </NavLink>
-
-      <div className="menuItemsContainerDiv">
-        <div className="menuItemsTitleContainer">
+      {console.log(theme)}
+      <div className="menuItemsContainerDiv" id={theme}>
+        <div className="menuItemsTitleContainer" id={theme}>
           <h1>Checkout our Menu</h1>
 
           <p>{descriptions.Menu}</p>
@@ -52,7 +55,7 @@ export default function HomePage() {
           </NavLink>
         </div>
 
-        <div className="menuItemsContainer">
+        <div className="menuItemsContainer" id={theme}>
           {Object.values(categories).map((category) => (
             <>
               {!category.shippable && (
@@ -76,7 +79,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="productsContainerDiv">
+      <div className="productsContainerDiv" id={theme}>
         <div className="productsTitleContainer">
           <h1>Checkout our Products</h1>
           <NavLink exact to="/products">
@@ -86,7 +89,7 @@ export default function HomePage() {
           </NavLink>
         </div>
 
-        <div className="productLinksContainer">
+        <div className="productLinksContainer" id={theme}>
           {Object.values(categories).map((category) => (
             <>
               {category.shippable && (

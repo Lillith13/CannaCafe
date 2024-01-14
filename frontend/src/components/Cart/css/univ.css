@@ -1,0 +1,166 @@
+#takeout,
+#cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#cart.cartContainerDiv {
+  width: 100%;
+}
+.takeoutContainerDiv,
+.cartContainerDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 15px;
+}
+.takeoutContainerDiv {
+  width: 72%;
+}
+.cartContainerDiv {
+  width: 100%;
+}
+.takeoutItemContainer,
+.cartItemContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 15px;
+  padding: 25px 0px;
+  width: 99%;
+}
+
+.itemImageContainer {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  max-height: 250px;
+}
+.itemImageContainer > img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+#takeoutItemDetails,
+#cartItemDetails {
+  width: 55%;
+}
+
+.takeoutItemInfoContainer,
+.cartItemInfoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 15px 15px 0px 0px;
+}
+.takeoutItemInfoContainer > a,
+.cartItemInfoContainer > a {
+  font-size: 20px;
+}
+
+.takeoutButtonsContainer,
+.cartButtonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 15px;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.quantChangeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+.quantChangeButtonsContainer {
+  display: flex;
+  gap: 7px;
+}
+.incButton,
+.decButton {
+  display: flex;
+  padding: 1px 15px;
+  font-weight: bold;
+  font-size: 20px;
+  justify-content: center;
+  text-align: center;
+}
+.removeButton {
+  width: 100%;
+  padding: 10px 25px;
+}
+.decButton#removeButton:hover,
+.removeButton:hover {
+  font-weight: bold;
+}
+
+.optsToggleContainer.takeout {
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+}
+.optsToggleContainer.takeout#showing {
+  bottom: 75px;
+}
+.optsToggleImgDiv.takeout {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+.optsToggleImage.takeout {
+  width: 25px;
+  padding: 5px 50px;
+  margin-right: 15px;
+  border-radius: 20px 20px 0px 0px;
+}
+.spacerShow.takeout,
+.spacer.takeout {
+  width: 100%;
+}
+
+.checkoutNcontinueShopButtons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.checkoutNcontinueShopButtons > button,
+.checkoutNcontinueShopButtons > a > button,
+.emptyBagButton {
+  padding: 15px;
+  font-size: bold;
+}
+
+@media screen and (min-height: 875px) {
+  .takeoutContainerDiv,
+  .cartContainerDiv {
+    height: 500px;
+  }
+}
+@media screen and (min-height: 925px) {
+  .takeoutContainerDiv,
+  .cartContainerDiv {
+    height: 550px;
+  }
+}
+@media screen and (min-height: 975px) {
+  .takeoutContainerDiv,
+  .cartContainerDiv {
+    height: 600px;
+  }
+}
+@media screen and (min-height: 1000px) {
+  .takeoutContainerDiv,
+  .cartContainerDiv {
+    height: 750px;
+  }
+}
+@media screen and (min-height: 1150px) {
+  .takeoutContainerDiv,
+  .cartContainerDiv {
+    height: 1000px;
+  }
+}

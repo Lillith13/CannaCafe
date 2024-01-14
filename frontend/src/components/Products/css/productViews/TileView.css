@@ -1,15 +1,11 @@
 div.productDisplayAreaTile {
   display: flex;
   justify-content: center;
-  border: 5px outset #76824f;
-  background-color: #3f4727;
 
   padding: 25px;
   margin: 0px;
 }
 .prodsDivTileView {
-  border: 5px inset #31391d;
-  background-color: #a9b388;
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
@@ -24,7 +20,6 @@ div.productDisplayAreaTile {
 }
 .idvProdContainerTile {
   padding: 15px;
-  border: 1px solid #e4fa9b;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -32,9 +27,6 @@ div.productDisplayAreaTile {
   justify-content: center;
   background-size: cover;
   width: 25%;
-}
-.idvProdContainerTile:hover {
-  box-shadow: 13px 10px 5px 0px #76824f;
 }
 .idvProdContainerTile#idvProdContainerAlt {
   width: 100%;
@@ -51,8 +43,6 @@ div.productDisplayAreaTile {
   display: flex;
   justify-content: space-between;
   width: 95%;
-  background-color: rgba(100, 101, 120, 0.9);
-  color: #fefae0;
   border-radius: 15px 15px 0px 0px;
   padding: 0px 15px 0px 15px;
   margin: 0px;
@@ -63,7 +53,6 @@ div.productDisplayAreaTile {
   flex-direction: column;
   border-radius: 0px 0px 15px 15px;
   padding: 0px 15px 15px 15px;
-  background-color: rgba(100, 101, 120, 0.9);
   width: 95%;
 }
 .universalProdButtonsTile,
@@ -76,9 +65,7 @@ div.productDisplayAreaTile {
 .roleProtectedButtonsTile > button,
 .productsUnivButton#productsTileUnivButton {
   width: 45%;
-  background-color: rgba(100, 110, 200, 0.5);
-  color: #fefae0;
-  border-radius: 0px;
+  border-radius: 5px;
 }
 
 .universalProdButtonsTile > button,

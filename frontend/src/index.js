@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -9,6 +9,8 @@ import * as sessionActions from "./store/session";
 import App from "./App";
 
 import "./index.css";
+import "./themes.css";
+import "./screenSizing.css";
 
 import ReactGA from "react-ga";
 require("dotenv").config();
@@ -22,9 +24,19 @@ if (process.env.NODE_ENV !== "production") {
   window.sessionActions = sessionActions;
 }
 
+// * set default theme if no theme saved to client
+const themeCheck = localStorage.getItem("clientTheme");
+if (!themeCheck) {
+  localStorage.setItem("clientTheme", "GL");
+}
+
 function Root() {
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
+
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
+    const rootElement = document.querySelector("body");
+    rootElement.className = theme;
   }, []);
 
   return (

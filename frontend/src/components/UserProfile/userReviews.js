@@ -11,7 +11,7 @@ import noPreviewImage from "../../assets/noImgAvailable.jpg";
 import profileIcon from "../../assets/profile_icon.png";
 import blackCannaLeaf from "../../assets/blackCannaLeaf.png";
 
-import "./profileCSS/UserProfile.css";
+import "./css/UserProfile.css";
 
 export default function UserReviews() {
   const dispatch = useDispatch();

@@ -1,0 +1,68 @@
+/* ! Green */
+/* Light */
+footer.GL {
+  background-color: #94b49f;
+  color: #000000;
+}
+
+.githubLinkContainer#GL,
+.linkedInContainer#GL {
+  color: #000000;
+}
+
+/* Dark */
+footer.GD {
+  background-color: #4e6c50;
+  color: #f0ebce;
+}
+
+.githubLinkContainer#GD,
+.linkedInContainer#GD {
+  color: #f0ebce;
+}
+
+/* ! Blue */
+/* Light */
+footer.BL {
+  background-color: #79e0ee;
+  color: #000000;
+}
+
+.githubLinkContainer#BL,
+.linkedInContainer#BL {
+  color: #000000;
+}
+
+/* Dark */
+footer.BD {
+  background-color: #19376d;
+  color: #a5d7e8;
+}
+
+.githubLinkContainer#BD,
+.linkedInContainer#BD {
+  color: #a5d7e8;
+}
+
+/* ! Purple */
+/* Light */
+footer.PL {
+  background-color: #ba94d1;
+  color: #030637;
+}
+
+.githubLinkContainer#PL,
+.linkedInContainer#PL {
+  color: #030637;
+}
+
+/* Dark */
+footer.PD {
+  background-color: #512b81;
+  color: #d6d5a8;
+}
+
+.githubLinkContainer#PD,
+.linkedInContainer#PD {
+  color: #d6d5a8;
+}

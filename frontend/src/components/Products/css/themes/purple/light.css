@@ -1,0 +1,97 @@
+.goBackButton#PL {
+  background-color: #baabda;
+  color: #030637;
+}
+.goBackButton#PL:hover {
+  background-color: #ba94d1;
+}
+
+.viewOptionsButton#PL {
+  background-color: #ba94d1;
+  color: #030637;
+}
+.viewOptionsButton#PL:hover,
+.selectedView.viewOptionsButton#PL {
+  background-color: #ffabe1;
+}
+
+.productsPageTitle#PL {
+  background-color: rgba(255, 230, 247, 0.9);
+}
+
+div.productDisplayAreaList#PL,
+div.productDisplayAreaTile#PL {
+  border: 5px outset #ba94d1;
+  background-color: #baabda;
+}
+
+.prodsDivListView.PL,
+.prodsDivTileView.PL {
+  border: 5px inset #baabda;
+  background-color: #ffe6f7;
+}
+
+.idvProdContainerList.PL {
+  border: 1px solid #9fdfcd;
+  background-color: #baabda;
+}
+.idvProdContainerTile.PL {
+  border: 1px solid #5e454b;
+}
+.idvProdContainerList.PL:hover,
+.idvProdContainerTile.PL:hover {
+  box-shadow: 13px 10px 5px 0px rgba(220, 255, 204, 0.75);
+}
+
+.idvProdNameNPriceContainerList#PL,
+.idvProdNameNPriceContainerTile#PL {
+  background-color: rgba(255, 230, 247, 0.9);
+  color: #7f669d;
+}
+
+.idvProdButtonContainerList#PL,
+.idvProdButtonContainerTile#PL {
+  background-color: rgba(255, 230, 247, 0.9);
+}
+
+.universalProdButtonsList#PL > button,
+.universalProdButtonsTile#PL > button,
+.roleProtectedButtonsList#PL > button,
+.roleProtectedButtonsTile#PL > button,
+.productsUnivButton.PL#productsListUnivButton,
+.productsUnivButton.PL#productsTileUnivButton {
+  background-color: rgba(255, 230, 247, 0.5);
+  color: #7f669d;
+}
+
+.productsUnivButton.PL > button,
+.editProductButton.PL > button,
+.removeFromButton.PL > button,
+.deleteProductButton.PL > button {
+  background-color: rgba(255, 230, 247, 0.5);
+  color: #7f669d;
+}
+
+.universalProdButtonsList#PL > button:hover,
+.universalProdButtonsTile#PL > button:hover,
+.productsUnivButton.PL > button:hover {
+  background-color: #f0ece3;
+  color: #362706;
+}
+
+.removeFromButton.PL > button:hover,
+.editProductButton.PL > button:hover {
+  color: #362706;
+}
+
+.removeFromButton.PL > button:hover {
+  background-color: #fbfacd;
+}
+.deleteProductButton.PL > button:hover {
+  color: #362706;
+  background-color: #c7b198;
+}
+
+.editProductButton.PL > button:hover {
+  background-color: #dfd3c3;
+}

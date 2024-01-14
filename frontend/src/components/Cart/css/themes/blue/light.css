@@ -1,0 +1,89 @@
+/* Light */
+.takeoutItemContainer#BL {
+  border: 3px solid #cdf5fd;
+  background: linear-gradient(195deg, #a0e9ff, #00a9ff);
+}
+.itemImageContainer#BL > img {
+  border: 3px solid #cdf5fd;
+  box-shadow: 10px 7px 5px 0px rgba(58, 152, 185, 0.5);
+}
+.itemImageContainer#BL > img:hover {
+  border: 3px solid #89cff3;
+  box-shadow: 10px 7px 5px 0px rgba(58, 152, 185, 0.75);
+}
+
+.takeoutItemInfoContainer#BL,
+.takeoutButtonsContainer#BL {
+  background-color: #a0e9ff;
+  border-left: 5px solid #89cff3;
+  border-right: 5px solid #89cff3;
+  color: #000000;
+}
+.takeoutItemInfoContainer#BL {
+  border-top: 5px solid #89cff3;
+}
+.takeoutButtonsContainer#BL {
+  border-bottom: 5px solid #89cff3;
+  /* color: #e9e5d6; */
+}
+.takeoutItemInfoContainer#BL > a {
+  color: rgba(0, 0, 0, 0.75);
+}
+.takeoutItemInfoContainer#BL > a:hover {
+  color: #3a98b9;
+}
+
+#BL > .incButton,
+#BL > .decButton,
+#BL > .removeButton {
+  background-color: #aad7d9;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+#BL > .incButton:hover,
+#BL > .decButton:hover {
+  background: radial-gradient(rgba(146, 199, 207, 0.5), #98eecc);
+  border: 3px inset black;
+}
+
+#BL > .decButton#removeButton:hover,
+#BL > .removeButton:hover {
+  background: radial-gradient(#ff6969, #ffd3b0);
+  color: rgba(0, 0, 0, 0.75);
+  border: 3px inset black;
+}
+
+.optsToggleImage.takeout#BL {
+  background-color: #79e0ee;
+  border: 5px solid #79e0ee;
+}
+.optsToggleImage.takeout#BL:hover {
+  background-color: #00a9ff;
+  border: 5px solid #00a9ff;
+}
+.spacerShow.takeout#BL {
+  border: 4px solid #00a9ff;
+}
+.spacer#BL {
+  border: 3px solid #79e0ee;
+}
+
+.checkoutNcontinueShopButtons#BL {
+  background: linear-gradient(0deg, #79e0ee, #00a9ff);
+  /* border: 5px solid #353447; */
+}
+
+.checkoutNcontinueShopButtons#BL > button,
+.checkoutNcontinueShopButtons#BL > a > button,
+.emptyBagButton#BL {
+  background: linear-gradient(0deg, #00a9ff, #79e0ee);
+  color: #000000;
+}
+
+.checkoutNcontinueShopButtons#BL > button:hover,
+.checkoutNcontinueShopButtons#BL > a > button:hover,
+.emptyBagButton#BL:hover {
+  background: linear-gradient(180deg, #00a9ff, #79e0ee);
+  background-color: #eaeccc;
+  border: 3px inset black;
+}

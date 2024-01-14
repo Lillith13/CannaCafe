@@ -4,8 +4,16 @@ import { useParams } from "react-router-dom";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 
 import "./css/Universal.css";
-import "./css/TileView.css";
-import "./css/ListView.css";
+/* Views */
+import "./css/productViews/TileView.css";
+import "./css/productViews/ListView.css";
+/* Themes */
+import "./css/themes/green/light.css";
+import "./css/themes/green/dark.css";
+import "./css/themes/blue/light.css";
+import "./css/themes/blue/dark.css";
+import "./css/themes/purple/light.css";
+import "./css/themes/purple/dark.css";
 
 import imgPlaceholder from "../../assets/noImgAvailable.jpg";
 
@@ -35,6 +43,7 @@ export default function Products() {
   const [type, setType] = useState();
   const [category, setCategory] = useState(null);
   const [view, setView] = useState("tile");
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(async () => {
@@ -107,6 +116,7 @@ export default function Products() {
         <div>
           <button
             className="goBackButton"
+            id={theme}
             onClick={(e) => {
               e.preventDefault();
               history.goBack();
@@ -117,7 +127,12 @@ export default function Products() {
         </div>
         <div className="viewOptionsDiv">
           <button
-            className="viewOptionsButton"
+            className={
+              view == "list"
+                ? "selectedView viewOptionsButton"
+                : "viewOptionsButton"
+            }
+            id={theme}
             onClick={() => {
               setView("list");
               localStorage.setItem("viewSetting", "list");
@@ -126,7 +141,12 @@ export default function Products() {
             List
           </button>
           <button
-            className="viewOptionsButton"
+            className={
+              view == "tile"
+                ? "selectedView viewOptionsButton"
+                : "viewOptionsButton"
+            }
+            id={theme}
             onClick={() => {
               setView("tile");
               localStorage.setItem("viewSetting", "tile");
@@ -141,7 +161,7 @@ export default function Products() {
       {params && params.name ? (
         <h1 className="productsPageTitle">{params.name}</h1>
       ) : (
-        <h1 className="productsPageTitle">
+        <h1 className="productsPageTitle" id={theme}>
           {location.pathname.slice(1)[0].toUpperCase() +
             location.pathname.slice(1).substring(1)}
         </h1>
@@ -151,11 +171,14 @@ export default function Products() {
         className={
           view === "tile" ? "productDisplayAreaTile" : "productDisplayAreaList"
         }
+        id={theme}
       >
         {products && (
           <div
             className={
-              view === "tile" ? "prodsDivTileView" : "prodsDivListView"
+              view === "tile"
+                ? `prodsDivTileView ${theme}`
+                : `prodsDivListView ${theme}`
             }
             id={
               Object.values(products).length < 3
@@ -170,8 +193,8 @@ export default function Products() {
                     key={product.id}
                     className={
                       view === "tile"
-                        ? "idvProdContainerTile"
-                        : "idvProdContainerList"
+                        ? `idvProdContainerTile ${theme}`
+                        : `idvProdContainerList ${theme}`
                     }
                     id={
                       Object.values(products).length < 3
@@ -223,6 +246,7 @@ export default function Products() {
                             ? "idvProdNameNPriceContainerTile"
                             : "idvProdNameNPriceContainerList"
                         }
+                        id={theme}
                       >
                         <h3>{product.name}</h3>
                         <h3>${product.price}</h3>
@@ -235,6 +259,7 @@ export default function Products() {
                             ? "idvProdButtonContainerTile"
                             : "idvProdButtonContainerList"
                         }
+                        id={theme}
                         style={{ gap: "0px" }}
                       >
                         <div
@@ -243,6 +268,7 @@ export default function Products() {
                               ? "universalProdButtonsTile"
                               : "universalProdButtonsList"
                           }
+                          id={theme}
                           style={{ gap: "0px" }}
                         >
                           <OpenModalButton
@@ -271,7 +297,7 @@ export default function Products() {
                                 Object.keys(userFaves).includes(product.id)) &&
                               !product.category.shippable ? (
                                 <div
-                                  className="removeFromButton"
+                                  className={`removeFromButton ${theme}`}
                                   id={
                                     view == "tile"
                                       ? "productsTileRemoveFrom"
@@ -290,7 +316,7 @@ export default function Products() {
                                 </div>
                               ) : (
                                 <div
-                                  className="productsUnivButton"
+                                  className={`productsUnivButton ${theme}`}
                                   id={
                                     view == "tile"
                                       ? "productsTileUnivButton"
@@ -318,7 +344,7 @@ export default function Products() {
                                 Object.keys(userWishes).includes(product.id)) &&
                               product.category.shippable ? (
                                 <div
-                                  className="removeFromButton"
+                                  className={`removeFromButton ${theme}`}
                                   id={
                                     view == "tile"
                                       ? "productsTileRemoveFrom"
@@ -337,7 +363,7 @@ export default function Products() {
                                 </div>
                               ) : (
                                 <div
-                                  className="productsUnivButton"
+                                  className={`productsUnivButton ${theme}`}
                                   id={
                                     view == "tile"
                                       ? "productsTileUnivButton"
@@ -364,13 +390,14 @@ export default function Products() {
                               ? "roleProtectedButtonsTile"
                               : "roleProtectedButtonsList"
                           }
+                          id={theme}
                         >
                           {user &&
                             (user.role.name == "Owner" ||
                               user.role.name == "Manager") && (
                               <>
                                 <div
-                                  className="editProductButton"
+                                  className={`editProductButton ${theme}`}
                                   id={
                                     view == "tile"
                                       ? "productsTileEdit"
@@ -392,7 +419,7 @@ export default function Products() {
                                   />
                                 </div>
                                 <div
-                                  className="deleteProductButton"
+                                  className={`deleteProductButton ${theme}`}
                                   id={
                                     view == "tile"
                                       ? "productsTileDelete"

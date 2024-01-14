@@ -1,0 +1,77 @@
+/* ! Green */
+/* Light */
+.productsContainerDiv#GL,
+.menuItemsContainerDiv#GL {
+  border: 5px inset #94b49f;
+  background-color: #c3e2c2;
+  color: #5e454b;
+}
+
+.productLinksContainer#GL > a,
+.menuItemsContainer#GL > a {
+  border: 3px solid #94b49f;
+}
+
+/* Dark */
+.productsContainerDiv#GD,
+.menuItemsContainerDiv#GD {
+  border: 5px inset #382933;
+  background-color: #3b5249;
+}
+
+.productLinksContainer#GD > a,
+.menuItemsContainer#GD > a {
+  border: 3px solid #382933;
+}
+
+/* ! Blue */
+/* Light */
+.productsContainerDiv#BL,
+.menuItemsContainerDiv#BL {
+  border: 5px inset #92c7cf;
+  background-color: #a0e9ff;
+  color: #000000;
+}
+
+.productLinksContainer#BL > a,
+.menuItemsContainer#BL > a {
+  border: 3px solid #00a9ff;
+}
+
+/* Dark */
+.productsContainerDiv#BD,
+.menuItemsContainerDiv#BD {
+  border: 5px inset #1f6e8c;
+  background-color: #0b2447;
+}
+
+.productLinksContainer#BD > a,
+.menuItemsContainer#BD > a {
+  border: 3px solid #2e8a99;
+}
+
+/* ! Purple */
+/* Light */
+.productsContainerDiv#PL,
+.menuItemsContainerDiv#PL {
+  border: 5px inset #937dc2;
+  background-color: #baabda;
+  color: #030637;
+}
+
+.productLinksContainer#PL > a,
+.menuItemsContainer#PL > a {
+  border: 3px solid #937dc2;
+}
+
+/* Dark */
+.productsContainerDiv#PD,
+.menuItemsContainerDiv#PD {
+  border: 5px inset #51557e;
+  background-color: #35155d;
+}
+
+.productLinksContainer#PD > a,
+.menuItemsContainer#PD > a {
+  border: 3px solid #d4adfc;
+}

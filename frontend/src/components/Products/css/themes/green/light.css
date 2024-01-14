@@ -1,0 +1,99 @@
+.goBackButton#GL {
+  background-color: #c3e2c2;
+  color: #5e454b;
+}
+.goBackButton#GL:hover {
+  background-color: #a0c49d;
+  color: #5e454b;
+}
+
+.viewOptionsButton#GL {
+  background-color: #f3f0d7;
+  color: #5e454b;
+}
+.viewOptionsButton#GL:hover,
+.selectedView.viewOptionsButton#GL {
+  background-color: #5e454b;
+  color: #f3f0d7;
+}
+
+.productsPageTitle#GL {
+  background-color: rgba(148, 180, 159, 0.9);
+}
+
+div.productDisplayAreaList#GL,
+div.productDisplayAreaTile#GL {
+  border: 5px outset #c4d7b2;
+  background-color: #c3e2c2;
+}
+
+.prodsDivListView.GL,
+.prodsDivTileView.GL {
+  border: 5px inset #c3e2c2;
+  background-color: #e1ecc8;
+}
+
+.idvProdContainerList.GL {
+  border: 1px solid #f7ffe5;
+  background-color: #a0c49d;
+}
+.idvProdContainerTile.GL {
+  border: 1px solid #5e454b;
+}
+.idvProdContainerList.GL:hover,
+.idvProdContainerTile.GL:hover {
+  box-shadow: 13px 10px 5px 0px #94b49f;
+}
+
+.idvProdNameNPriceContainerList#GL,
+.idvProdNameNPriceContainerTile#GL {
+  background-color: rgba(148, 180, 159, 0.9);
+  color: #fefae0;
+}
+
+.idvProdButtonContainerList#GL,
+.idvProdButtonContainerTile#GL {
+  background-color: rgba(148, 180, 159, 0.9);
+}
+
+.universalProdButtonsList#GL > button,
+.universalProdButtonsTile#GL > button,
+.roleProtectedButtonsList#GL > button,
+.roleProtectedButtonsTile#GL > button,
+.productsUnivButton.GL#productsListUnivButton,
+.productsUnivButton.GL#productsTileUnivButton {
+  background-color: rgba(148, 180, 159, 0.5);
+  color: #fefae0;
+}
+
+.productsUnivButton.GL > button,
+.editProductButton.GL > button,
+.removeFromButton.GL > button,
+.deleteProductButton.GL > button {
+  background-color: rgba(148, 180, 159, 0.5);
+  color: #fefae0;
+}
+
+.universalProdButtonsList#GL > button:hover,
+.universalProdButtonsTile#GL > button:hover,
+.productsUnivButton.GL > button:hover {
+  background-color: #e1ecc8;
+  color: #362706;
+}
+
+.removeFromButton.GL > button:hover,
+.editProductButton.GL > button:hover {
+  color: #362706;
+}
+
+.removeFromButton.GL > button:hover {
+  background-color: #ecb390;
+}
+.deleteProductButton.GL > button:hover {
+  color: #362706;
+  background-color: #cd8d7a;
+}
+
+.editProductButton.GL > button:hover {
+  background-color: #f7d59c;
+}

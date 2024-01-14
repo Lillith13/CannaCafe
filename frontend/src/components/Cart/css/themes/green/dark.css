@@ -1,0 +1,85 @@
+/* Dark */
+.takeoutItemContainer#GD {
+  border: 5px solid #a4b494;
+  background: linear-gradient(190deg, #3b5249, #d8e9a8);
+}
+.itemImageContainer#GD > img {
+  border: 3px solid #a4b494;
+  box-shadow: 10px 7px 5px 0px rgba(59, 82, 73, 0.5);
+}
+.itemImageContainer#GD > img:hover {
+  border: 3px solid #4e6c50;
+  box-shadow: 10px 7px 5px 0px rgba(59, 82, 73, 0.75);
+}
+
+.takeoutItemInfoContainer#GD,
+.takeoutButtonsContainer#GD {
+  background-color: #3b5249;
+  border-left: 5px solid #a4b494;
+  border-right: 5px solid #a4b494;
+  color: #ecdbba;
+}
+.takeoutItemInfoContainer#GD {
+  border-top: 5px solid #a4b494;
+}
+.takeoutButtonsContainer#GD {
+  border-bottom: 5px solid #a4b494;
+}
+.takeoutItemInfoContainer#GD > a {
+  color: #a4b494;
+}
+.takeoutItemInfoContainer#GD > a:hover {
+  color: #ecdbba;
+}
+
+#GD > .incButton,
+#GD > .decButton,
+#GD > .removeButton {
+  background-color: #3b5249;
+  color: #ecdbba;
+}
+
+#GD > .incButton:hover,
+#GD > .decButton:hover {
+  background: radial-gradient(#519872, #4e9f3d);
+  color: #ecdbba;
+  border: 3px inset black;
+}
+
+#GD > .decButton#removeButton:hover,
+#GD > .removeButton:hover {
+  background: radial-gradient(#382933, #c84b31);
+  border: 3px inset black;
+}
+
+.optsToggleImage.takeout#GD {
+  background-color: #346751;
+  border: 5px solid #346751;
+}
+.optsToggleImage.takeout#GD:hover {
+  background-color: #519872;
+  border: 5px solid #519872;
+}
+.spacerShow.takeout#GD,
+.spacer#GD {
+  border: 3px solid #3b5249;
+}
+
+.checkoutNcontinueShopButtons#GD {
+  background: linear-gradient(-5deg, #d8e9a8, #3b5249);
+}
+
+.checkoutNcontinueShopButtons#GD > button,
+.checkoutNcontinueShopButtons#GD > a > button,
+.emptyBagButton#GD {
+  background-color: #a4b494;
+  color: #191a19;
+}
+
+.checkoutNcontinueShopButtons#GD > button:hover,
+.checkoutNcontinueShopButtons#GD > a > button:hover,
+.emptyBagButton#GD:hover {
+  background-color: #3b5249;
+  color: #ecdbba;
+  border: 3px inset black;
+}

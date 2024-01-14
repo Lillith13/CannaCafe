@@ -1,0 +1,99 @@
+.goBackButton#PD {
+  background-color: #5c469c;
+  color: #d6d5a8;
+}
+.goBackButton#PD:hover {
+  background-color: #d4adfc;
+  color: #030637;
+}
+
+.viewOptionsButton#PD {
+  background-color: #d4adfc;
+  color: #030637;
+}
+.viewOptionsButton#PD:hover,
+.selectedView.viewOptionsButton#PD {
+  background-color: #5c469c;
+  color: #d6d5a8;
+}
+
+.productsPageTitle#PD {
+  background-color: rgba(92, 70, 156, 0.9);
+}
+
+div.productDisplayAreaList#PD,
+div.productDisplayAreaTile#PD {
+  border: 5px outset #35155d;
+  background-color: #5c469c;
+}
+
+.prodsDivListView.PD,
+.prodsDivTileView.PD {
+  border: 5px inset #5c469c;
+  background-color: #35155d;
+}
+
+.idvProdContainerList.PD {
+  border: 1px solid #8cabff;
+  background-color: #5c469c;
+}
+.idvProdContainerTile.PD {
+  border: 1px solid #8cabff;
+}
+.idvProdContainerList.PD:hover,
+.idvProdContainerTile.PD:hover {
+  box-shadow: 13px 10px 5px 0px rgba(29, 38, 125, 0.5);
+}
+
+.idvProdNameNPriceContainerList#PD,
+.idvProdNameNPriceContainerTile#PD {
+  background-color: rgba(129, 103, 151, 0.9);
+  color: #d6d5a8;
+}
+
+.idvProdButtonContainerList#PD,
+.idvProdButtonContainerTile#PD {
+  background-color: rgba(129, 103, 151, 0.9);
+}
+
+.universalProdButtonsList#PD > button,
+.universalProdButtonsTile#PD > button,
+.roleProtectedButtonsList#PD > button,
+.roleProtectedButtonsTile#PD > button,
+.productsUnivButton.PD#productsListUnivButton,
+.productsUnivButton.PD#productsTileUnivButton {
+  background-color: rgba(129, 103, 151, 0.5);
+  color: #d6d5a8;
+}
+
+.productsUnivButton.PD > button,
+.editProductButton.PD > button,
+.removeFromButton.PD > button,
+.deleteProductButton.PD > button {
+  background-color: rgba(129, 103, 151, 0.5);
+  color: #d6d5a8;
+}
+
+.universalProdButtonsList#PD > button:hover,
+.universalProdButtonsTile#PD > button:hover,
+.productsUnivButton.PD > button:hover {
+  background-color: #d4adfc;
+  color: #1b2430;
+}
+
+.removeFromButton.PD > button:hover,
+.editProductButton.PD > button:hover {
+  color: #362706;
+}
+
+.removeFromButton.PD > button:hover {
+  background-color: #ecdbba;
+}
+.deleteProductButton.PD > button:hover {
+  color: #fefae0;
+  background-color: #c84b31;
+}
+
+.editProductButton.PD > button:hover {
+  background-color: #d8e9a8;
+}

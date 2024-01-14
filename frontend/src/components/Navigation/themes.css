@@ -1,0 +1,92 @@
+/* ! Green */
+/* Light */
+nav.GL {
+  background-color: #94b49f;
+}
+
+.siteName#GL {
+  color: #000000;
+}
+
+.profile-dropdown.GL {
+  border: 1px solid #5e454b;
+  background-color: #e1ecc8;
+  color: #000000;
+}
+
+/* Dark */
+nav.GD {
+  background-color: #4e6c50;
+}
+
+.siteName#GD {
+  color: #ecdbba;
+}
+
+.profile-dropdown.GD {
+  border: 1px solid #3e432e;
+  background-color: #a4b494;
+  color: #191a19;
+}
+
+/* ! Blue */
+/* Light */
+nav.BL {
+  background-color: #79e0ee;
+}
+
+.siteName#BL {
+  color: #000000;
+}
+
+.profile-dropdown.BL {
+  border: 1px solid #00a9ff;
+  background-color: #92c7cf;
+  color: #000000;
+}
+
+/* Dark */
+nav.BD {
+  background-color: #19376d;
+}
+
+.siteName#BD {
+  color: #a5d7e8;
+}
+
+.profile-dropdown.BD {
+  border: 1px solid #1597bb;
+  background-color: #0e2954;
+  color: #8fd6e1;
+}
+
+/* ! Purple */
+/* Light */
+nav.PL {
+  background-color: #ba94d1;
+}
+
+.siteName#PL {
+  color: #030637;
+}
+
+.profile-dropdown.PL {
+  border: 1px solid #ffe6f7;
+  background-color: #937dc2;
+  color: #030637;
+}
+
+/* Dark */
+nav.PD {
+  background-color: #512b81;
+}
+
+.siteName#PD {
+  color: #d6d5a8;
+}
+
+.profile-dropdown.PD {
+  border: 1px solid #d4adfc;
+  background-color: #5c469c;
+  color: #d6d5a8;
+}

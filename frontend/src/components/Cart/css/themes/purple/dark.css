@@ -1,0 +1,86 @@
+/* Dark */
+.takeoutItemContainer#PD {
+  border: 5px solid #5c469c;
+  background: linear-gradient(190deg, #512b81, #816797);
+}
+.itemImageContainer#PD > img {
+  border: 3px solid #d4adfc;
+  box-shadow: 10px 7px 5px 0px rgba(53, 21, 93, 0.5);
+}
+.itemImageContainer#PD > img:hover {
+  border: 3px solid #5c469c;
+  box-shadow: 10px 7px 5px 0px rgba(53, 21, 93, 0.75);
+}
+
+.takeoutItemInfoContainer#PD,
+.takeoutButtonsContainer#PD {
+  background-color: #5c469c;
+  border-left: 5px solid #35155d;
+  border-right: 5px solid #35155d;
+  color: #d6d5a8;
+}
+.takeoutItemInfoContainer#PD {
+  border-top: 5px solid #35155d;
+}
+.takeoutButtonsContainer#PD {
+  border-bottom: 5px solid #35155d;
+}
+.takeoutItemInfoContainer#PD > a {
+  color: #16213e;
+}
+.takeoutItemInfoContainer#PD > a:hover {
+  color: #d6d5a8;
+}
+
+#PD > .incButton,
+#PD > .decButton,
+#PD > .removeButton {
+  background-color: #512b81;
+  color: #d6d5a8;
+}
+
+#PD > .incButton:hover,
+#PD > .decButton:hover {
+  background-color: #35155d;
+  color: #d6d5a8;
+  border: 3px inset black;
+}
+
+#PD > .decButton#removeButton:hover,
+#PD > .removeButton:hover {
+  background-color: #e94560;
+  color: #16213e;
+  border: 3px inset black;
+}
+
+.optsToggleImage.takeout#PD {
+  background-color: #816797;
+  border: 5px solid #816797;
+}
+.optsToggleImage.takeout#PD:hover {
+  background-color: #d4adfc;
+  border: 5px solid #d4adfc;
+}
+.spacerShow.takeout#PD,
+.spacer#PD {
+  border: 3px solid #816797;
+}
+
+.checkoutNcontinueShopButtons#PD {
+  background: linear-gradient(-5deg, #816797, #512b81);
+}
+
+.checkoutNcontinueShopButtons#PD > button,
+.checkoutNcontinueShopButtons#PD > a > button,
+.emptyBagButton#PD {
+  background-color: #816797;
+  color: #191a19;
+}
+
+.checkoutNcontinueShopButtons#PD > button:hover,
+.checkoutNcontinueShopButtons#PD > a > button:hover,
+.emptyBagButton#PD:hover {
+  background-color: #512b81;
+  color: #d6d5a8;
+  border: 3px inset black;
+}

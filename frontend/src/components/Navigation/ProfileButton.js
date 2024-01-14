@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import OpenModalButton from "../OpenModalButton";
 import Login from "../AllModals/Login";
@@ -9,6 +9,8 @@ import { logout } from "../../store/session";
 import { userClockin, userClockout } from "../../store/timecard";
 
 import "./Navigation.css";
+import "./themes.css";
+
 import profileIcon from "../../assets/profile_icon.png";
 import CreateProduct from "../AllModals/CreateProduct";
 
@@ -16,12 +18,23 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
+  const [theme, setTheme] = useState("GL");
   const ulRef = useRef();
 
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
+
+  useEffect(() => {
+    const clientTheme = localStorage.getItem("clientTheme");
+
+    if (clientTheme) {
+      setTheme(clientTheme);
+    } else {
+      localStorage.setItem("clientTheme", "GL");
+    }
+  }, []);
 
   useEffect(() => {
     if (!showMenu) return;
@@ -83,7 +96,7 @@ function ProfileButton({ user }) {
         />
       </div>
       <ul
-        className={`${ulClassName} profile-dropdown`}
+        className={`${ulClassName} profile-dropdown ${theme}`}
         ref={ulRef}
         id={
           user
@@ -105,6 +118,36 @@ function ProfileButton({ user }) {
               }
             >
               <li>Welcome back, {user.username}</li>
+
+              <div id="themeSelectDiv">
+                <select
+                  onChange={(e) => {
+                    localStorage.setItem("clientTheme", e.target.value);
+                    history.go(0);
+                  }}
+                >
+                  <option disabled>Theme...</option>
+                  <option value="GL" selected={theme == "GL"}>
+                    green light
+                  </option>
+                  <option value="GD" selected={theme == "GD"}>
+                    green dark
+                  </option>
+                  <option value="PL" selected={theme == "PL"}>
+                    purple light
+                  </option>
+                  <option value="PD" selected={theme == "PD"}>
+                    purple dark
+                  </option>
+                  <option value="BL" selected={theme == "BL"}>
+                    blue light
+                  </option>
+                  <option value="BD" selected={theme == "BD"}>
+                    blue dark
+                  </option>
+                </select>
+              </div>
+
               <li>{user.email}</li>
             </div>
 
@@ -174,6 +217,9 @@ function ProfileButton({ user }) {
           </div>
         ) : (
           <div id="noCurrUser">
+            <select>
+              <option>Theme...</option>
+            </select>
             <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}

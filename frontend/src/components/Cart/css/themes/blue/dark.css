@@ -1,0 +1,85 @@
+/* Dark */
+.takeoutItemContainer#BD {
+  border: 5px solid #2e8a99;
+  background: linear-gradient(180deg, #0e2954, #1f6e8c);
+}
+.itemImageContainer#BD > img {
+  border: 3px solid #1f6e8c;
+  box-shadow: 10px 7px 5px 0px rgba(25, 55, 109, 0.5);
+}
+.itemImageContainer#BD > img:hover {
+  border: 3px solid #0b2447;
+  box-shadow: 10px 7px 5px 0px rgba(25, 55, 109, 0.75);
+}
+
+.takeoutItemInfoContainer#BD,
+.takeoutButtonsContainer#BD {
+  background-color: #19376d;
+  border-left: 5px solid #13005a;
+  border-right: 5px solid #13005a;
+  color: #a5d7e8;
+}
+.takeoutItemInfoContainer#BD {
+  border-top: 5px solid #13005a;
+}
+.takeoutButtonsContainer#BD {
+  border-bottom: 5px solid #13005a;
+  /* color: #e9e5d6; */
+}
+.takeoutItemInfoContainer#BD > a {
+  color: #a5d7e8;
+}
+.takeoutItemInfoContainer#BD > a:hover {
+  color: #84a7a1;
+}
+
+#BD > .incButton,
+#BD > .decButton,
+#BD > .removeButton {
+  background-color: #19376d;
+  color: #ecdbba;
+}
+
+#BD > .incButton:hover,
+#BD > .decButton:hover {
+  background: radial-gradient(#1c82ad, #a5d7e8);
+  color: #ecdbba;
+  border: 3px inset black;
+}
+
+#BD > .decButton#removeButton:hover,
+#BD > .removeButton:hover {
+  background: radial-gradient(#7b113a, rgba(87, 108, 188, 0.5));
+  border: 3px inset black;
+}
+
+.optsToggleImage.takeout#BD {
+  background-color: #1c82ad;
+  border: 5px solid #1c82ad;
+}
+.optsToggleImage.takeout#BD:hover {
+  background-color: #1597bb;
+  border: 5px solid #1597bb;
+}
+.spacerShow.takeout#BD,
+.spacer#BD {
+  border: 3px solid #1f6e8c;
+}
+
+.checkoutNcontinueShopButtons#BD {
+  background: linear-gradient(0deg, #0e2954, #1f6e8c);
+}
+
+.checkoutNcontinueShopButtons#BD > button,
+.checkoutNcontinueShopButtons#BD > a > button,
+.emptyBagButton#BD {
+  background: linear-gradient(0deg, #0e2954, #1f6e8c);
+  color: #a5d7e8;
+}
+
+.checkoutNcontinueShopButtons#BD > button:hover,
+.checkoutNcontinueShopButtons#BD > a > button:hover,
+.emptyBagButton#BD:hover {
+  background: linear-gradient(180deg, #0e2954, #1f6e8c);
+  border: 3px inset black;
+}

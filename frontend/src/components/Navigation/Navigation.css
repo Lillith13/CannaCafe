@@ -26,10 +26,6 @@
   border-radius: 25px;
 }
 
-.siteName {
-  color: #f0ebce;
-}
-
 .nav-btn {
   font-size: 35px;
   cursor: pointer;
@@ -44,10 +40,7 @@
   text-align: center;
   gap: 10px;
   padding: 15px 25px;
-  border: 1px solid #395144;
   border-radius: 15px;
-  background-color: #aa8b56;
-  color: #395144;
   font-size: 20px;
   font-weight: bold;
   list-style: none;
