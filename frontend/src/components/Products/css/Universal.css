@@ -1,0 +1,77 @@
+.topOfPageItems {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.viewOptionsDiv {
+  display: flex;
+  gap: 10px;
+}
+.goBackButton,
+.viewOptionsButton {
+  padding: 5px 15px;
+  background-color: #a9b388;
+  color: #fefae0;
+  font-size: 20px;
+}
+
+.productsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.productsPageTitle {
+  font-size: 50px;
+  background-color: rgba(100, 101, 120, 0.9);
+  padding: 15px;
+  border-radius: 15px;
+  margin: 15px 0px;
+}
+
+.productsUnivButton > button,
+.editProductButton > button,
+.removeFromButton > button {
+  height: 100%;
+  background-color: rgba(100, 110, 200, 0.5);
+  color: #fefae0;
+}
+.deleteProductButton > button {
+  background-color: rgba(100, 110, 200, 0.5);
+  color: #fefae0;
+}
+
+.removeFromButton > button:hover,
+.editProductButton > button:hover,
+.deleteProductButton > button:hover {
+  color: #362706;
+}
+
+.removeFromButton > button:hover {
+  background-color: #dbc1bb;
+}
+.deleteProductButton > button:hover {
+  color: #fefae0;
+  background-color: #6f2818;
+}
+
+.editProductButton > button:hover {
+  background-color: #f1d3b3;
+}
+
+@media screen and (max-width: 850px) {
+  /* force to list view */
+}
+@media screen and (max-width: 1259px) {
+  .productDisplayAreaTile {
+    display: flex;
+    justify-content: center;
+    margin-left: 75px;
+  }
+  .idvProdContainerTile {
+    width: 25%;
+  }
+}

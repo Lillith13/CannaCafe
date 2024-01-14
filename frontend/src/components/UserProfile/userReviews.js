@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import { getALLreviews, getUserReviews } from "../../store/reviews";
 import OpenModalButton from "../OpenModalButton";
@@ -8,10 +9,9 @@ import EditReview from "../AllModals/EditReview";
 
 import noPreviewImage from "../../assets/noImgAvailable.jpg";
 import profileIcon from "../../assets/profile_icon.png";
-
 import blackCannaLeaf from "../../assets/blackCannaLeaf.png";
-import "./UserProfile.css";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+
+import "./profileCSS/UserProfile.css";
 
 export default function UserReviews() {
   const dispatch = useDispatch();

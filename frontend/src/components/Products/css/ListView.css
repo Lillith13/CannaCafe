@@ -1,0 +1,94 @@
+div.productDisplayAreaList {
+  display: flex;
+  justify-content: center;
+  border: 5px outset #76824f;
+  background-color: #3f4727;
+
+  padding: 25px;
+  margin: 0px;
+}
+.prodsDivListView {
+  border: 5px inset #31391d;
+  background-color: #a9b388;
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  justify-content: space-evenly;
+  overflow-y: scroll;
+  height: 400px;
+  padding: 25px 15px;
+  gap: 15px;
+}
+.prodsDivListView#prodsDivAlt {
+  justify-content: center;
+  width: 100%;
+}
+.idvProdContainerList {
+  padding: 15px;
+  border: 1px solid #e4fa9b;
+  background-color: #76824f;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 95%;
+}
+.idvProdContainerList:hover {
+  box-shadow: 13px 10px 5px 0px #76824f;
+}
+.idvProdContainerList#idvProdContainerAlt {
+  width: 100%;
+}
+
+.idvProdContainerList > img {
+  min-width: 40%;
+  max-width: 50%;
+  max-height: 250px;
+  border-radius: 25px;
+}
+
+.idvProdNameNPriceContainerList {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  background-color: rgba(100, 101, 120, 0.9);
+  color: #fefae0;
+  border-radius: 15px 15px 0px 0px;
+  padding: 0px 15px 0px 15px;
+  margin: 0px;
+}
+
+.idvProdButtonContainerList {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 0px 15px 15px;
+  padding: 0px 15px 15px 15px;
+  background-color: rgba(100, 101, 120, 0.9);
+  width: 95%;
+}
+.universalProdButtonsList,
+.roleProtectedButtonsList {
+  display: flex;
+  justify-content: center;
+}
+
+.universalProdButtonsList > button,
+.roleProtectedButtonsList > button,
+.productsUnivButton#productsListUnivButton {
+  width: 45%;
+  background-color: rgba(100, 110, 200, 0.5);
+  color: #fefae0;
+  border-radius: 0px;
+}
+
+.universalProdButtonsList > button,
+.removeFromButton#productsListRemoveFrom > button,
+.roleProtectedButtonsList > button,
+.productsUnivButton#productsListUnivButton > button {
+  padding: 10px 15px;
+}
+
+.universalProdButtonsList > div > button,
+.productsUnivButton#productsListUnivButton > button {
+  width: 100%;
+}

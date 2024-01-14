@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAllOrders } from "../../store/orders";
 
-import "./UserProfile.css";
+import "./profileCSS/UserProfile.css";
 import OpenModalButton from "../OpenModalButton";
 import ConfirmAdd from "../AllModals/ConfirmAddTo";
 import CreateReview from "../AllModals/Review";

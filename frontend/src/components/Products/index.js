@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 
-import "./Products.css";
+import "./css/Universal.css";
+import "./css/TileView.css";
+import "./css/ListView.css";
+
 import imgPlaceholder from "../../assets/noImgAvailable.jpg";
 
 import {
@@ -35,6 +38,7 @@ export default function Products() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(async () => {
+    // * checking pathname to set what should be displayed
     let data;
 
     let here = location.pathname.slice(1);
@@ -54,6 +58,7 @@ export default function Products() {
         : (here = `${location.pathname.slice(1, location.pathname.length)}`);
     }
 
+    // * setting states based on above & running dispatches
     setType(here);
 
     if (params.name) {
@@ -71,10 +76,30 @@ export default function Products() {
         );
       }
     }
-    if (data) {
-      console.log(data.errors);
-    }
+    // if (data) {
+    //   console.log(data.errors);
+    // }
   }, [dispatch]);
+
+  useEffect(() => {
+    // * checking localStorage for view setting to set view ("tile"/"list")
+    const localViewSet = localStorage.getItem("viewSetting");
+
+    if (localViewSet) {
+      if (Object.values(products).length < 3) {
+        setView("list");
+      } else {
+        setView(localViewSet);
+      }
+    } else {
+      localStorage.setItem("viewSetting", "tile");
+      if (Object.values(products).length < 3) {
+        setView("list");
+      } else {
+        setView(localViewSet);
+      }
+    }
+  }, [isLoaded]);
 
   return isLoaded ? (
     <div className="pageContainer">
@@ -91,10 +116,23 @@ export default function Products() {
           </button>
         </div>
         <div className="viewOptionsDiv">
-          <button className="viewOptionsButton" onClick={() => setView("list")}>
+          <button
+            className="viewOptionsButton"
+            onClick={() => {
+              setView("list");
+              localStorage.setItem("viewSetting", "list");
+            }}
+          >
             List
           </button>
-          <button className="viewOptionsButton" onClick={() => setView("tile")}>
+          <button
+            className="viewOptionsButton"
+            onClick={() => {
+              setView("tile");
+              localStorage.setItem("viewSetting", "tile");
+            }}
+            disabled={Object.values(products).length < 3}
+          >
             Tile
           </button>
         </div>
@@ -148,179 +186,233 @@ export default function Products() {
                           : history.push(`/menu/${product.id}`);
                       }
                     }}
-                    style={{
-                      backgroundImage: `url(${
-                        product.previewImg ? product.previewImg : imgPlaceholder
-                      })`,
-                      cursor: "pointer",
-                    }}
+                    style={
+                      view == "tile"
+                        ? {
+                            backgroundImage: `url(${
+                              product.previewImg
+                                ? product.previewImg
+                                : imgPlaceholder
+                            })`,
+                            cursor: "pointer",
+                          }
+                        : { cursor: "pointer" }
+                    }
                   >
-                    <div style={{ height: "150px" }}></div>
+                    {view == "tile" ? (
+                      <div style={{ height: "150px" }}></div>
+                    ) : (
+                      <img
+                        src={
+                          product.previewImg
+                            ? product.previewImg
+                            : imgPlaceholder
+                        }
+                      />
+                    )}
                     <div
                       className={
-                        view === "tile"
-                          ? "idvProdNameNPriceContainerTile"
-                          : "idvProdNameNPriceContainerList"
+                        view == "tile"
+                          ? "itemDetailDivInnerTile"
+                          : "itemDetailDivInnerList"
                       }
-                    >
-                      <h3>{product.name}</h3>
-                      <h3>${product.price}</h3>
-                    </div>
-                    {/* </NavLink> */}
-
-                    <div
-                      className={
-                        view === "tile"
-                          ? "idvProdButtonContainerTile"
-                          : "idvProdButtonContainerList"
-                      }
-                      style={{ gap: "0px" }}
                     >
                       <div
                         className={
                           view === "tile"
-                            ? "universalProdButtonsTile"
-                            : "universalProdButtonsList"
+                            ? "idvProdNameNPriceContainerTile"
+                            : "idvProdNameNPriceContainerList"
+                        }
+                      >
+                        <h3>{product.name}</h3>
+                        <h3>${product.price}</h3>
+                      </div>
+                      {/* </NavLink> */}
+
+                      <div
+                        className={
+                          view === "tile"
+                            ? "idvProdButtonContainerTile"
+                            : "idvProdButtonContainerList"
                         }
                         style={{ gap: "0px" }}
                       >
-                        <OpenModalButton
-                          buttonText={`Add to ${
-                            product.category.shippable
-                              ? "Shopping Cart"
-                              : "Takeaway Bag"
-                          }`}
-                          modalComponent={
-                            <ConfirmAdd
-                              where={
-                                product.category.shippable
-                                  ? "Shopping Cart"
-                                  : "Takeaway Bag"
-                              }
-                              product={product}
-                              user={user}
-                            />
+                        <div
+                          className={
+                            view === "tile"
+                              ? "universalProdButtonsTile"
+                              : "universalProdButtonsList"
                           }
-                        />
-                        {userFaves && !product.category.shippable && (
-                          <>
-                            {(Object.keys(userFaves).includes(
-                              `${product.id}`
-                            ) ||
-                              Object.keys(userFaves).includes(product.id)) &&
-                            !product.category.shippable ? (
-                              <div
-                                className="removeFromButton"
-                                id="productsRemoveFrom"
-                              >
-                                <OpenModalButton
-                                  buttonText="Remove From Favorites"
-                                  modalComponent={
-                                    <ConfirmRemove
-                                      where="Favorites"
-                                      product={product}
-                                    />
-                                  }
-                                />
-                              </div>
-                            ) : (
-                              <div className="productsUnivButton">
-                                <OpenModalButton
-                                  buttonText="Add to Favorites"
-                                  modalComponent={
-                                    <ConfirmAdd
-                                      where="Favorites"
-                                      product={product}
-                                    />
-                                  }
-                                />
-                              </div>
-                            )}
-                          </>
-                        )}
-                        {userWishes && product.category.shippable && (
-                          <>
-                            {(Object.keys(userWishes).includes(
-                              `${product.id}`
-                            ) ||
-                              Object.keys(userWishes).includes(product.id)) &&
-                            product.category.shippable ? (
-                              <div
-                                className="removeFromButton"
-                                id="productsRemoveFrom"
-                              >
-                                <OpenModalButton
-                                  buttonText="Remove From Wishlist"
-                                  modalComponent={
-                                    <ConfirmRemove
-                                      where="Wishlist"
-                                      product={product}
-                                    />
-                                  }
-                                />
-                              </div>
-                            ) : (
-                              <div className="productsUnivButton">
-                                <OpenModalButton
-                                  buttonText="Add to Wishlist"
-                                  modalComponent={
-                                    <ConfirmAdd
-                                      where="Wishlist"
-                                      product={product}
-                                    />
-                                  }
-                                />
-                              </div>
-                            )}
-                          </>
-                        )}
-                      </div>
-                      <div
-                        className={
-                          view === "tile"
-                            ? "roleProtectedButtonsTile"
-                            : "roleProtectedButtonsList"
-                        }
-                      >
-                        {user &&
-                          (user.role.name == "Owner" ||
-                            user.role.name == "Manager") && (
+                          style={{ gap: "0px" }}
+                        >
+                          <OpenModalButton
+                            buttonText={`Add to ${
+                              product.category.shippable
+                                ? "Shopping Cart"
+                                : "Takeaway Bag"
+                            }`}
+                            modalComponent={
+                              <ConfirmAdd
+                                where={
+                                  product.category.shippable
+                                    ? "Shopping Cart"
+                                    : "Takeaway Bag"
+                                }
+                                product={product}
+                                user={user}
+                              />
+                            }
+                          />
+                          {userFaves && !product.category.shippable && (
                             <>
-                              <div
-                                className="editProductButton"
-                                id="productsEdit"
-                              >
-                                <OpenModalButton
-                                  buttonText="Edit Product"
-                                  modalComponent={
-                                    <EditProduct
-                                      type={
-                                        product.category.shippable
-                                          ? "product"
-                                          : "menu"
-                                      }
-                                      product={product}
-                                    />
+                              {(Object.keys(userFaves).includes(
+                                `${product.id}`
+                              ) ||
+                                Object.keys(userFaves).includes(product.id)) &&
+                              !product.category.shippable ? (
+                                <div
+                                  className="removeFromButton"
+                                  id={
+                                    view == "tile"
+                                      ? "productsTileRemoveFrom"
+                                      : "productsListRemoveFrom"
                                   }
-                                />
-                              </div>
-                              <div
-                                className="deleteProductButton"
-                                id="productsDeleteFrom"
-                              >
-                                <OpenModalButton
-                                  buttonText="Delete Product"
-                                  modalComponent={
-                                    <ConfirmDeleteItem
-                                      product={product}
-                                      type={type}
-                                      category={category}
-                                    />
+                                >
+                                  <OpenModalButton
+                                    buttonText="Remove From Favorites"
+                                    modalComponent={
+                                      <ConfirmRemove
+                                        where="Favorites"
+                                        product={product}
+                                      />
+                                    }
+                                  />
+                                </div>
+                              ) : (
+                                <div
+                                  className="productsUnivButton"
+                                  id={
+                                    view == "tile"
+                                      ? "productsTileUnivButton"
+                                      : "productsListUnivButton"
                                   }
-                                />
-                              </div>
+                                >
+                                  <OpenModalButton
+                                    buttonText="Add to Favorites"
+                                    modalComponent={
+                                      <ConfirmAdd
+                                        where="Favorites"
+                                        product={product}
+                                      />
+                                    }
+                                  />
+                                </div>
+                              )}
                             </>
                           )}
+                          {userWishes && product.category.shippable && (
+                            <>
+                              {(Object.keys(userWishes).includes(
+                                `${product.id}`
+                              ) ||
+                                Object.keys(userWishes).includes(product.id)) &&
+                              product.category.shippable ? (
+                                <div
+                                  className="removeFromButton"
+                                  id={
+                                    view == "tile"
+                                      ? "productsTileRemoveFrom"
+                                      : "productsListRemoveFrom"
+                                  }
+                                >
+                                  <OpenModalButton
+                                    buttonText="Remove From Wishlist"
+                                    modalComponent={
+                                      <ConfirmRemove
+                                        where="Wishlist"
+                                        product={product}
+                                      />
+                                    }
+                                  />
+                                </div>
+                              ) : (
+                                <div
+                                  className="productsUnivButton"
+                                  id={
+                                    view == "tile"
+                                      ? "productsTileUnivButton"
+                                      : "productsListUnivButton"
+                                  }
+                                >
+                                  <OpenModalButton
+                                    buttonText="Add to Wishlist"
+                                    modalComponent={
+                                      <ConfirmAdd
+                                        where="Wishlist"
+                                        product={product}
+                                      />
+                                    }
+                                  />
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </div>
+                        <div
+                          className={
+                            view === "tile"
+                              ? "roleProtectedButtonsTile"
+                              : "roleProtectedButtonsList"
+                          }
+                        >
+                          {user &&
+                            (user.role.name == "Owner" ||
+                              user.role.name == "Manager") && (
+                              <>
+                                <div
+                                  className="editProductButton"
+                                  id={
+                                    view == "tile"
+                                      ? "productsTileEdit"
+                                      : "productsListEdit"
+                                  }
+                                >
+                                  <OpenModalButton
+                                    buttonText="Edit Product"
+                                    modalComponent={
+                                      <EditProduct
+                                        type={
+                                          product.category.shippable
+                                            ? "product"
+                                            : "menu"
+                                        }
+                                        product={product}
+                                      />
+                                    }
+                                  />
+                                </div>
+                                <div
+                                  className="deleteProductButton"
+                                  id={
+                                    view == "tile"
+                                      ? "productsTileDelete"
+                                      : "productsListDelete"
+                                  }
+                                >
+                                  <OpenModalButton
+                                    buttonText="Delete Product"
+                                    modalComponent={
+                                      <ConfirmDeleteItem
+                                        product={product}
+                                        type={type}
+                                        category={category}
+                                      />
+                                    }
+                                  />
+                                </div>
+                              </>
+                            )}
+                        </div>
                       </div>
                     </div>
                   </div>

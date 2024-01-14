@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
-import "./UserProfile.css";
+import "./profileCSS/UserProfile.css";
 
 import OpenModalButton from "../OpenModalButton";
 import Signup from "../AllModals/Signup";
