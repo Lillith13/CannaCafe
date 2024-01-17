@@ -13,10 +13,12 @@
   background-color: #f3f0d7;
 }
 
+#GL button,
 button#GL {
   background-color: #94b49f;
   color: #000000;
 }
+#GL button:hover,
 button#GL:hover {
   background-color: #cee5d0;
   color: #f3f0d7;
@@ -40,10 +42,12 @@ button#GL:hover {
   background-color: #1e5128;
 }
 
+#GD button,
 button#GD {
   background-color: #ecdbba;
   color: #000000;
 }
+#GD button:hover,
 button#GD:hover {
   background-color: #346751;
   color: #ecdbba;
@@ -68,10 +72,12 @@ button#GD:hover {
   background-color: #3a98b9;
 }
 
+#BL button,
 button#BL {
   background-color: #79e0ee;
   color: #000000;
 }
+#BL button:hover,
 button#BL:hover {
   background-color: #92c7cf;
 }
@@ -94,10 +100,12 @@ button#BL:hover {
   background-color: #1f6e8c;
 }
 
+#BD button,
 button#BD {
   background-color: #19376d;
   color: #fff;
 }
+#BD button:hover,
 button#BD:hover {
   background-color: #a5d7e8;
   color: #000000;
@@ -122,10 +130,12 @@ button#BD:hover {
   background-color: #baabda;
 }
 
+#PL button,
 button#PL {
   background-color: #ba94d1;
   color: #000000;
 }
+#PL button:hover,
 button#PL:hover {
   background-color: #9fdfcd;
 }
@@ -148,10 +158,12 @@ button#PL:hover {
   background-color: #816797;
 }
 
+#PD button,
 button#PD {
   background-color: #35155d;
   color: #fff;
 }
+#PD button:hover,
 button#PD:hover {
   background-color: #816797;
   color: #000000;

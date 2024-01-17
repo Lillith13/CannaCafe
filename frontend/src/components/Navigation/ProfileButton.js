@@ -217,9 +217,6 @@ function ProfileButton({ user }) {
           </div>
         ) : (
           <div id="noCurrUser">
-            <select>
-              <option>Theme...</option>
-            </select>
             <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
@@ -231,6 +228,34 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<Signup />}
             />
+            <div id="themeSelectDiv">
+              <select
+                onChange={(e) => {
+                  localStorage.setItem("clientTheme", e.target.value);
+                  history.go(0);
+                }}
+              >
+                <option disabled>Theme...</option>
+                <option value="GL" selected={theme == "GL"}>
+                  green light
+                </option>
+                <option value="GD" selected={theme == "GD"}>
+                  green dark
+                </option>
+                <option value="PL" selected={theme == "PL"}>
+                  purple light
+                </option>
+                <option value="PD" selected={theme == "PD"}>
+                  purple dark
+                </option>
+                <option value="BL" selected={theme == "BL"}>
+                  blue light
+                </option>
+                <option value="BD" selected={theme == "BD"}>
+                  blue dark
+                </option>
+              </select>
+            </div>
           </div>
         )}
       </ul>

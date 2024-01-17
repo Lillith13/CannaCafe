@@ -37,6 +37,7 @@ export default function HomePage() {
               ? "viewAllItemsButton"
               : "hidden"
           }
+          id={theme}
         >
           View All
         </button>

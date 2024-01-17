@@ -17,7 +17,7 @@
 
 .splashEnter {
   position: absolute;
-  top: 80%;
+  top: 70%;
   background-color: rgba(34, 139, 34, 0.75);
   color: #fff;
   border-radius: 25px;
@@ -31,7 +31,7 @@
   font-size: 20px;
 }
 .splashEnter#guest {
-  top: 60%;
+  top: 50%;
 }
 .splashEnter#guest:hover {
   background-color: rgba(34, 139, 34, 0.9);

@@ -13,13 +13,9 @@
   flex-direction: column;
   gap: 25px;
   padding: 15px;
-}
-.takeoutContainerDiv {
-  width: 72%;
-}
-.cartContainerDiv {
   width: 100%;
 }
+
 .takeoutItemContainer,
 .cartItemContainer {
   display: flex;

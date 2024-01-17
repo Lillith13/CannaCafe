@@ -101,7 +101,7 @@ export default function ProductReviews({ productId, user }) {
 
                   <div
                     className="reviewBodyContainer"
-                    id={user.id != review.user.id ? "usersReview" : ""}
+                    id={user?.id != review.user.id ? "usersReview" : ""}
                   >
                     <div className="reviewStarsDiv">
                       <img
@@ -148,7 +148,7 @@ export default function ProductReviews({ productId, user }) {
                     <p className="usersReviewBody">{review.review}</p>
                   </div>
 
-                  {review.user.id == user.id && (
+                  {review.user.id == user?.id && (
                     <div className="reviewButtonsContainer">
                       <OpenModalButton
                         buttonText="Edit Review"

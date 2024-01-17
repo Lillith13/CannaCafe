@@ -1,5 +1,6 @@
 /* Light */
-.takeoutItemContainer#BL {
+.takeoutItemContainer#BL,
+.cartItemContainer#BL {
   border: 3px solid #cdf5fd;
   background: linear-gradient(195deg, #a0e9ff, #00a9ff);
 }
@@ -13,23 +14,29 @@
 }
 
 .takeoutItemInfoContainer#BL,
-.takeoutButtonsContainer#BL {
+.takeoutButtonsContainer#BL,
+.cartItemInfoContainer#BL,
+.cartButtonsContainer#BL {
   background-color: #a0e9ff;
   border-left: 5px solid #89cff3;
   border-right: 5px solid #89cff3;
   color: #000000;
 }
-.takeoutItemInfoContainer#BL {
+.takeoutItemInfoContainer#BL,
+.cartItemInfoContainer#BL {
   border-top: 5px solid #89cff3;
 }
-.takeoutButtonsContainer#BL {
+.takeoutButtonsContainer#BL,
+.cartButtonsContainer#BL {
   border-bottom: 5px solid #89cff3;
   /* color: #e9e5d6; */
 }
-.takeoutItemInfoContainer#BL > a {
+.takeoutItemInfoContainer#BL > a,
+.cartItemInfoContainer#BL > a {
   color: rgba(0, 0, 0, 0.75);
 }
-.takeoutItemInfoContainer#BL > a:hover {
+.takeoutItemInfoContainer#BL > a:hover,
+.cartItemInfoContainer#BL > a:hover {
   color: #3a98b9;
 }
 
