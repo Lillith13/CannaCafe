@@ -79,14 +79,16 @@
 
 .checkoutNcontinueShopButtons#PD > button,
 .checkoutNcontinueShopButtons#PD > a > button,
-.emptyBagButton#PD {
+.emptyBagButton#PD,
+.emptyCartButton#PD {
   background-color: #816797;
   color: #191a19;
 }
 
 .checkoutNcontinueShopButtons#PD > button:hover,
 .checkoutNcontinueShopButtons#PD > a > button:hover,
-.emptyBagButton#PD:hover {
+.emptyBagButton#PD:hover,
+.emptyCartButton#PD:hover {
   background-color: #512b81;
   color: #d6d5a8;
   border: 3px inset black;

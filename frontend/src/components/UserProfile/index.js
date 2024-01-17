@@ -3,6 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
 import "./css/UserProfile.css";
+import "./css/tabs/univ.css";
+import "./css/themes/green/light.css";
+import "./css/themes/green/dark.css";
+import "./css/themes/blue/light.css";
+import "./css/themes/blue/dark.css";
+import "./css/themes/purple/light.css";
+import "./css/themes/purple/dark.css";
 
 import OpenModalButton from "../OpenModalButton";
 import Signup from "../AllModals/Signup";
@@ -23,6 +30,8 @@ export default function UserProfile() {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const [selected, setSelected] = useState("profileTabs");
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
   const [ordersLoaded, setOrdersLoaded] = useState(false);
   const [reviewsLoaded, setReviewsLoaded] = useState(false);
   const [complaintsLoaded, setComplaintsLoaded] = useState(false);
@@ -72,170 +81,211 @@ export default function UserProfile() {
   };
 
   return (
-    <div className="pageContainer">
-      <div>
-        <h1>
-          Hello, {user.firstName} {user.lastName}
-        </h1>
-        <div id="userProfileNav">
-          <div
-            id={
-              user && user.role.name === "Member"
-                ? "memberProfileButtons"
-                : "staffProfileButtons"
-            }
-          >
-            <OpenModalButton
-              buttonText="Edit Account"
-              modalComponent={<EditAccount />}
-            />
-            {user && user.role.name === "Member" && (
+    <div className="pageContainer userProfile" id={theme}>
+      <h1>
+        Hello, {user.firstName} {user.lastName}
+      </h1>
+
+      <div className="profileNav" id={theme}>
+        <div
+          className={
+            selected == "profileButtons"
+              ? "showProfileButtons"
+              : "hideProfileButtons"
+          }
+        >
+          <div className="profileButtons" id={theme}>
+            <div
+              id={
+                user && user.role.name === "Member"
+                  ? "memberProfileButtons"
+                  : "staffProfileButtons"
+              }
+            >
               <OpenModalButton
-                buttonText="Delete Account"
-                modalComponent={<ConfirmDeleteAcct userId={user.id} />}
+                buttonText="Edit Account"
+                modalComponent={<EditAccount />}
               />
+              {user && user.role.name === "Member" && (
+                <OpenModalButton
+                  buttonText="Delete Account"
+                  modalComponent={<ConfirmDeleteAcct userId={user.id} />}
+                />
+              )}
+            </div>
+
+            {(user.role.name === "Employee" ||
+              user.role.name === "Manager" ||
+              user.role.name === "Owner") && (
+              <div id="staffOnlyButtons">
+                <button onClick={(e) => handleClockIn(e)}>Clock In</button>
+                <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
+                <NavLink exact to={`/paystubs/${user.id}`}>
+                  <button>View Paystubs</button>
+                </NavLink>
+              </div>
+            )}
+
+            {(user.role.name === "Manager" || user.role.name === "Owner") && (
+              <div id="managementOnlyButtons">
+                <OpenModalButton
+                  buttonText="Add to Products"
+                  modalComponent={<CreateProduct type="product" />}
+                />
+                <OpenModalButton
+                  buttonText="Add to Menu"
+                  modalComponent={<CreateProduct type="menu" />}
+                />
+                <OpenModalButton
+                  buttonText="New Employee"
+                  modalComponent={<Signup currUser={user.id} />}
+                />
+              </div>
             )}
           </div>
+        </div>
 
-          {(user.role.name === "Employee" ||
-            user.role.name === "Manager" ||
-            user.role.name === "Owner") && (
-            <div id="staffOnlyButtons">
-              <button onClick={(e) => handleClockIn(e)}>Clock In</button>
-              <button onClick={(e) => handleClockOut(e)}>Clock Out</button>
-              <NavLink exact to={`/paystubs/${user.id}`}>
-                <button>View Paystubs</button>
-              </NavLink>
-            </div>
-          )}
+        <div
+          onClick={() =>
+            setSelected(
+              selected == "profileTabs" ? "profileButtons" : "profileTabs"
+            )
+          }
+          className={
+            selected == "profileTabs"
+              ? "profileNavTabsToggled"
+              : "profileNavButtonsToggled"
+          }
+          id={theme}
+        >
+          {selected == "profileButtons" ? " < " : " > "}
+        </div>
 
-          {(user.role.name === "Manager" || user.role.name === "Owner") && (
-            <div id="managementOnlyButtons">
-              <OpenModalButton
-                buttonText="Add to Products"
-                modalComponent={<CreateProduct type="product" />}
-              />
-              <OpenModalButton
-                buttonText="Add to Menu"
-                modalComponent={<CreateProduct type="menu" />}
-              />
-              <OpenModalButton
-                buttonText="New Employee"
-                modalComponent={<Signup currUser={user.id} />}
-              />
-            </div>
-          )}
+        <div
+          className={
+            selected == "profileTabs" ? "showProfileTabs" : "hideProfileTabs"
+          }
+        >
+          <div className="profileTabs" id={theme}>
+            <h3
+              onClick={() => {
+                setOrdersLoaded(true);
+                setWishlistLoaded(false);
+                setFavoritesLoaded(false);
+                setEmployeesLoaded(false);
+                setReviewsLoaded(false);
+                setComplaintsLoaded(false);
+              }}
+              className={ordersLoaded ? "selectedTab" : ""}
+            >
+              Your Orders
+            </h3>
+            {user.role.name == "Member" && (
+              <h3
+                onClick={() => {
+                  setOrdersLoaded(false);
+                  setWishlistLoaded(false);
+                  setFavoritesLoaded(false);
+                  setEmployeesLoaded(false);
+                  setReviewsLoaded(true);
+                  setComplaintsLoaded(false);
+                }}
+                className={reviewsLoaded ? "selectedTab" : ""}
+              >
+                Your Reviews
+              </h3>
+            )}
+            {(user.role.name == "Manager" || user.role.name == "Owner") && (
+              <h3
+                onClick={() => {
+                  setOrdersLoaded(false);
+                  setWishlistLoaded(false);
+                  setFavoritesLoaded(false);
+                  setEmployeesLoaded(false);
+                  setReviewsLoaded(true);
+                  setComplaintsLoaded(false);
+                }}
+                className={reviewsLoaded ? "selectedTab" : ""}
+              >
+                View Member Reviews
+              </h3>
+            )}
+            {user.role.name == "Member" && (
+              <h3
+                onClick={() => {
+                  setOrdersLoaded(false);
+                  setWishlistLoaded(false);
+                  setFavoritesLoaded(false);
+                  setEmployeesLoaded(false);
+                  setReviewsLoaded(false);
+                  setComplaintsLoaded(true);
+                }}
+                className={complaintsLoaded ? "selectedTab" : ""}
+              >
+                Your Complaints
+              </h3>
+            )}
+            {(user.role.name == "Manager" || user.role.name == "Owner") && (
+              <h3
+                onClick={() => {
+                  setOrdersLoaded(false);
+                  setWishlistLoaded(false);
+                  setFavoritesLoaded(false);
+                  setEmployeesLoaded(false);
+                  setReviewsLoaded(false);
+                  setComplaintsLoaded(true);
+                }}
+                className={complaintsLoaded ? "selectedTab" : ""}
+              >
+                View Member Complaints
+              </h3>
+            )}
+            <h3
+              onClick={() => {
+                setOrdersLoaded(false);
+                setWishlistLoaded(true);
+                setFavoritesLoaded(false);
+                setEmployeesLoaded(false);
+                setReviewsLoaded(false);
+                setComplaintsLoaded(false);
+              }}
+              className={wishlistLoaded ? "selectedTab" : ""}
+            >
+              Your Wishlist
+            </h3>
+            <h3
+              onClick={() => {
+                setOrdersLoaded(false);
+                setWishlistLoaded(false);
+                setFavoritesLoaded(true);
+                setEmployeesLoaded(false);
+                setReviewsLoaded(false);
+                setComplaintsLoaded(false);
+              }}
+              className={favoritesLoaded ? "selectedTab" : ""}
+            >
+              Your Favorites
+            </h3>
+            {user && user.role.name !== "Member" && (
+              <h3
+                onClick={() => {
+                  setOrdersLoaded(false);
+                  setWishlistLoaded(false);
+                  setFavoritesLoaded(false);
+                  setEmployeesLoaded(true);
+                  setReviewsLoaded(false);
+                  setComplaintsLoaded(false);
+                }}
+                className={employeesLoaded ? "selectedTab" : ""}
+              >
+                Staff List
+              </h3>
+            )}
+          </div>
         </div>
       </div>
+
       <div>
-        <div className="profileTabsContainer">
-          <h3
-            onClick={() => {
-              setOrdersLoaded(true);
-              setWishlistLoaded(false);
-              setFavoritesLoaded(false);
-              setEmployeesLoaded(false);
-              setReviewsLoaded(false);
-              setComplaintsLoaded(false);
-            }}
-          >
-            Your Orders
-          </h3>
-          {user.role.name == "Member" && (
-            <h3
-              onClick={() => {
-                setOrdersLoaded(false);
-                setWishlistLoaded(false);
-                setFavoritesLoaded(false);
-                setEmployeesLoaded(false);
-                setReviewsLoaded(true);
-                setComplaintsLoaded(false);
-              }}
-            >
-              Your Reviews
-            </h3>
-          )}
-          {(user.role.name == "Manager" || user.role.name == "Owner") && (
-            <h3
-              onClick={() => {
-                setOrdersLoaded(false);
-                setWishlistLoaded(false);
-                setFavoritesLoaded(false);
-                setEmployeesLoaded(false);
-                setReviewsLoaded(true);
-                setComplaintsLoaded(false);
-              }}
-            >
-              View Member Reviews
-            </h3>
-          )}
-          {user.role.name == "Member" && (
-            <h3
-              onClick={() => {
-                setOrdersLoaded(false);
-                setWishlistLoaded(false);
-                setFavoritesLoaded(false);
-                setEmployeesLoaded(false);
-                setReviewsLoaded(false);
-                setComplaintsLoaded(true);
-              }}
-            >
-              Your Complaints
-            </h3>
-          )}
-          {(user.role.name == "Manager" || user.role.name == "Owner") && (
-            <h3
-              onClick={() => {
-                setOrdersLoaded(false);
-                setWishlistLoaded(false);
-                setFavoritesLoaded(false);
-                setEmployeesLoaded(false);
-                setReviewsLoaded(false);
-                setComplaintsLoaded(true);
-              }}
-            >
-              View Member Complaints
-            </h3>
-          )}
-          <h3
-            onClick={() => {
-              setOrdersLoaded(false);
-              setWishlistLoaded(true);
-              setFavoritesLoaded(false);
-              setEmployeesLoaded(false);
-              setReviewsLoaded(false);
-              setComplaintsLoaded(false);
-            }}
-          >
-            Your Wishlist
-          </h3>
-          <h3
-            onClick={() => {
-              setOrdersLoaded(false);
-              setWishlistLoaded(false);
-              setFavoritesLoaded(true);
-              setEmployeesLoaded(false);
-              setReviewsLoaded(false);
-              setComplaintsLoaded(false);
-            }}
-          >
-            Your Favorites
-          </h3>
-          {user && user.role.name !== "Member" && (
-            <h3
-              onClick={() => {
-                setOrdersLoaded(false);
-                setWishlistLoaded(false);
-                setFavoritesLoaded(false);
-                setEmployeesLoaded(true);
-                setReviewsLoaded(false);
-                setComplaintsLoaded(false);
-              }}
-            >
-              Staff List
-            </h3>
-          )}
-        </div>
         <div className="profileTabsDisplaysContainer">
           {ordersLoaded && (
             <div>

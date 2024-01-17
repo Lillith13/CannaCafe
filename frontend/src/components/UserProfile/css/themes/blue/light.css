@@ -1,0 +1,41 @@
+.profileNav#BL {
+  background-color: #a0e9ff;
+  border: 3px solid #3a98b9;
+}
+
+.profileNavTabsToggled#BL,
+.profileNavButtonsToggled#BL {
+  background-color: #3a98b9;
+  border: 3px solid #3a98b9;
+  cursor: pointer;
+}
+.profileNavTabsToggled#BL:hover,
+.profileNavButtonsToggled#BL:hover {
+  background-color: #79e0ee;
+}
+
+.profileTabs#BL > h3 {
+  border: 3px solid #fbffdc;
+  border-radius: 15px;
+  padding: 3px 15px;
+}
+.profileTabs#BL > .selectedTab,
+.profileTabs#BL > h3:hover {
+  background-color: #98eecc;
+  border: 3px solid #d0f5be;
+}
+
+.profileButtons#BL > * > button,
+.profileButtons#BL > * > * > button {
+  background-color: #cdf5fd;
+  color: #000000;
+}
+.profileButtons#BL > * > button:hover,
+.profileButtons#BL > * > * > button:hover {
+  background-color: #92c7cf;
+  border-style: inset;
+  color: #000000;
+}
+
+/* .profileButtons#GL > #memberProfileButtons {} */
+/* .profileButtons#GL > #staffOnlyButtons {} */

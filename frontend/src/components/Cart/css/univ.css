@@ -125,7 +125,8 @@
 }
 .checkoutNcontinueShopButtons > button,
 .checkoutNcontinueShopButtons > a > button,
-.emptyBagButton {
+.emptyBagButton,
+.emptyCartButton {
   padding: 15px;
   font-size: bold;
 }

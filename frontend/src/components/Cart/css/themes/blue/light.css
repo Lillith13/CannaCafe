@@ -82,14 +82,16 @@
 
 .checkoutNcontinueShopButtons#BL > button,
 .checkoutNcontinueShopButtons#BL > a > button,
-.emptyBagButton#BL {
+.emptyBagButton#BL,
+.emptyCartButton#BL {
   background: linear-gradient(0deg, #00a9ff, #79e0ee);
   color: #000000;
 }
 
 .checkoutNcontinueShopButtons#BL > button:hover,
 .checkoutNcontinueShopButtons#BL > a > button:hover,
-.emptyBagButton#BL:hover {
+.emptyBagButton#BL:hover,
+.emptyCartButton#BL:hover {
   background: linear-gradient(180deg, #00a9ff, #79e0ee);
   background-color: #eaeccc;
   border: 3px inset black;

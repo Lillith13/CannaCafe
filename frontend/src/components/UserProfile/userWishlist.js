@@ -6,6 +6,15 @@ import { getWishlist } from "../../store/wishlist";
 import OpenModalButton from "../OpenModalButton";
 import ConfirmRemove from "../AllModals/ConfirmRemove";
 
+import "./css/tabs/wishlist.css";
+import "./css/tabs/univ.css";
+import "./css/themes/green/light.css";
+import "./css/themes/green/dark.css";
+import "./css/themes/blue/light.css";
+import "./css/themes/blue/dark.css";
+import "./css/themes/purple/light.css";
+import "./css/themes/purple/dark.css";
+
 export default function UserWishlist() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);

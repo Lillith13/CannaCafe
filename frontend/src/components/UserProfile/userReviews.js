@@ -11,7 +11,14 @@ import noPreviewImage from "../../assets/noImgAvailable.jpg";
 import profileIcon from "../../assets/profile_icon.png";
 import blackCannaLeaf from "../../assets/blackCannaLeaf.png";
 
-import "./css/UserProfile.css";
+import "./css/tabs/reviews.css";
+import "./css/tabs/univ.css";
+import "./css/themes/green/light.css";
+import "./css/themes/green/dark.css";
+import "./css/themes/blue/light.css";
+import "./css/themes/blue/dark.css";
+import "./css/themes/purple/light.css";
+import "./css/themes/purple/dark.css";
 
 export default function UserReviews() {
   const dispatch = useDispatch();

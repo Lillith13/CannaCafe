@@ -1,0 +1,123 @@
+.profileReviewsTabContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0px 25px 25px;
+  width: 95%;
+}
+.profileTabReviewDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 3px solid #a9b388;
+  background-color: #395144;
+  border-radius: 15px;
+  padding: 15px;
+  width: 95%;
+}
+.profileTabReviewDiv > div {
+  width: 100%;
+  gap: 15px;
+}
+.profileTabReviewDiv > div:first-child {
+  width: 100%;
+  display: flex;
+  max-height: 250px;
+}
+
+.userPicNInfo > h3,
+.userPicNInfo > h4 {
+  margin: 0px;
+  padding: 0px;
+}
+.userPicNInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 25px 15px 5px;
+  width: 15%;
+}
+.reviewedProductImageDiv {
+  padding: 15px 25px 15px 5px;
+  width: 50%;
+  /* max-height: 150px; */
+  border-radius: 15px;
+  background-size: cover;
+}
+.reviewedProductImageDiv:hover {
+  box-shadow: 7px 5px 5px #a9b388;
+}
+.userProfilePicture {
+  width: 25px;
+}
+
+.reviewBodyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  /* border: 1px solid white; */
+}
+
+.reviewBodyContainer#dontOwn {
+  border: none;
+}
+
+.usersReviewBody {
+  overflow-y: scroll;
+  word-wrap: anywhere;
+  width: 100%;
+  padding: 5px;
+  margin-left: 15px;
+  border: 3px inset #3e372f;
+  background-color: #a9b388;
+  color: #3e372f;
+  font-weight: bold;
+}
+
+.usersReviewBody::-webkit-scrollbar {
+  display: none;
+}
+
+.reviewedProductName {
+  color: #e5e5cb;
+  font-size: 25px;
+  margin: 5px;
+}
+.reviewedProductName:hover {
+  color: #a9b388;
+}
+
+.reviewStarsDiv {
+  display: flex;
+  gap: 5px;
+}
+/* .starsInProfile {
+    width: 25px;
+    filter: invert(0.25) blur(1px);
+  } */
+/* .selectedRating {
+    width: 25px;
+  } */
+
+.reviewButtonsContainer {
+  display: flex;
+  flex-direction: row;
+}
+.reviewButtonsContainer > button {
+  padding: 50px;
+}
+
+/* .reviewButtonsContainer > button:first-child:hover {
+    color: #1a120b;
+    background-color: #f1d3b3;
+  }
+  .reviewButtonsContainer > button:last-child:hover {
+    color: #1a120b;
+    background-color: #dbc1bb;
+  } */

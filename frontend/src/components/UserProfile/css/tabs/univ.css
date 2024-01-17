@@ -1,0 +1,65 @@
+.userFavesTabContainer,
+.userWishTabContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  justify-content: start;
+  padding-left: 45px;
+  margin-bottom: 25px;
+}
+.userFavesContainer,
+.userWishContainer {
+  margin-top: 25px;
+  padding: 0px 10px 25px 10px;
+  word-wrap: anywhere;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 27%;
+  height: 250px;
+  border: 3px solid #a9b388;
+  border-radius: 15px;
+}
+.userFavesContainer:hover,
+.userWishContainer:hover {
+  box-shadow: 10px 10px 5px 1px #395144;
+}
+.userFavesContainer > button,
+.userWishContainer > button {
+  width: 65%;
+  font-size: 15px;
+  border-radius: 0px 0px 15px 15px;
+}
+.userFavesContainer > a,
+.userWishContainer > a {
+  color: #a9b388;
+  background-color: #675d50;
+  width: 78%;
+  padding: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 15px 15px 0px 0px;
+  border: 3px solid #a9b388;
+  box-shadow: 10px;
+}
+.userFavesContainer > a:hover,
+.userWishContainer > a:hover,
+.empListDiv > a:hover,
+.managerListDiv > a:hover,
+.ownerListDiv > a:hover,
+.managerListDiv > a:hover,
+.ownerListDiv > a:hover {
+  color: rgb(101, 100, 124);
+  background-color: #e4d3cf;
+}
+.userFavesContainer > button:hover,
+.userWishContainer > button:hover {
+  background-color: #b67162;
+}
+
+.emptyFavesTabButton,
+.emptyWishTabButton {
+  padding: 15px;
+}

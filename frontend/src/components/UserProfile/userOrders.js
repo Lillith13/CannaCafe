@@ -3,11 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAllOrders } from "../../store/orders";
 
-import "./css/UserProfile.css";
 import OpenModalButton from "../OpenModalButton";
 import ConfirmAdd from "../AllModals/ConfirmAddTo";
 import CreateReview from "../AllModals/Review";
 import ReturnItem from "../AllModals/ReturnItem";
+
+import "./css/tabs/orders.css";
+import "./css/tabs/univ.css";
+import "./css/themes/green/light.css";
+import "./css/themes/green/dark.css";
+import "./css/themes/blue/light.css";
+import "./css/themes/blue/dark.css";
+import "./css/themes/purple/light.css";
+import "./css/themes/purple/dark.css";
 
 export default function UserOrders() {
   const dispatch = useDispatch();

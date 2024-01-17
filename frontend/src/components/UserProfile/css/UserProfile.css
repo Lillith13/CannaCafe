@@ -1,63 +1,162 @@
-#userProfileNav {
-  display: flex;
-  padding: 15px;
-  background-color: #395144;
-  border: 5px inset #a9b388;
-}
-#userProfileNav > div {
-  display: flex;
-  width: 100%;
-  gap: 10px;
-  padding: 7px;
-  background-color: #4e6c50;
-}
-#memberProfileButtons {
+.profileNav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 99.5%;
+  position: absolute;
+  left: 0px;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.profileNavTabsToggled,
+.profileNavButtonsToggled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  width: 25px;
+  height: 79px;
+  /* * font settings below subject to change */
+  font-weight: bold;
+  font-size: 20px;
+  transition: 1.5s ease;
+  cursor: pointer;
+}
+.profileNavTabsToggled {
+  border-radius: 5px 25px 25px 5px;
+  animation: ease 1s slideinButtons;
+  -webkit-animation: ease 1s slideinButtons;
+}
+.profileNavButtonsToggled {
+  border-radius: 25px 5px 5px 25px;
+  animation: ease 1s slideinTabs;
+  -webkit-animation: ease 1s slideinTabs;
+}
+
+.showProfileButtons,
+.showProfileTabs {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+}
+.showProfileButtons {
+  animation: ease 1s slideinButtons;
+  -webkit-animation: ease 1s slideinButtons;
+}
+.showProfileTabs {
+  animation: ease 1s slideinTabs;
+  -webkit-animation: ease 1s slideinTabs;
+}
+
+.hideProfileButtons,
+.hideProfileTabs {
+  display: none;
+}
+.hideProfileButtons {
+  animation: ease 1s slideoutButtons;
+  -webkit-animation: ease 1s slideoutButtons;
+}
+.hideProfileTabs {
+  animation: ease 1s slideoutTabs;
+  -webkit-animation: ease 1s slideoutTabs;
+}
+
+@keyframes slideinButtons {
+  0% {
+    -webkit-transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+@-webkit-keyframes slideinButtons {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes slideinTabs {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+@-webkit-keyframes slideinTabs {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideoutButtons {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes slideoutButtons {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+@keyframes slideoutTabs {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@-webkit-keyframes slideoutTabs {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+  }
+}
+
+.profileButtons,
+.profileTabs {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  transition: 2s ease;
+}
+.profileTabs > h3:hover {
+  cursor: pointer;
+}
+
+#memberProfileButtons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 75%;
 }
 #staffOnlyButtons {
   display: flex;
   justify-content: flex-end;
-}
-#userProfileNav > * > button,
-#userProfileNav > * > * > button {
-  background-color: #f0ebce;
-  color: #675d50;
-}
-#userProfileNav > * > * {
-  display: flex;
-  align-items: center;
-}
-#userProfileNav > * > * > button {
-  padding: 8px 3px;
-}
-#userProfileNav > * > button:hover,
-#userProfileNav > * > * > button:hover {
-  background-color: #807464;
-  color: #f0ebce;
+  gap: 5px;
 }
 
-.profileTabsContainer {
-  display: flex;
-  justify-content: center;
-  gap: 1%;
-}
-.profileTabsContainer > h3 {
-  cursor: pointer;
-  border: 3px solid #4e6c50;
-  background-color: #acb992;
-  color: #675d50;
-  border-radius: 15px;
-  padding: 15px;
-  font-size: 15px;
-  width: fit-content;
-}
-.profileTabsContainer > h3:hover {
-  background-color: #f0ebce;
-  color: #675d50;
-  border-radius: 15px;
-}
 .profileTabsDisplaysContainer {
+  margin-top: 125px;
+}
+/* .profileTabsDisplaysContainer {
   background-color: #807464;
   color: #f0ebce;
   border-radius: 15px;
@@ -65,9 +164,9 @@
   width: 98%;
   overflow-y: scroll;
   scrollbar-color: #d3b5a0;
-}
+} */
 
-.profileTabsDisplaysContainer::-webkit-scrollbar {
+/* .profileTabsDisplaysContainer::-webkit-scrollbar {
   width: 10px;
   background-color: #395144;
   border-radius: 30px;
@@ -81,417 +180,4 @@
 .profileTabsDisplaysContainer::-webkit-scrollbar-thumb:vertical {
   background-color: #a9b388;
   border-radius: 30px;
-}
-
-.staffListContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  align-items: center;
-  gap: 15px;
-}
-.empListContainer,
-.managerListContainer,
-.ownerListContainer {
-  display: flex;
-  flex-direction: column;
-  border: 3px dotted #a9b388;
-  border-radius: 15px;
-  padding: 25px;
-  width: 90%;
-  overflow-x: scroll;
-}
-
-.empListDiv,
-.managerListDiv,
-.ownerListDiv {
-  display: flex;
-  overflow-x: scroll;
-  font-size: 20px;
-}
-.empListDiv > a,
-.managerListDiv > a,
-.ownerListDiv > a {
-  padding: 25px;
-  border-radius: 15px;
-  /* max-width: 50%; */
-}
-.staffName {
-  color: #d6e4a8;
-}
-
-.userFavesTabContainer,
-.userWishTabContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 35px;
-  justify-content: start;
-  padding-left: 45px;
-  margin-bottom: 25px;
-}
-.userFavesContainer,
-.userWishContainer {
-  margin-top: 25px;
-  padding: 0px 10px 25px 10px;
-  word-wrap: anywhere;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  width: 27%;
-  height: 250px;
-  border: 3px solid #a9b388;
-  border-radius: 15px;
-}
-.userFavesContainer:hover,
-.userWishContainer:hover {
-  box-shadow: 10px 10px 5px 1px #395144;
-}
-.userFavesContainer > button,
-.userWishContainer > button {
-  width: 65%;
-  font-size: 15px;
-  border-radius: 0px 0px 15px 15px;
-}
-.userFavesContainer > a,
-.userWishContainer > a {
-  color: #a9b388;
-  background-color: #675d50;
-  width: 78%;
-  padding: 5px;
-  font-size: 10px;
-  font-weight: bold;
-  border: 2px solid black;
-  border-radius: 15px 15px 0px 0px;
-  border: 3px solid #a9b388;
-  box-shadow: 10px;
-}
-.userFavesContainer > a:hover,
-.userWishContainer > a:hover,
-.empListDiv > a:hover,
-.managerListDiv > a:hover,
-.ownerListDiv > a:hover,
-.managerListDiv > a:hover,
-.ownerListDiv > a:hover {
-  color: rgb(101, 100, 124);
-  background-color: #e4d3cf;
-}
-.userFavesContainer > button:hover,
-.userWishContainer > button:hover {
-  background-color: #b67162;
-}
-
-.emptyFavesTabButton,
-.emptyWishTabButton {
-  padding: 15px;
-}
-
-.empListDiv > a > div > .profileLogo,
-.managerListDiv > a > div > .profileLogo,
-.ownerListDiv > a > div > .profileLogo,
-.empListDiv > a > div > .userProfilePic,
-.managerListDiv > a > div > .userProfilePic,
-.ownerListDiv > a > div > .userProfilePic {
-  width: 100px;
-  height: 100px;
-}
-.empListDiv > a > div > .userProfilePic,
-.managerListDiv > a > div > .userProfilePic,
-.ownerListDiv > a > div > .userProfilePic {
-  border-radius: 15px;
-}
-
-.profileReviewsTabContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  margin: 25px 0px 25px 25px;
-  width: 95%;
-}
-.profileTabReviewDiv {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  justify-content: space-evenly;
-  align-items: center;
-  border: 3px solid #a9b388;
-  background-color: #395144;
-  border-radius: 15px;
-  padding: 15px;
-  width: 95%;
-}
-.profileTabReviewDiv > div {
-  width: 100%;
-  gap: 15px;
-}
-.profileTabReviewDiv > div:first-child {
-  width: 100%;
-  display: flex;
-  max-height: 250px;
-}
-
-.userPicNInfo > h3,
-.userPicNInfo > h4 {
-  margin: 0px;
-  padding: 0px;
-}
-.userPicNInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 25px 15px 5px;
-  width: 15%;
-}
-.reviewedProductImageDiv {
-  padding: 15px 25px 15px 5px;
-  width: 50%;
-  /* max-height: 150px; */
-  border-radius: 15px;
-  background-size: cover;
-}
-.reviewedProductImageDiv:hover {
-  box-shadow: 7px 5px 5px #a9b388;
-}
-.userProfilePicture {
-  width: 25px;
-}
-
-.reviewBodyContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  /* border: 1px solid white; */
-}
-
-.reviewBodyContainer#dontOwn {
-  border: none;
-}
-
-.usersReviewBody {
-  overflow-y: scroll;
-  word-wrap: anywhere;
-  width: 100%;
-  padding: 5px;
-  margin-left: 15px;
-  border: 3px inset #3e372f;
-  background-color: #a9b388;
-  color: #3e372f;
-  font-weight: bold;
-}
-
-.usersReviewBody::-webkit-scrollbar {
-  display: none;
-}
-
-.reviewedProductName {
-  color: #e5e5cb;
-  font-size: 25px;
-  margin: 5px;
-}
-.reviewedProductName:hover {
-  color: #a9b388;
-}
-
-.reviewStarsDiv {
-  display: flex;
-  gap: 5px;
-}
-/* .starsInProfile {
-  width: 25px;
-  filter: invert(0.25) blur(1px);
 } */
-/* .selectedRating {
-  width: 25px;
-} */
-
-.reviewButtonsContainer {
-  display: flex;
-  flex-direction: row;
-}
-.reviewButtonsContainer > button {
-  padding: 50px;
-}
-
-/* .reviewButtonsContainer > button:first-child:hover {
-  color: #1a120b;
-  background-color: #f1d3b3;
-}
-.reviewButtonsContainer > button:last-child:hover {
-  color: #1a120b;
-  background-color: #dbc1bb;
-} */
-
-.orderTabContainer {
-  display: flex;
-  width: 98%;
-  /* border: 1px solid black; */
-  margin-left: 13px;
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-.ordersContainerDiv {
-  display: flex;
-  width: 100%;
-  flex-direction: column-reverse;
-  /* border: 1px solid black; */
-  gap: 15px;
-}
-.idvOrderDiv {
-  /* border: 1px solid black; */
-  border-radius: 25px;
-  background-color: #1a120b;
-  padding: 10px;
-}
-
-.orderCardTitle {
-  background-color: #3f2c1b;
-  border: 5px #1a120b;
-  border-style: inset;
-  font-size: 25px;
-  padding: 15px;
-  border-radius: 25px 25px 0px 0px;
-}
-
-.orderItemsContainer {
-  /* border: 1px solid black; */
-  display: flex;
-}
-
-.orderDetails {
-  /* border: 1px solid black; */
-  background-color: #395144;
-  color: #f0ebce;
-  font-weight: bold;
-  border-radius: 0px 0px 0px 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.orderItemDetails > a {
-  font-size: 25px;
-  font-weight: bold;
-  color: #1a120b;
-}
-.orderItemDetails > a:hover {
-  font-size: 25px;
-  font-weight: bold;
-  color: #464e2e;
-}
-.orderDetails > button {
-  margin: 0px 10px 20px 10px;
-  padding: 5px 10px;
-}
-#reorder > button,
-#review > button {
-  padding: 5px;
-}
-#return > button {
-  padding: 10px;
-}
-#review > button:hover {
-  background-color: rgba(101, 100, 124, 0.5);
-}
-#return > button:hover,
-.orderDetails > button:hover {
-  background-color: #e2bcb7;
-  color: #1a120b;
-}
-
-.orderItemsDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 200px;
-  /* border: 1px solid black; */
-  border-radius: 0px 0px 25px 0px;
-  padding-left: 15px;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  overflow-y: auto;
-  gap: 15px;
-  background-color: #4e6c50;
-}
-.orderItemsDiv::-webkit-scrollbar {
-  display: none;
-}
-.orderItemsDiv::-webkit-scrollbar:hover {
-  width: 5px;
-}
-
-.orderItem {
-  border: 7px #464e2e;
-  border-style: inset;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background-color: #acb992;
-  width: 90%;
-  color: #1a120b;
-}
-.orderItem > img {
-  width: 35%;
-}
-
-.orderItemDetails {
-  /* border: 1px solid black; */
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 50%;
-  padding: 25px;
-}
-.orderItemDetails > p,
-.orderItemDetails > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  font-weight: bold;
-  font-size: 25px;
-}
-.orderItemDetails > div {
-  font-size: 20px;
-}
-
-.orderButtons {
-  width: 15%;
-  gap: 15px;
-  display: flex;
-  flex-direction: column;
-  /* padding: 0px 25px; */
-  margin-right: 10px;
-}
-#orderReturnButton,
-#orderPostReviewButton,
-#orderBuyAgainButton {
-  padding: 10px 15px;
-}
-
-#orderPostReviewButton:hover {
-  color: #e2bcb7;
-  background-color: rgb(101, 100, 124);
-  cursor: not-allowed;
-}
-
-#empty {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-#noOrdersButtons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-#noOrdersButtons > a > button {
-  padding: 15px;
-}

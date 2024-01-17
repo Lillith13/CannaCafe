@@ -78,14 +78,16 @@
 
 .checkoutNcontinueShopButtons#GD > button,
 .checkoutNcontinueShopButtons#GD > a > button,
-.emptyBagButton#GD {
+.emptyBagButton#GD,
+.emptyCartButton#GD {
   background-color: #a4b494;
   color: #191a19;
 }
 
 .checkoutNcontinueShopButtons#GD > button:hover,
 .checkoutNcontinueShopButtons#GD > a > button:hover,
-.emptyBagButton#GD:hover {
+.emptyBagButton#GD:hover,
+.emptyCartButton#GD:hover {
   background-color: #3b5249;
   color: #ecdbba;
   border: 3px inset black;

@@ -83,7 +83,8 @@
   color: #fbfacd;
 }
 .checkoutNcontinueShopButtons#PL > a > button,
-.emptyBagButton#PL {
+.emptyBagButton#PL,
+.emptyCartButton#PL {
   background-color: #937dc2;
   color: #fbfacd;
 }
@@ -94,7 +95,8 @@
   border: 3px inset black;
 }
 .checkoutNcontinueShopButtons#PL > a > button:hover,
-.emptyBagButton#PL:hover {
+.emptyBagButton#PL:hover,
+.emptyCartButton#PL:hover {
   background-color: #ffabe1;
   color: #000000;
   border: 3px inset black;

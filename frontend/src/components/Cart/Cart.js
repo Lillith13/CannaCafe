@@ -134,7 +134,9 @@ export default function Cart() {
           <div className="emptyCartContainer">
             <h1>No items in your cart...</h1>
             <NavLink exact to="/products">
-              <button className="emptyCartButton">Find items to Add</button>
+              <button className="emptyCartButton" id={theme}>
+                Find items to Add
+              </button>
             </NavLink>
           </div>
         )}

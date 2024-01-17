@@ -6,6 +6,15 @@ import { getAllEmployees } from "../../store/employees";
 
 import profileIcon from "../../assets/profile_icon.png";
 
+import "./css/tabs/employees.css";
+import "./css/tabs/univ.css";
+import "./css/themes/green/light.css";
+import "./css/themes/green/dark.css";
+import "./css/themes/blue/light.css";
+import "./css/themes/blue/dark.css";
+import "./css/themes/purple/light.css";
+import "./css/themes/purple/dark.css";
+
 export default function UserEmployees() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);

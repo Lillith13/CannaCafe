@@ -83,7 +83,8 @@
   color: #000000;
 }
 .checkoutNcontinueShopButtons#GL > a > button,
-.emptyBagButton#GL {
+.emptyBagButton#GL,
+.emptyCartButton#GL {
   background-color: #c4d7b2;
   color: #000000;
 }
@@ -93,7 +94,8 @@
   border: 3px inset black;
 }
 .checkoutNcontinueShopButtons#GL > a > button:hover,
-.emptyBagButton#GL:hover {
+.emptyBagButton#GL:hover,
+.emptyCartButton#GL:hover {
   background-color: #eaeccc;
   border: 3px inset black;
 }

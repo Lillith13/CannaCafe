@@ -1,0 +1,53 @@
+.staffListContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  align-items: center;
+  gap: 15px;
+}
+.empListContainer,
+.managerListContainer,
+.ownerListContainer {
+  display: flex;
+  flex-direction: column;
+  border: 3px dotted #a9b388;
+  border-radius: 15px;
+  padding: 25px;
+  width: 90%;
+  overflow-x: scroll;
+}
+
+.empListDiv,
+.managerListDiv,
+.ownerListDiv {
+  display: flex;
+  overflow-x: scroll;
+  font-size: 20px;
+}
+.empListDiv > a,
+.managerListDiv > a,
+.ownerListDiv > a {
+  padding: 25px;
+  border-radius: 15px;
+  /* max-width: 50%; */
+}
+.staffName {
+  color: #d6e4a8;
+}
+
+.empListDiv > a > div > .profileLogo,
+.managerListDiv > a > div > .profileLogo,
+.ownerListDiv > a > div > .profileLogo,
+.empListDiv > a > div > .userProfilePic,
+.managerListDiv > a > div > .userProfilePic,
+.ownerListDiv > a > div > .userProfilePic {
+  width: 100px;
+  height: 100px;
+}
+.empListDiv > a > div > .userProfilePic,
+.managerListDiv > a > div > .userProfilePic,
+.ownerListDiv > a > div > .userProfilePic {
+  border-radius: 15px;
+}
