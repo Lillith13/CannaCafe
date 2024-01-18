@@ -91,6 +91,7 @@
 .emptyCartButton#BD:hover {
   background: linear-gradient(180deg, #0e2954, #1f6e8c);
   border: 3px inset black;
+  color: #a5d7e8;
 }
 
 .emptyCartContainer#BD,

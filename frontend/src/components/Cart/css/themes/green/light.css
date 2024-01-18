@@ -91,11 +91,13 @@
 
 .checkoutNcontinueShopButtons#GL > button:hover {
   background-color: #e9e5d6;
+  color: #000000;
   border: 3px inset black;
 }
 .checkoutNcontinueShopButtons#GL > a > button:hover,
 .emptyBagButton#GL:hover,
 .emptyCartButton#GL:hover {
   background-color: #eaeccc;
+  color: #000000;
   border: 3px inset black;
 }
