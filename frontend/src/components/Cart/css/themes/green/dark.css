@@ -92,3 +92,8 @@
   color: #ecdbba;
   border: 3px inset black;
 }
+
+.emptyCartContainer#GD,
+.emptyBagContainer#GD {
+  color: #ecdbba;
+}

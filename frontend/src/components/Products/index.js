@@ -115,7 +115,7 @@ export default function Products() {
       <div className="topOfPageItems">
         <div>
           <button
-            className="goBackButton"
+            className="goBackButton productsPage"
             id={theme}
             onClick={(e) => {
               e.preventDefault();
@@ -159,7 +159,9 @@ export default function Products() {
       </div>
 
       {params && params.name ? (
-        <h1 className="productsPageTitle">{params.name}</h1>
+        <h1 className="productsPageTitle" id={theme}>
+          {params.name}
+        </h1>
       ) : (
         <h1 className="productsPageTitle" id={theme}>
           {location.pathname.slice(1)[0].toUpperCase() +
@@ -193,14 +195,10 @@ export default function Products() {
                     key={product.id}
                     className={
                       view === "tile"
-                        ? `idvProdContainerTile ${theme}`
-                        : `idvProdContainerList ${theme}`
+                        ? `idvProdContainerTile`
+                        : `idvProdContainerList`
                     }
-                    id={
-                      Object.values(products).length < 3
-                        ? "idvProdContainerAlt"
-                        : "indProdContainerMain"
-                    }
+                    id={theme}
                     onClick={(e) => {
                       e.preventDefault();
                       if (e.target.tagName != "BUTTON") {
@@ -297,12 +295,12 @@ export default function Products() {
                                 Object.keys(userFaves).includes(product.id)) &&
                               !product.category.shippable ? (
                                 <div
-                                  className={`removeFromButton ${theme}`}
-                                  id={
+                                  className={
                                     view == "tile"
-                                      ? "productsTileRemoveFrom"
-                                      : "productsListRemoveFrom"
+                                      ? "productsTileRemoveFrom productsPage"
+                                      : "productsListRemoveFrom productsPage"
                                   }
+                                  id={theme}
                                 >
                                   <OpenModalButton
                                     buttonText="Remove From Favorites"
@@ -316,12 +314,12 @@ export default function Products() {
                                 </div>
                               ) : (
                                 <div
-                                  className={`productsUnivButton ${theme}`}
-                                  id={
+                                  className={
                                     view == "tile"
-                                      ? "productsTileUnivButton"
-                                      : "productsListUnivButton"
+                                      ? "productsTileUnivButton productsPage"
+                                      : "productsListUnivButton productsPage"
                                   }
+                                  id={theme}
                                 >
                                   <OpenModalButton
                                     buttonText="Add to Favorites"
@@ -344,12 +342,12 @@ export default function Products() {
                                 Object.keys(userWishes).includes(product.id)) &&
                               product.category.shippable ? (
                                 <div
-                                  className={`removeFromButton ${theme}`}
-                                  id={
+                                  className={
                                     view == "tile"
-                                      ? "productsTileRemoveFrom"
-                                      : "productsListRemoveFrom"
+                                      ? "productsTileRemoveFrom productsPage"
+                                      : "productsListRemoveFrom productsPage"
                                   }
+                                  id={theme}
                                 >
                                   <OpenModalButton
                                     buttonText="Remove From Wishlist"
@@ -363,12 +361,12 @@ export default function Products() {
                                 </div>
                               ) : (
                                 <div
-                                  className={`productsUnivButton ${theme}`}
-                                  id={
+                                  className={
                                     view == "tile"
-                                      ? "productsTileUnivButton"
-                                      : "productsListUnivButton"
+                                      ? "productsTileUnivButton productsPage"
+                                      : "productsListUnivButton productsPage"
                                   }
+                                  id={theme}
                                 >
                                   <OpenModalButton
                                     buttonText="Add to Wishlist"
@@ -395,14 +393,14 @@ export default function Products() {
                           {user &&
                             (user.role.name == "Owner" ||
                               user.role.name == "Manager") && (
-                              <>
+                              <div>
                                 <div
-                                  className={`editProductButton ${theme}`}
-                                  id={
+                                  className={
                                     view == "tile"
-                                      ? "productsTileEdit"
-                                      : "productsListEdit"
+                                      ? "productsTileEdit productsPage"
+                                      : "productsListEdit productsPage"
                                   }
+                                  id={theme}
                                 >
                                   <OpenModalButton
                                     buttonText="Edit Product"
@@ -419,12 +417,12 @@ export default function Products() {
                                   />
                                 </div>
                                 <div
-                                  className={`deleteProductButton ${theme}`}
-                                  id={
+                                  className={
                                     view == "tile"
-                                      ? "productsTileDelete"
-                                      : "productsListDelete"
+                                      ? "productsTileDelete productsPage"
+                                      : "productsListDelete productsPage"
                                   }
+                                  id={theme}
                                 >
                                   <OpenModalButton
                                     buttonText="Delete Product"
@@ -437,7 +435,7 @@ export default function Products() {
                                     }
                                   />
                                 </div>
-                              </>
+                              </div>
                             )}
                         </div>
                       </div>

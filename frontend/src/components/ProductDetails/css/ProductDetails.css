@@ -1,12 +1,9 @@
 .productContainerDiv {
-  border-bottom: 3px dotted black;
   padding-bottom: 25px;
 }
 
 .goBackButton {
   padding: 5px 15px;
-  background-color: #a9b388;
-  color: #fefae0;
   font-size: 20px;
 }
 .productContainer {
@@ -21,10 +18,10 @@
   width: 50%;
 }
 .productInfoDiv {
-  width: 85%;
+  width: 90%;
   font-size: 15px;
 }
-.productInfoDiv > p {
+.productInfoDiv {
   display: flex;
   text-align: start;
   text-wrap: wrap;
@@ -34,35 +31,38 @@
 
 .productImageDiv {
   width: 50%;
-  height: 250px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 25px;
+}
+.productImageDiv:hover {
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
 }
 
-.nameNavailNpriceDiv {
+.prodInfoNButtonsDiv {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .numAvailNprice {
   display: flex;
   justify-content: space-between;
-  width: 93%;
+  width: 85%;
   font-size: 20px;
 }
 .priceOnly {
   display: flex;
   justify-content: flex-end;
-  width: 93%;
+  width: 85%;
   font-size: 20px;
 }
 
 .productButtonsDiv {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   gap: 15px;
 }
 
@@ -76,40 +76,19 @@
   justify-content: space-around;
 }
 
-.universallyAccessibleButtons > button {
-  padding: 5px;
-  background-color: rgba(100, 110, 200, 0.5);
-  color: #fefae0;
-}
-
-.universallyAccessibleButtons > button,
-.productsUnivButton,
-.removeFromButton,
-.editProductButton,
-.deleteProductButton {
+.universallyAccessibleButtons.productDetails > button,
+.productsUnivButton.productDetails,
+.removeFromButton.productDetails,
+.editProductButton.productDetails,
+.deleteProductButton.productDetails {
   width: 45%;
 }
-
-.removeFromButton > button,
-.editProductButton > button,
-.deleteProductButton > button {
-  padding: 10px;
+.productsUnivButton > button,
+.removeFromButton.productDetails > button,
+.editProductButton.productDetails > button,
+.deleteProductButton.productDetails > button {
+  padding: 5px;
   width: 100%;
-}
-
-.removeFromButton#productDetailsRemoveFrom > button:hover,
-.deleteProductButton#productDeatilsDeleteProduct > button:hover,
-.editProductButton#productDetailsEditProduct > button:hover {
-  color: #362706;
-}
-
-.removeFromButton#productDetailsRemoveFrom > button:hover,
-.deleteProductButton#productDeatilsDeleteProduct > button:hover {
-  background-color: #e4d3cf;
-}
-
-.editProductButton#productDetailsEditProduct > button:hover {
-  background-color: #f1d3b3;
 }
 
 .prodReviewsContainer {
@@ -125,75 +104,76 @@
   padding: 25px;
   margin: 25px;
   align-items: center;
-  border: 3px dotted #a9b388;
   border-radius: 15px;
-  width: 88%;
+  width: 92%;
 }
-.userPicNInfo > h3,
-.userPicNInfo > h4 {
+.userPicNInfo.productDetails > h3,
+.userPicNInfo.productDetails > h4 {
   margin: 0px;
   padding: 0px;
 }
-.userPicNInfo {
+.userPicNInfo.productDetails {
   display: flex;
   flex-direction: column;
   gap: 15px;
   align-items: center;
   padding: 15px 25px 15px 5px;
-  border-right: 1px solid #acb992;
 }
-.reviewBodyContainer#usersReview,
-.userPicNInfo#usersReview {
+.reviewBodyContainer.productDetails {
   border: none;
 }
-.userProfilePicture {
+.userProfilePicture.productDetails {
   width: 50px;
 }
 
-.reviewBodyContainer {
+.reviewBodyContainer.currUserReview {
   padding: 15px 25px 15px 5px;
   width: 50%;
-  border-right: 1px solid #acb992;
 }
-.usersReviewBody {
+.reviewBodyContainer.otherReview {
+  padding: 15px 25px 15px 5px;
+  width: 75%;
+}
+.usersReviewBody.productDetails {
+  overflow-y: scroll;
+  word-wrap: anywhere;
+  width: 100%;
+  padding: 5px;
+  margin-left: 15px;
+  font-weight: bold;
   text-align: start;
   overflow-y: scroll;
   word-wrap: anywhere;
   height: 75px;
 }
+.usersReviewBody.productDetails::-webkit-scrollbar {
+  display: none;
+}
 
-.reviewStarsDiv {
+.reviewStarsDiv.productDetails {
   display: flex;
   gap: 5px;
   justify-content: center;
 }
-.starsInProfile {
+.starsInProfile.productDetails {
   width: 25px;
   filter: invert(0.25) blur(1px);
 }
-.selectedRating {
+.selectedRating.productDetails {
   width: 25px;
 }
 
-.reviewButtonsContainer {
+.reviewButtonsContainer.productDetails {
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 35%;
 }
-.reviewButtonsContainer > button {
+.reviewButtonsContainer.productDetails > button {
   padding: 15px 0px;
 }
-.reviewButtonsContainer > button:first-child:hover {
-  color: #362706;
-  background-color: #f1d3b3;
-}
-.reviewButtonsContainer > button:last-child:hover {
-  color: #362706;
-  background-color: #dbc1bb;
-}
 
-.postReviewModalButton > button {
+.postReviewModalButton.productDetails > button {
   width: 20%;
   padding: 10px 0px;
 }

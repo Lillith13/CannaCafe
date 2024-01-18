@@ -1,0 +1,146 @@
+/* Light */
+.productContainerDiv#PL {
+  border-bottom: 3px dotted #cd8d7a;
+}
+
+.goBackButton.productDetails#PL {
+  background-color: #debace;
+  color: #030637;
+}
+.goBackButton.productDetails#PL:hover {
+  background-color: rgba(255, 171, 225, 0.5);
+  border-style: inset;
+}
+
+.universallyAccessibleButtons.productDetails#PL > button,
+.productsUnivButton.productDetails#PL > button,
+.removeFromButton.productDetails#PL > button,
+.deleteProductButton.productDetails#PL > button,
+.editProductButton.productDetails#PL > button {
+  background-color: #debace;
+  color: #030637;
+}
+.universallyAccessibleButtons.productDetails#PL > button:hover,
+.productsUnivButton.productDetails#PL > button:hover {
+  background-color: #937dc2;
+  color: #f0ece3;
+}
+
+.removeFromButton.productDetails#PL > button:hover,
+.deleteProductButton.productDetails#PL > button:hover {
+  background-color: #fbfacd;
+}
+
+.editProductButton.productDetails#PL > button:hover {
+  background-color: #dcffcc;
+}
+
+.productTabReviewDiv#PL {
+  border: 3px dotted #ffabe1;
+  background-color: #ba94d1;
+}
+
+.usersReviewBody.productDetails#PL {
+  border: 3px inset #ffabe1;
+  background-color: #baabda;
+  color: #030637;
+}
+
+.postReviewModalButton.productDetails#PL > button,
+.reviewButtonsContainer.productDetails#PL > button:first-child,
+.reviewButtonsContainer.productDetails#PL > button:last-child {
+  color: #030637;
+  background-color: #c689c6;
+}
+.postReviewModalButton.productDetails#PL > button:hover {
+  background-color: #a0c49d;
+}
+.reviewButtonsContainer.productDetails#PL > button:first-child:hover {
+  border-style: inset;
+  color: #030637;
+  background-color: #dcffcc;
+}
+.reviewButtonsContainer.productDetails#PL > button:last-child:hover {
+  border-style: inset;
+  color: #030637;
+  background-color: #fbfacd;
+}
+
+/* Dark */
+.productContainerDiv#PD {
+  border-bottom: 3px dotted #d4adfc;
+  color: #d6d5a8;
+}
+
+.goBackButton.productDetails#PD {
+  background-color: #8cabff;
+  color: #191a19;
+}
+.goBackButton.productDetails#PD:hover {
+  background-color: rgba(68, 119, 206, 0.5);
+  color: #d4adfc;
+  border-style: inset;
+}
+
+.universallyAccessibleButtons.productDetails#PD > button,
+.productsUnivButton.productDetails#PD > button,
+.removeFromButton.productDetails#PD > button,
+.deleteProductButton.productDetails#PD > button,
+.editProductButton.productDetails#PD > button {
+  background-color: #8cabff;
+  color: #191a19;
+}
+.universallyAccessibleButtons.productDetails#PD > button:hover,
+.productsUnivButton.productDetails#PD > button:hover {
+  background-color: rgba(68, 119, 206, 0.5);
+  color: #d4adfc;
+}
+
+.removeFromButton.productDetails#PD > button:hover,
+.deleteProductButton.productDetails#PD > button:hover {
+  background-color: #e94560;
+}
+
+.editProductButton.productDetails#PD > button:hover {
+  background-color: #d6d5a8;
+}
+
+.userPicNInfo.productDetails#PD > h3,
+.userPicNInfo.productDetails#PD > h4,
+.noReviews.productDetails#PD,
+.showHideReviewsToggle#PD,
+.reviewsOuterMostContainer#PD {
+  color: #d6d5a8;
+}
+.productTabReviewDiv#PD {
+  border: 3px dotted #d6d5a8;
+  background-color: #51557e;
+}
+
+.usersReviewBody.productDetails#PD {
+  border: 3px inset #51557e;
+  background-color: #8cabff;
+  color: #1b2430;
+}
+
+.postReviewModalButton.productDetails#PD > button,
+.reviewButtonsContainer.productDetails#PD > button:first-child,
+.reviewButtonsContainer.productDetails#PD > button:last-child {
+  background-color: #8cabff;
+  color: #1b2430;
+}
+.postReviewModalButton.productDetails#PD > button:hover {
+  border-style: inset;
+  background-color: rgba(15, 52, 96, 0.5);
+  color: #d6d5a8;
+}
+.reviewButtonsContainer.productDetails#PD > button:first-child:hover {
+  border-style: inset;
+  color: #191a19;
+  background-color: rgba(212, 173, 252, 0.75);
+}
+.reviewButtonsContainer.productDetails#PD > button:last-child:hover {
+  border-style: inset;
+  color: #191a19;
+  background-color: #e94560;
+}

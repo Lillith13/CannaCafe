@@ -7,8 +7,7 @@ import imgPlaceholder from "../../assets/noImgAvailable.jpg";
 import { loadProduct } from "../../store/products";
 import { getAllFavorites } from "../../store/favorites";
 import { getWishlist } from "../../store/wishlist";
-import //
-"../../store/reviews";
+import { getProductReviews } from "../../store/reviews";
 
 import OpenModalButton from "../OpenModalButton";
 import Login from "../AllModals/Login";
@@ -20,8 +19,10 @@ import ConfirmRemove from "../AllModals/ConfirmRemove";
 import CreateReview from "../AllModals/Review";
 import ProductReviews from "./ProductReviews";
 
-import "./ProductDetails.css";
-import { getProductReviews } from "../../store/reviews";
+import "./css/ProductDetails.css";
+import "./css/themes/green.css";
+import "./css/themes/purple.css";
+import "./css/themes/blue.css";
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export default function ProductDetails() {
   const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
 
   useEffect(async () => {
     const data = await dispatch(loadProduct(id))
@@ -53,7 +55,8 @@ export default function ProductDetails() {
         <>
           <div className="goBackButtonDiv">
             <button
-              className="goBackButton"
+              className="goBackButton productDetails"
+              id={theme}
               onClick={(e) => {
                 e.preventDefault();
                 history.goBack();
@@ -63,21 +66,9 @@ export default function ProductDetails() {
             </button>
           </div>
 
-          <div className="productContainerDiv">
+          <div className="productContainerDiv" id={theme}>
             <div className="productDetailsContainerDiv">
-              <div className="nameNavailNpriceDiv">
-                <h1>{product.name}</h1>
-                <div
-                  className={
-                    !product.category.shippable ? "priceOnly" : "numAvailNprice"
-                  }
-                >
-                  {product.category.shippable && (
-                    <h3>{product.units_available} Available</h3>
-                  )}
-                  <h3>${product.price}</h3>
-                </div>
-              </div>
+              <h1>{product.name}</h1>
 
               <div className="productContainer">
                 <div
@@ -88,13 +79,28 @@ export default function ProductDetails() {
                     })`,
                   }}
                 ></div>
+
                 <div className="prodInfoNButtonsDiv">
-                  <div className="productInfoDiv">
-                    <p>{product.description}</p>
+                  <div className="productInfoDiv">{product.description}</div>
+
+                  <div
+                    className={
+                      !product.category.shippable
+                        ? "priceOnly"
+                        : "numAvailNprice"
+                    }
+                  >
+                    {product.category.shippable && (
+                      <h3>{product.units_available} Available</h3>
+                    )}
+                    <h3>${product.price}</h3>
                   </div>
 
                   <div className="productButtonsDiv">
-                    <div className="universallyAccessibleButtons">
+                    <div
+                      className="universallyAccessibleButtons productDetails"
+                      id={theme}
+                    >
                       <OpenModalButton
                         buttonText={`Add to ${
                           product.category.shippable
@@ -120,8 +126,8 @@ export default function ProductDetails() {
                             product.id?.toString()
                           ) && !product.category.shippable ? (
                             <div
-                              className="removeFromButton"
-                              id="productDetailsRemoveFrom"
+                              className="removeFromButton productDetails"
+                              id={theme}
                             >
                               <OpenModalButton
                                 buttonText="Remove From Favorites"
@@ -134,7 +140,10 @@ export default function ProductDetails() {
                               />
                             </div>
                           ) : (
-                            <div className="productsUnivButton">
+                            <div
+                              className="productsUnivButton productDetails"
+                              id={theme}
+                            >
                               <OpenModalButton
                                 buttonText="Add to Favorites"
                                 modalComponent={
@@ -154,8 +163,8 @@ export default function ProductDetails() {
                             product.id?.toString()
                           ) && product.category.shippable ? (
                             <div
-                              className="removeFromButton"
-                              id="productDetailsRemoveFrom"
+                              className="removeFromButton productDetails"
+                              id={theme}
                             >
                               <OpenModalButton
                                 buttonText="Remove From Wishlist"
@@ -168,7 +177,10 @@ export default function ProductDetails() {
                               />
                             </div>
                           ) : (
-                            <div className="productsUnivButton">
+                            <div
+                              className="productsUnivButton productDetails"
+                              id={theme}
+                            >
                               <OpenModalButton
                                 buttonText="Add to Wishlist"
                                 modalComponent={
@@ -189,8 +201,8 @@ export default function ProductDetails() {
                         user.role.name === "Owner") && (
                         <div className="protectedButtons">
                           <div
-                            className="editProductButton"
-                            id="productDetailsEditProduct"
+                            className="editProductButton productDetails"
+                            id={theme}
                           >
                             <OpenModalButton
                               buttonText="Edit Product"
@@ -207,8 +219,8 @@ export default function ProductDetails() {
                             />
                           </div>
                           <div
-                            className="deleteProductButton"
-                            id="productDeatilsDeleteProduct"
+                            className="deleteProductButton productDetails"
+                            id={theme}
                           >
                             <OpenModalButton
                               buttonText="Delete Product"
@@ -234,12 +246,14 @@ export default function ProductDetails() {
 
           {reviews && Object.values(reviews).length > 0 ? (
             <>
-              <p
+              <h3
                 onClick={() => setShowReviews(!showReviews)}
                 style={{ cursor: "pointer" }}
+                className="showHideReviewsToggle"
+                id={theme}
               >
                 {showReviews ? "Hide " : "Show "} Reviews
-              </p>
+              </h3>
               {showReviews ? (
                 <ProductReviews
                   productId={product.id}
@@ -250,9 +264,16 @@ export default function ProductDetails() {
               )}
             </>
           ) : (
-            <div className={user?.role.name === "Member" ? "" : "hidden"}>
+            <div
+              className={
+                user?.role.name === "Member"
+                  ? "noReviews productDetails"
+                  : "hidden"
+              }
+              id={theme}
+            >
               <h1>Be the first to review!</h1>
-              <div className="postReviewModalButton">
+              <div className="postReviewModalButton productDetails" id={theme}>
                 <OpenModalButton
                   buttonText="Add Review"
                   modalComponent={

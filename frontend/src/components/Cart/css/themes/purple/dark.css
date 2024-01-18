@@ -93,3 +93,8 @@
   color: #d6d5a8;
   border: 3px inset black;
 }
+
+.emptyCartContainer#PD,
+.emptyBagContainer#PD {
+  color: #d6d5a8;
+}

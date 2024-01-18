@@ -92,3 +92,8 @@
   background: linear-gradient(180deg, #0e2954, #1f6e8c);
   border: 3px inset black;
 }
+
+.emptyCartContainer#BD,
+.emptyBagContainer#BD {
+  color: #a5d7e8;
+}

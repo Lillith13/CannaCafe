@@ -20,20 +20,16 @@
 }
 .profileTabReviewDiv > div {
   width: 100%;
-  gap: 15px;
-}
-.profileTabReviewDiv > div:first-child {
-  width: 100%;
   display: flex;
-  max-height: 250px;
+  justify-content: space-evenly;
 }
 
-.userPicNInfo > h3,
-.userPicNInfo > h4 {
+.userPicNInfo.userProfile > h3,
+.userPicNInfo.userProfile > h4 {
   margin: 0px;
   padding: 0px;
 }
-.userPicNInfo {
+.userPicNInfo.userProfile {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -44,31 +40,35 @@
 }
 .reviewedProductImageDiv {
   padding: 15px 25px 15px 5px;
-  width: 50%;
-  /* max-height: 150px; */
+  width: 30%;
   border-radius: 15px;
   background-size: cover;
-}
-.reviewedProductImageDiv:hover {
+  background-position: center;
   box-shadow: 7px 5px 5px #a9b388;
 }
-.userProfilePicture {
+.reviewedProductImageDiv:hover {
+  box-shadow: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.userProfilePicture.userProfile {
   width: 25px;
 }
 
-.reviewBodyContainer {
+.reviewBodyContainer.userProfile {
   display: flex;
   flex-direction: column;
   gap: 15px;
   align-items: center;
-  /* border: 1px solid white; */
+  width: 43%;
 }
 
-.reviewBodyContainer#dontOwn {
+.reviewBodyContainer.userProfile#dontOwn {
   border: none;
+  width: 40%;
 }
 
-.usersReviewBody {
+.usersReviewBody.userProfile {
   overflow-y: scroll;
   word-wrap: anywhere;
   width: 100%;
@@ -78,9 +78,12 @@
   background-color: #a9b388;
   color: #3e372f;
   font-weight: bold;
+  text-align: start;
+  overflow-y: scroll;
+  word-wrap: anywhere;
+  height: 75px;
 }
-
-.usersReviewBody::-webkit-scrollbar {
+.usersReviewBody.userProfile::-webkit-scrollbar {
   display: none;
 }
 
@@ -93,24 +96,28 @@
   color: #a9b388;
 }
 
-.reviewStarsDiv {
+.reviewStarsDiv.userProfile {
   display: flex;
   gap: 5px;
+  justify-content: center;
 }
-/* .starsInProfile {
-    width: 25px;
-    filter: invert(0.25) blur(1px);
-  } */
-/* .selectedRating {
-    width: 25px;
-  } */
+.starsInProfile.userProfile {
+  width: 25px;
+  filter: invert(0.25) blur(1px);
+}
+.selectedRating.userProfile {
+  width: 25px;
+}
 
-.reviewButtonsContainer {
+.reviewButtonsContainer.userProfile {
   display: flex;
-  flex-direction: row;
+  justify-content: space-around;
+  padding: 15px 0px;
+  gap: 15px;
 }
-.reviewButtonsContainer > button {
-  padding: 50px;
+.reviewButtonsContainer.userProfile > button {
+  width: 50%;
+  padding: 10px 0px;
 }
 
 /* .reviewButtonsContainer > button:first-child:hover {

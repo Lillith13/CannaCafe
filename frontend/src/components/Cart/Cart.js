@@ -131,7 +131,7 @@ export default function Cart() {
             ))}
           </div>
         ) : (
-          <div className="emptyCartContainer">
+          <div className="emptyCartContainer" id={theme}>
             <h1>No items in your cart...</h1>
             <NavLink exact to="/products">
               <button className="emptyCartButton" id={theme}>
@@ -160,7 +160,7 @@ export default function Cart() {
           ></div>
           <div className="checkoutNcontinueShopButtons" id={theme}>
             <NavLink exact to="/menu">
-              <button>Add More to Bag</button>
+              <button>Add More to Cart</button>
             </NavLink>
             <OpenModalButton
               buttonText="Checkout"

@@ -16,30 +16,18 @@
 }
 
 .productsPageTitle#BL {
-  background-color: rgba(137, 207, 243, 0.9);
+  background-color: rgba(152, 238, 204, 0.5);
 }
 
-div.productDisplayAreaList#BL,
-div.productDisplayAreaTile#BL {
-  border: 5px outset #3a98b9;
-  background-color: #89cff3;
-}
-
-.prodsDivListView.BL,
-.prodsDivTileView.BL {
-  border: 5px inset #00a9ff;
-  background-color: #cdf5fd;
-}
-
-.idvProdContainerList.BL {
+.idvProdContainerList#BL {
   border: 1px solid #00a9ff;
-  background-color: #89cff3;
+  background-color: #a6d0dd;
 }
-.idvProdContainerTile.BL {
+.idvProdContainerTile#BL {
   border: 1px solid #00a9ff;
 }
-.idvProdContainerList.BL:hover,
-.idvProdContainerTile.BL:hover {
+.idvProdContainerList#BL:hover,
+.idvProdContainerTile#BL:hover {
   box-shadow: 13px 10px 5px 0px rgba(152, 238, 204, 0.75);
 }
 
@@ -56,42 +44,36 @@ div.productDisplayAreaTile#BL {
 
 .universalProdButtonsList#BL > button,
 .universalProdButtonsTile#BL > button,
-.roleProtectedButtonsList#BL > button,
-.roleProtectedButtonsTile#BL > button,
-.productsUnivButton.BL#productsListUnivButton,
-.productsUnivButton.BL#productsTileUnivButton {
+.productsListUnivButton.productsPage#BL > button,
+.productsTileUnivButton.productsPage#BL > button,
+.productsListRemoveFrom.productsPage#BL > button,
+.productsTileRemoveFrom.productsPage#BL > button,
+.productsListEdit.productsPage#BL > button,
+.productsTileEdit.productsPage#BL > button,
+.productsTileDelete.productsPage#BL > button,
+.productsListDelete.productsPage#BL > button {
   background-color: rgba(121, 224, 238, 0.5);
   color: #000000;
 }
-
-.productsUnivButton.BL > button,
-.editProductButton.BL > button,
-.removeFromButton.BL > button,
-.deleteProductButton.BL > button {
-  background-color: rgba(121, 224, 238, 0.5);
-  color: #000000;
-}
-
 .universalProdButtonsList#BL > button:hover,
 .universalProdButtonsTile#BL > button:hover,
-.productsUnivButton.BL > button:hover {
+.productsListUnivButton.productsPage#BL > button:hover,
+.productsTileUnivButton.productsPage#BL > button:hover {
   background-color: #a6d0dd;
   color: #000000;
 }
-
-.removeFromButton.BL > button:hover,
-.editProductButton.BL > button:hover {
+.productsTileRemoveFrom.productsPage#BL > button:hover,
+.productsListRemoveFrom.productsPage#BL > button:hover {
   color: #000000;
-}
-
-.removeFromButton.BL > button:hover {
   background-color: #e8d5c4;
 }
-.deleteProductButton.BL > button:hover {
+.productsTileDelete.productsPage#BL > button:hover,
+.productsListDelete.productsPage#BL > button:hover {
   color: #000000;
   background-color: #ff6969;
 }
-
-.editProductButton.BL > button:hover {
+.productsTileEdit.productsPage#BL > button:hover,
+.productsListEdit.productsPage#BL > button:hover {
+  color: #000000;
   background-color: #ffd3b0;
 }

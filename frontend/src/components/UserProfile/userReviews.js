@@ -54,14 +54,14 @@ export default function UserReviews() {
                 id="doASiSAYdammit"
               >
                 <div>
-                  <div className="userPicNInfo">
+                  <div className="userPicNInfo userProfile">
                     <img
                       src={
                         review.user.profile_image
                           ? review.user.profile_image
                           : profileIcon
                       }
-                      className="userProfilePicture"
+                      className="userProfilePicture userProfile"
                     />
                     <h3>{review.user.username}</h3>
                     <h4>
@@ -80,7 +80,7 @@ export default function UserReviews() {
                   ></div>
 
                   <div
-                    className="reviewBodyContainer"
+                    className="reviewBodyContainer userProfile"
                     id={review.user.id != user.id ? "dontOwn" : ""}
                   >
                     <NavLink exact to={`/products/`}>
@@ -90,54 +90,56 @@ export default function UserReviews() {
                       </h4>
                     </NavLink>
 
-                    <div className="reviewStarsDiv">
+                    <div className="reviewStarsDiv userProfile">
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating >= 1
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating userProfile"
+                            : "starsInProfile userProfile"
                         }
                       />
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating >= 2
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating userProfile"
+                            : "starsInProfile userProfile"
                         }
                       />
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating >= 3
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating userProfile"
+                            : "starsInProfile userProfile"
                         }
                       />
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating >= 4
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating userProfile"
+                            : "starsInProfile userProfile"
                         }
                       />
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating == 5
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating userProfile"
+                            : "starsInProfile userProfile"
                         }
                       />
                     </div>
-                    <p className="usersReviewBody">{review.review}</p>
+                    <p className="usersReviewBody userProfile">
+                      {review.review}
+                    </p>
                   </div>
                 </div>
 
                 {review.user.id == user.id && (
-                  <div className="reviewButtonsContainer">
+                  <div className="reviewButtonsContaine userProfile">
                     <OpenModalButton
                       buttonText="Edit Review"
                       modalComponent={
@@ -182,7 +184,7 @@ export default function UserReviews() {
                       }}
                     ></div>
 
-                    <div className="reviewBodyContainer">
+                    <div className="reviewBodyContainer userProfile">
                       <NavLink
                         exact
                         to={
@@ -196,52 +198,54 @@ export default function UserReviews() {
                         </h4>
                       </NavLink>
 
-                      <div className="reviewStarsDiv">
+                      <div className="reviewStarsDiv userProfile">
                         <img
                           src={blackCannaLeaf}
                           className={
                             review.rating >= 1
-                              ? "selectedRating"
-                              : "starsInProfile"
+                              ? "selectedRating userProfile"
+                              : "starsInProfile userProfile"
                           }
                         />
                         <img
                           src={blackCannaLeaf}
                           className={
                             review.rating >= 2
-                              ? "selectedRating"
-                              : "starsInProfile"
+                              ? "selectedRating userProfile"
+                              : "starsInProfile userProfile"
                           }
                         />
                         <img
                           src={blackCannaLeaf}
                           className={
                             review.rating >= 3
-                              ? "selectedRating"
-                              : "starsInProfile"
+                              ? "selectedRating userProfile"
+                              : "starsInProfile userProfile"
                           }
                         />
                         <img
                           src={blackCannaLeaf}
                           className={
                             review.rating >= 4
-                              ? "selectedRating"
-                              : "starsInProfile"
+                              ? "selectedRating userProfile"
+                              : "starsInProfile userProfile"
                           }
                         />
                         <img
                           src={blackCannaLeaf}
                           className={
                             review.rating == 5
-                              ? "selectedRating"
-                              : "starsInProfile"
+                              ? "selectedRating userProfile"
+                              : "starsInProfile userProfile"
                           }
                         />
                       </div>
-                      <div className="usersReviewBody">{review.review}</div>
+                      <div className="usersReviewBody userProfile">
+                        {review.review}
+                      </div>
                     </div>
                   </div>
-                  <div className="reviewButtonsContainer">
+                  <div className="reviewButtonsContainer userProfile">
                     <OpenModalButton
                       buttonText=" Edit Review "
                       modalComponent={

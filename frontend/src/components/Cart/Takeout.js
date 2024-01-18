@@ -133,7 +133,7 @@ export default function Takeout() {
             ))}
           </div>
         ) : (
-          <div className="emptyBagContainer">
+          <div className="emptyBagContainer" id={theme}>
             <h1>No items in your bag...</h1>
             <NavLink exact to="/menu">
               <button className="emptyBagButton" id={theme}>

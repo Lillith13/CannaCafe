@@ -1,8 +1,8 @@
-.goBackButton#GL {
+.goBackButton.productsPage#GL {
   background-color: #c3e2c2;
   color: #5e454b;
 }
-.goBackButton#GL:hover {
+.goBackButton.productsPage#GL:hover {
   background-color: #a0c49d;
   color: #5e454b;
 }
@@ -21,34 +21,21 @@
   background-color: rgba(148, 180, 159, 0.9);
 }
 
-div.productDisplayAreaList#GL,
-div.productDisplayAreaTile#GL {
-  border: 5px outset #c4d7b2;
-  background-color: #c3e2c2;
-}
-
-.prodsDivListView.GL,
-.prodsDivTileView.GL {
-  border: 5px inset #c3e2c2;
-  background-color: #e1ecc8;
-}
-
-.idvProdContainerList.GL {
+.idvProdContainerList#GL {
   border: 1px solid #f7ffe5;
   background-color: #a0c49d;
 }
-.idvProdContainerTile.GL {
+.idvProdContainerTile#GL {
   border: 1px solid #5e454b;
 }
-.idvProdContainerList.GL:hover,
-.idvProdContainerTile.GL:hover {
+.idvProdContainerList#GL:hover,
+.idvProdContainerTile#GL:hover {
   box-shadow: 13px 10px 5px 0px #94b49f;
 }
 
 .idvProdNameNPriceContainerList#GL,
 .idvProdNameNPriceContainerTile#GL {
   background-color: rgba(148, 180, 159, 0.9);
-  color: #fefae0;
 }
 
 .idvProdButtonContainerList#GL,
@@ -56,44 +43,32 @@ div.productDisplayAreaTile#GL {
   background-color: rgba(148, 180, 159, 0.9);
 }
 
-.universalProdButtonsList#GL > button,
-.universalProdButtonsTile#GL > button,
-.roleProtectedButtonsList#GL > button,
-.roleProtectedButtonsTile#GL > button,
-.productsUnivButton.GL#productsListUnivButton,
-.productsUnivButton.GL#productsTileUnivButton {
-  background-color: rgba(148, 180, 159, 0.5);
-  color: #fefae0;
+.productsListUnivButton.productsPage#GL > button,
+.productsTileUnivButton.productsPage#GL > button,
+.productsListRemoveFrom.productsPage#GL > button,
+.productsTileRemoveFrom.productsPage#GL > button,
+.productsListEdit.productsPage#GL > button,
+.productsTileEdit.productsPage#GL > button,
+.productsTileDelete.productsPage#GL > button,
+.productsListDelete.productsPage#GL > button {
+  color: #362706;
 }
-
-.productsUnivButton.GL > button,
-.editProductButton.GL > button,
-.removeFromButton.GL > button,
-.deleteProductButton.GL > button {
-  background-color: rgba(148, 180, 159, 0.5);
-  color: #fefae0;
-}
-
 .universalProdButtonsList#GL > button:hover,
 .universalProdButtonsTile#GL > button:hover,
-.productsUnivButton.GL > button:hover {
+.productsListUnivButton.productsPage#GL > button:hover,
+.productsTileUnivButton.productsPage#GL > button:hover {
   background-color: #e1ecc8;
   color: #362706;
 }
-
-.removeFromButton.GL > button:hover,
-.editProductButton.GL > button:hover {
-  color: #362706;
-}
-
-.removeFromButton.GL > button:hover {
+.productsTileRemoveFrom.productsPage#GL > button:hover,
+.productsListRemoveFrom.productsPage#GL > button:hover {
   background-color: #ecb390;
 }
-.deleteProductButton.GL > button:hover {
-  color: #362706;
+.productsTileDelete.productsPage#GL > button:hover,
+.productsListDelete.productsPage#GL > button:hover {
   background-color: #cd8d7a;
 }
-
-.editProductButton.GL > button:hover {
+.productsTileEdit.productsPage#GL > button:hover,
+.productsListEdit.productsPage#GL > button:hover {
   background-color: #f7d59c;
 }

@@ -9,7 +9,8 @@ import DeleteReview from "../AllModals/ConfirmDelete/ConfirmDeleteReview";
 
 import blackCannaLeaf from "../../assets/blackCannaLeaf.png";
 import profileIcon from "../../assets/profile_icon.png";
-import "./ProductDetails.css";
+
+import "./css/ProductDetails.css";
 
 export default function ProductReviews({ productId, user }) {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ export default function ProductReviews({ productId, user }) {
   const [dispatchLoaded, setDispatchLoaded] = useState(false);
   const [fullLoad, setFullLoad] = useState(false);
   const [avgRating, setAvgRating] = useState([]);
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
 
   useEffect(() => {
     dispatch(getProductReviews(productId)).then(() => {
@@ -39,7 +41,7 @@ export default function ProductReviews({ productId, user }) {
   }, [dispatchLoaded]);
 
   return fullLoad ? (
-    <div className="reviewsOuterMostContainer">
+    <div className="reviewsOuterMostContainer" id={theme}>
       <h2>Product Reviews</h2>
       <div className="reviewContainerTitleDiv">
         {!isNaN(avgRating) ? (
@@ -80,18 +82,16 @@ export default function ProductReviews({ productId, user }) {
             </div>
             <div className="prodReviewsContainer">
               {Object.values(reviews).map((review) => (
-                <div key={review.id} className="productTabReviewDiv">
-                  <div
-                    className="userPicNInfo"
-                    id={user && user.id != review.user.id ? "usersReview" : ""}
-                  >
+                <div key={review.id} className="productTabReviewDiv" id={theme}>
+                  <div className="userPicNInfo productDetails" id={theme}>
                     <img
                       src={
                         review.user.profile_image
                           ? review.user.profile_image
                           : profileIcon
                       }
-                      className="userProfilePicture"
+                      className="userProfilePicture productDetails"
+                      id={theme}
                     />
                     <h3>{review.user.username}</h3>
                     <h4>
@@ -100,82 +100,92 @@ export default function ProductReviews({ productId, user }) {
                   </div>
 
                   <div
-                    className="reviewBodyContainer"
-                    id={user?.id != review.user.id ? "usersReview" : ""}
+                    className={
+                      review.user.profile_image
+                        ? "reviewBodyContainer currUserReview"
+                        : "reviewBodyContainer otherReview"
+                    }
                   >
                     <div className="reviewStarsDiv">
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating >= 1
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating productDetails"
+                            : "starsInProfile productDetails"
                         }
                       />
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating >= 2
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating productDetails"
+                            : "starsInProfile productDetails"
                         }
                       />
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating >= 3
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating productDetails"
+                            : "starsInProfile productDetails"
                         }
                       />
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating >= 4
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating productDetails"
+                            : "starsInProfile productDetails"
                         }
                       />
                       <img
                         src={blackCannaLeaf}
                         className={
                           review.rating == 5
-                            ? "selectedRating"
-                            : "starsInProfile"
+                            ? "selectedRating productDetails"
+                            : "starsInProfile productDetails"
                         }
                       />
                     </div>
-                    <p className="usersReviewBody">{review.review}</p>
+                    <p className="usersReviewBody productDetails" id={theme}>
+                      {review.review}
+                    </p>
                   </div>
 
-                  {review.user.id == user?.id && (
-                    <div className="reviewButtonsContainer">
-                      <OpenModalButton
-                        buttonText="Edit Review"
-                        modalComponent={
-                          <EditReview
-                            targetReview={review}
-                            locationInfo={{
-                              productId: productId,
-                              from: "productDetails",
-                            }}
-                          />
-                        }
-                      />
-                      <OpenModalButton
-                        buttonText="Delete Review"
-                        modalComponent={
-                          <DeleteReview
-                            reviewId={review.id}
-                            locationInfo={{
-                              productId: productId,
-                              from: "productDetails",
-                            }}
-                          />
-                        }
-                      />
-                    </div>
-                  )}
+                  <div
+                    className={
+                      review.user.id == user?.id
+                        ? "reviewButtonsContainer  productDetails"
+                        : "hidden"
+                    }
+                    id={theme}
+                  >
+                    <OpenModalButton
+                      buttonText="Edit Review"
+                      modalComponent={
+                        <EditReview
+                          targetReview={review}
+                          locationInfo={{
+                            productId: productId,
+                            from: "productDetails",
+                          }}
+                        />
+                      }
+                    />
+                    <OpenModalButton
+                      buttonText="Delete Review"
+                      modalComponent={
+                        <DeleteReview
+                          reviewId={review.id}
+                          locationInfo={{
+                            productId: productId,
+                            from: "productDetails",
+                          }}
+                        />
+                      }
+                    />
+                  </div>
                 </div>
               ))}
             </div>
@@ -187,7 +197,10 @@ export default function ProductReviews({ productId, user }) {
               user.role.name != "Owner" &&
               user.role.name != "Manager" &&
               user.role.name != "Employee" && (
-                <div className="postReviewModalButton">
+                <div
+                  className="postReviewModalButton productDetails"
+                  id={theme}
+                >
                   <OpenModalButton
                     buttonText="Add Review"
                     modalComponent={

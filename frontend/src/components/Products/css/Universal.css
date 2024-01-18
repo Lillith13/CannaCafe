@@ -10,7 +10,7 @@
   display: flex;
   gap: 10px;
 }
-.goBackButton,
+.goBackButton.productsPage,
 .viewOptionsButton {
   padding: 5px 15px;
   font-size: 20px;
@@ -29,15 +29,6 @@
   margin: 15px 0px;
 }
 
-.productsUnivButton > button,
-.editProductButton > button,
-.removeFromButton > button {
-  height: 100%;
-}
-
-@media screen and (max-width: 850px) {
-  /* force to list view */
-}
 @media screen and (max-width: 1259px) {
   .productDisplayAreaTile {
     display: flex;
