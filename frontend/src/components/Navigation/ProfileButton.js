@@ -51,10 +51,8 @@ function ProfileButton({ user }) {
   }, [showMenu]);
 
   const handleLogout = (e) => {
-    e.preventDefault();
     closeMenu();
-    dispatch(logout());
-    history.push("/home");
+    dispatch(logout()).then(() => history.push("/"));
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -164,7 +162,9 @@ function ProfileButton({ user }) {
             >
               <li>
                 <NavLink to="/profile">
-                  <button className="dropdown-btn">View Profile</button>
+                  <button className="dropdown-btn" onClick={closeMenu}>
+                    View Profile
+                  </button>
                 </NavLink>
               </li>
               {(user.role.name === "Employee" ||
@@ -172,38 +172,49 @@ function ProfileButton({ user }) {
                 user.role.name === "Owner") && (
                 <div id="clockButtons">
                   <li>
-                    <button onClick={(e) => handleClockIn(e)}>Clock In</button>
+                    <button
+                      onClick={(e) => {
+                        closeMenu();
+                        handleClockIn(e);
+                      }}
+                    >
+                      Clock In
+                    </button>
                   </li>
                   <li>
-                    <button onClick={(e) => handleClockOut(e)}>
+                    <button
+                      onClick={(e) => {
+                        closeMenu();
+                        handleClockOut(e);
+                      }}
+                    >
                       Clock Out
                     </button>
                   </li>
                   <li>
                     <NavLink exact to={`/paystubs/${user.id}`}>
-                      <button>View Paystubs</button>
+                      <button onClick={closeMenu}>View Paystubs</button>
                     </NavLink>
                   </li>
                 </div>
               )}
               {(user.role.name === "Manager" || user.role.name === "Owner") && (
                 <div id="managementOnlyButtons">
-                  <li>
+                  <li onClick={closeMenu}>
                     <OpenModalButton
                       buttonText="Add to Products"
                       modalComponent={<CreateProduct type="product" />}
                     />
                   </li>
-                  <li>
+                  <li onClick={closeMenu}>
                     <OpenModalButton
                       buttonText="Add to Menu"
                       modalComponent={<CreateProduct type="menu" />}
                     />
                   </li>
-                  <li>
+                  <li onClick={closeMenu}>
                     <OpenModalButton
                       buttonText="New Employee"
-                      onItemClick={closeMenu}
                       modalComponent={<Signup />}
                     />
                   </li>
@@ -217,18 +228,10 @@ function ProfileButton({ user }) {
             </div>
           </div>
         ) : (
-          <div id="noCurrUser">
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<Login />}
-            />
+          <div id="noCurrUser" onClick={closeMenu}>
+            <OpenModalButton buttonText="Log In" modalComponent={<Login />} />
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<Signup />}
-            />
+            <OpenModalButton buttonText="Sign Up" modalComponent={<Signup />} />
             <div id="themeSelectDiv">
               <select
                 onChange={(e) => {
