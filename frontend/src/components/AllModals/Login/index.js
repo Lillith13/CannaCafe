@@ -19,6 +19,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    history.push("/");
     const data = await dispatch(login(creds, password));
     if (data) {
       setErrors(data);
