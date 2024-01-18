@@ -60,10 +60,11 @@ export default function Signup({ currUser }) {
       data["currUser"] = currUser;
     }
 
+    history.push("/");
     const returnData = await dispatch(signUp(data));
 
     if (returnData) {
-      console.log(returnData);
+      // console.log(returnData);
       if (returnData.errors) {
         setErrors(returnData.errors);
       } else {
