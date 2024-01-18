@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+      if (!ulRef || !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
     };
@@ -52,8 +52,9 @@ function ProfileButton({ user }) {
 
   const handleLogout = (e) => {
     e.preventDefault();
+    closeMenu();
     dispatch(logout());
-    history.push("/");
+    history.push("/home");
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
