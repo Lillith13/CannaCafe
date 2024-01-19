@@ -42,3 +42,157 @@
 
 /* .profileButtons#GL > #memberProfileButtons {} */
 /* .profileButtons#GL > #staffOnlyButtons {} */
+
+/* User Orders */
+.orderCardTitle#GL {
+  background-color: #94b49f;
+  border-top: 3px solid #5e454b;
+  border-bottom: 1px solid #5e454b;
+}
+
+.orderItemsDiv#GL {
+  background-color: #a0c49d;
+  border-bottom: 3px solid #5e454b;
+}
+.orderItem#GL {
+  background-color: #cee5d0;
+  color: #5e454b;
+  border-top: 7px groove #a0c49d;
+  border-bottom: 7px ridge #a0c49d;
+}
+
+.orderDetails#GL {
+  background-color: #c3e2c2;
+  color: #5e454b;
+  border-bottom: 3px solid #5e454b;
+}
+
+.orderItemDetails#GL > a {
+  color: #000000;
+}
+.orderItemDetails#GL > a:hover {
+  color: #5e454b;
+}
+
+.reorder#GL > button {
+  background-color: #c3e2c2;
+}
+.review#GL > button {
+  background-color: #c4d7b2;
+}
+.return#GL > button,
+.orderDetails#GL > button {
+  background-color: #dbcc95;
+}
+
+.reorder#GL > button:hover {
+  background-color: #a0c49d;
+}
+.review#GL > button:hover {
+  background-color: rgba(225, 236, 200, 0.5);
+}
+.reorder#GL > button:hover,
+.review#GL > button:hover {
+  color: #000000;
+  border-style: inset;
+}
+.return#GL > button:hover,
+.orderDetails#GL > button:hover {
+  background-color: #cd8d7a;
+  color: #000000;
+  border-style: inset;
+}
+
+/* .noOrdersToDisplay#GL {} */
+/* .noOrdersButtons#GL > a > button {} */
+
+/* Reviews */
+.profileTabReviewDiv#GL {
+  background-color: #c3e2c2;
+  border-top: 5px groove #94b49f;
+  border-bottom: 5px ridge #94b49f;
+}
+.reviewedProductImageDiv#GL {
+  box-shadow: 7px 5px 5px #94b49f;
+}
+.reviewedProductName#GL {
+  color: #000000;
+}
+.reviewedProductName#GL:hover {
+  color: #5e454b;
+}
+
+.usersReviewBody.userProfile#GL {
+  background-color: #f7ffe5;
+  border: 3px inset #94b49f;
+}
+
+.reviewButtonsContainer#GL > button:first-child,
+.reviewButtonsContainer#GL > button:last-child {
+  background-color: #a0c49d;
+  color: #000000;
+}
+.reviewButtonsContainer#GL > button:first-child:hover {
+  background-color: #dbcc95;
+  border-style: inset;
+}
+.reviewButtonsContainer#GL > button:last-child:hover {
+  background-color: #cd8d7a;
+  border-style: inset;
+}
+
+/* User Wishlist/Favorites */
+.userFavesContainer#GL,
+.userWishContainer#GL {
+  border: 3px solid #fcf8e8;
+}
+.userFavesContainer#GL:hover,
+.userWishContainer#GL:hover {
+  box-shadow: 10px 10px 5px 1px #94b49f;
+}
+.userFavesContainer#GL > a,
+.userWishContainer#GL > a {
+  color: #5e454b;
+  background-color: #c3e2c2;
+  border-top: 3px solid #e1ecc8;
+  border-left: 3px solid #e1ecc8;
+  border-right: 3px solid #e1ecc8;
+}
+.userFavesContainer#GL > a:hover,
+.userWishContainer#GL > a:hover {
+  color: #fcf8e8;
+  background-color: #a0c49d;
+}
+
+.userFavesContainer#GL > button,
+.userWishContainer#GL > button {
+  color: #5e454b;
+  background-color: #c3e2c2;
+  border-top: none;
+  border-left: 3px solid #e1ecc8;
+  border-right: 3px solid #e1ecc8;
+  border-bottom: 3px solid #e1ecc8;
+}
+.userFavesContainer#GL > button:hover,
+.userWishContainer#GL > button:hover {
+  background-color: #cd8d7a;
+}
+
+/* Staff */
+.empListContainer,
+.managerListContainer,
+.ownerListContainer {
+  border: 3px dotted #a9b388;
+}
+.empListDiv > a:hover,
+.managerListDiv > a:hover,
+.ownerListDiv > a:hover,
+.managerListDiv > a:hover,
+.ownerListDiv > a:hover {
+  color: rgb(101, 100, 124);
+  background-color: #e4d3cf;
+}
+
+.staffName {
+  color: #d6e4a8;
+}

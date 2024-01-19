@@ -18,45 +18,25 @@
   align-items: center;
   width: 27%;
   height: 250px;
-  border: 3px solid #a9b388;
   border-radius: 15px;
+  background-size: cover;
+  background-position: center;
 }
-.userFavesContainer:hover,
-.userWishContainer:hover {
-  box-shadow: 10px 10px 5px 1px #395144;
-}
+
 .userFavesContainer > button,
 .userWishContainer > button {
-  width: 65%;
-  font-size: 15px;
+  width: 100%;
+  font-size: 13px;
+  padding: 10px;
   border-radius: 0px 0px 15px 15px;
 }
 .userFavesContainer > a,
 .userWishContainer > a {
-  color: #a9b388;
-  background-color: #675d50;
-  width: 78%;
-  padding: 5px;
-  font-size: 10px;
-  font-weight: bold;
-  border: 2px solid black;
+  width: 97.85%;
+  padding: 5px 0px 5px 0px;
+  font-size: 25px;
   border-radius: 15px 15px 0px 0px;
-  border: 3px solid #a9b388;
   box-shadow: 10px;
-}
-.userFavesContainer > a:hover,
-.userWishContainer > a:hover,
-.empListDiv > a:hover,
-.managerListDiv > a:hover,
-.ownerListDiv > a:hover,
-.managerListDiv > a:hover,
-.ownerListDiv > a:hover {
-  color: rgb(101, 100, 124);
-  background-color: #e4d3cf;
-}
-.userFavesContainer > button:hover,
-.userWishContainer > button:hover {
-  background-color: #b67162;
 }
 
 .emptyFavesTabButton,

@@ -24,7 +24,7 @@
   background-color: #baabda;
 }
 .idvProdContainerTile#PL {
-  border: 1px solid #5e454b;
+  border: 1px solid #c7b198;
 }
 .idvProdContainerList#PL:hover,
 .idvProdContainerTile#PL:hover {
@@ -53,7 +53,7 @@
 .productsTileDelete.productsPage#PL > button,
 .productsListDelete.productsPage#PL > button {
   background-color: #c689c6;
-  color: #362706;
+  color: #030637;
 }
 .universalProdButtonsList#PL > button:hover,
 .universalProdButtonsTile#PL > button:hover,
@@ -72,4 +72,27 @@
 .productsTileEdit.productsPage#PL > button:hover,
 .productsListEdit.productsPage#PL > button:hover {
   background-color: #9fdfcd;
+}
+
+/* Toggle Switch */
+.toggleSwitch-label#PL {
+  border: 1px solid #030637;
+}
+
+.toggleSwitch-inner#PL:before {
+  background-color: #ffabe1;
+  color: #030637;
+}
+.toggleSwitch-inner#PL:after {
+  background-color: #c689c6;
+  color: #030637;
+}
+
+.toggleSwitch-switch.list#PL {
+  background: #ffe6f7;
+  border: 1px solid #dcffcc;
+}
+.toggleSwitch-switch.tile#PL {
+  background: #ffe6f7;
+  border: 1px solid #dcffcc;
 }

@@ -87,3 +87,26 @@
   background-color: #3e432e;
   color: #ecdbba;
 }
+
+/* Toggle Switch */
+.toggleSwitch-label#GD {
+  border: 1px solid #3b5249;
+}
+
+.toggleSwitch-inner#GD:before {
+  background-color: #1e5128;
+  color: #ecdbba;
+}
+.toggleSwitch-inner#GD:after {
+  background-color: #346751;
+  color: #ecdbba;
+}
+
+.toggleSwitch-switch.list#GD {
+  background: #3b5249;
+  border: 1px solid #3b5249;
+}
+.toggleSwitch-switch.tile#GD {
+  background: #3b5249;
+  border: 1px solid #3b5249;
+}

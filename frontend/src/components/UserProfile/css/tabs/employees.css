@@ -12,7 +12,6 @@
 .ownerListContainer {
   display: flex;
   flex-direction: column;
-  border: 3px dotted #a9b388;
   border-radius: 15px;
   padding: 25px;
   width: 90%;
@@ -32,9 +31,6 @@
   padding: 25px;
   border-radius: 15px;
   /* max-width: 50%; */
-}
-.staffName {
-  color: #d6e4a8;
 }
 
 .empListDiv > a > div > .profileLogo,

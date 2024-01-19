@@ -46,3 +46,144 @@
 
 /* .profileButtons#GL > #memberProfileButtons {} */
 /* .profileButtons#GL > #staffOnlyButtons {} */
+
+/* User Orders */
+.orderCardTitle#PD {
+  background-color: #51557e;
+  border-top: 3px solid #d4adfc;
+  border-bottom: 1px solid #512b81;
+  color: #d6d5a8;
+}
+
+.orderItemsDiv#PD {
+  background-color: #816797;
+  border-bottom: 3px solid #d4adfc;
+}
+.orderItem#PD {
+  background-color: #5c469c;
+  border-top: 7px ridge #51557e;
+  border-bottom: 7px groove #51557e;
+  color: #d6d5a8;
+}
+
+.orderDetails#PD {
+  background-color: #5c469c;
+  border-bottom: 3px solid #d4adfc;
+  color: #d6d5a8;
+}
+
+.orderItemDetails#PD > a {
+  color: #d4adfc;
+}
+.orderItemDetails#PD > a:hover {
+  color: #8cabff;
+}
+
+.reorder#PD > button {
+  background-color: #d4adfc;
+  color: #000000;
+}
+.review#PD > button {
+  background-color: rgba(212, 173, 252, 0.75);
+  color: #000000;
+}
+.return#PD > button,
+.orderDetails#PD > button {
+  background-color: #d6d5a8;
+  color: #000000;
+}
+
+.reorder#PD > button:hover {
+  background-color: #8cabff;
+}
+.review#PD > button:hover {
+  background-color: rgba(140, 171, 255, 0.5);
+}
+.reorder#PD > button:hover,
+.review#PD > button:hover {
+  border-style: inset;
+}
+.return#PD > button:hover,
+.orderDetails#PD > button:hover {
+  background-color: #e94560;
+  border-style: inset;
+}
+
+/* .noOrdersToDisplay#PD {} */
+/* .noOrdersButtons#PD > a > button {} */
+
+/* Reviews */
+.profileTabReviewDiv#PD {
+  background-color: #816797;
+  border-top: 5px groove #4477ce;
+  border-bottom: 5px ridge #4477ce;
+}
+.reviewedProductImageDiv#PD {
+  box-shadow: 7px 5px 5px #35155d;
+}
+.reviewedProductName#PD {
+  color: #1b2430;
+}
+.reviewedProductName#PD:hover {
+  color: #8cabff;
+}
+
+.usersReviewBody.userProfile#PD {
+  background-color: #d4adfc;
+  border: 3px inset #5c469c;
+  color: #1b2430;
+}
+
+.reviewButtonsContainer#PD > button:first-child,
+.reviewButtonsContainer#PD > button:last-child {
+  background-color: #512b81;
+  color: #d6d5a8;
+}
+.reviewButtonsContainer#PD > button:first-child:hover {
+  background-color: #8cabff;
+  border-style: inset;
+  color: #1b2430;
+}
+.reviewButtonsContainer#PD > button:last-child:hover {
+  background-color: #4477ce;
+  border-style: inset;
+  color: #1b2430;
+}
+
+/* User Wishlist/Favorites */
+.userFavesContainer#PD,
+.userWishContainer#PD {
+  border: 3px solid #519872;
+}
+.userFavesContainer#PD:hover,
+.userWishContainer#PD:hover {
+  box-shadow: 10px 10px 5px 1px #94b49f;
+}
+.userFavesContainer#PD > a,
+.userWishContainer#PD > a {
+  color: #ecdbba;
+  background-color: #346751;
+  border-top: 3px solid #1e5128;
+  border-left: 3px solid #1e5128;
+  border-right: 3px solid #1e5128;
+}
+.userFavesContainer#PD > a:hover,
+.userWishContainer#PD > a:hover {
+  background-color: #519872;
+  color: #000000;
+}
+
+.userFavesContainer#PD > button,
+.userWishContainer#PD > button {
+  color: #ecdbba;
+  background-color: #346751;
+  border-top: none;
+  border-left: 3px solid #1e5128;
+  border-right: 3px solid #1e5128;
+  border-bottom: 3px solid #1e5128;
+}
+.userFavesContainer#PD > button:hover,
+.userWishContainer#PD > button:hover {
+  background-color: #c84b31;
+  /* color: #000000; */
+}

@@ -1,12 +1,8 @@
-.pageContainer#productView {
-  padding-top: 9em;
+.pageContainer.sticky#productView {
+  padding-top: 10em;
 }
 .pageHeader {
   width: 100%;
-  min-height: 9em;
-  position: fixed;
-  top: 6em;
-  left: 0px;
 }
 
 .topOfHeaderItems {
@@ -26,6 +22,11 @@
   padding: 5px 15px;
   font-size: 20px;
 }
+.goBackButton.productsPage.sticky {
+  position: fixed;
+  top: 5.5em;
+  z-index: 1;
+}
 
 .productsContainer {
   display: flex;
@@ -38,6 +39,13 @@
   padding: 15px;
   border-radius: 15px;
   margin: 15px 0px;
+}
+.productsPageTitle.sticky {
+  position: fixed;
+  width: 97%;
+  top: 1.75em;
+  left: 0px;
+  margin: 0px;
 }
 
 @media screen and (max-width: 1259px) {

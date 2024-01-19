@@ -77,3 +77,26 @@
 .productsListEdit.productsPage#BD > button:hover {
   background-color: #576cbc;
 }
+
+/* Toggle Switch */
+.toggleSwitch-label#BD {
+  border: 1px solid #13005a;
+}
+
+.toggleSwitch-inner#BD:before {
+  background-color: #1597bb;
+  color: #fff;
+}
+.toggleSwitch-inner#BD:after {
+  background-color: #1f6e8c;
+  color: #fff;
+}
+
+.toggleSwitch-switch.list#BD {
+  background: #0e2954;
+  border: 1px solid #19376d;
+}
+.toggleSwitch-switch.tile#BD {
+  background: #0e2954;
+  border: 1px solid #19376d;
+}

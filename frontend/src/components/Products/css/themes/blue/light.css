@@ -77,3 +77,26 @@
   color: #000000;
   background-color: #ffd3b0;
 }
+
+/* Toggle Switch */
+.toggleSwitch-label#BL {
+  border: 1px solid #3a98b9;
+}
+
+.toggleSwitch-inner#BL:before {
+  background-color: #a0e9ff;
+  color: #030637;
+}
+.toggleSwitch-inner#BL:after {
+  background-color: #89cff3;
+  color: #030637;
+}
+
+.toggleSwitch-switch.list#BL {
+  background: #00a9ff;
+  border: 1px solid #00a9ff;
+}
+.toggleSwitch-switch.tile#BL {
+  background: #00a9ff;
+  border: 1px solid #00a9ff;
+}

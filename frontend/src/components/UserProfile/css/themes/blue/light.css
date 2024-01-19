@@ -39,3 +39,102 @@
 
 /* .profileButtons#GL > #memberProfileButtons {} */
 /* .profileButtons#GL > #staffOnlyButtons {} */
+
+/* User Orders */
+.orderCardTitle#BL {
+  background-color: #92c7cf;
+  border-top: 3px solid #3a98b9;
+  border-bottom: 1px solid #00a9ff;
+}
+
+.orderItemsDiv#BL {
+  background-color: #79e0ee;
+  border-bottom: 3px solid #98eecc;
+}
+.orderItem#BL {
+  background-color: #cdf5fd;
+  color: #030637;
+  border-top: 7px groove #98eecc;
+  border-bottom: 7px ridge #98eecc;
+}
+
+.orderDetails#BL {
+  background-color: #3a98b9;
+  color: #cdf5fd;
+  border-bottom: 3px solid #3a98b9;
+}
+
+.orderItemDetails#BL > a {
+  color: #000000;
+}
+.orderItemDetails#BL > a:hover {
+  color: #3a98b9;
+}
+
+.reorder#BL > button {
+  background-color: #a0e9ff;
+}
+.review#BL > button {
+  background-color: #a6d0dd;
+}
+.return#BL > button,
+.orderDetails#BL > button {
+  background-color: #aad7d9;
+}
+
+.reorder#BL > button:hover {
+  background-color: #98eecc;
+}
+.review#BL > button:hover {
+  background-color: #79e0ee;
+}
+.reorder#BL > button:hover,
+.review#BL > button:hover {
+  color: #000000;
+  border-style: inset;
+}
+.return#BL > button:hover,
+.orderDetails#BL > button:hover {
+  background-color: #ffd3b0;
+  color: #000000;
+  border-style: inset;
+}
+
+/* .noOrdersToDisplay#BL {} */
+/* .noOrdersButtons#BL > a > button {} */
+
+/* Reviews */
+.profileTabReviewDiv#BL {
+  background-color: #a0e9ff;
+  border-top: 5px ridge #cdf5fd;
+  border-bottom: 5px groove #cdf5fd;
+}
+.reviewedProductImageDiv#BL {
+  box-shadow: 7px 5px 5px #3a98b9;
+}
+
+.reviewedProductName#BL {
+  color: #000000;
+}
+.reviewedProductName#BL:hover {
+  color: #00a9ff;
+}
+
+.usersReviewBody.userProfile#BL {
+  background-color: #cdf5fd;
+  border: 3px inset #a6d0dd;
+}
+
+.reviewButtonsContainer#BL > button:first-child,
+.reviewButtonsContainer#BL > button:last-child {
+  background-color: #79e0ee;
+  color: #000000;
+}
+.reviewButtonsContainer#BL > button:first-child:hover {
+  background-color: #d0f5be;
+  border-style: inset;
+}
+.reviewButtonsContainer#BL > button:last-child:hover {
+  background-color: #eeeeee;
+  border-style: inset;
+}

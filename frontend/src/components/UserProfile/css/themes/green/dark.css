@@ -45,3 +45,142 @@
 
 /* .profileButtons#GL > #memberProfileButtons {} */
 /* .profileButtons#GL > #staffOnlyButtons {} */
+
+/* User Orders */
+.orderCardTitle#GD {
+  background-color: #d8e9a8;
+  border-top: 3px solid #519872;
+  border-bottom: 1px solid #519872;
+}
+
+.orderItemsDiv#GD {
+  background-color: #346751;
+  border-bottom: 3px solid #519872;
+}
+.orderItem#GD {
+  background-color: #a4b494;
+  color: #3b5249;
+  border-top: 7px ridge #1e5128;
+  border-bottom: 7px groove #1e5128;
+}
+
+.orderDetails#GD {
+  background-color: #a4b494;
+  color: #000000;
+  border-bottom: 3px solid #519872;
+}
+
+.orderItemDetails#GD > a {
+  color: #000000;
+}
+.orderItemDetails#GD > a:hover {
+  color: #3b5249;
+}
+
+.reorder#GD > button {
+  background-color: #d8e9a8;
+}
+.review#GD > button {
+  background-color: #d8e9a8;
+}
+.return#GD > button,
+.orderDetails#GD > button {
+  background-color: #ecdbba;
+}
+
+.reorder#GD > button:hover {
+  background-color: #a7d129;
+}
+.review#GD > button:hover {
+  background-color: rgba(62, 67, 46, 0.25);
+}
+.reorder#GD > button:hover,
+.review#GD > button:hover {
+  color: #000000;
+  border-style: inset;
+}
+.return#GD > button:hover,
+.orderDetails#GD > button:hover {
+  background-color: #c84b31;
+  color: #000000;
+  border-style: inset;
+}
+
+/* .noOrdersToDisplay#GD {} */
+/* .noOrdersButtons#GD > a > button {} */
+
+/* Reviews */
+.profileTabReviewDiv#GD {
+  background-color: #1e5128;
+  border-top: 5px groove #a4b494;
+  border-bottom: 5px ridge #a4b494;
+}
+.reviewedProductImageDiv#GD {
+  box-shadow: 7px 5px 5px #519872;
+}
+.reviewedProductName#GD {
+  color: #ecdbba;
+}
+.reviewedProductName#GD:hover {
+  color: #d8e9a8;
+}
+
+.usersReviewBody.userProfile#GD {
+  background-color: #d8e9a8;
+  border: 3px inset #519872;
+  color: #191a19;
+}
+
+.reviewButtonsContainer#GD > button:first-child,
+.reviewButtonsContainer#GD > button:last-child {
+  background-color: #3b5249;
+  color: #ecdbba;
+}
+.reviewButtonsContainer#GD > button:first-child:hover {
+  background-color: #d8e9a8;
+  border-style: inset;
+  color: #3e432e;
+}
+.reviewButtonsContainer#GD > button:last-child:hover {
+  background-color: #ecdbba;
+  border-style: inset;
+  color: #3e432e;
+}
+
+/* User Wishlist/Favorites */
+.userFavesContainer#GD,
+.userWishContainer#GD {
+  border: 3px solid #519872;
+}
+.userFavesContainer#GD:hover,
+.userWishContainer#GD:hover {
+  box-shadow: 10px 10px 5px 1px #519872;
+}
+.userFavesContainer#GD > a,
+.userWishContainer#GD > a {
+  color: #ecdbba;
+  background-color: #346751;
+  border-top: 3px solid #1e5128;
+  border-left: 3px solid #1e5128;
+  border-right: 3px solid #1e5128;
+}
+.userFavesContainer#GD > a:hover,
+.userWishContainer#GD > a:hover {
+  background-color: #519872;
+  color: #000000;
+}
+
+.userFavesContainer#GD > button,
+.userWishContainer#GD > button {
+  color: #ecdbba;
+  background-color: #346751;
+  border-top: none;
+  border-left: 3px solid #1e5128;
+  border-right: 3px solid #1e5128;
+  border-bottom: 3px solid #1e5128;
+}
+.userFavesContainer#GD > button:hover,
+.userWishContainer#GD > button:hover {
+  background-color: #c84b31;
+  /* color: #000000; */
+}

@@ -45,3 +45,107 @@
 
 /* .profileButtons#GL > #memberProfileButtons {} */
 /* .profileButtons#GL > #staffOnlyButtons {} */
+
+/* User Orders */
+.orderCardTitle#BD {
+  background-color: #2e8a99;
+  border-top: 3px solid #a5d7e8;
+  border-bottom: 1px solid #13005a;
+  color: #000000;
+}
+
+.orderItemsDiv#BD {
+  background-color: #19376d;
+  border-bottom: 3px solid #a5d7e8;
+  color: #a5d7e8;
+}
+.orderItem#BD {
+  background-color: #2e8a99;
+  border-top: 7px ridge #1f6e8c;
+  border-bottom: 7px groove #1f6e8c;
+  color: #13005a;
+}
+
+.orderDetails#BD {
+  background-color: #0e2954;
+  border-bottom: 3px solid #a5d7e8;
+  color: #a5d7e8;
+}
+
+.orderItemDetails#BD > a {
+  color: #000000;
+}
+.orderItemDetails#BD > a:hover {
+  color: #a5d7e8;
+}
+
+.reorder#BD > button {
+  background-color: #1597bb;
+  color: #000000;
+}
+.review#BD > button {
+  background-color: #1c82ad;
+  color: #000000;
+}
+.return#BD > button,
+.orderDetails#BD > button {
+  background-color: #84a7a1;
+  color: #000000;
+}
+
+.reorder#BD > button:hover {
+  background-color: #8fd6e1;
+}
+.review#BD > button:hover {
+  background-color: #576cbc;
+}
+.reorder#BD > button:hover,
+.review#BD > button:hover {
+  border-style: inset;
+}
+.return#BD > button:hover,
+.orderDetails#BD > button:hover {
+  background-color: #7b113a;
+  border-style: inset;
+}
+
+/* .noOrdersToDisplay#BD {} */
+/* .noOrdersButtons#BD > a > button {} */
+
+/* Reviews */
+.profileTabReviewDiv#BD {
+  background-color: #1f6e8c;
+  border-top: 5px ridge #1597bb;
+  border-bottom: 5px groove #1597bb;
+}
+.reviewedProductImageDiv#BD {
+  box-shadow: 7px 5px 5px #0e2954;
+}
+.reviewedProductName#BD {
+  color: #000000;
+}
+.reviewedProductName#BD:hover {
+  color: #a5d7e8;
+}
+
+.usersReviewBody.userProfile#BD {
+  background-color: #8fd6e1;
+  border: 3px inset #0e2954;
+  color: #1b2430;
+}
+
+.reviewButtonsContainer#BD > button:first-child,
+.reviewButtonsContainer#BD > button:last-child {
+  background-color: #00337c;
+  color: #a5d7e8;
+}
+.reviewButtonsContainer#BD > button:first-child:hover {
+  background-color: #8fd6e1;
+  border-style: inset;
+  color: #1b2430;
+}
+.reviewButtonsContainer#BD > button:last-child:hover {
+  background-color: #576cbc;
+  border-style: inset;
+  color: #1b2430;
+}

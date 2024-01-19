@@ -19,6 +19,7 @@ export default function UserWishlist() {
   const user = useSelector((state) => state.session.user);
   const wishlist = useSelector((state) => state.wishlist);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
 
   useEffect(async () => {
     const data = await dispatch(getWishlist()).then(() => setIsLoaded(true));
@@ -38,10 +39,11 @@ export default function UserWishlist() {
             <div
               key={wish.id}
               className="userWishContainer"
+              id={theme}
               style={{ backgroundImage: `url(${wish.previewImg})` }}
             >
               <NavLink exact to={`/product/${wish.id}`}>
-                <h1>{wish.name}</h1>
+                {wish.name}
               </NavLink>
               <OpenModalButton
                 buttonText="Remove From Wishlist"

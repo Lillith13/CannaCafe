@@ -66,16 +66,39 @@
 }
 .productsTileRemoveFrom.productsPage#PD > button:hover,
 .productsListRemoveFrom.productsPage#PD > button:hover {
-  background-color: #ecdbba;
-  color: #362706;
+  background-color: #d6d5a8;
+  color: #000000;
 }
 .productsTileDelete.productsPage#PD > button:hover,
 .productsListDelete.productsPage#PD > button:hover {
-  color: #fefae0;
-  background-color: #c84b31;
+  color: #fff;
+  background-color: #e94560;
 }
 .productsTileEdit.productsPage#PD > button:hover,
 .productsListEdit.productsPage#PD > button:hover {
-  background-color: #d8e9a8;
-  color: #362706;
+  background-color: #d6d5a8;
+  color: #000000;
+}
+
+/* Toggle Switch */
+.toggleSwitch-label#PD {
+  border: 1px solid #16213e;
+}
+
+.toggleSwitch-inner#PD:before {
+  background-color: #512b81;
+  color: #d6d5a8;
+}
+.toggleSwitch-inner#PD:after {
+  background-color: #35155d;
+  color: #d6d5a8;
+}
+
+.toggleSwitch-switch.list#PD {
+  background: #d4adfc;
+  border: 1px solid #16213e;
+}
+.toggleSwitch-switch.tile#PD {
+  background: #d4adfc;
+  border: 1px solid #16213e;
 }

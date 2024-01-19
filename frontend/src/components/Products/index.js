@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 
 import "./css/Universal.css";
+import "./css/toggleSwitch.css";
 /* Views */
 import "./css/productViews/TileView.css";
 import "./css/productViews/ListView.css";
@@ -45,6 +46,7 @@ export default function Products() {
   const [view, setView] = useState("tile");
   const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
   const [isLoaded, setIsLoaded] = useState(false);
+  const [sticky, setSticky] = useState(false);
 
   useEffect(async () => {
     // * checking pathname to set what should be displayed
@@ -88,6 +90,14 @@ export default function Products() {
     // if (data) {
     //   console.log(data.errors);
     // }
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 80) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+    });
   }, [dispatch]);
 
   useEffect(() => {
@@ -110,13 +120,27 @@ export default function Products() {
     }
   }, [isLoaded]);
 
+  const toggleView = () => {
+    view == "tile" ? setView("list") : setView("tile");
+    view == "tile"
+      ? localStorage.setItem("viewSetting", "list")
+      : localStorage.setItem("viewSetting", "tile");
+  };
+
   return isLoaded ? (
-    <div className="pageContainer" id="productView">
+    <div
+      className={`pageContainer ${sticky ? "sticky" : null}`}
+      id="productView"
+    >
       <div className="pageHeader" id={theme}>
         <div className="topOfHeaderItems">
           <div>
             <button
-              className="goBackButton productsPage"
+              className={
+                sticky
+                  ? "sticky goBackButton productsPage"
+                  : "goBackButton productsPage"
+              }
               id={theme}
               onClick={(e) => {
                 e.preventDefault();
@@ -127,44 +151,92 @@ export default function Products() {
             </button>
           </div>
           <div className="viewOptionsDiv">
-            <button
-              className={
-                view == "list"
-                  ? "selectedView viewOptionsButton"
-                  : "viewOptionsButton"
-              }
-              id={theme}
-              onClick={() => {
-                setView("list");
-                localStorage.setItem("viewSetting", "list");
-              }}
-            >
-              List
-            </button>
-            <button
-              className={
-                view == "tile"
-                  ? "selectedView viewOptionsButton"
-                  : "viewOptionsButton"
-              }
-              id={theme}
-              onClick={() => {
-                setView("tile");
-                localStorage.setItem("viewSetting", "tile");
-              }}
-              disabled={Object.values(products).length < 3}
-            >
-              Tile
-            </button>
+            {sticky ? (
+              <div className="toggleSwitchContainer">
+                <div className="toggle-switch">
+                  <input
+                    type="checkbox"
+                    className="toggleSwitch-checkbox"
+                    name="setView"
+                    id="view"
+                    onClick={toggleView}
+                  />
+                  <label
+                    className="toggleSwitch-label"
+                    id={theme}
+                    htmlFor="view"
+                  >
+                    <span
+                      className={
+                        view == "tile"
+                          ? "tile toggleSwitch-inner"
+                          : "list toggleSwitch-inner"
+                      }
+                      id={theme}
+                    />
+                    <span
+                      className={
+                        view == "tile"
+                          ? "tile toggleSwitch-switch"
+                          : "list toggleSwitch-switch"
+                      }
+                      id={theme}
+                    />
+                  </label>
+                </div>
+              </div>
+            ) : (
+              <>
+                <button
+                  className={
+                    view == "list"
+                      ? "selectedView viewOptionsButton"
+                      : "viewOptionsButton"
+                  }
+                  id={theme}
+                  onClick={() => {
+                    setView("list");
+                    localStorage.setItem("viewSetting", "list");
+                  }}
+                >
+                  List
+                </button>
+                <button
+                  className={
+                    view == "tile"
+                      ? "selectedView viewOptionsButton"
+                      : "viewOptionsButton"
+                  }
+                  id={theme}
+                  onClick={() => {
+                    setView("tile");
+                    localStorage.setItem("viewSetting", "tile");
+                  }}
+                  disabled={Object.values(products).length < 3}
+                >
+                  Tile
+                </button>
+              </>
+            )}
           </div>
         </div>
 
         {params && params.name ? (
-          <h1 className="productsPageTitle" id={theme}>
+          <h1
+            className={
+              sticky ? "sticky productsPageTitle" : "productsPageTitle"
+            }
+            id={theme}
+          >
             {params.name}
           </h1>
         ) : (
-          <h1 className="productsPageTitle" id={theme}>
+          <h1
+            className={
+              sticky ? "sticky productsPageTitle" : "productsPageTitle"
+            }
+            id={theme}
+          >
             {location.pathname.slice(1)[0].toUpperCase() +
               location.pathname.slice(1).substring(1)}
           </h1>

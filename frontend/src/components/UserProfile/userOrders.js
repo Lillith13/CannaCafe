@@ -22,6 +22,7 @@ export default function UserOrders() {
   const user = useSelector((state) => state.session.user);
   const orders = useSelector((state) => state.orders);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
   // const [fullLoad, setFullLoad] = useState(false);
 
   useEffect(() => {
@@ -37,12 +38,12 @@ export default function UserOrders() {
           <div className="ordersContainerDiv">
             {orders.map((order) => (
               <div className="idvOrderDiv" key={order.id}>
-                <div className="orderCardTitle">
+                <div className="orderCardTitle" id={theme}>
                   Order #: {order.id} - Order Total: ${order.total}
                 </div>
 
                 <div className="orderItemsContainer">
-                  <div className="orderDetails">
+                  <div className="orderDetails" id={theme}>
                     <p>Order Date: {order.placed}</p>
                     <div>
                       {order.products[0].category.shippable && (
@@ -66,14 +67,14 @@ export default function UserOrders() {
                     )}
                   </div>
 
-                  <div className="orderItemsDiv">
+                  <div className="orderItemsDiv" id={theme}>
                     {order.products.map((item) => (
-                      <div className="orderItem" key={item.id}>
+                      <div className="orderItem" id={theme} key={item.id}>
                         <img
                           src={item.previewImg}
                           alt={item.name + "_previewImg"}
                         />
-                        <div className="orderItemDetails">
+                        <div className="orderItemDetails" id={theme}>
                           <NavLink
                             exact
                             to={
@@ -98,7 +99,7 @@ export default function UserOrders() {
                         </div>
 
                         <div className="orderButtons">
-                          <div id="reorder">
+                          <div className="reorder" id={theme}>
                             <OpenModalButton
                               buttonText="Buy Again"
                               modalComponent={
@@ -112,10 +113,10 @@ export default function UserOrders() {
                           </div>
 
                           <div
-                            id="review"
                             className={
-                              user.role.name === "Member" ? "" : "hidden"
+                              user.role.name === "Member" ? "review" : "hidden"
                             }
+                            id={theme}
                           >
                             <OpenModalButton
                               buttonText="Post Review"
@@ -129,7 +130,7 @@ export default function UserOrders() {
                           </div>
 
                           {item.category.shippable && (
-                            <div id="return">
+                            <div className="return" id={theme}>
                               <OpenModalButton
                                 buttonText="Return"
                                 modalComponent={
@@ -148,9 +149,9 @@ export default function UserOrders() {
           </div>
         </div>
       ) : (
-        <div className="noOrdersToDisplay">
+        <div className="noOrdersToDisplay" id={theme}>
           <h2>No past orders to display...</h2>
-          <div id="noOrdersButtons">
+          <div className="noOrdersButtons" id={theme}>
             <NavLink exact to="/menu">
               <button>Order Takeout</button>
             </NavLink>

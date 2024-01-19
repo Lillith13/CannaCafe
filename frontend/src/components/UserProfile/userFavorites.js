@@ -19,6 +19,7 @@ export default function UserFavorites() {
   const user = useSelector((state) => state.session.user);
   const faves = useSelector((state) => state.favorites);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
 
   useEffect(async () => {
     const data = await dispatch(getAllFavorites()).then(() =>
@@ -40,11 +41,11 @@ export default function UserFavorites() {
             <div
               key={fave.id}
               className="userFavesContainer"
+              id={theme}
               style={{ backgroundImage: `url(${fave.previewImg})` }}
             >
-              {console.log(fave.previewImg)}
               <NavLink exact to={`/menu/${fave.id}`}>
-                <h1>{fave.name}</h1>
+                {fave.name}
               </NavLink>
               <OpenModalButton
                 buttonText="Remove From Favorites"

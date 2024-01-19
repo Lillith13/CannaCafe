@@ -150,6 +150,9 @@
   height: 50px;
   transition: 2s ease;
 }
+.profileTabs > h3 {
+  width: 10%;
+}
 .profileTabs > h3:hover {
   cursor: pointer;
 }
@@ -168,28 +171,3 @@
 .profileTabsDisplaysContainer {
   margin-top: 125px;
 }
-/* .profileTabsDisplaysContainer {
-  background-color: #807464;
-  color: #f0ebce;
-  border-radius: 15px;
-  height: 500px;
-  width: 98%;
-  overflow-y: scroll;
-  scrollbar-color: #d3b5a0;
-} */
-
-/* .profileTabsDisplaysContainer::-webkit-scrollbar {
-  width: 10px;
-  background-color: #395144;
-  border-radius: 30px;
-}
-.profileTabsDisplaysContainer::-webkit-scrollbar-track,
-.profileTabsDisplaysContainer::-webkit-scrollbar-track-piece {
-  background-color: #395144;
-  border-radius: 30px;
-}
-.profileTabsDisplaysContainer::-webkit-scrollbar-thumb,
-.profileTabsDisplaysContainer::-webkit-scrollbar-thumb:vertical {
-  background-color: #a9b388;
-  border-radius: 30px;
-} */

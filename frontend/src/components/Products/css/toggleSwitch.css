@@ -1,0 +1,81 @@
+.toggleSwitchContainer {
+  text-align: center;
+  position: fixed;
+  top: 6.75em;
+  right: 1.5em;
+  z-index: 1;
+}
+.toggle-switch {
+  position: relative;
+  width: 75px;
+  display: inline-block;
+  text-align: left;
+  top: 8px;
+}
+.toggleSwitch-checkbox {
+  display: none;
+}
+.toggleSwitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.toggleSwitch-inner {
+  display: block;
+  width: 200%;
+  transition: margin 0.3s ease-in 0s;
+}
+.toggleSwitch-inner.list {
+  margin-left: -100%;
+}
+
+.toggleSwitch-inner:before,
+.toggleSwitch-inner:after {
+  float: left;
+  width: 50%;
+  height: 36px;
+  padding: 0;
+  line-height: 36px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.toggleSwitch-inner:before {
+  content: "List";
+  padding-left: 10px;
+}
+.toggleSwitch-inner:after {
+  content: "Tile";
+  padding-right: 10px;
+  text-align: right;
+}
+
+.toggleSwitch-switch.list {
+  display: block;
+  width: 24px;
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 40px;
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s;
+}
+.toggleSwitch-switch.tile {
+  display: block;
+  width: 24px;
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0px;
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s;
+}
+
+.toggleSwitch-checkbox.list:checked + .toggleSwitch-label .toggleSwitch-inner {
+  margin-left: 0;
+}
+.toggleSwitch-checkbox.list:checked + .toggleSwitch-label .toggleSwitch-switch {
+  right: 0px;
+}

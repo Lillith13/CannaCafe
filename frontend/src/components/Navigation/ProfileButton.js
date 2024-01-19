@@ -228,7 +228,10 @@ function ProfileButton({ user }) {
             </div>
           </div>
         ) : (
-          <div id="noCurrUser" onClick={closeMenu}>
+          <div
+            id="noCurrUser"
+            onClick={(e) => (e.target.tagName == "BUTTON" ? closeMenu() : null)}
+          >
             <OpenModalButton buttonText="Log In" modalComponent={<Login />} />
 
             <OpenModalButton buttonText="Sign Up" modalComponent={<Signup />} />

@@ -72,3 +72,26 @@
 .productsListEdit.productsPage#GL > button:hover {
   background-color: #f7d59c;
 }
+
+/* Toggle Switch */
+.toggleSwitch-label#GL {
+  border: 1px solid #fcf8e8;
+}
+
+.toggleSwitch-inner#GL:before {
+  background-color: #cee5d0;
+  color: #5e454b;
+}
+.toggleSwitch-inner#GL:after {
+  background-color: #c4d7b2;
+  color: #5e454b;
+}
+
+.toggleSwitch-switch.list#GL {
+  background: #fcf8e8;
+  border: 1px solid #eaeccc;
+}
+.toggleSwitch-switch.tile#GL {
+  background: #fcf8e8;
+  border: 1px solid #eaeccc;
+}

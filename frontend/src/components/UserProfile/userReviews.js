@@ -25,6 +25,7 @@ export default function UserReviews() {
   const reviews = useSelector((state) => state.reviews);
   const user = useSelector((state) => state.session.user);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
 
   useEffect(async () => {
     if (user.role.name == "Owner" || user.role.name == "Manager") {
@@ -43,16 +44,12 @@ export default function UserReviews() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div className="profileReviewsTabContainer" id="doASiSAYdammit">
+    <div className="profileReviewsTabContainer">
       {reviews && reviews.length > 0 ? (
         <>
           {user.role.name == "Owner" || user.role.name == "Manager" ? (
             reviews.reverse().map((review) => (
-              <div
-                key={review.id}
-                className="profileTabReviewDiv"
-                id="doASiSAYdammit"
-              >
+              <div key={review.id} className="profileTabReviewDiv" id={theme}>
                 <div>
                   <div className="userPicNInfo userProfile">
                     <img
@@ -70,6 +67,7 @@ export default function UserReviews() {
                   </div>
                   <div
                     className="reviewedProductImageDiv"
+                    id={theme}
                     style={{
                       backgroundImage: `url(${
                         review.product.preview
@@ -80,15 +78,14 @@ export default function UserReviews() {
                   ></div>
 
                   <div
-                    className="reviewBodyContainer userProfile"
+                    className={`reviewBodyContainer userProfile ${theme}`}
                     id={review.user.id != user.id ? "dontOwn" : ""}
                   >
-                    <NavLink exact to={`/products/`}>
-                      {console.log(review)}
-                      <h4 className="reviewedProductName">
+                    <h4 className="reviewedProductName" id={theme}>
+                      <NavLink exact to={`/products/`}>
                         {review.product.name}
-                      </h4>
-                    </NavLink>
+                      </NavLink>
+                    </h4>
 
                     <div className="reviewStarsDiv userProfile">
                       <img
@@ -132,7 +129,7 @@ export default function UserReviews() {
                         }
                       />
                     </div>
-                    <p className="usersReviewBody userProfile">
+                    <p className="usersReviewBody userProfile" id={theme}>
                       {review.review}
                     </p>
                   </div>
@@ -171,10 +168,11 @@ export default function UserReviews() {
           ) : (
             <>
               {reviews.reverse().map((review) => (
-                <div key={review.id} className="profileTabReviewDiv">
+                <div key={review.id} className="profileTabReviewDiv" id={theme}>
                   <div>
                     <div
                       className="reviewedProductImageDiv"
+                      id={theme}
                       style={{
                         backgroundImage: `url(${
                           review.product.preview
@@ -193,7 +191,7 @@ export default function UserReviews() {
                             : `/menu/${review.product.id}`
                         }
                       >
-                        <h4 className="reviewedProductName">
+                        <h4 className="reviewedProductName" id={theme}>
                           {review.product.name}
                         </h4>
                       </NavLink>
@@ -240,12 +238,15 @@ export default function UserReviews() {
                           }
                         />
                       </div>
-                      <div className="usersReviewBody userProfile">
+                      <div className="usersReviewBody userProfile" id={theme}>
                         {review.review}
                       </div>
                     </div>
                   </div>
-                  <div className="reviewButtonsContainer userProfile">
+                  <div
+                    className="reviewButtonsContainer userProfile"
+                    id={theme}
+                  >
                     <OpenModalButton
                       buttonText=" Edit Review "
                       modalComponent={
