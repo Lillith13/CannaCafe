@@ -6,7 +6,6 @@ import { getWishlist } from "../../store/wishlist";
 import OpenModalButton from "../OpenModalButton";
 import ConfirmRemove from "../AllModals/ConfirmRemove";
 
-import "./css/tabs/wishlist.css";
 import "./css/tabs/univ.css";
 import "./css/themes/green/light.css";
 import "./css/themes/green/dark.css";

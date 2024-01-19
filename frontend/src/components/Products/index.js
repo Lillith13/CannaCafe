@@ -111,63 +111,65 @@ export default function Products() {
   }, [isLoaded]);
 
   return isLoaded ? (
-    <div className="pageContainer">
-      <div className="topOfPageItems">
-        <div>
-          <button
-            className="goBackButton productsPage"
-            id={theme}
-            onClick={(e) => {
-              e.preventDefault();
-              history.goBack();
-            }}
-          >
-            Go Back
-          </button>
+    <div className="pageContainer" id="productView">
+      <div className="pageHeader" id={theme}>
+        <div className="topOfHeaderItems">
+          <div>
+            <button
+              className="goBackButton productsPage"
+              id={theme}
+              onClick={(e) => {
+                e.preventDefault();
+                history.goBack();
+              }}
+            >
+              Go Back
+            </button>
+          </div>
+          <div className="viewOptionsDiv">
+            <button
+              className={
+                view == "list"
+                  ? "selectedView viewOptionsButton"
+                  : "viewOptionsButton"
+              }
+              id={theme}
+              onClick={() => {
+                setView("list");
+                localStorage.setItem("viewSetting", "list");
+              }}
+            >
+              List
+            </button>
+            <button
+              className={
+                view == "tile"
+                  ? "selectedView viewOptionsButton"
+                  : "viewOptionsButton"
+              }
+              id={theme}
+              onClick={() => {
+                setView("tile");
+                localStorage.setItem("viewSetting", "tile");
+              }}
+              disabled={Object.values(products).length < 3}
+            >
+              Tile
+            </button>
+          </div>
         </div>
-        <div className="viewOptionsDiv">
-          <button
-            className={
-              view == "list"
-                ? "selectedView viewOptionsButton"
-                : "viewOptionsButton"
-            }
-            id={theme}
-            onClick={() => {
-              setView("list");
-              localStorage.setItem("viewSetting", "list");
-            }}
-          >
-            List
-          </button>
-          <button
-            className={
-              view == "tile"
-                ? "selectedView viewOptionsButton"
-                : "viewOptionsButton"
-            }
-            id={theme}
-            onClick={() => {
-              setView("tile");
-              localStorage.setItem("viewSetting", "tile");
-            }}
-            disabled={Object.values(products).length < 3}
-          >
-            Tile
-          </button>
-        </div>
-      </div>
 
-      {params && params.name ? (
-        <h1 className="productsPageTitle" id={theme}>
-          {params.name}
-        </h1>
-      ) : (
-        <h1 className="productsPageTitle" id={theme}>
-          {location.pathname.slice(1)[0].toUpperCase() +
-            location.pathname.slice(1).substring(1)}
-        </h1>
-      )}
+        {params && params.name ? (
+          <h1 className="productsPageTitle" id={theme}>
+            {params.name}
+          </h1>
+        ) : (
+          <h1 className="productsPageTitle" id={theme}>
+            {location.pathname.slice(1)[0].toUpperCase() +
+              location.pathname.slice(1).substring(1)}
+          </h1>
+        )}
+      </div>
 
       <div
         className={

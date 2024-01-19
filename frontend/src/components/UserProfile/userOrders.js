@@ -28,19 +28,6 @@ export default function UserOrders() {
     dispatch(getAllOrders()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const calcTotal = (order) => {
-    let sum = 0;
-    order.products.map((item) => {
-      sum += parseFloat(item.price) * item.quantity;
-    });
-    if (order.total != sum) {
-      order.total = sum.toFixed(2);
-      // return sum.toFixed(2);
-    } /* else {
-      return order.total;
-    } */
-  };
-
   // ! Orders to be seperated by bag or cart orders - only cart orders can be returned
 
   return isLoaded ? (

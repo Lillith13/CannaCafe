@@ -39,6 +39,15 @@ export default function UserProfile() {
   const [favoritesLoaded, setFavoritesLoaded] = useState(false);
   const [employeesLoaded, setEmployeesLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hideGreet, setHideGreet] = useState(false);
+
+  const handleScrollTransition = () => {
+    if (window.scrollY > 99) {
+      setHideGreet(true);
+    } else {
+      setHideGreet(false);
+    }
+  };
 
   useEffect(() => {
     if (!user || user == "undefined") {
@@ -53,6 +62,8 @@ export default function UserProfile() {
     } else {
       setFavoritesLoaded(true);
     }
+
+    window.addEventListener("scroll", handleScrollTransition);
   }, []);
 
   const handleClockIn = async (e) => {
@@ -82,11 +93,14 @@ export default function UserProfile() {
 
   return (
     <div className="pageContainer userProfile" id={theme}>
-      <h1>
+      <h1 className="userProfileGreeting">
         Hello, {user.firstName} {user.lastName}
       </h1>
 
-      <div className="profileNav" id={theme}>
+      <div
+        className={hideGreet ? "sticky profileNav" : "profileNav"}
+        id={theme}
+      >
         <div
           className={
             selected == "profileButtons"

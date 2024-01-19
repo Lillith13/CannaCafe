@@ -42,7 +42,6 @@ export default function HomePage() {
           View All
         </button>
       </NavLink>
-      {console.log(theme)}
       <div className="menuItemsContainerDiv" id={theme}>
         <div className="menuItemsTitleContainer" id={theme}>
           <h1>Checkout our Menu</h1>

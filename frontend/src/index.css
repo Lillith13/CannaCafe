@@ -21,9 +21,9 @@ nav {
   position: fixed;
   left: 0%;
   top: 0%;
-  z-index: 1;
   height: 50px;
   width: 100%;
+  z-index: 3;
   padding: 20px 20px;
 }
 
@@ -32,10 +32,11 @@ footer {
   justify-content: space-evenly;
   align-items: center;
   position: fixed;
-  height: 75px;
-  width: 100%;
   left: 0%;
   bottom: 0%;
+  height: 75px;
+  width: 100%;
+  z-index: 3;
 }
 
 button {

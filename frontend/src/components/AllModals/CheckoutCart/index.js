@@ -26,7 +26,7 @@ export default function CheckoutCart({ userId }) {
     const cartVals = [];
     Object.values(parsedCart).map((item) => {
       // console.log(item);
-      cartVals.push([item.id, item.quantity]);
+      cartVals.push({ itemId: item.id, quantity: item.quantity });
     });
     setCart(cartVals);
     // setCart([...Object.values(parsedCart)]);
@@ -44,14 +44,11 @@ export default function CheckoutCart({ userId }) {
     e.preventDefault();
     let updateCart = {};
     if (userId && userId != "undefined") {
-      dispatch(createOrder()).then((orderId) => {
+      dispatch(createOrder(total)).then((orderId) => {
         cart.map((item) => {
-          // console.log(item);
-          const formData = {
-            itemId: item[0],
-            quantity: item[1],
-          };
-          // console.log(formData);
+          const formData = item;
+          console.log("formData sent => ", formData);
+
           dispatch(addUserOrderItems({ formData, orderId }))
             .then((data) => {
               if (data && data.errors) {

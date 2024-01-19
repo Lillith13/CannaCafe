@@ -1,4 +1,15 @@
-.topOfPageItems {
+.pageContainer#productView {
+  padding-top: 9em;
+}
+.pageHeader {
+  width: 100%;
+  min-height: 9em;
+  position: fixed;
+  top: 6em;
+  left: 0px;
+}
+
+.topOfHeaderItems {
   display: flex;
   justify-content: space-between;
   align-content: center;

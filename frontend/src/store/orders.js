@@ -16,9 +16,13 @@ export const getAllOrders = () => async (dispatch) => {
   }
 };
 
-export const createOrder = () => async (dispatch) => {
+export const createOrder = (total) => async (dispatch) => {
   const res = await fetch("/api/orders/", {
     method: ["POST"],
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(total)
   });
   const data = await res.json();
   return data.Order;

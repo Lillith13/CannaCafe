@@ -8,6 +8,18 @@
   z-index: 0;
   border-radius: 10px;
 }
+.profileNav.sticky {
+  position: fixed;
+  top: 5.5em;
+  border-radius: 0px;
+  z-index: 2;
+}
+.profileNav.sticky > .profileNavTabsToggled {
+  border-radius: 0px 25px 25px 0px;
+}
+.profileNav.sticky > .profileNavButtonsToggled {
+  border-radius: 25px 0px 0px 25px;
+}
 
 .profileNavTabsToggled,
 .profileNavButtonsToggled {

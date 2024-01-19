@@ -1,27 +1,24 @@
 .orderTabContainer {
   display: flex;
-  width: 98%;
-  /* border: 1px solid black; */
-  margin-left: 13px;
+  width: 100%;
   margin-top: 25px;
   margin-bottom: 25px;
+  padding-bottom: 15px;
 }
 .ordersContainerDiv {
   display: flex;
   width: 100%;
   flex-direction: column-reverse;
-  /* border: 1px solid black; */
   gap: 15px;
 }
 .idvOrderDiv {
-  /* border: 1px solid black; */
   border-radius: 25px;
-  background-color: #1a120b;
   padding: 10px;
+  height: 300px;
 }
 
 .orderCardTitle {
-  background-color: #3f2c1b;
+  /* background-color: #3f2c1b; */
   border: 5px #1a120b;
   border-style: inset;
   font-size: 25px;
@@ -32,11 +29,12 @@
 .orderItemsContainer {
   /* border: 1px solid black; */
   display: flex;
+  height: 80%;
 }
 
 .orderDetails {
-  /* border: 1px solid black; */
-  background-color: #395144;
+  border: 1px solid black;
+  /* background-color: #395144; */
   color: #f0ebce;
   font-weight: bold;
   border-radius: 0px 0px 0px 25px;
@@ -65,12 +63,12 @@
 #return > button {
   padding: 10px;
 }
-#review > button:hover {
+/* #review > button:hover {
   background-color: rgba(101, 100, 124, 0.5);
-}
+} */
 #return > button:hover,
 .orderDetails > button:hover {
-  background-color: #e2bcb7;
+  /* background-color: #e2bcb7; */
   color: #1a120b;
 }
 
@@ -79,21 +77,14 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 200px;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   border-radius: 0px 0px 25px 0px;
   padding-left: 15px;
   padding-top: 25px;
   padding-bottom: 25px;
   overflow-y: auto;
   gap: 15px;
-  background-color: #4e6c50;
-}
-.orderItemsDiv::-webkit-scrollbar {
-  display: none;
-}
-.orderItemsDiv::-webkit-scrollbar:hover {
-  width: 5px;
+  /* background-color: #4e6c50; */
 }
 
 .orderItem {
@@ -103,12 +94,21 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background-color: #acb992;
+  /* background-color: #acb992; */
   width: 90%;
+  max-height: 100px;
   color: #1a120b;
 }
 .orderItem > img {
   width: 35%;
+  max-height: 100px;
+  border-radius: 15px;
+}
+.orderItem > img:hover {
+  width: 35%;
+  max-height: 250px;
+  position: relative;
+  z-index: 1;
 }
 
 .orderItemDetails {
@@ -148,7 +148,7 @@
 
 #orderPostReviewButton:hover {
   color: #e2bcb7;
-  background-color: rgb(101, 100, 124);
+  /* background-color: rgb(101, 100, 124); */
   cursor: not-allowed;
 }
 

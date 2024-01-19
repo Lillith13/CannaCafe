@@ -16,27 +16,26 @@ def orders():
         orders = Order.query.filter(Order.user_id == current_user.get_id()).all()
         # users = User.query.all()
         for order in orders:
+            orderItems = OrderProduct.query.filter(OrderProduct.order_id == order.id).all()
+            normalizedOrderItems = {item.product_id: item.to_dict() for item in orderItems}
+
             o = order.to_dict()
-            targetUser = User.query.get(o['user_id'])
-            o['user'] = targetUser.username
+
             for product in o['products']:
-                # print("product => ", product['id'])
-                prodId = product['id']
-                # print("o to dict => ", o['id'])
-                orderId = o['id']
-                tmp = OrderProduct.query.filter(OrderProduct.product_id == prodId and OrderProduct.order_id == orderId).first()
-                product['quantity'] = tmp.quantity
-                # print(product)
+                product['quantity'] = normalizedOrderItems[product['id']]['quantity']
+
             orderList.append(o)
         return {"Past_Orders": orderList}
 
     if request.method == "POST":
         order = Order(
-            user_id = current_user.get_id()
+            user_id = current_user.get_id(),
+            total = request.get_json()
         )
 
         db.session.add(order)
         db.session.commit()
+
         return { "Order": order.id }
     return
 
@@ -80,12 +79,10 @@ def order(id):
                 quantity = quantity
             )
             product['units_available'] = units_available - quantity
-            order.total += product['price'] * quantity
-            print("product price => ", product['price'])
-            print("product quantity => ", quantity)
-            print("order totals => ", order.total)
+
             db.session.add(newOrderItem)
             db.session.commit()
+
             return {"message": "successful"}
 
         if form.errors:
@@ -96,11 +93,6 @@ def order(id):
         pass
 
     if request.method == "DELETE":
-        print()
-        print(order)
-        print(request.method)
-        print()
-
         if not order:
             return {'errors': {"Bad_Request": "Order not found"}}, 404
         db.session.delete(order)
@@ -112,9 +104,14 @@ def order(id):
 def processReturn(orderId, itemId):
 
     orderItem = OrderProduct.query.filter(OrderProduct.order_id == orderId, OrderProduct.product_id == itemId).first()
+    order = Order.query.get(orderId)
 
-    if not orderItem:
+    if not orderItem or not order:
         return { 'errors': {"Bad_Request": "Product not found"}}, 404
+
+    product = Product.query.get(orderItem.product_id)
+
+    order.total = order.total - (orderItem.quantity * product.price)
 
     db.session.delete(orderItem)
     db.session.commit()

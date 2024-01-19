@@ -6,7 +6,6 @@ import { getAllFavorites } from "../../store/favorites";
 import OpenModalButton from "../OpenModalButton";
 import ConfirmRemove from "../AllModals/ConfirmRemove";
 
-import "./css/tabs/faves.css";
 import "./css/tabs/univ.css";
 import "./css/themes/green/light.css";
 import "./css/themes/green/dark.css";
