@@ -76,32 +76,18 @@ function App() {
           <Route exact path="/checkout/cart">
             <CheckoutCart />
           </Route>
-          {user ? (
-            <>
-              <Route exact path="/profile/:empId">
-                <EmployeeProfile />
-              </Route>
-              <Route exact path="/profile">
-                <UserProfile />
-              </Route>
-              <Route exact path="/paystubs/:empId">
-                <PayStubs />
-              </Route>
-            </>
-          ) : (
-            <>
-              <Route exact path="/profile/:empId">
-                <OopsyMessage />
-              </Route>
-              <Route exact path="/profile">
-                <OopsyMessage />
-              </Route>
-              <Route exact path="/paystubs/:empId">
-                <OopsyMessage />
-              </Route>
-            </>
-          )}
-          <Route path="*" element={<ErrorFourOHFour />} />
+          <Route exact path="/profile/:empId">
+            {user ? <EmployeeProfile /> : <OopsyMessage />}
+          </Route>
+          <Route exact path="/profile">
+            {user ? <UserProfile /> : <OopsyMessage />}
+          </Route>
+          <Route exact path="/paystubs/:empId">
+            {user ? <PayStubs /> : <OopsyMessage />}
+          </Route>
+          <Route>
+            <ErrorFourOHFour />
+          </Route>
         </Switch>
       )}
       {location.pathname === "/" ? null : <Footer />}
