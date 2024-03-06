@@ -9,25 +9,31 @@ from ...forms import PlaceOrder
 order_routes = Blueprint('orders', __name__, url_prefix="/orders")
 
 @order_routes.route("/", methods=["GET", "POST"])
-@login_required
+# @login_required
 def orders():
-    if request.method == "GET":
-        orderList = []
-        orders = Order.query.filter(Order.user_id == current_user.get_id()).all()
-        # users = User.query.all()
-        for order in orders:
-            orderItems = OrderProduct.query.filter(OrderProduct.order_id == order.id).all()
-            normalizedOrderItems = {item.product_id: item.to_dict() for item in orderItems}
+    print("   =====>  request.method ==> ", request.method)
 
-            o = order.to_dict()
+    if request.method == "GET" :
+        if current_user.get_id() != False:
+            orderList = []
+            orders = Order.query.filter(Order.user_id ==    current_user.get_id()).all()
+            # users = User.query.all()
+            for order in orders:
+                orderItems = OrderProduct.query.filter(OrderProduct.order_id == order.id).all()
+                normalizedOrderItems = {item.product_id: item.to_dict() for item in orderItems}
 
-            for product in o['products']:
-                product['quantity'] = normalizedOrderItems[product['id']]['quantity']
+                o = order.to_dict()
 
-            orderList.append(o)
-        return {"Past_Orders": orderList}
+                for product in o['products']:
+                    product['quantity'] = normalizedOrderItems[product['id']]['quantity']
+
+                orderList.append(o)
+            return {"Past_Orders": orderList}
 
     if request.method == "POST":
+        print(" from inside request.method POST conditional  =====>  request.method ==> ", request.method)
+        print("current user id ===> ", current_user.get_id())
+        print("total ==> ", request.get_json())
         order = Order(
             user_id = current_user.get_id(),
             total = request.get_json()
@@ -35,6 +41,8 @@ def orders():
 
         db.session.add(order)
         db.session.commit()
+
+        print("order ==> ", order, "--- orderId ==> ", order.id)
 
         return { "Order": order.id }
     return

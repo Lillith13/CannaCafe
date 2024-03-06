@@ -42,7 +42,6 @@ export default function CheckoutCart({ userId }) {
 
   const placeOrder = (e) => {
     e.preventDefault();
-    let updateCart = {};
     if (userId && userId != "undefined") {
       dispatch(createOrder(total)).then((orderId) => {
         cart.map((item) => {
@@ -56,7 +55,7 @@ export default function CheckoutCart({ userId }) {
               }
             })
             .then(() => {
-              localStorage.setItem(`${userId}Cart`, JSON.stringify(updateCart));
+              localStorage.setItem(`${userId}Cart`, JSON.stringify({}));
             })
             .then(() => {
               history.push("/profile");
@@ -66,9 +65,9 @@ export default function CheckoutCart({ userId }) {
         });
       });
     } else {
-      localStorage.setItem("guestCart", JSON.stringify(updateCart));
+      localStorage.setItem("guestCart", JSON.stringify({}));
     }
-    history.push("/home");
+    userId ? history.push("/profile") : history.push("/home");
     closeModal();
   };
 

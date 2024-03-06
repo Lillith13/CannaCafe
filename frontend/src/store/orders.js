@@ -18,19 +18,21 @@ export const getAllOrders = () => async (dispatch) => {
 
 export const createOrder = (total) => async (dispatch) => {
   const res = await fetch("/api/orders/", {
-    method: ["POST"],
+    method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(total)
+    body: JSON.stringify(total),
   });
   const data = await res.json();
+  console.log(data.Order);
   return data.Order;
 };
 
 export const addUserOrderItems =
   ({ formData, orderId }) =>
   async (dispatch) => {
+    console.log(formData, orderId);
     const res = await fetch(`/api/orders/${orderId}`, {
       method: "POST",
       headers: {

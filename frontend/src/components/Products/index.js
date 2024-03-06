@@ -361,97 +361,105 @@ export default function Products() {
                               />
                             }
                           />
-                          {userFaves && !product.category.shippable && (
+                          {user && (
                             <>
-                              {(Object.keys(userFaves).includes(
-                                `${product.id}`
-                              ) ||
-                                Object.keys(userFaves).includes(product.id)) &&
-                              !product.category.shippable ? (
-                                <div
-                                  className={
-                                    view == "tile"
-                                      ? "productsTileRemoveFrom productsPage"
-                                      : "productsListRemoveFrom productsPage"
-                                  }
-                                  id={theme}
-                                >
-                                  <OpenModalButton
-                                    buttonText="Remove From Favorites"
-                                    modalComponent={
-                                      <ConfirmRemove
-                                        where="Favorites"
-                                        product={product}
+                              {userFaves && !product.category.shippable && (
+                                <>
+                                  {(Object.keys(userFaves).includes(
+                                    `${product.id}`
+                                  ) ||
+                                    Object.keys(userFaves).includes(
+                                      product.id
+                                    )) &&
+                                  !product.category.shippable ? (
+                                    <div
+                                      className={
+                                        view == "tile"
+                                          ? "productsTileRemoveFrom productsPage"
+                                          : "productsListRemoveFrom productsPage"
+                                      }
+                                      id={theme}
+                                    >
+                                      <OpenModalButton
+                                        buttonText="Remove From Favorites"
+                                        modalComponent={
+                                          <ConfirmRemove
+                                            where="Favorites"
+                                            product={product}
+                                          />
+                                        }
                                       />
-                                    }
-                                  />
-                                </div>
-                              ) : (
-                                <div
-                                  className={
-                                    view == "tile"
-                                      ? "productsTileUnivButton productsPage"
-                                      : "productsListUnivButton productsPage"
-                                  }
-                                  id={theme}
-                                >
-                                  <OpenModalButton
-                                    buttonText="Add to Favorites"
-                                    modalComponent={
-                                      <ConfirmAdd
-                                        where="Favorites"
-                                        product={product}
+                                    </div>
+                                  ) : (
+                                    <div
+                                      className={
+                                        view == "tile"
+                                          ? "productsTileUnivButton productsPage"
+                                          : "productsListUnivButton productsPage"
+                                      }
+                                      id={theme}
+                                    >
+                                      <OpenModalButton
+                                        buttonText="Add to Favorites"
+                                        modalComponent={
+                                          <ConfirmAdd
+                                            where="Favorites"
+                                            product={product}
+                                          />
+                                        }
                                       />
-                                    }
-                                  />
-                                </div>
+                                    </div>
+                                  )}
+                                </>
                               )}
-                            </>
-                          )}
-                          {userWishes && product.category.shippable && (
-                            <>
-                              {(Object.keys(userWishes).includes(
-                                `${product.id}`
-                              ) ||
-                                Object.keys(userWishes).includes(product.id)) &&
-                              product.category.shippable ? (
-                                <div
-                                  className={
-                                    view == "tile"
-                                      ? "productsTileRemoveFrom productsPage"
-                                      : "productsListRemoveFrom productsPage"
-                                  }
-                                  id={theme}
-                                >
-                                  <OpenModalButton
-                                    buttonText="Remove From Wishlist"
-                                    modalComponent={
-                                      <ConfirmRemove
-                                        where="Wishlist"
-                                        product={product}
+                              {userWishes && product.category.shippable && (
+                                <>
+                                  {(Object.keys(userWishes).includes(
+                                    `${product.id}`
+                                  ) ||
+                                    Object.keys(userWishes).includes(
+                                      product.id
+                                    )) &&
+                                  product.category.shippable ? (
+                                    <div
+                                      className={
+                                        view == "tile"
+                                          ? "productsTileRemoveFrom productsPage"
+                                          : "productsListRemoveFrom productsPage"
+                                      }
+                                      id={theme}
+                                    >
+                                      <OpenModalButton
+                                        buttonText="Remove From Wishlist"
+                                        modalComponent={
+                                          <ConfirmRemove
+                                            where="Wishlist"
+                                            product={product}
+                                          />
+                                        }
                                       />
-                                    }
-                                  />
-                                </div>
-                              ) : (
-                                <div
-                                  className={
-                                    view == "tile"
-                                      ? "productsTileUnivButton productsPage"
-                                      : "productsListUnivButton productsPage"
-                                  }
-                                  id={theme}
-                                >
-                                  <OpenModalButton
-                                    buttonText="Add to Wishlist"
-                                    modalComponent={
-                                      <ConfirmAdd
-                                        where="Wishlist"
-                                        product={product}
+                                    </div>
+                                  ) : (
+                                    <div
+                                      className={
+                                        view == "tile"
+                                          ? "productsTileUnivButton productsPage"
+                                          : "productsListUnivButton productsPage"
+                                      }
+                                      id={theme}
+                                    >
+                                      <OpenModalButton
+                                        buttonText="Add to Wishlist"
+                                        modalComponent={
+                                          <ConfirmAdd
+                                            where="Wishlist"
+                                            product={product}
+                                          />
+                                        }
                                       />
-                                    }
-                                  />
-                                </div>
+                                    </div>
+                                  )}
+                                </>
                               )}
                             </>
                           )}

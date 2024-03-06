@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { useModal } from "../../../context/Modal";
-import "./CheckoutBag.css";
 import { addUserOrderItems, createOrder } from "../../../store/orders";
-import { useDispatch } from "react-redux";
+import "./CheckoutBag.css";
 
 export default function CheckoutBag({ userId }) {
   const { closeModal } = useModal();
@@ -36,7 +36,7 @@ export default function CheckoutBag({ userId }) {
 
     let bagTotal = 0;
     parsedBagArr.map((item) => {
-      console.log(item);
+      // console.log(item);
       const price = Number(item.price).toFixed(2);
       const quantity = Number(item.quantity);
       bagTotal += Number(price * quantity);
@@ -47,18 +47,16 @@ export default function CheckoutBag({ userId }) {
 
   const placeOrder = (e) => {
     e.preventDefault();
-
-    // console.log("made it into placeOrder function");
-
     if (userId && userId != "undefined") {
-      dispatch(createOrder()).then((orderId) => {
+      dispatch(createOrder(total)).then((orderId) => {
+        let formData = {};
         bag.map((item) => {
-          // console.log(item);
-          const formData = {
+          formData = {
             itemId: item[0],
             quantity: item[1],
           };
-          // console.log(formData);
+          console.log("formData sent => ", formData);
+
           dispatch(addUserOrderItems({ formData, orderId }))
             .then((data) => {
               if (data && data.errors) {
@@ -78,7 +76,7 @@ export default function CheckoutBag({ userId }) {
     } else {
       localStorage.setItem("guestTakeaway", JSON.stringify({}));
     }
-    history.push("/home");
+    userId ? history.push("/profile") : history.push("/home");
     closeModal();
   };
 
