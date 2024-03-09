@@ -1,0 +1,9 @@
+On the first page after clicking to enter, the console has the issue "A form field element has neither an id nor a name attribute. This might prevent the browser from correctly autofilling the form." Also what looks to be some issues with promises.
+
+Entering the food and drink sections: two errors on get fetches to the favorites and wishlist.
+
+On changing color themes, it seems to take a while to reload and there are some Quill issues (I'm unfamiliar with Quill so it might be normal)
+
+---------------------------------------------------------------
+
+* Images in this folder are screenshots of the errors found

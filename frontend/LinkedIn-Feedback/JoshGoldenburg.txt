@@ -1,0 +1,23 @@
+The of the main page is a bit wide - on a laptop or desktop I think you could add some margins to move the content more to the center.
+
+I think laying text over images could be an accessibility issue, so I might find a different place to display the text.
+
+The theme options are amazing, I think the the text colors for some of the themes are a bit difficult to read on the background. Best example is the employee titles on the profile page is a light green on lighter green.
+
+When I log in or log out, it takes me back to the landing page, at least intermittently and then sometimes secondarily to the profile page. I would have it direct to the home page instead on every login or logout of any profile type.
+
+The manager capabilities are awesome! I really can't believe how much you are tackling here. I would drop that menu down vertically like the others, even if it will be a bit long. And if you move content more central I think it will be dropping into empty space too.
+
+The bag vs cart idea is very interesting and cool. It took me a bit to figure out what the difference is. Something to consider. I just realized the same differentiation goes for wishlist and favorites.
+
+I would have a quantity listed for the cannabis - maybe for everything. For food, drink and merch. For the glass bubblers for example, there is a picture of two, so I am not clear how many I would be buying.
+
+I would also add the ability to add more than one of a product to the cart or bag at a time.
+
+Some of your product names are showing up on the page in Javascript syntax "GlassBubbler" instead of Glass Bubbler. Or "takeMyMeds".
+
+Oooo I love the tile to list view toggle!! Wow the site is never ending lol. How did you build all of this?!
+
+Sorry if I got carried away. More info is better than less?? I hope
+
+Last thing. I did not realize until just now, like 15 minutes in. That I would have access to more products if I was logged in. I think I would have some type of advertisement somewhere of the additional access as a member

@@ -1,0 +1,11 @@
+On your project you requested feedback about: after adding items to the "Takeaway Bag" (TB); then clicking on the TB icon to get a listing of items in the TB; the box for removing the particular item entirely has the phrase "Remove from Cart" instead of "Remove from Takeaway Bag".(Edited)
+
+If you are going to use "MilkShake" as one word with no space before "Shake", that's fine...but then don't capitalize Shake. Otherwise, put a space before it if you want to capitalize it.
+
+You have two different drinks which both have the same name: "Matcha Latte".
+
+All of the drink pictures except the "Coffee" (which probably should be labelled "Latte" as a search for such shows the same picture as a Shutterstock image; although I see from your image's URL that you got it from a NBC News article) seem to be "squat" : making them all the same size shifted their dimensions a bit.
+- (Sorry, the above "squat" comment just applies to the "List" view, not the "Tile" view.)
+- (And the same for the Merchandise: in Tile view it all looks fine, but some of them are "squat" in List view.)
+
+I think you want "Acapulco" without the first l you have in "Alcapulco Gold"

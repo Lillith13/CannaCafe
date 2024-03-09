@@ -1,4 +1,4 @@
-/* ! Green */
+/* * Green */
 /* Light */
 .GL {
   background-color: #e1ecc8;
@@ -57,7 +57,7 @@ button#GD:hover {
   color: #c84b31;
 }
 
-/* ! Blue */
+/* * Blue */
 /* Light */
 .BL {
   background-color: #89cff3;
@@ -115,7 +115,7 @@ button#BD:hover {
   color: #b67162;
 }
 
-/* ! Purple */
+/* * Purple */
 /* Light */
 .PL {
   background-color: #937dc2;
