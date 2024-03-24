@@ -19,13 +19,54 @@
   .siteName {
     margin: 0px;
   }
+  .currStaffDetails {
+    flex-direction: column;
+  }
+  .currStaffButtons#staffMenu {
+    flex-direction: column;
+  }
+  #clockButtons,
+  #managementOnlyButtons {
+    display: flex;
+    flex-direction: column;
+  }
+  #staffMenuDropDown {
+    width: 80%;
+    left: 1%;
+  }
 }
 
 @media screen and (min-width: 301px) and (max-width: 600px) {
+  .profile-dropdown {
+    padding: 7px;
+  }
   .navlinkIcon,
   .logoIcon,
   .profileLogo {
     width: 30px;
     height: 30px;
+  }
+  .currStaffDetails {
+    flex-direction: column;
+  }
+  .currStaffButtons#staffMenu {
+    flex-direction: column;
+  }
+  #clockButtons,
+  #managementOnlyButtons {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 799px) {
+  #staffMenuDropDown {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 850px) {
+  #staffMenuDropDown {
+    width: 91%;
   }
 }
