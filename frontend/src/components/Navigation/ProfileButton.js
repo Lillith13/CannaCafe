@@ -8,8 +8,9 @@ import Signup from "../AllModals/Signup";
 import { logout } from "../../store/session";
 import { userClockin, userClockout } from "../../store/timecard";
 
-import "./Navigation.css";
-import "./themes.css";
+import "./css/Navigation.css";
+import "./css/screenSizing.css";
+import "./css/themes.css";
 
 import profileIcon from "../../assets/profile_icon.png";
 import CreateProduct from "../AllModals/CreateProduct";

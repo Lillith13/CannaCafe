@@ -3,6 +3,13 @@
   .idvMenuItem > p {
     display: none;
   }
+  .viewAllItemsButton {
+    width: 75%;
+  }
+  .viewAllProductsButton,
+  .viewAllMenuButton {
+    width: 100%;
+  }
 }
 
 @media screen and (min-height: 401px) and (max-height: 699px) {
@@ -19,6 +26,9 @@
     .idvProduct > p,
     .idvMenuItem > p {
       display: none;
+    }
+    .viewAllItemsButton {
+      width: 75%;
     }
     .viewAllProductsButton,
     .viewAllMenuButton {
@@ -41,6 +51,9 @@
     .idvMenuItem > p {
       display: none;
     }
+    .viewAllItemsButton {
+      width: 75%;
+    }
     .viewAllProductsButton,
     .viewAllMenuButton {
       width: 100%;
@@ -55,7 +68,9 @@
     .idvMenuItem {
       width: 100%;
     }
-
+    .viewAllItemsButton {
+      width: 75%;
+    }
     .viewAllProductsButton,
     .viewAllMenuButton {
       width: 50%;

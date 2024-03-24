@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import "./Navigation.css";
-import "./themes.css";
+import "./css/Navigation.css";
+import "./css/screenSizing.css";
+import "./css/themes.css";
 
 import ProfileButton from "./ProfileButton";
 
@@ -16,7 +17,7 @@ export default function Navigation({ isLoaded }) {
   const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
 
   return (
-    <nav className={theme}>
+    <nav className={theme} id="navContainer">
       <div className="logoIconContainer">
         <NavLink exact to="/home" className="logoNavLink">
           <img className="logoIcon" src={cannaLogo} alt="CannaLogo" />
@@ -25,8 +26,6 @@ export default function Navigation({ isLoaded }) {
           </h1>
         </NavLink>
       </div>
-      {/* ❗ Implement Search Bar later */}
-      {/* <input type="text" placeholder="Search..." onChange={}/> */}
       <div className="navlinkContainer">
         <NavLink exact to="/takeout">
           <img className="navlinkIcon" src={takeawayIcon} alt="takeoutLogo" />
