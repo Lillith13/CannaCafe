@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import "./HomePage.css";
-import "./themes.css";
+import "./css/HomePage.css";
+import "./css/screenSizing.css";
+import "./css/themes.css";
 
 import { getCategories } from "../../store/categories";
 
