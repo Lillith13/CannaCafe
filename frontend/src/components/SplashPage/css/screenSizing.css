@@ -1,0 +1,185 @@
+@media screen and (max-height: 400px) {
+  .splashGreeting {
+    padding-top: 5px;
+  }
+  .splashEnter,
+  .splashGuest {
+    top: 50%;
+    width: 70%;
+  }
+}
+
+@media screen and (min-height: 401px) and (max-height: 699px) {
+  .splashGreeting {
+    padding-top: 5%;
+  }
+  .splashEnter,
+  .splashGuest {
+    top: 50%;
+    width: 70%;
+  }
+  @media screen and (max-width: 500px) {
+    .splashEnter,
+    .splashGuest {
+      top: 25%;
+      width: 75%;
+    }
+    .splashLogoImage {
+      margin-top: 25px;
+    }
+  }
+}
+
+@media screen and (min-height: 700px) and (max-height: 1099px) {
+  .splashGreeting {
+    padding-top: 5%;
+  }
+  .splashEnter,
+  .splashGuest {
+    top: 40%;
+    width: 50%;
+  }
+  @media screen and (max-width: 599px) {
+    .splashEnter,
+    .splashGuest {
+      top: 40%;
+      width: 75%;
+    }
+    .splashLogoImage {
+      margin-top: 10%;
+    }
+    @media screen and (min-height: 700px) {
+      .splashEnter,
+      .splashGuest {
+        top: 35%;
+      }
+      .splashLogoImage {
+        margin-top: 20%;
+      }
+    }
+    @media screen and (min-height: 719px) {
+      .splashEnter,
+      .splashGuest {
+        top: 40%;
+      }
+      .splashLogoImage {
+        margin-top: 10%;
+      }
+    }
+    @media screen and (min-height: 740px) {
+      .splashGreeting {
+        padding-top: 30%;
+      }
+      .splashEnter,
+      .splashGuest {
+        top: 40%;
+        width: 80%;
+      }
+      .splashLogoImage {
+        margin-top: 20%;
+      }
+    }
+    @media screen and (min-height: 800px) {
+      .splashGreeting {
+        padding-top: 30%;
+      }
+      .splashEnter,
+      .splashGuest {
+        top: 37%;
+        width: 70%;
+      }
+      .splashLogoImage {
+        margin-top: 20%;
+      }
+    }
+    @media screen and (min-height: 850px) {
+      .splashGreeting {
+        padding-top: 20%;
+      }
+      .splashEnter,
+      .splashGuest {
+        top: 35%;
+        width: 50%;
+      }
+      .splashLogoImage {
+        margin-top: 25%;
+      }
+    }
+  }
+  @media screen and (min-width: 600px) {
+    @media screen and (max-height: 749px) {
+      .splashEnter,
+      .splashGuest {
+        top: 30%;
+        width: 70%;
+      }
+    }
+    @media screen and (min-height: 750px) {
+      .splashGreeting {
+        padding-top: 30%;
+      }
+      .splashEnter,
+      .splashGuest {
+        top: 37%;
+        width: 70%;
+      }
+      .splashLogoImage {
+        margin-top: 20%;
+      }
+    }
+    @media screen and (min-height: 850px) {
+      .splashGreeting {
+        padding-top: 5%;
+      }
+      .splashEnter,
+      .splashGuest {
+        top: 35%;
+        width: 45%;
+      }
+      .splashLogoImage {
+        margin-top: 5%;
+      }
+    }
+    @media screen and (min-height: 899px) {
+      .splashEnter,
+      .splashGuest {
+        top: 35%;
+        width: 60%;
+      }
+      @media screen and (min-width: 550px) {
+        .splashEnter,
+        .splashGuest {
+          top: 25%;
+        }
+      }
+      @media screen and (min-height: 650px) {
+        .splashEnter,
+        .splashGuest {
+          top: 40%;
+        }
+      }
+    }
+    @media screen and (width: 1440px) {
+      .splashEnter,
+      .splashGuest {
+        top: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (min-height: 1100px) {
+  .splashGreeting {
+    padding-top: 5%;
+  }
+  .splashEnter {
+    top: 35%;
+    width: 50%;
+  }
+  .splashGuest {
+    top: 35%;
+  }
+  .splashLogoImage {
+    margin-top: 10%;
+  }
+}

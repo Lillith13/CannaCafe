@@ -1,0 +1,134 @@
+/* GREEN */
+/* Light */
+.splashEnter#GL,
+.splashGuest#GL {
+  background-color: rgba(34, 139, 34, 0.75);
+  color: #fff;
+}
+
+.splashEnter#GL:hover,
+.splashGuest#GL:hover {
+  background-color: rgba(34, 139, 34, 0.9);
+}
+
+.splashEnter#GL > h2:hover,
+.splashGuest#GL > h2:hover {
+  border: 3px solid limegreen;
+  background-color: darkgreen;
+}
+
+.splashLogoImage#GL {
+  background-color: darkgreen;
+}
+
+/* Dark */
+.splashEnter#GD,
+.splashGuest#GD {
+  background-color: rgba(34, 139, 34, 0.75);
+  color: #fff;
+}
+
+.splashEnter#GD:hover,
+.splashGuest#GD:hover {
+  background-color: rgba(34, 139, 34, 0.9);
+}
+
+.splashEnter#GD > h2:hover,
+.splashGuest#GD > h2:hover {
+  border: 3px solid limegreen;
+  background-color: darkgreen;
+}
+
+.splashLogoImage#GD {
+  background-color: darkgreen;
+}
+
+/* BLUE */
+/* Light */
+.splashEnter#BL,
+.splashGuest#BL {
+  background-color: rgba(34, 139, 34, 0.75);
+  color: #fff;
+}
+
+.splashEnter#BL:hover,
+.splashGuest#BL:hover {
+  background-color: rgba(34, 139, 34, 0.9);
+}
+
+.splashEnter#BL > h2:hover,
+.splashGuest#BL > h2:hover {
+  border: 3px solid limegreen;
+  background-color: darkgreen;
+}
+
+.splashLogoImage#BL {
+  background-color: darkgreen;
+}
+
+/* Dark */
+.splashEnter#BD,
+.splashGuest#BD {
+  background-color: rgba(34, 139, 34, 0.75);
+  color: #fff;
+}
+
+.splashEnter#BD:hover,
+.splashGuest#BD:hover {
+  background-color: rgba(34, 139, 34, 0.9);
+}
+
+.splashEnter#BD > h2:hover,
+.splashGuest#BD > h2:hover {
+  border: 3px solid limegreen;
+  background-color: darkgreen;
+}
+
+.splashLogoImage#BD {
+  background-color: darkgreen;
+}
+
+/* Purple */
+/* Light */
+.splashEnter#PL,
+.splashGuest#PL {
+  background-color: rgba(34, 139, 34, 0.75);
+  color: #fff;
+}
+
+.splashEnter#PL:hover,
+.splashGuest#PL:hover {
+  background-color: rgba(34, 139, 34, 0.9);
+}
+
+.splashEnter#PL > h2:hover,
+.splashGuest#PL > h2:hover {
+  border: 3px solid limegreen;
+  background-color: darkgreen;
+}
+
+.splashLogoImage#PL {
+  background-color: darkgreen;
+}
+
+/* Dark */
+.splashEnter#PD,
+.splashGuest#PD {
+  background-color: rgba(34, 139, 34, 0.75);
+  color: #fff;
+}
+
+.splashEnter#PD:hover,
+.splashGuest#PD:hover {
+  background-color: rgba(34, 139, 34, 0.9);
+}
+
+.splashEnter#PD > h2:hover,
+.splashGuest#PD > h2:hover {
+  border: 3px solid limegreen;
+  background-color: darkgreen;
+}
+
+.splashLogoImage#PD {
+  background-color: darkgreen;
+}

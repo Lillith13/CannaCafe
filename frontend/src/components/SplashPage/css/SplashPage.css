@@ -1,5 +1,4 @@
 .splashGreeting {
-  padding-top: 50px;
   align-items: center;
 }
 #guestSplashView {
@@ -15,43 +14,31 @@
   align-content: center;
 }
 
-.splashEnter {
+.splashEnter,
+.splashGuest {
   position: absolute;
-  top: 70%;
-  background-color: rgba(34, 139, 34, 0.75);
-  color: #fff;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  width: 40%; /* ! screen size changes will need to be made */
   padding: 15px;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   font-size: 20px;
 }
-.splashEnter#guest {
-  top: 50%;
-}
-.splashEnter#guest:hover {
-  background-color: rgba(34, 139, 34, 0.9);
-}
-.splashEnter > h2 {
+
+.splashEnter > h2,
+.splashGuest > h2 {
   padding: 5px 15px;
 }
-.splashEnter > h2:hover {
-  border: 3px solid limegreen;
+.splashEnter > h2:hover,
+.splashGuest > h2:hover {
   border-radius: 15px;
-  background-color: darkgreen;
   padding: 2px 12px;
 }
-/* #guestSplashMsg {
-  width: 50%;
-} */
 
 .splashLogoImage {
-  width: 800px;
-  height: 800px;
-  border-radius: 600px;
-  background-color: darkgreen;
+  width: 90%;
+  height: 100%;
+  border-radius: 90%;
 }

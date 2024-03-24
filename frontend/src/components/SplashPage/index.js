@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import "./SplashPage.css";
+import "./css/screenSizing.css";
+import "./css/themes.css";
+import "./css/SplashPage.css";
 import splashLogo from "../../assets/cannaleaf.png";
 
 export default function SplashPage() {
   const user = useSelector((state) => state.session.user);
   const [guest, setGuest] = useState();
   const [isLoaded, setLoaded] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
 
   useEffect(() => {
     if (!user || user == "undefined") {
@@ -16,6 +19,7 @@ export default function SplashPage() {
     } else {
       setGuest(false);
     }
+
     setLoaded(true);
   }, []);
 
@@ -30,34 +34,30 @@ export default function SplashPage() {
           <h1 className="splashGreeting">Welcome to CannaCafe!</h1>
         </>
       )}
-      {/* <div> */}
       <NavLink
         exact
         to="/home"
         style={{ textDecoration: "none" }}
         className="splashLogoContainerDiv"
       >
-        <div className="splashEnter" id={guest ? "guest" : "user"}>
+        <div className={guest ? "splashGuest" : "splashEnter"} id={theme}>
           {!guest ? (
             <p>Your One Stop Shop For All Things Relating To Cannabis</p>
           ) : (
-            <p id="guestSplashMsg">
+            <p>
               Welcome to CannaCafe, the place where your inner child can finally
-              be let loose! This platform is a lively online shop designed for
-              fellow lovers and connoisseurs of the amazing and weirdly
-              controversial herb with calming and healing properties. If you're
-              passionate about the potent and smelly healing herb and an opposer
-              to the government imposed hate directed at the kind and lovely
-              sweetheart that is Cannabis, CannaCafe is the place for you.
+              be let loose!
             </p>
           )}
           <h2>Enter</h2>
         </div>
-        {/* <div> */}
-        <img src={splashLogo} alt="SplashLogo" className="splashLogoImage" />
-        {/* </div> */}
+        <img
+          src={splashLogo}
+          alt="SplashLogo"
+          className="splashLogoImage"
+          id={theme}
+        />
       </NavLink>
-      {/* </div> */}
     </div>
   ) : (
     <h1>Loading...</h1>

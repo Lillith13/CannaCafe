@@ -1,1 +1,4 @@
-/* need to make sure to add screen size accomadating styles for mobile devices (check analytics for mobile screen size used in feedback comment from linked in && google popular mobile device screen sizes to accomodate as many as possible) */
+/* @media screen and (min-width: ) and (max-width: ) {
+  @media screen and (min-height: ) and (max-height: ) {
+  }
+} */
