@@ -50,7 +50,10 @@ export default function HomePage() {
           <p>{descriptions.Menu}</p>
 
           <NavLink exact to="/menu">
-            <button className={!user ? "hidden" : "viewAllMenuButton"}>
+            <button
+              className={!user ? "hidden" : "viewAllMenuButton"}
+              id={theme}
+            >
               View Full Menu
             </button>
           </NavLink>
@@ -84,7 +87,10 @@ export default function HomePage() {
         <div className="productsTitleContainer">
           <h1>Checkout our Products</h1>
           <NavLink exact to="/products">
-            <button className={!user ? "hidden" : "viewAllProductsButton"}>
+            <button
+              className={!user ? "hidden" : "viewAllProductsButton"}
+              id={theme}
+            >
               View All Products
             </button>
           </NavLink>
@@ -100,7 +106,6 @@ export default function HomePage() {
                   key={category.id}
                   className="idvProduct"
                   id={category.name}
-                  // style={{backgroundImage={}}}
                 >
                   <h2 id="cardInfo">{category.name}</h2>
                   <p id="cardInfo">{descriptions[category.name]}</p>

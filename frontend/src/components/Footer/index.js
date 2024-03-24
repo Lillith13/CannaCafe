@@ -1,5 +1,6 @@
-import "./Footer.css";
-import "./themes.css";
+import "./css/Footer.css";
+import "./css/screenSizing.css";
+import "./css/themes.css";
 
 import linkedinLogo from "../../assets/linkedinLogo.png";
 import githubLogo from "../../assets/githubLogo.png";

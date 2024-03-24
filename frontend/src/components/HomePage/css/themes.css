@@ -12,6 +12,12 @@
   border: 3px solid #94b49f;
 }
 
+.viewAllItemsButton#GL:hover,
+.viewAllProductsButton#GL:hover,
+.viewAllMenuButton#GL:hover {
+  color: black;
+}
+
 /* Dark */
 .productsContainerDiv#GD,
 .menuItemsContainerDiv#GD {
