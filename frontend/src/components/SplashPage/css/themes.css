@@ -2,133 +2,157 @@
 /* Light */
 .splashEnter#GL,
 .splashGuest#GL {
-  background-color: rgba(34, 139, 34, 0.75);
-  color: #fff;
+  background-color: rgba(196, 215, 178, 0.85);
+  color: black;
 }
 
 .splashEnter#GL:hover,
 .splashGuest#GL:hover {
-  background-color: rgba(34, 139, 34, 0.9);
+  background-color: rgba(148, 180, 159, 0.9);
 }
 
 .splashEnter#GL > h2:hover,
 .splashGuest#GL > h2:hover {
-  border: 3px solid limegreen;
-  background-color: darkgreen;
+  border: 3px solid #f3f0d7;
+  background-color: #a0c49d;
 }
 
 .splashLogoImage#GL {
-  background-color: darkgreen;
+  background-color: #a0c49d;
 }
 
 /* Dark */
+.splashGreeting {
+  color: #d8e9a8;
+}
+
 .splashEnter#GD,
 .splashGuest#GD {
-  background-color: rgba(34, 139, 34, 0.75);
-  color: #fff;
+  background-color: rgba(30, 81, 40, 0.85);
+  color: #d8e9a8;
 }
 
 .splashEnter#GD:hover,
 .splashGuest#GD:hover {
-  background-color: rgba(34, 139, 34, 0.9);
+  background-color: rgba(81, 152, 114, 0.9);
+  color: black;
 }
 
 .splashEnter#GD > h2:hover,
 .splashGuest#GD > h2:hover {
-  border: 3px solid limegreen;
-  background-color: darkgreen;
+  border: 3px solid #1e5128;
+  background-color: #346751;
+  color: #d8e9a8;
 }
 
 .splashLogoImage#GD {
-  background-color: darkgreen;
+  background-color: #346751;
 }
 
 /* BLUE */
 /* Light */
+.splashGreeting {
+  color: black;
+}
+
 .splashEnter#BL,
 .splashGuest#BL {
-  background-color: rgba(34, 139, 34, 0.75);
-  color: #fff;
+  background-color: rgba(121, 224, 238, 0.85);
+  color: black;
 }
 
 .splashEnter#BL:hover,
 .splashGuest#BL:hover {
-  background-color: rgba(34, 139, 34, 0.9);
+  background-color: rgba(58, 152, 185, 0.9);
+  color: #e8d5c4;
 }
 
 .splashEnter#BL > h2:hover,
 .splashGuest#BL > h2:hover {
-  border: 3px solid limegreen;
-  background-color: darkgreen;
+  border: 3px solid #00a9ff;
+  background-color: #a6d0dd;
+  color: black;
 }
 
 .splashLogoImage#BL {
-  background-color: darkgreen;
+  background-color: #a0e9ff;
 }
 
 /* Dark */
+.splashGreeting {
+  color: #fefae0;
+}
+
 .splashEnter#BD,
 .splashGuest#BD {
-  background-color: rgba(34, 139, 34, 0.75);
-  color: #fff;
+  background-color: rgba(25, 55, 109, 0.85);
+  color: #fefae0;
 }
 
 .splashEnter#BD:hover,
 .splashGuest#BD:hover {
-  background-color: rgba(34, 139, 34, 0.9);
+  background-color: rgba(14, 41, 84, 0.9);
 }
 
 .splashEnter#BD > h2:hover,
 .splashGuest#BD > h2:hover {
-  border: 3px solid limegreen;
-  background-color: darkgreen;
+  border: 3px solid #a5d7e8;
+  background-color: #1f6e8c;
 }
 
 .splashLogoImage#BD {
-  background-color: darkgreen;
+  background-color: #1f6e8c;
 }
 
 /* Purple */
 /* Light */
+.splashGreeting {
+  color: black;
+}
+
 .splashEnter#PL,
 .splashGuest#PL {
-  background-color: rgba(34, 139, 34, 0.75);
-  color: #fff;
+  background-color: rgba(255, 230, 247, 0.85);
+  color: black;
 }
 
 .splashEnter#PL:hover,
 .splashGuest#PL:hover {
-  background-color: rgba(34, 139, 34, 0.9);
+  background-color: rgba(186, 171, 218, 0.9);
 }
 
 .splashEnter#PL > h2:hover,
 .splashGuest#PL > h2:hover {
-  border: 3px solid limegreen;
-  background-color: darkgreen;
+  border: 3px solid #dfd3c3;
+  background-color: #ffabe1;
 }
 
 .splashLogoImage#PL {
-  background-color: darkgreen;
+  background-color: #c689c6;
 }
 
 /* Dark */
+.splashGreeting {
+  color: #fff;
+}
+
 .splashEnter#PD,
 .splashGuest#PD {
-  background-color: rgba(34, 139, 34, 0.75);
+  background-color: rgba(129, 103, 151, 0.85);
   color: #fff;
 }
 
 .splashEnter#PD:hover,
 .splashGuest#PD:hover {
-  background-color: rgba(34, 139, 34, 0.9);
+  background-color: rgba(92, 70, 156, 0.9);
 }
 
 .splashEnter#PD > h2:hover,
 .splashGuest#PD > h2:hover {
-  border: 3px solid limegreen;
-  background-color: darkgreen;
+  border: 3px solid #d4adfc;
+  background-color: #35155d;
 }
 
 .splashLogoImage#PD {
-  background-color: darkgreen;
+  background-color: #512b81;
 }

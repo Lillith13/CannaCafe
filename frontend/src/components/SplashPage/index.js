@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
+import "./css/SplashPage.css";
 import "./css/screenSizing.css";
 import "./css/themes.css";
-import "./css/SplashPage.css";
 import splashLogo from "../../assets/cannaleaf.png";
 
 export default function SplashPage() {

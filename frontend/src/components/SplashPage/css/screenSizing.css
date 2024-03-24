@@ -160,9 +160,13 @@
       }
     }
     @media screen and (width: 1440px) {
+      .splashGreeting {
+        font-size: 40px;
+      }
       .splashEnter,
       .splashGuest {
         top: 50%;
+        font-size: 40px;
       }
     }
   }
@@ -171,15 +175,27 @@
 @media screen and (min-height: 1100px) {
   .splashGreeting {
     padding-top: 5%;
+    font-size: 40px;
   }
-  .splashEnter {
-    top: 35%;
-    width: 50%;
-  }
+  .splashEnter,
   .splashGuest {
     top: 35%;
+    width: 80%;
+    font-size: 40px;
   }
   .splashLogoImage {
     margin-top: 10%;
+  }
+  @media screen and (min-width: 800px) {
+    .splashEnter,
+    .splashGuest {
+      top: 25%;
+    }
+  }
+  @media screen and (min-width: 820px) {
+    .splashEnter,
+    .splashGuest {
+      top: 30%;
+    }
   }
 }
