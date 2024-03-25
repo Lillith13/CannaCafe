@@ -39,12 +39,14 @@
     top: 40%;
     width: 50%;
   }
+
   @media screen and (max-width: 599px) {
     .splashEnter,
     .splashGuest {
       top: 40%;
       width: 75%;
     }
+
     .splashLogoImage {
       margin-top: 10%;
     }
@@ -70,7 +72,10 @@
       .splashGreeting {
         padding-top: 30%;
       }
-      .splashEnter,
+      .splashEnter {
+        top: 50%;
+        width: 80%;
+      }
       .splashGuest {
         top: 40%;
         width: 80%;
@@ -83,9 +88,12 @@
       .splashGreeting {
         padding-top: 30%;
       }
-      .splashEnter,
       .splashGuest {
         top: 37%;
+        width: 70%;
+      }
+      .splashEnter {
+        top: 43%;
         width: 70%;
       }
       .splashLogoImage {
@@ -96,13 +104,22 @@
       .splashGreeting {
         padding-top: 20%;
       }
-      .splashEnter,
+      .splashEnter {
+        top: 40%;
+        width: 50%;
+      }
       .splashGuest {
         top: 35%;
         width: 50%;
       }
       .splashLogoImage {
         margin-top: 25%;
+      }
+    }
+    @media screen and (min-height: 890px) {
+      .splashEnter {
+        top: 37%;
+        width: 50%;
       }
     }
   }
@@ -161,11 +178,13 @@
     }
     @media screen and (width: 1440px) {
       .splashGreeting {
+        padding-top: 0px;
+        /* margin: 0px; */
         font-size: 40px;
       }
       .splashEnter,
       .splashGuest {
-        top: 50%;
+        top: 47%;
         font-size: 40px;
       }
     }
@@ -187,9 +206,11 @@
     margin-top: 10%;
   }
   @media screen and (min-width: 800px) {
-    .splashEnter,
     .splashGuest {
       top: 25%;
+    }
+    .splashEnter {
+      top: 30%;
     }
   }
   @media screen and (min-width: 820px) {

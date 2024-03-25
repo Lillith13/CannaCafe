@@ -27,11 +27,15 @@ export default function SplashPage() {
     <div className="splashPageContainer" id="splashPage">
       {!guest ? (
         <>
-          <h1 className="splashGreeting">Welcome back, {user.username}!</h1>
+          <h1 className="splashGreeting" id={theme}>
+            Welcome back, {user.username}!
+          </h1>
         </>
       ) : (
         <>
-          <h1 className="splashGreeting">Welcome to CannaCafe!</h1>
+          <h1 className="splashGreeting" id={theme}>
+            Welcome to CannaCafe!
+          </h1>
         </>
       )}
       <NavLink

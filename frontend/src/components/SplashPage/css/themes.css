@@ -1,5 +1,9 @@
-/* GREEN */
+/* ! GREEN */
 /* Light */
+.splashGreeting#GL {
+  color: black;
+}
+
 .splashEnter#GL,
 .splashGuest#GL {
   background-color: rgba(196, 215, 178, 0.85);
@@ -22,7 +26,7 @@
 }
 
 /* Dark */
-.splashGreeting {
+.splashGreeting#GD {
   color: #d8e9a8;
 }
 
@@ -49,9 +53,9 @@
   background-color: #346751;
 }
 
-/* BLUE */
+/* ! BLUE */
 /* Light */
-.splashGreeting {
+.splashGreeting#BL {
   color: black;
 }
 
@@ -79,7 +83,7 @@
 }
 
 /* Dark */
-.splashGreeting {
+.splashGreeting#BD {
   color: #fefae0;
 }
 
@@ -104,9 +108,9 @@
   background-color: #1f6e8c;
 }
 
-/* Purple */
+/* ! Purple */
 /* Light */
-.splashGreeting {
+.splashGreeting#PL {
   color: black;
 }
 
@@ -132,7 +136,7 @@
 }
 
 /* Dark */
-.splashGreeting {
+.splashGreeting#PD {
   color: #fff;
 }
 
