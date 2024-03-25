@@ -1,11 +1,137 @@
 @media screen and (max-width: 300px) {
+  /* ! profile nav */
+  .showProfileButtons,
+  .showProfileTabs {
+    overflow-x: scroll;
+  }
+  .profileTabs {
+    margin-left: 135px;
+    gap: 5px;
+  }
+  .profileTabs > h3 {
+    width: 20%;
+  }
+  .profileButtons {
+    margin-left: 130px;
+  }
+  #managementOnlyButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+  #managementOnlyButtons > button {
+    height: 80%;
+    width: 35%;
+  }
+  #managementOnlyButtons > button:nth-last-child(2) {
+    width: 77px;
+  }
+  /* ! orders */
+  /* ! reviews */
+  /* ! wish/faves */
 }
 
-@media screen and (min-width: 301px) and (max-width: 550px) {
+@media screen and (min-width: 301px) and (max-width: 399px) {
+  /* ! profile nav */
+  .showProfileButtons,
+  .showProfileTabs {
+    overflow-x: scroll;
+  }
+  .profileTabs {
+    margin-left: 115px;
+    gap: 5px;
+  }
+  .profileTabs > h3 {
+    width: 20%;
+  }
+  .profileButtons {
+    margin-left: 95px;
+  }
+  #managementOnlyButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+  #managementOnlyButtons > button {
+    height: 80%;
+    width: 35%;
+  }
+  #managementOnlyButtons > button:nth-last-child(2) {
+    width: 77px;
+  }
+  /* ! orders */
+  /* ! reviews */
+  /* ! wish/faves */
+}
+
+@media screen and (min-width: 400px) and (max-width: 499px) {
+  /* ! profile nav */
+  .showProfileButtons,
+  .showProfileTabs {
+    overflow-x: scroll;
+  }
+  .profileTabs {
+    margin-left: 90px;
+    gap: 5px;
+  }
+  .profileTabs > h3 {
+    width: 20%;
+  }
+  .profileButtons {
+    margin-left: 65px;
+  }
+  #managementOnlyButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+  #managementOnlyButtons > button {
+    height: 80%;
+    width: 35%;
+  }
+  #managementOnlyButtons > button:nth-last-child(2) {
+    width: 77px;
+  }
+  /* ! orders */
+  /* ! reviews */
+  /* ! wish/faves */
+}
+
+@media screen and (min-width: 500px) and (max-width: 551px) {
+  /* ! profile nav */
+  .showProfileTabs {
+    overflow-x: scroll;
+  }
+  .profileTabs {
+    margin-left: 40px;
+    gap: 5px;
+  }
+  .profileTabs > h3 {
+    width: 20%;
+  }
+  #managementOnlyButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+  /* ! orders */
+  /* ! reviews */
+  /* ! wish/faves */
 }
 
 @media screen and (min-width: 551px) and (max-width: 600px) {
-}
-
-@media screen and (max-width: 600px) {
+  /* ! profile nav */
+  #managementOnlyButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+  /* ! orders */
+  /* ! reviews */
+  /* ! wish/faves */
 }

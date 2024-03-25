@@ -186,13 +186,11 @@
 }
 .empListDiv > a:hover,
 .managerListDiv > a:hover,
-.ownerListDiv > a:hover,
-.managerListDiv > a:hover,
 .ownerListDiv > a:hover {
   color: rgb(101, 100, 124);
   background-color: #e4d3cf;
 }
 
 .staffName {
-  color: #d6e4a8;
+  color: black;
 }

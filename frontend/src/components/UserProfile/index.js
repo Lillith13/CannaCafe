@@ -10,6 +10,7 @@ import "./css/themes/blue/light.css";
 import "./css/themes/blue/dark.css";
 import "./css/themes/purple/light.css";
 import "./css/themes/purple/dark.css";
+import "./css/screenSizing.css";
 
 import OpenModalButton from "../OpenModalButton";
 import Signup from "../AllModals/Signup";
