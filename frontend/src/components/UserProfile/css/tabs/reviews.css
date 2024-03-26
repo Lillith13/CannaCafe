@@ -8,7 +8,7 @@
 }
 .profileTabReviewDiv {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: 15px;
   justify-content: space-evenly;
   align-items: center;
@@ -64,18 +64,16 @@
   align-items: center;
   width: 43%;
 }
-
 .reviewBodyContainer.userProfile#dontOwn {
-  border: none;
   width: 40%;
 }
 
 .usersReviewBody.userProfile {
   overflow-y: scroll;
   word-wrap: anywhere;
-  width: 100%;
+  width: 90%;
   padding: 5px;
-  margin-left: 15px;
+  margin-left: 5px;
   font-weight: bold;
   text-align: start;
   overflow-y: scroll;

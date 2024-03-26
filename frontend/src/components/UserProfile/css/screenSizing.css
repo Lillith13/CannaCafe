@@ -29,6 +29,27 @@
   }
   /* ! orders */
   /* ! reviews */
+  .profileReviewsTabContainer > div {
+    position: relative;
+    left: 0px;
+  }
+  .profileTabReviewDiv > div {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .profileTabReviewDiv > div > div:nth-child(1),
+  .profileTabReviewDiv > div > div:nth-child(2) {
+    width: 50px;
+  }
+  .reviewBodyContainer.userProfile#dontOwn {
+    width: 200px;
+    height: 200px;
+    margin-top: 15px;
+    padding: 5px 95px 0px 95px;
+  }
+  .reviewBodyContainer.userProfile#dontOwn > p {
+    width: 250px;
+  }
   /* ! wish/faves */
 }
 
@@ -63,6 +84,27 @@
   }
   /* ! orders */
   /* ! reviews */
+  .profileReviewsTabContainer > div {
+    position: relative;
+    left: 0px;
+  }
+  .profileTabReviewDiv > div {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .profileTabReviewDiv > div > div:nth-child(1),
+  .profileTabReviewDiv > div > div:nth-child(2) {
+    width: 100px;
+  }
+  .reviewBodyContainer.userProfile#dontOwn {
+    width: 350px;
+    height: 200px;
+    margin-top: 15px;
+    padding: 5px 95px 0px 95px;
+  }
+  .reviewBodyContainer.userProfile#dontOwn > p {
+    width: 275px;
+  }
   /* ! wish/faves */
 }
 
@@ -97,6 +139,27 @@
   }
   /* ! orders */
   /* ! reviews */
+  .profileReviewsTabContainer > div {
+    position: relative;
+    left: 0px;
+  }
+  .profileTabReviewDiv > div {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .profileTabReviewDiv > div > div:nth-child(1),
+  .profileTabReviewDiv > div > div:nth-child(2) {
+    width: 100px;
+  }
+  .reviewBodyContainer.userProfile#dontOwn {
+    width: 350px;
+    height: 200px;
+    margin-top: 15px;
+    padding: 5px 95px 0px 95px;
+  }
+  .reviewBodyContainer.userProfile#dontOwn > p {
+    width: 275px;
+  }
   /* ! wish/faves */
 }
 
@@ -119,7 +182,6 @@
     height: 100%;
   }
   /* ! orders */
-  /* ! reviews */
   /* ! wish/faves */
 }
 
@@ -132,6 +194,5 @@
     height: 100%;
   }
   /* ! orders */
-  /* ! reviews */
   /* ! wish/faves */
 }

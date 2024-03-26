@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 
+// standard
 import "./css/UserProfile.css";
 import "./css/tabs/univ.css";
+// themes
 import "./css/themes/green/light.css";
 import "./css/themes/green/dark.css";
 import "./css/themes/blue/light.css";
 import "./css/themes/blue/dark.css";
 import "./css/themes/purple/light.css";
 import "./css/themes/purple/dark.css";
+// screen sizing
 import "./css/screenSizing.css";
 
 import OpenModalButton from "../OpenModalButton";
