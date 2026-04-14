@@ -1,1 +1,0 @@
-I recommend working on responsive design. It doesn't display well on phones at the moment
