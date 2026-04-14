@@ -1,3 +1,5 @@
+import os
+
 from ..models import db, Category, Product, environment, SCHEMA
 from sqlalchemy.sql import text
 import random
@@ -5,13 +7,14 @@ import random
 def seed_products(food, drink, infusedFood, infusedDrink, smokeables, merch, paraphenalia):
     staffIds = [1, 2, 3]
 
-    print("food category printed from top of seed_products => ", [food.id])
-    print("drink category printed from top of seed_products => ", [drink.id])
-    print("drink category printed from top of seed_products => ", [infusedFood.id])
-    print("drink category printed from top of seed_products => ", [infusedDrink.id])
-    print("drink category printed from top of seed_products => ", [smokeables.id])
-    print("drink category printed from top of seed_products => ", [merch.id])
-    print("drink category printed from top of seed_products => ", [paraphenalia.id])
+    if (os.environ.get('DEBUG')):
+        print("food category printed from top of seed_products => ", [food.id])
+        print("drink category printed from top of seed_products => ", [drink.id])
+        print("drink category printed from top of seed_products => ", [infusedFood.id])
+        print("drink category printed from top of seed_products => ", [infusedDrink.id])
+        print("drink category printed from top of seed_products => ", [smokeables.id])
+        print("drink category printed from top of seed_products => ", [merch.id])
+        print("drink category printed from top of seed_products => ", [paraphenalia.id])
 
     sandwich1 = Product(
         name="BLT",
