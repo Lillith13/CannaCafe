@@ -126,7 +126,7 @@ def undo_favorites():
 # Seed Wishlists
 def seed_wishlists(userIds, productIDs, wishListIDs):
     for wid in wishListIDs: # each wishlist will have 1 user
-        for prod in random.sample(Product.query.all(), k=random.randint(1, 50)): # each wishlist will have between 1 and 50 products
+        for prod in random.sample(Product.query.all(), k=random.randint(1, 25)): # each wishlist will have between 1 and 25 products
             newWishItem = WishlistDetail(
                 wishlist_id = wid, #when seeded uid and wishlist.id should be the same
                 product_id = prod.id,
