@@ -48,6 +48,7 @@ def seed_orders(userIDs, productIDs):
         total = 0 # will be updated when products are added to order
         for product_id in products:
             newOrderItem = OrderProduct(
+                order_id = order.id,
                 product_id = product_id,
                 quantity = random.randint(1, 5)
             )
