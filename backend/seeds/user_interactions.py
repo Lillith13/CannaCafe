@@ -41,7 +41,7 @@ def seed_orders(userIDs, productIDs):
         db.session.add(order)
         db.session.commit()
 
-        order.user_id = random.choice(userIDs) # assign random user to order from seeded users
+        order.user_id.update(random.choice(userIDs)) # assign random user to order from seeded users
 
         #calc total for seeded order + add products to order "sub table" (order_products)
         products = random.sample(productIDs, k=random.randint(1, 5)) # each order will have between 1 and 5 products
