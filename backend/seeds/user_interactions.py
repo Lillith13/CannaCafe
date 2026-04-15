@@ -61,7 +61,7 @@ def seed_orders(userIDs, productIDs):
         order.fulfilled.update(fake.date_time_between(start_date=order.shipped, end_date=order.shipped + timedelta(weeks=2)))
 
         # db.session.add(order)
-        # db.session.commit();
+        db.session.commit();
 
 def undo_orders():
     if environment == "production":
