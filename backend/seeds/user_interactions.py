@@ -37,11 +37,14 @@ def seed_orders(userIDs, productIDs):
     loopLength = 100 # arbitrary number of orders to seed
     for _ in range(loopLength):
 
-        order = Order()
+        order = Order(
+            user_id = random.choice(userIDs),
+            placed = fake.date_time_between(start_date='-1y', end_date='now'),
+            shipped = fake.date_time_between(start_date=order.placed, end_date=order.placed + timedelta(weeks=2)),
+            fulfilled = fake.date_time_between(start_date=order.shipped, end_date=order.shipped + timedelta(weeks=2))
+        )
         db.session.add(order)
         db.session.commit()
-
-        order.user_id.update(random.choice(userIDs)) # assign random user to order from seeded users
 
         #calc total for seeded order + add products to order "sub table" (order_products)
         products = random.sample(productIDs, k=random.randint(1, 5)) # each order will have between 1 and 5 products
@@ -53,13 +56,9 @@ def seed_orders(userIDs, productIDs):
                 quantity = random.randint(1, 5)
             )
             db.session.add(newOrderItem)
-            total += Product.query.get(product_id).price # calculate total by summing price of each product in order
+            total += Product.query.get(product_id).price * newOrderItem.quantity # calculate total by summing price of each product in order
 
-        order.total.update(total) # update total for order
-        order.placed.update(fake.date_time_between(start_date='-1y', end_date='now'))
-        order.shipped.update(fake.date_time_between(start_date=order.placed, end_date=order.placed + timedelta(weeks=2)))
-        order.fulfilled.update(fake.date_time_between(start_date=order.shipped, end_date=order.shipped + timedelta(weeks=2)))
-
+        order.total = total # update total for seeded order
         # db.session.add(order)
         db.session.commit();
 
