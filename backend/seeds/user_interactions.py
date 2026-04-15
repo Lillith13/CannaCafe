@@ -36,12 +36,15 @@ def seed_orders(userIDs, productIDs):
 
     loopLength = 100 # arbitrary number of orders to seed
     for _ in range(loopLength):
+        placedDate = fake.date_time_between(start_date='-1y', end_date='now')
+        shippedDate = fake.date_time_between(start_date=placedDate, end_date=placedDate + timedelta(weeks=2))
+        fulfilledDate = fake.date_time_between(start_date=shippedDate, end_date=shippedDate + timedelta(weeks=2))
 
         order = Order(
             user_id = random.choice(userIDs),
-            placed = fake.date_time_between(start_date='-1y', end_date='now'),
-            shipped = fake.date_time_between(start_date=order.placed, end_date=order.placed + timedelta(weeks=2)),
-            fulfilled = fake.date_time_between(start_date=order.shipped, end_date=order.shipped + timedelta(weeks=2))
+            placed = placedDate,
+            shipped = shippedDate,
+            fulfilled = fulfilledDate
         )
         db.session.add(order)
         db.session.commit()
