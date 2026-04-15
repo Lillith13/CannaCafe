@@ -55,10 +55,10 @@ def seed_orders(userIDs, productIDs):
             db.session.add(newOrderItem)
             total += Product.query.get(product_id).price # calculate total by summing price of each product in order
 
-        order.total=total
-        order.placed = fake.date_time_between(start_date='-1y', end_date='now')
-        order.shipped = fake.date_time_between(start_date=order.placed, end_date=order.placed + timedelta(weeks=2))
-        order.fulfilled = fake.date_time_between(start_date=order.shipped, end_date=order.shipped + timedelta(weeks=2))
+        order.total.update(total) # update total for order
+        order.placed.update(fake.date_time_between(start_date='-1y', end_date='now'))
+        order.shipped.update(fake.date_time_between(start_date=order.placed, end_date=order.placed + timedelta(weeks=2)))
+        order.fulfilled.update(fake.date_time_between(start_date=order.shipped, end_date=order.shipped + timedelta(weeks=2)))
 
         db.session.add(order)
         db.session.commit();
