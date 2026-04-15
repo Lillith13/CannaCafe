@@ -7,7 +7,7 @@ from flask_login import LoginManager
 
 from .models import db, User
 
-from .api.routes import auth_routes, user_routes, timecard_routes, product_routes, wishlist_routes, favorite_routes, order_routes, category_routes, review_routes, complaint_routes
+from .api.routes import auth_routes, user_routes, timecard_routes, product_routes, wishlist_routes, favorite_routes, orders_routes, category_routes, review_routes, complaint_routes
 
 from .seeds import seed_commands
 from .config import Config
@@ -23,7 +23,7 @@ app.register_blueprint(timecard_routes, url_prefix="/api/timecard/")
 app.register_blueprint(product_routes, url_prefix='/api/products/')
 app.register_blueprint(wishlist_routes, url_prefix='/api/wishlist/')
 app.register_blueprint(favorite_routes, url_prefix='/api/favorites/')
-app.register_blueprint(order_routes, url_prefix='/api/orders/')
+app.register_blueprint(orders_routes, url_prefix='/api/orders/')
 app.register_blueprint(category_routes, url_prefix='/api/categories/')
 app.register_blueprint(review_routes, url_prefix='/api/reviews/')
 app.register_blueprint(complaint_routes, url_prefix='/api/complaints/')

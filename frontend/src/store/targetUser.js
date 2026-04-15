@@ -11,14 +11,13 @@ export const getTargetUser = (targetUserId) => async (dispatch) => {
   const data = await res.json();
   if (res.ok) {
     if (data.errors) {
-      console.log(data.errors);
+      // console.log(data.errors);
       return data.errors;
     }
-    console.log(data.User);
     dispatch(setTarget(data.User));
     return null;
   } else {
-    console.log(data);
+    // console.log(data);
     return data;
   }
 };
@@ -27,7 +26,6 @@ export default function reducer(state = {}, action) {
   let new_state;
   switch (action.payload) {
     case GET_USER:
-      console.log(action.payload);
       new_state = action.payload;
       return new_state;
     default:

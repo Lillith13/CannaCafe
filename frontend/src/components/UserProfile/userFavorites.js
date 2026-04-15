@@ -25,15 +25,14 @@ export default function UserFavorites() {
     const data = await dispatch(getAllFavorites()).then(() =>
       setIsLoaded(true)
     );
-    if (data) {
-      console.log(data);
-    }
+    // if (data) {
+    //   console.log("DATA: ", data);
+    // }
   }, [dispatch]);
 
   return isLoaded ? (
     <div
       className="userFavesTabContainer"
-      id={Object.values(faves).length > 0 ? "" : "empty"}
     >
       {Object.values(faves).length > 0 ? (
         <>

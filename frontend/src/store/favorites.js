@@ -11,13 +11,12 @@ export const getAllFavorites = () => async (dispatch) => {
   const data = await res.json();
   if (res.ok) {
     if (data.errors) {
-      console.log(data.errors);
+      // console.log(data.errors);
       return data.errors;
     }
     dispatch(getAllFaves(data.Favorites));
     return null;
   } else {
-    console.log(data);
     return data;
   }
 };
@@ -33,14 +32,11 @@ export const addToFaves = (itemId) => async (dispatch) => {
   const data = await res.json();
   if (res.ok) {
     if (data.errors) {
-      console.log(data.errors);
       return data.errors;
     }
-    console.log(data);
     dispatch(getAllFavorites());
     return null;
   } else {
-    console.log(data);
     return data;
   }
 };
@@ -56,14 +52,12 @@ export const delFromFaves = (itemId) => async (dispatch) => {
   const data = res.json();
   if (res.ok) {
     if (data.errors) {
-      console.log(data.errors);
       return data.errors;
     }
     console.log(data);
     dispatch(getAllFavorites());
     return null;
   } else {
-    console.log(data);
     return data;
   }
 };

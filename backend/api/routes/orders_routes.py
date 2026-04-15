@@ -6,9 +6,9 @@ from .auth_helper import validation_errors_to_error_messages
 from ...models import db, Order, Product, OrderProduct, User
 from ...forms import PlaceOrder
 
-order_routes = Blueprint('orders', __name__, url_prefix="/orders")
+orders_routes = Blueprint('orders', __name__, url_prefix="/orders")
 
-@order_routes.route("/", methods=["GET", "POST"])
+@orders_routes.route("/", methods=["GET", "POST"])
 # @login_required
 def orders():
     print("   =====>  request.method ==> ", request.method)
@@ -47,7 +47,7 @@ def orders():
         return { "Order": order.id }
     return
 
-@order_routes.route('/<int:id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@orders_routes.route('/<int:id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @login_required
 def order(id):
     order = Order.query.get(id)
@@ -107,7 +107,7 @@ def order(id):
         db.session.commit()
         return {'message': "successful"}
 
-@order_routes.route('/<int:orderId>/<int:itemId>', methods=['DELETE'])
+@orders_routes.route('/<int:orderId>/<int:itemId>', methods=['DELETE'])
 @login_required
 def processReturn(orderId, itemId):
 

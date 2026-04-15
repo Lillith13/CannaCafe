@@ -12,7 +12,7 @@ export const getAllOrders = () => async (dispatch) => {
   if (res.ok) {
     dispatch(loadUserOrders(data.Past_Orders));
   } else {
-    console.log(data);
+    // console.log(data);
   }
 };
 
@@ -25,7 +25,7 @@ export const createOrder = (total) => async (dispatch) => {
     body: JSON.stringify(total),
   });
   const data = await res.json();
-  console.log(data.Order);
+  // console.log(data.Order);
   return data.Order;
 };
 

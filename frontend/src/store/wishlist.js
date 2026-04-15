@@ -11,13 +11,13 @@ export const getWishlist = () => async (dispatch) => {
   const data = await res.json();
   if (res.ok) {
     if (data.errors) {
-      console.log(data.errors);
+      // console.log(data.errors);
       return data.errors;
     }
     dispatch(loadWishlist(data.Wishlist));
     return null;
   } else {
-    console.log(data);
+    // console.log(data);
     return data;
   }
 };
@@ -33,14 +33,13 @@ export const addToWishlist = (productId) => async (dispatch) => {
   const data = await res.json();
   if (res.ok) {
     if (data.errors) {
-      console.log(data.errors);
+      // console.log(data.errors);
       return data.errors;
     }
-    console.log(data);
     dispatch(getWishlist());
     return null;
   } else {
-    console.log(data);
+    // console.log(data);
     return data;
   }
 };
@@ -56,14 +55,13 @@ export const delFromWishlist = (productId) => async (dispatch) => {
   const data = await res.json();
   if (res.ok) {
     if (data.errors) {
-      console.log(data.errors);
+      // console.log(data.errors);
       return data.errors;
     }
-    console.log(data);
     dispatch(getWishlist());
     return null;
   } else {
-    console.log(data);
+    // console.log(data);
     return data;
   }
 };

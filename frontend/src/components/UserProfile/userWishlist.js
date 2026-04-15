@@ -31,7 +31,6 @@ export default function UserWishlist() {
   return isLoaded ? (
     <div
       className="userWishTabContainer"
-      id={Object.values(wishlist).length > 0 ? "" : "empty"}
     >
       {Object.values(wishlist).length > 0 ? (
         <>

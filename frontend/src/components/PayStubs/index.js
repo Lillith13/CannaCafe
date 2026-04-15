@@ -37,7 +37,7 @@ export default function PayStubs() {
         </button>
       </div>
       <h1>Your Paystubs</h1>
-      <p>word in progress...</p>
+      <p>work in progress...</p>
       {Object.values(timecards).length > 0 ? (
         <div className="timeCardsContainer">
           {Object.values(timecards)

@@ -36,13 +36,13 @@ export const loadAllProducts = (path) => async (dispatch) => {
   const data = await res.json();
   if (res.ok) {
     if (data.errors) {
-      console.log(data.errors);
+      // console.log(data.errors);
       return data.errors;
     }
     dispatch(getAllProducts(data.Products));
     return;
   } else {
-    console.log(data);
+    // console.log(data);
     return data;
   }
 };
@@ -56,7 +56,7 @@ export const loadAllAll = () => async (dispatch) => {
     }
     dispatch(getAllProducts(data.Products));
   } else {
-    console.log(data);
+    // console.log(data);
     return data;
   }
 };
@@ -71,17 +71,15 @@ export const loadProduct = (productId) => async (dispatch) => {
     dispatch(getAProduct(data));
     return;
   } else {
-    console.log("from else in store => ", data);
+    // console.log("from else in store => ", data);
   }
 };
 
 export const createProduct = (formData) => async (dispatch) => {
-  // console.log(formData);
   const res = await fetch("/api/products/", {
     method: "POST",
     body: formData,
   });
-  // console.log(res);
   const data = await res.json();
   if (!res.ok) {
     if (data.errors) {
@@ -95,12 +93,10 @@ export const createProduct = (formData) => async (dispatch) => {
 };
 
 export const editProduct = (formData) => async (dispatch) => {
-  // console.log(formData);
   const res = await fetch("/api/products/", {
     method: "PUT",
     body: formData,
   });
-  // console.log(res);
   // * may add a load later to provent need for redirect to product details
 };
 

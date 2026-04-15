@@ -67,16 +67,12 @@ export const logout = () => async (dispatch) => {
 export const signUp =
   ({ formData, currUser }) =>
   async (dispatch) => {
-    // const { formData, currUser } = data;
-    // console.log(formData);
 
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       body: formData,
     });
-    // console.log(res);
     const userData = await res.json();
-    // console.log(userData);
     if (res.ok) {
       if (!currUser || currUser == "undefined") {
         dispatch(setUser(userData));
@@ -110,22 +106,18 @@ export const deleteUser = (userId) => async (dispatch) => {
 
 export const editUser = (inputData) => async (dispatch) => {
   const { formData, employeeId, userId } = inputData;
-  // console.log(inputData);
 
   const res = await fetch(`/api/users/${employeeId}`, {
     method: "PUT",
     body: formData,
   });
-  // console.log(res);
   const data = await res.json();
-  // console.log(data);
   if (res.ok) {
     if (data.errors) {
       // console.log(data.errors);
       return data.errors;
     }
     if (employeeId == userId) {
-      // console.log(data);
       dispatch(setUser(data));
       return null;
     }
