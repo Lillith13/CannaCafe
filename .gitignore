@@ -9,9 +9,10 @@ instance
 node_modules
 .venv
 .env
+
+
 *.db
-tasklist.txt
 dev.db
 instance/dev.db
-
+tasklist.txt
 LinkedIn-RequestedFeedback
