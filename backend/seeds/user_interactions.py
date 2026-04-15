@@ -37,35 +37,30 @@ def seed_orders(userIDs, productIDs):
     loopLength = 100 # arbitrary number of orders to seed
     for _ in range(loopLength):
 
-        user_id = random.choice(userIDs) # assign random user to order from seeded users
+        order = Order()
+        db.session.add(order)
+        db.session.commit()
+
+        order.user_id = random.choice(userIDs) # assign random user to order from seeded users
 
         #calc total for seeded order + add products to order "sub table" (order_products)
         products = random.sample(productIDs, k=random.randint(1, 5)) # each order will have between 1 and 5 products
         total = 0 # will be updated when products are added to order
         for product_id in products:
             newOrderItem = OrderProduct(
-                order_id = 1 if _ > 0 else _,
                 product_id = product_id,
                 quantity = random.randint(1, 5)
             )
             db.session.add(newOrderItem)
             total += Product.query.get(product_id).price # calculate total by summing price of each product in order
 
-        placed = fake.date_time_between(start_date='-1y', end_date='now')
-        shipped = fake.date_time_between(start_date=placed, end_date=placed + timedelta(weeks=2))
-        fulfilled = fake.date_time_between(start_date=shipped, end_date=shipped + timedelta(weeks=2))
-
-        order = Order(
-            user_id=user_id,
-            total=total,
-            placed=placed,
-            shipped=shipped,
-            fulfilled=fulfilled
-        )
+        order.total=total
+        order.placed = fake.date_time_between(start_date='-1y', end_date='now')
+        order.shipped = fake.date_time_between(start_date=order.placed, end_date=order.placed + timedelta(weeks=2))
+        order.fulfilled = fake.date_time_between(start_date=order.shipped, end_date=order.shipped + timedelta(weeks=2))
 
         db.session.add(order)
-
-    db.session.commit();
+        db.session.commit();
 
 def undo_orders():
     if environment == "production":
