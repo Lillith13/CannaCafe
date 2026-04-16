@@ -14,5 +14,5 @@ node_modules
 *.db
 dev.db
 instance/dev.db
-tasklist.txt
+notes.txt
 LinkedIn-RequestedFeedback

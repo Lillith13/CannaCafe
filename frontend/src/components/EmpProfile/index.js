@@ -25,14 +25,11 @@ export default function EmployeeProfile() {
       setIsLoaded(true)
     );
     if (data) {
-      console.log(data);
+      // console.log(data);
     }
   }, [dispatch]);
 
   useEffect(() => {
-    if (employee.id == user.id) {
-      history.push("/profile");
-    }
     if (user.role.name == "Member") {
       history.push("/profile");
     }
@@ -71,7 +68,8 @@ export default function EmployeeProfile() {
             className={
               (user.role.name == "Owner" && employee.role.name == "Manager") ||
               (user.role.name == "Owner" && employee.role.name == "Employee") ||
-              (user.role.name == "Manager" && employee.role.name == "Employee")
+              (user.role.name == "Manager" && employee.role.name == "Employee") ||
+              (user.firstName == employee.firstName && user.lastName == employee.lastName)
                 ? null
                 : "hidden"
             }
@@ -80,18 +78,13 @@ export default function EmployeeProfile() {
               buttonText="Edit Account"
               modalComponent={<EditAccount empId={empId} />}
             />
-            <h2
+            <button
               className="staffProfilePayStubTab"
               onClick={() => setLoadTimeCards(!loadTimeCards)}
             >
-              Timecards
-            </h2>
+              {loadTimeCards ? "Hide" : "Show"} Timecards
+            </button>
           </div>
-
-          {/* {(user.role.name == "Owner" && employee.role.name == "Manager") ||
-          (user.role.name == "Owner" && employee.role.name == "Employee") ||
-          (user.role.name == "Manager" && employee.role.name == "Employee") ? (
-          ) : null} */}
         </div>
 
         <div id="contactInfo">

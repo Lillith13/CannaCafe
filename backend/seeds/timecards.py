@@ -1,7 +1,4 @@
 #seed_timecards()
-# # will update table structure when additional functionality has been added to timecards. As it stands, they only display per day. Update when new table or routes created for weekly/biweekly/monthly paystubs
-
-#seed_timecard_entries()
 
 #
 # TABLE STRUCTURE :
@@ -11,3 +8,5 @@
 # clocked_out = #; -- random date between clocked_in and clocked_in + 12 hours
 # day_pay = #; -- calculated by clocked_out - clocked_in * user's payrate
 #
+
+# undo_timecards() -- will delete all seeded timecards
