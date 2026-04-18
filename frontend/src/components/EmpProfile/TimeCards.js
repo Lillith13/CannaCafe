@@ -10,7 +10,6 @@ export default function Timecards({ emp }) {
   const user = useSelector((state) => state.session.user);
   const pay_state = useSelector((state) => state.pay_state);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [stubs, setStubs] = useState([])
   const userHasEditPermissions =
               (user.role.name == "Owner" && emp.role.name == "Manager") ||
               (user.role.name == "Owner" && emp.role.name == "Employee") ||
@@ -20,19 +19,18 @@ export default function Timecards({ emp }) {
   useEffect(async () => {
     const data = await dispatch(allEmpTimecards(empId));
     if (data) {
-      console.log(data);
+      // console.log(data);
     } else {
-      setStubs(...pay_state)
       setIsLoaded(true);
     }
   }, [dispatch]);
 
   return isLoaded ? (
     <div>
-      {stubs.length > 0 ? (
+      {pay_state.length > 0 ? (
         <div className="idvTimeCard">
           {/* {console.log(Object.values(pay_state))} */}
-          {stubs.map((stub) => (
+          {pay_state.map((stub) => (
             <div key={stub.id} id="timecardInfo">
               <label>
                 Start Date:

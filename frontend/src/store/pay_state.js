@@ -71,9 +71,7 @@ export default function reducer(state = {}, action) {
   switch (action.type) {
     case LOAD_ALL:
       // load payStubs
-      for (let stub of action.payload) {
-        new_state[stub.id] = stub;
-      }
+      new_state = [...action.payload]
       return new_state;
 
     default:

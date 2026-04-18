@@ -56,9 +56,9 @@ export default function PayStubs() {
         <h1 className="payStubsPageTitle">Your Paystubs</h1>
       </div>
       <div className="payStubsPageBodyCotiner" id={theme}>
-        {Object.values(pay_state).length > 0 ? (
+        {pay_state.length > 0 ? (
           <div className="payperiodsContainer" id={theme}>
-            {Object.values(pay_state)
+            {pay_state
               .toReversed()
               .map((stub) => (
                 <div key={stub.id} className="idvPayperiodDiv" id={theme}>
