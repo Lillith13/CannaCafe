@@ -14,15 +14,10 @@ const getOneEmp = (emp) => ({
 export const getAllEmployees = () => async (dispatch) => {
   const res = await fetch("/api/users/");
   const data = await res.json();
-  if (res.ok) {
-    if (data.errors) {
-      return data.errors;
-    }
-    dispatch(getAllEmps(data));
-  }
   if (data.errors) {
     return data.errors;
   }
+  dispatch(getAllEmps(data));
 };
 
 export const getAnEmployee = (empId) => async (dispatch) => {
