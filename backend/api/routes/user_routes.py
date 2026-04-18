@@ -11,18 +11,27 @@ user_routes = Blueprint('users', __name__, url_prefix="/users")
 
 @user_routes.route('/')
 def get_employees():
+    currUser = User.query.filter(User.id == current_user.get_id())
+
     empRole = Role.query.filter(Role.name == "Employee").first()
-    employees = User.query.filter(User.role_id == empRole.id).all()
-
     managerRole = Role.query.filter(Role.name == "Manager").first()
-    managers = User.query.filter(User.role_id == managerRole.id).all()
-
     ownerRole = Role.query.filter(Role.name == "Owner").first()
+
+    if not empRole or not managerRole or not ownerRole:
+        return {"error": "Roles not seeded properly"}, 500
+
+    employees = User.query.filter(User.role_id == empRole.id).all()
+    managers = User.query.filter(User.role_id == managerRole.id).all()
     owners = User.query.filter(User.role_id == ownerRole.id).all()
 
-    # currUser = User.query.get(current_user.get_id())
-    # if currUser.id not in employees or managers or owners:
-    #     return PermissionError({"No sir/ma'am, you're not supposed to be here!"})
+    allowed_ids = (
+        [e.id for e in employees] +
+        [m.id for m in managers] +
+        [o.id for o in owners]
+    )
+
+    if currUser.id not in allowed_ids:
+        return {"error": "No sir/ma'am, you're not supposed to be here!"}, 403
 
     allEmployees = {
         "Employees": [employee.to_dict() for employee in employees],
