@@ -3,6 +3,7 @@ from .db import db, environment, SCHEMA
 from .roles import Role
 from .users import User
 from .timecards import TimeCard
+from .payperiods import PayPeriod
 from .products import Product
 from .categories import Category
 from .wishlist import Wishlist

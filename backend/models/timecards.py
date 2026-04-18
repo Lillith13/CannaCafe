@@ -9,24 +9,36 @@ class TimeCard(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-
     clocked_in = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
     clocked_out = db.Column(db.DateTime)
 
     day_pay = db.Column(db.Numeric(precision=10, scale=2))
 
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod('users.id')),
+        nullable=False
+    )
     user = db.relationship(
         "User",
         back_populates="dailytimecards"
+    )
+
+    payperiod_id = db.Column(
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod('payperiods.id'
+    )))
+    payperiod = db.relationship(
+        "PayPeriod",
+        back_populates="timecards",
     )
 
     def record_pay(self):
         if self.clocked_out:
             c_in = datetime.strptime(self.clocked_in, "%H:%M:%S")
             c_out = datetime.strptime(self.clocked_out)
-            hours = c_out - c_in
+            hours = (c_out - c_in).total_seconds() / 3600
             self.day_pay = hours * self.user.payrate
 
     def to_dict(self):

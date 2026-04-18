@@ -20,7 +20,7 @@ import Signup from "../AllModals/Signup";
 import EditAccount from "../AllModals/EditAcct";
 import ConfirmDeleteAcct from "../AllModals/ConfirmDelete/confirmDeleteAcct";
 
-import { userClockin, userClockout } from "../../store/timecard";
+import { userClockin, userClockout } from "../../store/pay_state";
 
 import UserOrders from "./userOrders";
 import UserComplaints from "./userComplaints";

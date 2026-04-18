@@ -40,6 +40,7 @@ def check_if_required(form, field):
         raise ValidationError('Current password required to change password.')
 
 
+
 class EditAccountForm(FlaskForm):
     profile_pic = FileField("Profile Picture", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
 

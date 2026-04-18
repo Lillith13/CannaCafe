@@ -6,7 +6,7 @@ import OpenModalButton from "../OpenModalButton";
 import Login from "../AllModals/Login";
 import Signup from "../AllModals/Signup";
 import { logout } from "../../store/session";
-import { userClockin, userClockout } from "../../store/timecard";
+import { userClockin, userClockout } from "../../store/pay_state";
 
 import "./css/Navigation.css";
 import "./css/screenSizing.css";

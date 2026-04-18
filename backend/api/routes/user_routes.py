@@ -1,7 +1,8 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user, logout_user
+from datetime import date, timedelta
 
-from ...models import db, User, Role, Review
+from ...models import db, User, Role, Review, PayPeriod
 from ...forms import EditAccountForm
 from .aws_helper import get_unique_filename, upload_file_to_s3, remove_file_from_s3
 from .auth_helper import validation_errors_to_error_messages
@@ -20,6 +21,8 @@ def get_employees():
     owners = User.query.filter(User.role_id == ownerRole.id).all()
 
     currUser = User.query.get(current_user.get_id())
+    if currUser not in employees or managers or owners:
+        return PermissionError({"No sir/ma'am, you're not supposed to be here!"})
 
     allEmployees = {
         "Employees": [employee.to_dict() for employee in employees],
@@ -89,6 +92,15 @@ def editAccount(id):
         # if user.email != data['email']:
         #     user.email = data['email']
 
+        # posting frequency change approval
+        if user.pay_frequency != data['pending_frequency'] and data['pending_frequency'] in ['weekly', 'biweekly', 'monthy']:
+            user.pending_frequency = data['pending_frequency']
+
+        # frequency change approved
+        if data['pending_frequency'] == ['approved'] and user.pending_frequency in ['weekly', 'biweekly', 'monthy']:
+            user.pay_frequency = user.pending_frequency
+            user.pending_frequency = "none"
+
         if user.phone != data['phone']:
             user.phone = data['phone']
 
@@ -108,11 +120,37 @@ def editAccount(id):
                 return {'errors': {"Not_Allowed": "You do not have permission to perform this action"}}, 403
 
             role = Role.query.filter(Role.name == data['role']).first()
+            oldRole = Role.query.get(user.role_id)
             user.role_id = role.id
+
             if not role.name == "Member":
                 user.pay_rate = role.payrate
-            if role.name == "Member":
+
+                if oldRole.name == "Member" or None:
+                    # create first paystub - start on closest sunday
+                    # start =
+                    freq = 6 # default
+                    if user.pay_frequency == "biweekly": freq = 13
+                    elif user.pay_frequency == "monthly": freq = 30
+
+
+                    today = date.today()
+                    # Monday=0 ... Sunday=6
+                    days_since_sunday = (today.weekday() + 1) % 7
+                    start = today - timedelta(days=days_since_sunday)
+                    
+                    firstStub = PayPeriod(
+                        start_date = start,
+                        end_date = start + timedelta(days=freq),
+                        frequency = user.pay_frequency,
+                        user_id = user.id
+
+                    )
+                #
+
+            if role.name == "Member" or None:
                 user.pay_rate = None
+
         db.session.commit()
         print("Editted User ===> ", user.to_dict())
         return user.to_dict()

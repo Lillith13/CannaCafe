@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { allUserTimecards } from "../../store/timecard";
+import { allEmpTimecards } from "../../store/pay_state";
 
 export default function Timecards({ emp }) {
   const { empId } = useParams();
@@ -13,7 +13,7 @@ export default function Timecards({ emp }) {
   console.log(empId);
 
   useEffect(async () => {
-    const data = await dispatch(allUserTimecards(empId));
+    const data = await dispatch(allEmpTimecards(empId));
     if (data) {
       console.log(data);
     } else {

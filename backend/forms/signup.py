@@ -41,6 +41,7 @@ def birthday_validator(form, field):
     if age_in_years < 21:
         raise ValidationError("Must be 21 or older")
 
+
 class SignUpForm(FlaskForm):
     profile_pic = FileField("Profile Picture", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
 

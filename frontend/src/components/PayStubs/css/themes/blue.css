@@ -1,0 +1,67 @@
+/* Light */
+.payStubsPageBodyCotiner#BL {
+    background-color: pink;
+}
+.payperiodsContainer#BL {
+    border: 3px solid red;
+}
+
+.idvPayperiodDiv#BL {
+    border: 3px solid green;
+}
+.stubContainer#BL {
+    background: orange;
+}
+.stubDetailsContainer#BL {
+    border: 3px solid white;
+}
+
+.payPeriodTimeframe#BL {
+    border: 3px solid purple;
+}
+
+.stubPayDetails#BL {
+    border: 3px solid blue
+}
+
+.timecardsContainerOuter#BL {
+    background-color: magenta
+}
+
+.idvTimecard#BL {
+    border: 3px solid lime
+}
+
+/* Dark */
+.payStubsPageBodyCotiner#BD {
+    background-color: pink;
+}
+.payperiodsContainer#BD {
+    border: 3px solid red;
+}
+
+.idvPayperiodDiv#BD {
+    border: 3px solid green;
+}
+.stubContainer#BD {
+    background: orange;
+}
+.stubDetailsContainer#BD {
+    border: 3px solid white;
+}
+
+.payPeriodTimeframe#BD {
+    border: 3px solid purple;
+}
+
+.stubPayDetails#BD {
+    border: 3px solid blue
+}
+
+.timecardsContainerOuter#BD {
+    background-color: magenta
+}
+
+.idvTimecard#BD {
+    border: 3px solid lime
+}

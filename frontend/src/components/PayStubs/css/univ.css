@@ -1,0 +1,160 @@
+.payStubsPageContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 100%;
+  padding-top: 5%;
+  margin-left: 1%;
+  /* background-color: pink; */
+}
+
+.payStubsPageHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 13%;
+  margin-top: 1.5%;
+}
+/* .goBackButtonDiv {
+  display: flex;
+  width: fit-content;
+} */
+.goBackButton {
+  padding: 5px 15px;
+  /* background-color: #a9b388; */
+  /* color: #fefae0; */
+  font-size: 20px;
+}
+.payStubsPageTitle {
+  width: fit-content;
+  align-self: center;
+  padding-left: 20%;
+  padding-right: 45%;
+}
+
+.payStubsPageBodyCotiner{
+  /* border: 3px solid red; */
+  width: 100vw;
+  max-height: 75vh;
+  margin-left: calc(50% - 50.25vw);
+  justify-content: center;
+}
+.payperiodsContainer{
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1%;
+  padding-bottom: 1.25%;
+  width: 100%;
+  min-height: 0%;
+  max-height: 65vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.payperiodsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.idvPayperiodDiv {
+  display: flex;
+  justify-content: space-evenly;
+  height: 25vh;
+  width: 93%;
+  padding: 2%;
+  border-radius: 15px;
+}
+.stubContainer {
+  /* border: 3px solid white; */
+  justify-content: space-evenly;
+  align-content: center;
+  width: 45%;
+  max-height: 95%;
+  border-radius: 15px;
+}
+.stubDetailsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+}
+/* .payPeriodTimeframe > p {
+  height: 25%;
+} */
+/* .stubPayDetails{
+} */
+
+.timecardsContainerOuter{
+  border: 3px solid lime;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  max-height: 95%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.timeCardExpanderToggle {
+  /* background-color: peachpuff; */
+  width: 95%;
+}
+.timeCardExpanderToggle#toggledOpen{
+  margin-top: .75%;
+  margin-bottom: .75%;
+  border-radius: 15px;
+}
+.timeCardExpanderToggle#toggledClosed{
+  margin-top: 2.5%;
+  padding: 2%;
+  border-radius: 15px;
+}
+.timecardsGroup{
+  border: 3px solid lightblue;
+  min-height: 0%;
+  width: match-parent;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.timecardsGroup#toggledOpen{
+  /* background-color: black; */
+  justify-content: center;
+  height: 100%;
+}
+.timecardsGroup#toggledClosed{
+  border: none;
+  height: 0%;
+  /* margin: 1px; */
+}
+.stubButtonsContainer {
+  /* background-color: pink; */
+  display: flex;
+}
+.stubButtonsContainer#toggledShowButtons {
+  align-content: center;
+  /* justify-content: center; */
+  /* align-content: center; */
+  width: 95%;
+  padding: 5%;
+  gap: 3%;
+}
+.stubButtonsContainer#toggledShowButtons > button {
+  width: 75%;
+  padding: 2%;
+  border-radius: 15px;
+}
+.stubButtonsContainer#toggledHideButtons {
+  height: 0%;
+}
+/* add animation to timecardsGroup expanding to display employee timecards */
+.timecardsGroup::-webkit-scrollbar {
+  display: none;
+}
+
+.idvTimecard {
+  /* border: 3px solid white; */
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-evenly;
+}

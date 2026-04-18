@@ -40,6 +40,10 @@ class User(db.Model, UserMixin):
     role_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("roles.id")), nullable=False)
 
     pay_rate = db.Column(db.Numeric(precision=10, scale=2))
+    # the frequency the pay periods will be set to
+    pay_frequecy = db.Column(db.String(10), default="weekly")
+    # if == anything other than none or null needs manager review for approval
+    pending_frequency = db.Column(db.String(10))
 
     created_at = db.Column(db.Date, default=date.today(), nullable=False)
 
@@ -97,6 +101,27 @@ class User(db.Model, UserMixin):
             },
             "member_since": self.created_at
         }
+
+    # def emp_dict(self):
+    #     return {
+    #         'id': self.id,
+    #         'profile_pic': self.profile_image,
+    #         'firstName': self.firstName,
+    #         'lastName': self.lastName,
+    #         'username': self.username,
+    #         'email': self.email,
+    #         "phone": self.phone,
+    #         'role': self.role.to_dict(),
+    #         'full_address': {
+    #             "address": self.address,
+    #             "city": self.city,
+    #             "state": self.state,
+    #             "zip": self.zipcode
+    #         },
+    #         'pay_rate': self.pay_rate,
+    #         'pay_frequecy': self.pay_frequecy,
+    #         'pending_changes': self.pending_frequency,
+    #     }
 
     def rev_dict(self):
         return {

@@ -7,7 +7,7 @@ import products from "./products";
 import categories from "./categories";
 import targetUser from "./targetUser";
 import employees from "./employees";
-import timecard from "./timecard";
+import pay_state from "./pay_state";
 import orders from "./orders";
 import wishlist from "./wishlist";
 import favorites from "./favorites";
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   categories,
   targetUser,
   employees,
-  timecard,
+  pay_state,
   orders,
   wishlist,
   favorites,

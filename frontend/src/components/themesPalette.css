@@ -1,0 +1,58 @@
+/* not for use by any files */
+.UNIV {
+    color:#000000;
+    color:#ffffff;
+    color:red;
+    color:green;
+}
+
+.Green_Light {
+    color:#cd8d7a;
+    color:#f3f0d7;
+    color:#e1ecc8;
+    color:#cee5d0;
+    color:#a0c49d;
+    color:#94b49f;
+}
+.Green_Dark {
+    color:#3b5249;
+    color:#346751;
+    color:#1e5128;
+    color:#ecdbba;
+    color:#c84b31;
+    color:none;
+}
+
+.Blue_Light {
+    color:#3a98b9;
+    color:#79e0ee;
+    color:#89cff3;
+    color:#92c7cf;
+    color:#ff6969;
+    color:none;
+}
+.Blue_Dark {
+    color:#0b2447;
+    color:#13005a;
+    color:#19376d;
+    color:#1f6e8c;
+    color:#a5d7e8;
+    color:#b67162;
+}
+
+.Purple_Light {
+    color:#7f669d;
+    color:#937dc2;
+    color:#ba94d1;
+    color:#baabda;
+    color:#ffabe1;
+    color:#9fdfcd;
+}
+.Purple_Dark {
+    color:#35155d;
+    color:#5c469c;
+    color:#816797;
+    color:#e94560;
+    color:none;
+    color:none;
+}
