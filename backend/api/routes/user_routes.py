@@ -20,9 +20,9 @@ def get_employees():
     ownerRole = Role.query.filter(Role.name == "Owner").first()
     owners = User.query.filter(User.role_id == ownerRole.id).all()
 
-    currUser = User.query.get(current_user.get_id())
-    if currUser not in employees or managers or owners:
-        return PermissionError({"No sir/ma'am, you're not supposed to be here!"})
+    # currUser = User.query.get(current_user.get_id())
+    # if currUser.id not in employees or managers or owners:
+    #     return PermissionError({"No sir/ma'am, you're not supposed to be here!"})
 
     allEmployees = {
         "Employees": [employee.to_dict() for employee in employees],
@@ -138,7 +138,7 @@ def editAccount(id):
                     # Monday=0 ... Sunday=6
                     days_since_sunday = (today.weekday() + 1) % 7
                     start = today - timedelta(days=days_since_sunday)
-                    
+
                     firstStub = PayPeriod(
                         start_date = start,
                         end_date = start + timedelta(days=freq),
