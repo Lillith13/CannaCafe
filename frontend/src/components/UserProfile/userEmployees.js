@@ -22,12 +22,10 @@ export default function UserEmployees() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(async () => {
-    const data = await dispatch(getAllEmployees()).then(() =>
-      setIsLoaded(true)
-    );
+    const data = await dispatch(getAllEmployees())
     if (data) {
       console.log(data);
-    }
+    } else setIsLoaded(true)
   }, [dispatch]);
 
   return isLoaded ? (
