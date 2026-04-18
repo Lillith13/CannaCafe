@@ -13,9 +13,9 @@ user_routes = Blueprint('users', __name__, url_prefix="/users")
 def get_employees():
     currUser = User.query.filter(User.id == current_user.get_id())
 
-    empRole = Role.query.filter(Role.name == "Employee").first()
-    managerRole = Role.query.filter(Role.name == "Manager").first()
-    ownerRole = Role.query.filter(Role.name == "Owner").first()
+    empRole = Role.query.filter(Role.name == "employee").first()
+    managerRole = Role.query.filter(Role.name == "manager").first()
+    ownerRole = Role.query.filter(Role.name == "owner").first()
 
     if not empRole or not managerRole or not ownerRole:
         return {"error": "Roles not seeded properly"}, 500
