@@ -106,20 +106,6 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
 
-    op.create_table('timecards',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('clocked_in', sa.DateTime(), nullable=False),
-    sa.Column('clocked_out', sa.DateTime(), nullable=True),
-    sa.Column('day_pay', sa.Numeric(precision=10, scale=2), nullable=True),
-    sa.Column('payperiod_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['payperiod_id'], ['payperiods.id']),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    if environment == "production":
-        op.execute(f"ALTER TABLE timecards SET SCHEMA {SCHEMA};")
-
     op.create_table('payperiods',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('start_date', sa.DateTime(), nullable=False),
@@ -135,6 +121,20 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE payperiods SET SCHEMA {SCHEMA}")
+
+    op.create_table('timecards',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('clocked_in', sa.DateTime(), nullable=False),
+    sa.Column('clocked_out', sa.DateTime(), nullable=True),
+    sa.Column('day_pay', sa.Numeric(precision=10, scale=2), nullable=True),
+    sa.Column('payperiod_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['payperiod_id'], ['payperiods.id']),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE timecards SET SCHEMA {SCHEMA};")
 
     op.create_table('wishlists',
     sa.Column('id', sa.Integer(), nullable=False),
