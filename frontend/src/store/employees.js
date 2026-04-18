@@ -13,18 +13,19 @@ const getOneEmp = (emp) => ({
 
 export const getAllEmployees = () => async (dispatch) => {
   const res = await fetch("/api/users/");
-  let data
   // const data = await res.json();
   // if (data.errors) {
   //   return data.errors;
   // }
-  try {
-    data = await res.json(data);
-  } catch (err) {
-    console.error(err); // This shows up in your server logs
-    res.status(500).send('Internal Server Error');
+  // dispatch(getAllEmps(data));
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(getAllEmps(data));
+  } else {
+    // Handle the error (e.g., log it or dispatch an error action)
+    const errorData = await res.text(); // Use .text() because servers often send HTML on 500
+    console.error("Server Error:", errorData);
   }
-  dispatch(getAllEmps(data));
 };
 
 export const getAnEmployee = (empId) => async (dispatch) => {
