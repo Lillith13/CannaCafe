@@ -17,8 +17,8 @@ def get_employees():
     managerRole = Role.query.filter(Role.name == "manager").first()
     ownerRole = Role.query.filter(Role.name == "owner").first()
 
-    if not empRole or not managerRole or not ownerRole:
-        return {"error": "Roles not seeded properly"}, 500
+    # if not empRole or not managerRole or not ownerRole:
+    #     return {"error": "Roles not seeded properly"}, 500
 
     employees = User.query.filter(User.role_id == empRole.id).all()
     managers = User.query.filter(User.role_id == managerRole.id).all()
