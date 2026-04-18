@@ -12,19 +12,20 @@ const getOneEmp = (emp) => ({
 });
 
 export const getAllEmployees = () => async (dispatch) => {
-  const res = await fetch("/api/users/");
-  // const data = await res.json();
-  // if (data.errors) {
-  //   return data.errors;
-  // }
-  // dispatch(getAllEmps(data));
-  if (res.ok) {
-    const data = await res.json();
-    dispatch(getAllEmps(data));
-  } else {
-    // Handle the error (e.g., log it or dispatch an error action)
-    const errorData = await res.text(); // Use .text() because servers often send HTML on 500
-    console.error("Server Error:", errorData);
+  try {
+    const res = await fetch("/api/users/");
+    if (res.ok) {
+      const data = await res.json();
+      dispatch(getAllEmps(data));
+    } else {
+      // Handle the error (e.g., log it or dispatch an error action)
+      const errorData = await res.text(); // Use .text() because servers often send HTML on 500
+      console.error(`Backend Error (${res.status}):`, errorData);
+      // console.error("Server Error:", errorData);
+    }
+    //
+  } catch (err) {
+    console.error("Err? => ", err)
   }
 };
 
@@ -32,12 +33,11 @@ export const getAnEmployee = (empId) => async (dispatch) => {
   const res = await fetch(`/api/users/${empId}`);
   const data = await res.json();
   if (res.ok) {
-    if (data.errors) {
-      return data.errors;
-    }
     dispatch(getOneEmp(data.User));
   } else {
-    return data;
+    const errorData = await res.text()
+    console.error("Server Error:", errorData)
+    return data.errors;
   }
 };
 

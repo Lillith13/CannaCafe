@@ -8,11 +8,13 @@ const loadAllTimecards = (payload) => ({
 
 export const allEmpTimecards = (userId) => async (dispatch) => {
   // * load all timecards for user
-  const res = await fetch(`/api/timecard/${userId}`);
+  const res = await fetch(`/api/timecard/${userId}`, {method: "GET"});
   const data = await res.json();
   if (data.errors) {
     return data.errors;
   }
+  // let test = [...data]
+  // console.log(test)
   dispatch(loadAllTimecards(data));
 };
 

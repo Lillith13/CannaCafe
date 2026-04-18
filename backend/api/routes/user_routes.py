@@ -11,14 +11,32 @@ user_routes = Blueprint('users', __name__, url_prefix="/users")
 
 @user_routes.route('/')
 def get_employees():
-    currUser = User.query.filter(User.id == current_user.get_id())
+    empRole = Role.query.filter(Role.name == "Employee").first()
+    if not empRole:
+        allRoles = Role.query.all()
+        return{
+            "error": "Employee role not found",
+            "avail": [role.to_dict for role in allRoles],
+            "test-empRole.to_dict":  empRole.to_dict() if empRole else None
+        }, 404
 
-    empRole = Role.query.filter(Role.name == "employee").first()
-    managerRole = Role.query.filter(Role.name == "manager").first()
-    ownerRole = Role.query.filter(Role.name == "owner").first()
+    managerRole = Role.query.filter(Role.name == "Manager").first()
+    if not managerRole:
+        allRoles = Role.query.all()
+        return{
+            "error": "Manager role not found",
+            "avail": allRoles.to_dict(),
+            "test-empRole.to_dict": managerRole.to_dict()
+        }, 404
 
-    # if not empRole or not managerRole or not ownerRole:
-    #     return {"error": "Roles not seeded properly"}, 500
+    ownerRole = Role.query.filter(Role.name == "Owner").first()
+    if not ownerRole:
+        allRoles = Role.query.all()
+        return{
+            "error": "Owner role not found",
+            "avail": allRoles.to_dict(),
+            "test-empRole.to_dict": ownerRole.to_dict()
+        }, 404
 
     employees = User.query.filter(User.role_id == empRole.id).all()
     managers = User.query.filter(User.role_id == managerRole.id).all()
@@ -30,7 +48,7 @@ def get_employees():
         [o.id for o in owners]
     )
 
-    if currUser.id not in allowed_ids:
+    if int(current_user.get_id()) not in allowed_ids:
         return {"error": "No sir/ma'am, you're not supposed to be here!"}, 403
 
     allEmployees = {

@@ -8,45 +8,62 @@ export default function Timecards({ emp }) {
   const { empId } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const timecards = useSelector((state) => state.timecard);
+  const pay_state = useSelector((state) => state.pay_state);
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log(empId);
+  const [stubs, setStubs] = useState([])
+  const userHasEditPermissions =
+              (user.role.name == "Owner" && emp.role.name == "Manager") ||
+              (user.role.name == "Owner" && emp.role.name == "Employee") ||
+              (user.role.name == "Manager" && emp.role.name == "Employee")
+  // console.log(empId);
 
   useEffect(async () => {
     const data = await dispatch(allEmpTimecards(empId));
     if (data) {
       console.log(data);
     } else {
+      setStubs(...pay_state)
       setIsLoaded(true);
     }
   }, [dispatch]);
 
   return isLoaded ? (
     <div>
-      {Object.values(timecards).length > 0 ? (
+      {stubs.length > 0 ? (
         <div className="idvTimeCard">
-          {Object.values(timecards).map((timecard) => (
-            <div key={timecard.id} id="timecardInfo">
+          {/* {console.log(Object.values(pay_state))} */}
+          {stubs.map((stub) => (
+            <div key={stub.id} id="timecardInfo">
               <label>
-                Clocked In:
-                <p>{timecard.clocked_in}</p>
+                Start Date:
+                <></>
               </label>
 
               <label>
-                Clocked Out:
-                <p>{timecard.clocked_out}</p>
+                End Date:
+                <></>
               </label>
 
               <label>
-                Pay for Day:
-                <p>${timecard.day_pay}</p>
+                <label>
+                  Total Hours
+                  <></>
+                </label>
+                <label>
+                  Total Pay
+                  <></>
+                </label>
               </label>
-              {(user.role.name == "Owner" && emp.role.name == "Manager") ||
-              (user.role.name == "Owner" && emp.role.name == "Employee") ||
-              (user.role.name == "Manager" && emp.role.name == "Employee") ? (
-                <button title="functionality coming soon..." disabled>
-                  Edit Timecard
-                </button>
+              {/* {stub.timecards.map((card) => console.log(card))} */}
+              {userHasEditPermissions ? (
+                <div>
+                  <button title="functionality coming soon..." disabled>
+                    Edit Timecard
+                  </button>
+                  <button title="functionality coming soon..." disabled>
+                    Delete Timecard
+                  </button>
+                </div>
               ) : null}
             </div>
           ))}
