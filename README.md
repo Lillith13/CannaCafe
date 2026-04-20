@@ -219,3 +219,12 @@ Themes
 Restyling to accomodate various screen sizes and browsers
 
 ...figure out how to make this into a downloadable software and then app for mobile devices 😊
+
+Track Companion App Progress:
+ - [Employee Companion App](https://github.com/Lillith13/CannaCafeWebApp_EmployeeCompanionAndroidApp)
+       * All username and password combos can be found in seeds/users
+       * attempting to log in with memberDemo seed will result in Error -> Only Employees
+- [Customer Companion App]()
+      * not yet started - link TBD
+- [Sales Companion App]()
+      * not yet started - link TBD (might combine with Employee Companion)
