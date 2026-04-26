@@ -20,12 +20,12 @@ export const getAllEmployees = () => async (dispatch) => {
     } else {
       // Handle the error (e.g., log it or dispatch an error action)
       const errorData = await res.text(); // Use .text() because servers often send HTML on 500
-      console.error(`Backend Error (${res.status}):`, errorData);
+      // console.error(`Backend Error (${res.status}):`, errorData);
       // console.error("Server Error:", errorData);
     }
     //
   } catch (err) {
-    console.error("Err? => ", err)
+    // console.error("Err? => ", err)
   }
 };
 

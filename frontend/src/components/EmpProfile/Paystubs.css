@@ -1,0 +1,43 @@
+.idvPaystub {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 25px 15px 25px 15px;
+  height: 325px;
+  overflow-y: scroll;
+  border: 1px solid #65647c;
+  border-radius: 15px;
+  background-color: #abc4aa;
+}
+.idvPaystub::-webkit-scrollbar {
+  display: none;
+}
+#paystubInfo {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px 0px;
+  /* border: 1px solid black; */
+  border-radius: 15px;
+  background-color: #65647c;
+  color: #f1d3b3;
+  font-weight: bold;
+}
+#paystubInfo > label {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  padding: 5px;
+}
+#paystubInfo > label > p {
+  margin: 0px;
+}
+
+.stubPeriodDuration {
+    display: flex;
+    flex-direction: column;
+}
+
+.stubPayNHoursTotals,
+.stubButtonsContainer {
+    display: flex;
+}

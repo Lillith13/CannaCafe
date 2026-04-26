@@ -7,7 +7,7 @@ import "./EmpProfile.css";
 import { getAnEmployee } from "../../store/employees";
 import OpenModalButton from "../OpenModalButton";
 import EditAccount from "../AllModals/EditAcct";
-import TimeCards from "./TimeCards";
+import Paystubs from "./Paystubs";
 
 import profileIcon from "../../assets/profile_icon.png";
 
@@ -18,7 +18,8 @@ export default function EmployeeProfile() {
   const user = useSelector((state) => state.session.user);
   const employee = useSelector((state) => state.employees);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [loadTimeCards, setLoadTimeCards] = useState(false);
+  const [loadPaystubs, setLoadPaystubs] = useState(false);
+  const [queryLimit, setQueryLimit] = useState(10);
 
   useEffect(async () => {
     const data = await dispatch(getAnEmployee(empId)).then(() =>
@@ -78,11 +79,22 @@ export default function EmployeeProfile() {
               buttonText="Edit Account"
               modalComponent={<EditAccount empId={empId} />}
             />
+            <select id="queryLimit" name="query limit" onClick={((e) => {
+              e.preventDefault()
+              setLoadPaystubs(false)
+              setQueryLimit(e.target.value)
+            })}>
+              <option value={10}>10</option>
+              <option value={25}>25</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+              <option value={null}>All</option>
+            </select>
             <button
               className="staffProfilePayStubTab"
-              onClick={() => setLoadTimeCards(!loadTimeCards)}
+              onClick={() => setLoadPaystubs(!loadPaystubs)}
             >
-              {loadTimeCards ? "Hide" : "Show"} Timecards
+              {loadPaystubs ? "Hide" : "Show"} Paystubs
             </button>
           </div>
         </div>
@@ -115,7 +127,7 @@ export default function EmployeeProfile() {
         </div>
       </div>
 
-      {loadTimeCards && <TimeCards emp={employee} />}
+      {loadPaystubs && <Paystubs emp={employee} queryLimit={queryLimit}/>}
     </div>
   ) : (
     <h1>Loading...</h1>

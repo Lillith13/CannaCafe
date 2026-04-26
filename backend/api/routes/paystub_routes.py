@@ -7,37 +7,47 @@ from .auth_helper import validation_errors_to_error_messages
 from ...models import db, TimeCard, PayPeriod, User, Role
 from ...forms import TimecardForm
 
-timecard_routes = Blueprint("timecard", __name__, url_prefix="/timecard")
+paystub_routes = Blueprint("paystub", __name__, url_prefix="/paystub")
 
-@timecard_routes.route("/<int:userId>")
+def permissionCheck(userId, userRole):
+    if userRole.name != "Manager" and userRole.name != "Owner":
+        return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have the correct permissions to perform this action"})}, 403
+
+    targetUser = User.query.get(int(userId))
+    targetUserRole = Role.query.filter(Role.id == int(targetUser.role.id)).first()
+
+    if targetUserRole.name == "Manager" and userRole.name != "Owner":
+        return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have the correct permissions to perform this action"})}, 403
+
+    if targetUserRole.name == "Member":
+        return {'errors': validation_errors_to_error_messages({"Not_Allowed": "Target user must be at least an employee to have a timecard"})}, 403
+
+@paystub_routes.route("/<int:userId>/<int:queryLimit>")
 @login_required
-def getPaystubs(userId):
-    if int(current_user.get_id()) == int(userId):
-        stubs = PayPeriod.query.filter(PayPeriod.user_id == current_user.get_id()).all()
+def getPaystubs(userId, queryLimit):
 
-        return jsonify([stub.full_dict() for stub in stubs])
+    if int(current_user.get_id()) == int(userId):
+        if(queryLimit != None and queryLimit != 0):
+            stubs = PayPeriod.query.filter(PayPeriod.user_id == current_user.get_id()).order_by(PayPeriod.id.desc()).limit(int(queryLimit)).all()
+            return jsonify([stub.full_dict() for stub in stubs])
+        else:
+            stubs = PayPeriod.query.filter(PayPeriod.user_id == current_user.get_id()).order_by(PayPeriod.id.desc()).all()
+            return jsonify([stub.full_dict() for stub in stubs])
 
     else:
         user = User.query.get(int(current_user.get_id()))
         userRole = Role.query.filter(Role.id == int(user.role.id)).first()
 
-        if userRole.name != "Manager" and userRole.name != "Owner":
-            return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have the correct permissions to perform this action"})}, 403
+        permissionCheck(userId, userRole)
 
-        targetUser = User.query.get(int(userId))
-        targetUserRole = Role.query.filter(Role.id == int(targetUser.role.id)).first()
-
-        if targetUserRole.name == "Manager" and userRole.name != "Owner":
-            return {'errors': validation_errors_to_error_messages({"Not_Allowed": "You do not have the correct permissions to perform this action"})}, 403
-
-        if targetUserRole.name == "Member":
-            return {'errors': validation_errors_to_error_messages({"Not_Allowed": "Target user must be at least an employee to have a timecard"})}, 403
-
-        stubs = PayPeriod.query.filter(PayPeriod.user_id == userId).all()
+        if (queryLimit != None and queryLimit != 0):
+            stubs = PayPeriod.query.filter(PayPeriod.user_id == userId).order_by(PayPeriod.id.desc()).limit(int(queryLimit)).all()
+        else :
+            stubs = PayPeriod.query.filter(PayPeriod.user_id == userId).order_by(PayPeriod.id.desc()).all()
 
         return jsonify([stub.stub_dict() for stub in stubs])
 
-@timecard_routes.route("/clockin", methods=["POST"])
+@paystub_routes.route("/clockin", methods=["POST"])
 @login_required
 def empClockin():
     # check if timecards exists (already clocked in?)
@@ -82,7 +92,7 @@ def empClockin():
     db.session.commit()
     return {"message": "successful"}
 
-@timecard_routes.route("/clockout", methods=["POST"])
+@paystub_routes.route("/clockout", methods=["POST"])
 @login_required
 def empClockout():
     cardCheck = TimeCard.query.filter(TimeCard.clocked_out == None).first()
@@ -111,7 +121,7 @@ def empClockout():
     db.session.commit()
     return {"message": "successful"}
 
-@timecard_routes.route("/<int:empId>", methods=["POST", "PUT", "DELETE"])
+@paystub_routes.route("/<int:empId>", methods=["POST", "PUT", "DELETE"])
 @login_required
 def empTimeCorrection(empId):
     form = TimecardForm()

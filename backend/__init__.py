@@ -7,7 +7,7 @@ from flask_login import LoginManager
 
 from .models import db, User
 
-from .api.routes import auth_routes, user_routes, timecard_routes, product_routes, wishlist_routes, favorite_routes, orders_routes, category_routes, review_routes, complaint_routes
+from .api.routes import auth_routes, paystub_routes, user_routes, product_routes, favorites_routes, orders_routes, category_routes, review_routes, complaint_routes, wishlists_routes
 
 from .seeds import seed_commands
 from .config import Config
@@ -19,10 +19,10 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(auth_routes, url_prefix='/api/auth/')
 app.register_blueprint(user_routes, url_prefix='/api/users/')
-app.register_blueprint(timecard_routes, url_prefix="/api/timecard/")
+app.register_blueprint(paystub_routes, url_prefix="/api/paystub/")
 app.register_blueprint(product_routes, url_prefix='/api/products/')
-app.register_blueprint(wishlist_routes, url_prefix='/api/wishlist/')
-app.register_blueprint(favorite_routes, url_prefix='/api/favorites/')
+app.register_blueprint(wishlists_routes, url_prefix='/api/wishlists/')
+app.register_blueprint(favorites_routes, url_prefix='/api/favorites/')
 app.register_blueprint(orders_routes, url_prefix='/api/orders/')
 app.register_blueprint(category_routes, url_prefix='/api/categories/')
 app.register_blueprint(review_routes, url_prefix='/api/reviews/')

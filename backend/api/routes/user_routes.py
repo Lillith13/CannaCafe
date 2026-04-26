@@ -52,9 +52,9 @@ def get_employees():
         return {"error": "No sir/ma'am, you're not supposed to be here!"}, 403
 
     allEmployees = {
-        "Employees": [employee.to_dict() for employee in employees],
-        "Managers": [manager.to_dict() for manager in managers],
-        "Owners": [owner.to_dict() for owner in owners]
+        "Employees": [employee.emp_dict() for employee in employees],
+        "Managers": [manager.emp_dict() for manager in managers],
+        "Owners": [owner.emp_dict() for owner in owners]
     }
     return allEmployees
 

@@ -6,9 +6,10 @@ const loadAllTimecards = (payload) => ({
   payload,
 });
 
-export const allEmpTimecards = (userId) => async (dispatch) => {
+export const allEmpTimecards = (userId, setQueryLimit) => async (dispatch) => {
   // * load all timecards for user
-  const res = await fetch(`/api/timecard/${userId}`, {method: "GET"});
+  const res = await fetch(`/api/paystub/${userId}/${setQueryLimit}`,
+    {method: "GET"});
   const data = await res.json();
   if (data.errors) {
     return data.errors;
@@ -20,7 +21,7 @@ export const allEmpTimecards = (userId) => async (dispatch) => {
 
 export const userClockin = () => async (dispatch) => {
   // ! clockin
-  const res = await fetch("/api/timecard/clockin", {
+  const res = await fetch("/api/paystub/clockin", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +34,7 @@ export const userClockin = () => async (dispatch) => {
 
 export const userClockout = () => async (dispatch) => {
   // ! clockout
-  const res = await fetch("/api/timecard/clockout", {
+  const res = await fetch("/api/paystub/clockout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -45,7 +46,7 @@ export const userClockout = () => async (dispatch) => {
 };
 
 export const editTimecard = (empId, action, formData) => async (dispatch) => {
-  const res = await fetch(`/api/timecard/${empId}`, {
+  const res = await fetch(`/api/paystub/${empId}`, {
     //action will either be "PUT"(edit) or "POST"(new)
     method: action,
     body: formData
@@ -56,7 +57,7 @@ export const editTimecard = (empId, action, formData) => async (dispatch) => {
 }
 
 export const deleteTimecard = (empId, timecardId) => async (dispatch) => {
-  const res = await fetch(`/api/timecard/${empId}`, {
+  const res = await fetch(`/api/paystub/${empId}`, {
     method: "DELETE",
     body: timecardId
   });

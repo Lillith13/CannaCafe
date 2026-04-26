@@ -4,16 +4,16 @@ from flask_login import current_user, login_required
 from ...models import db, Wishlist, WishlistDetail, Product
 from .auth_helper import validation_errors_to_error_messages
 
-wishlist_routes = Blueprint('wishlist', __name__, url_prefix="/wishlist")
+wishlists_routes = Blueprint('wishlist', __name__, url_prefix="/wishlists")
 
-@wishlist_routes.route("/")
+@wishlists_routes.route("/")
 @login_required
 def getWishlist():
     wishlist = Wishlist.query.filter(Wishlist.user_id == current_user.get_id()).first()
     wishDict = wishlist.to_dict()
     return { "Wishlist": wishDict['products'] }
 
-@wishlist_routes.route("/<int:id>", methods=["POST", "DELETE"])
+@wishlists_routes.route("/<int:id>", methods=["POST", "DELETE"])
 @login_required
 def addToWishlist(id):
     product = Product.query.get(id)

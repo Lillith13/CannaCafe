@@ -4,16 +4,16 @@ from flask_login import current_user, login_required
 from ...models import db, Favorite, FavoriteDetail, Product
 from .auth_helper import validation_errors_to_error_messages
 
-favorite_routes = Blueprint('favorite', __name__, url_prefix='/favorites')
+favorites_routes = Blueprint('favorite', __name__, url_prefix='/favorites')
 
-@favorite_routes.route("/")
+@favorites_routes.route("/")
 @login_required
 def getFavorites():
     favorites = Favorite.query.filter(Favorite.user_id == current_user.get_id()).first()
     favDict = favorites.to_dict()
     return { "Favorites": favDict['products'] }
 
-@favorite_routes.route("/<int:id>", methods=["POST", "DELETE"])
+@favorites_routes.route("/<int:id>", methods=["POST", "DELETE"])
 @login_required
 def addToFavorites(id):
     product = Product.query.get(id)

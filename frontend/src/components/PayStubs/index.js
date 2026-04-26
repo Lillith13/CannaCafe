@@ -19,10 +19,11 @@ export default function PayStubs() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [loadTimeCards, setLoadTimeCards] = useState(false);
   const [expandedStubs, setExpandedStubs] = useState({});
+  const [queryLimit, setQueryLimit] = useState(0)
   const [theme, setTheme] = useState(localStorage.getItem("clientTheme"));
 
   useEffect(async () => {
-    const data = await dispatch(allEmpTimecards(empId));
+    const data = await dispatch(allEmpTimecards(empId, queryLimit));
     if (data) {
       // console.log(data);
       // if data then data.errors
@@ -55,11 +56,13 @@ export default function PayStubs() {
         </div>
         <h1 className="payStubsPageTitle">Your Paystubs</h1>
       </div>
+
+            {/* add queryLimit selector */}
+
       <div className="payStubsPageBodyCotiner" id={theme}>
         {pay_state.length > 0 ? (
           <div className="payperiodsContainer" id={theme}>
             {pay_state
-              .toReversed()
               .map((stub) => (
                 <div key={stub.id} className="idvPayperiodDiv" id={theme}>
 
