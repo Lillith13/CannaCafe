@@ -50,42 +50,49 @@ def getPaystubs(userId, queryLimit):
 @paystub_routes.route("/clockin", methods=["POST"])
 @login_required
 def empClockin():
-    # check if timecards exists (already clocked in?)
-    cardCheck = TimeCard.query.filter(TimeCard.user_id == current_user.get_id()).filter(TimeCard.clocked_out == None).first()
-    # check for parent payperiod or "paystub"
-    stubCheck = PayPeriod.query.filter(PayPeriod.user_id == current_user.get_id()).filter(PayPeriod.start_date <= datetime.now and PayPeriod.end_date >= datetime.now)
+    now = datetime.now()
+    
+    # 1. Added .first()
+    cardCheck = TimeCard.query.filter(TimeCard.user_id == current_user.get_id(), TimeCard.clocked_out == None).first()
+    
+    # 2. Added () to datetime.now and added .first()
+    stubCheck = PayPeriod.query.filter(
+        PayPeriod.user_id == current_user.get_id(), 
+        PayPeriod.start_date <= now, 
+        PayPeriod.end_date >= now
+    ).first()
 
-    # if timecard card exists (already clocked in) --- ERROR
     if cardCheck:
         return {'errors': "Cannot clock in with an already open timecard"}, 403
 
-    # if paystub doesn't exist --- create new
     if not stubCheck:
-        # create a new paystub
-        user = User.query.filter(User.id == current_user.get_id())
-        allUserStubs = PayPeriod.query.filter(PayPeriod.user_id == current_user.get_id())
-        mostRecentEnd = allUserStubs[allUserStubs.length() - 1].end_date
+        user = User.query.get(current_user.get_id()) # Simplified lookup
+        allUserStubs = PayPeriod.query.filter(PayPeriod.user_id == user.id).order_by(PayPeriod.end_date.desc()).all()
+        
+        if allUserStubs:
+            mostRecentEnd = allUserStubs[0].end_date # Get the latest one
+            start = mostRecentEnd + timedelta(days=1)
+        else:
+            # Fallback for brand new users
+            start = now.date()
 
-        start = mostRecentEnd + timedelta(days=1)
-        freq = 6
-        if user.frequency == "biweekly": freq = 13
-        elif user.frequency == "monthly": freq = 30
+        freq_days = 6
+        if user.pay_frequecy == "biweekly": freq_days = 13 # Match your model's typo
+        elif user.pay_frequecy == "monthly": freq_days = 30
 
-        newStub = PayPeriod(
+        stubCheck = PayPeriod(
             start_date = start,
-            end_date = start + timedelta(days=freq),
-            frequency = user.pay_frequency or "weekly",
+            end_date = start + timedelta(days=freq_days),
+            frequency = user.pay_frequecy or "weekly",
             user_id = user.id
         )
 
-        db.session.add(PayPeriod)
+        db.session.add(stubCheck) # Fixed: Adding the instance, not the class
         db.session.commit()
-
-        stubCheck = newStub
 
     new_timecard = TimeCard(
         user_id = current_user.get_id(),
-        clocked_in = datetime.now(),
+        clocked_in = now,
         payperiod_id = stubCheck.id
     )
     db.session.add(new_timecard)
